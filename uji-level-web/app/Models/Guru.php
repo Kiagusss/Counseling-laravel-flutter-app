@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Guru extends Model
 {
     use HasFactory;
+
+    public function kelas()
+    {
+        return $this->belongsTo(Kelas::class);
+    }
 }
