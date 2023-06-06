@@ -31,7 +31,7 @@
                 <li><a href="#two" class="link link-theme link-arrow" id="nav-2">About Us</a></li>
                 <li><a href="#three" class="link link-theme link-arrow" id="nav-3">Services</a></li>
                 <li><a href="#four" class="link link-theme link-arrow" id="nav-4">FAQ</a></li>
-                <li class="button-login"><a href="{{ url('/dashboard') }}"><button>Get Started</button></a></li>
+                <li class="button-login"><a href="{{ route('login') }}"><button>Get Started</button></a></li>
             </ul>
         </header>
 
