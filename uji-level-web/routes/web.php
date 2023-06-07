@@ -23,7 +23,10 @@ Route::name('siswa.')->group(function () {
     // Rute-rute untuk siswadst
     Route::get('/index-siswa', [AdminController::class, 'indexSiswa'])->name('index');
     Route::get('/create-siswa', [AdminController::class, 'createSiswa'])->name('create');
-    Route::post('/create-siswa', [AdminController::class, 'grades'])->name('store');
+    Route::post('/create-siswa', [AdminController::class, 'storeSiswa']);
+    Route::get('/siswa/update/{id}',[AdminController::class,'editSiswa']);
+    Route::patch('/siswa/update/{id}',[AdminController::class,'updateSiswa']);
+    Route::delete('/siswa/destroy/{id}',[AdminController::class,'destroySiswa']);
 });
 Route::name('guru.')->group(function () {
     // Rute-rute untuk siswadst

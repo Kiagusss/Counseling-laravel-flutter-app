@@ -20,35 +20,43 @@
                 </div>
                 <div id="input" class="p-5">
                     <div class="preview">
-                        <form action="/create-siswa" method="POST">
+                        <form action="{{ url('siswa/update/'.$siswa->id)}}" method="POST">
+                            @method('PATCH')
                             @csrf
                             <div class="mt-3">
                                 <label for="regular-form-1" class="form-label">Nisn</label>
                                 <input id="regular-form-1" type="text" name="nisn" class="form-control"
-                                    placeholder="Input text" value="">
+                                    placeholder="Input text" value="{{$siswa->nisn}}">
                             </div>
                             <div class="mt-3">
                                 <label for="regular-form-1" class="form-label">Nama</label>
                                 <input id="regular-form-1" type="text" name="nama" class="form-control"
-                                    placeholder="Input text" value="">
+                                    placeholder="Input text" value="{{$siswa->nama}}">
                             </div>
                             <div class="relative w-56 mt-3">
                                 <label for="regular-form-1" class="form-label">TTL</label>
-                              <input type="date" name="ttl" id="" value="">
+                              <input type="date" name="ttl" id="" value="{{$siswa->ttl}}">
                             </div>
                             <div class="mt-3">
                                 <label for="regular-form-1" class="form-label">Jenis Kelamin</label>
                                 <select name="jenis_kelamin" class="tom-select mb-3">
 
-                                    <option value="pria" >Pria</option>
-                                    <option value="perempuan" >Perempuan</option>
+                                    <option value="pria" {{ $siswa->jenis_kelamin === 'pria' ? 'selected' : '' }}>Pria</option>
+                                    <option value="perempuan" {{ $siswa->jenis_kelamin === 'perempuan' ? 'selected' : '' }}>Perempuan</option>
                                 </select>
                             </div>
 
-                            
+                            <div class="form-group col-md-12">
+                                <label>kelas id</label>
+                                <select name="user_id" class="form-control default-select" id="maapel">
+                                    <option value="{{ $siswa->kelasid->id }}" selected>{{ $siswa->kelasid->nama }}
+                                        @foreach ($kelasid as $item)
+                                    <option value="{{ $item->id }}">{{ $item->nama }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                             
                             <button type="submit" class="btn btn-primary">Submit</button>
-                          
                         </form>
                     </div>
                 </div>

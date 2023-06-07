@@ -21,6 +21,8 @@ class User extends Authenticatable
     use TwoFactorAuthenticatable;
 
 
+
+
     public function siswa()
     {
         return $this->hasOne(Siswa::class);
