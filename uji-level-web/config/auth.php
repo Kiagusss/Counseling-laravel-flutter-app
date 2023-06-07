@@ -40,6 +40,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'guru_bk' => [
+            'driver' => 'session',
+            'provider' => 'guru_bk',
+        ],
     ],
 
     /*
@@ -63,6 +67,10 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+        ],
+        'guru_bk' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\GuruBK::class,
         ],
 
         // 'users' => [

@@ -14,6 +14,10 @@ return new class extends Migration
         Schema::create('kelas', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
+            $table->unsignedBigInteger('walas_id');
+            $table->foreign('walas_id')->references('id')->on('walas'); 
+            $table->unsignedBigInteger('guru_id');
+            $table->foreign('guru_id')->references('id')->on('guru'); 
             $table->timestamps();
         });
     }
@@ -26,3 +30,4 @@ return new class extends Migration
         Schema::dropIfExists('kelas');
     }
 };
+

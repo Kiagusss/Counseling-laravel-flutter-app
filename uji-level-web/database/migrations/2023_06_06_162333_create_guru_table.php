@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('gurus', function (Blueprint $table) {
+        Schema::create('guru', function (Blueprint $table) {
             $table->id();
             $table->string('nipd');
             $table->unsignedBigInteger('user_id');
@@ -19,8 +19,6 @@ return new class extends Migration
             $table->string('nama');
             $table->date('ttl');
             $table->enum('jenis_kelamin', ['pria', 'perempuan']);
-            $table->unsignedBigInteger('kelas_id');
-            $table->foreign('kelas_id')->references('id')->on('kelas'); 
             $table->timestamps();
         });
     }

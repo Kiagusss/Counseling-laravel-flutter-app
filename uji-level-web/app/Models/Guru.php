@@ -9,6 +9,7 @@ class Guru extends Model
 {
     use HasFactory;
 
+    protected $table = 'guru';
     public function kelas()
     {
         return $this->belongsTo(Kelas::class);
