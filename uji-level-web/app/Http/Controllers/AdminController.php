@@ -29,9 +29,19 @@ class AdminController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function createSiswa()
     {
-        
+        return view('layouts.siswa.create');
+    }
+
+    public function createGuru()
+    {
+        return view('layouts.guru.create');
+    }
+
+    public function createWalas()
+    {
+        return view('layouts.walas.create');
     }
 
     /**
