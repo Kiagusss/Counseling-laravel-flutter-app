@@ -1,5 +1,5 @@
-<!-- Begin: Side Menu -->
-<nav class="side-nav">
+  <!-- Begin: Side Menu -->
+  <nav class="side-nav">
     <ul>
         <li>
             <a href="javascript:;" class="side-menu">
