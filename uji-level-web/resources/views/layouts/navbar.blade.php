@@ -4,7 +4,7 @@
         <!-- BEGIN: Logo -->
         <a href="" class="-intro-x hidden md:flex">
             <img alt="Midone - HTML Admin Template" class="w-6" src="dist/images/logo.svg">
-            <span class="text-white text-lg ml-3"> Icewall </span> 
+            <span class="text-white text-lg ml-3"><a href="{{route('dashboard')}}">IceWall</a></span> 
         </a>
         <!-- END: Logo -->
         <!-- BEGIN: Breadcrumb -->

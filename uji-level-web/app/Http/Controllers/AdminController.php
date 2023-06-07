@@ -9,10 +9,22 @@ class AdminController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function indexSiswa()
     {
-        //
+        return view('layouts.siswa.index');
     }
+
+    public function indexGuru()
+    {
+        return view('layouts.guru.index');
+    }
+
+    public function indexWalas()
+    {
+        return view('layouts.walas.index');
+    }
+
+    
 
     /**
      * Show the form for creating a new resource.
