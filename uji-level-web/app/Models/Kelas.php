@@ -16,11 +16,11 @@ class Kelas extends Model
 
     public function walas()
     {
-        return $this->hasMany(Walas::class);
+        return $this->hasOne(Walas::class);
     }
 
     public function guru()
     {
-        return $this->hasMany(Guru::class);
+        return $this->hasOne(Guru::class);
     }
 }
