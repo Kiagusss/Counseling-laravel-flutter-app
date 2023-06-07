@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <link href="{{ asset('dist/css/app.css') }}" rel="stylesheet">
     <link href="https://unpkg.com/tailwindcss@1.2.0/dist/tailwind.min.css" rel="stylesheet">
@@ -30,7 +29,24 @@
           <button class="dark-mode-switcher">Change Theme</button>
         </div>
 
+
+
+
+
+        <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=["your-google-map-api"]&libraries=places"></script>
         <script src="{{ asset('dist/js/app.js') }}"></script>
+        <script>
+            const sideMenuLinks = document.querySelectorAll('.side-menu');
+          
+              sideMenuLinks.forEach(link => {
+                  if (link.href === window.location.href) {
+                      link.classList.add('side-menu--active');
+                  }
+              })
+          </script>
+        
+        
         <script>
             const themeSwitcher = document.querySelector('.dark-mode-switcher');
           const htmlEl = document.querySelector('html');
@@ -70,16 +86,8 @@
           });
           </script>
 
-<script>
-  const sideMenuLinks = document.querySelectorAll('.side-menu');
+        
 
-    sideMenuLinks.forEach(link => {
-        if (link.href === window.location.href) {
-            link.classList.add('side-menu--active');
-        }
-    })
-</script>
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
 </body>
 </html>
