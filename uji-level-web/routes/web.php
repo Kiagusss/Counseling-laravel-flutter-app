@@ -57,13 +57,17 @@ Route::middleware(['role:admin'])->group(function () {
     // Rute-rute untuk siswadst
     Route::get('/index-guru', [AdminController::class, 'indexGuru'])->name('index');
     Route::get('/create-guru', [AdminController::class, 'createGuru'])->name('create');
-    Route::post('/create-guru', [AdminController::class, 'grades'])->name('store');
+    Route::post('/create-guru', [AdminController::class, 'storeGuru'])->name('store');
+    
 });
 Route::name('walas.')->group(function () {
     // Rute-rute untuk siswadst
     Route::get('/index-walas', [AdminController::class, 'indexWalas'])->name('index');
     Route::get('/create-walas', [AdminController::class, 'createWalas'])->name('create');
-    Route::post('/create-walas', [AdminController::class, 'grades'])->name('store');
+    Route::post('/create-walas', [AdminController::class, 'storeWalas'])->name('store');
+    Route::get('/walas/update/{id}', [AdminController::class, 'editWalas']);
+    Route::patch('/walas/update/{id}', [AdminController::class, 'updateWalas']);
+    Route::delete('/walas/destroy/{id}', [AdminController::class, 'destroyWalas']);
 });
 Route::name('kelas.')->group(function () {
     // Rute-rute untuk siswadst

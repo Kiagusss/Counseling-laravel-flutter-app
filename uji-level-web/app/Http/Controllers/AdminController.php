@@ -121,11 +121,70 @@ class AdminController extends Controller
         ]);
         $user->update([
             'name' => $request->nama,
+            'email' => $request->email,
+            'password' => $request->password,
+        ]);
+
+        $siswa->update();
+        return redirect('index-siswa');
+    }
+
+    public function editWalas($id)
+      {
+          $walas = Walas::with(['user'])->findOrFail($id);
+
+          return view('layouts.walas.edit',['walas' => $walas]);
+    }
+    public function updateWalas(Request $request, string $id)
+    {
+        $walas = Walas::find($id);
+        $user = User::Where('id', $walas->user_id);
+        $walas->update([
+            'nipd' => $request->nisn,
+            'nama' => $request->nama,
+            'ttl' => $request->umur,
+            'jenis_kelamin' => $request->jenis_kelamin,
+        ]);
+        $user->update([
+            'name' => $request->nama,
         ]);
 
         
-        $siswa->update();
+        $walas->update();
         return redirect('index-siswa');
+    }
+
+
+    public function storeWalas(Request $request){
+        
+        $request->validate([
+            'nipd'=> 'required',
+            'nama'=> 'required',
+            'email'=> 'required|email|unique:users',
+            'password' => 'required',
+            'ttl' => 'required',
+            'jenis_kelamin' => 'required',
+        ]);
+
+        $user = User::create([
+            'name'=> $request->input('nama'),
+            'email'=> $request->input('email'),
+            'password'=> bcrypt($request->input('password')),
+        ]);
+        $user->assignRole('wali_kelas');
+
+        $userId = $user->id;
+
+        $walas = Walas::create([
+            'nipd'=> $request->input('nipd'),
+            'user_id'=> $userId,
+            'nama'=> $request->input('nama'),
+            'ttl'=> $request->input('ttl'),
+            'jenis_kelamin'=> $request->input('jenis_kelamin'),
+        ]);
+
+
+        return redirect('index-walas')->with('success', 'Siswa berhasil Ditambahkan ');
     }
 
     /**
@@ -134,10 +193,22 @@ class AdminController extends Controller
     public function destroySiswa($id)
     {
         $siswa = Siswa::findOrFail($id);
-        $user = $siswa->user;
+        $user = User::Where('id', $siswa->user_id);        
         $siswa->delete();   
         $user->delete();
 
         return redirect('index-siswa')->with('success','Seller Data Deleted Successfully');
     }
+
+    public function destroyWalas($id)
+    {
+        $walas = Walas::findOrFail($id);
+        $user = User::Where('id', $walas->user_id);        
+        $walas->delete();   
+        $user->delete();
+
+        return redirect('index-walas')->with('success','Seller Data Deleted Successfully');
+    }
+
+    
 }
