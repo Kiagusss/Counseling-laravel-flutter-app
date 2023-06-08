@@ -19,30 +19,6 @@ Route::get('/', function () {
     return view('pages.index');
 })->name('index');
 
-Route::name('siswa.')->group(function () {
-    // Rute-rute untuk siswadst
-    Route::get('/index-siswa', [AdminController::class, 'indexSiswa'])->name('index');
-    Route::get('/create-siswa', [AdminController::class, 'createSiswa'])->name('create');
-    Route::post('/create-siswa', [AdminController::class, 'storeSiswa']);
-    Route::get('/siswa/update/{id}',[AdminController::class,'editSiswa']);
-    Route::patch('/siswa/update/{id}',[AdminController::class,'updateSiswa']);
-    Route::delete('/siswa/destroy/{id}',[AdminController::class,'destroySiswa']);
-});
-
-
-Route::name('guru.')->group(function () {
-    // Rute-rute untuk siswadst
-    Route::get('/index-guru', [AdminController::class, 'indexGuru'])->name('index');
-    Route::get('/create-guru', [AdminController::class, 'createGuru'])->name('create');
-    Route::post('/create-guru', [AdminController::class, 'grades'])->name('store');
-});
-Route::name('walas.')->group(function () {
-    // Rute-rute untuk siswadst
-    Route::get('/index-walas', [AdminController::class, 'indexWalas'])->name('index');
-    Route::get('/create-walas', [AdminController::class, 'createWalas'])->name('create');
-    Route::post('/create-walas', [AdminController::class, 'grades'])->name('store');
-});
-
 
 Route::get('admin-page', function() {
     return 'Halaman untuk Admin';
@@ -70,7 +46,7 @@ Route::middleware(['role:admin'])->group(function () {
         // Rute-rute untuk siswa
         Route::get('/index-siswa', [AdminController::class, 'indexSiswa'])->name('index');
         Route::get('/create-siswa', [AdminController::class, 'createSiswa'])->name('create');
-        Route::post('/create-siswa', [AdminController::class, 'storeSiswa']);
+        Route::post('/create-siswa', [AdminController::class, 'storeSiswa'])->name('store');
         Route::get('/siswa/update/{id}', [AdminController::class, 'editSiswa']);
         Route::patch('/siswa/update/{id}', [AdminController::class, 'updateSiswa']);
         Route::delete('/siswa/destroy/{id}', [AdminController::class, 'destroySiswa']);

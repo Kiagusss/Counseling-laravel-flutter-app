@@ -38,7 +38,10 @@ class AdminController extends Controller
      */
     public function createSiswa()
     {
-        return view('layouts.siswa.create');
+        $dataKelas = Kelas::all();
+
+        return view('layouts.siswa.create', ['data' => $dataKelas]);
+
     }
 
     public function createGuru()
@@ -56,9 +59,6 @@ class AdminController extends Controller
      */
     public function storeSiswa(Request $request)
     {
-        DB::beginTransaction();
-        
-        try{
             $request->validate([
                 'nama'=> 'required',
                 'nisn'=> 'required',
@@ -72,7 +72,7 @@ class AdminController extends Controller
             $user = User::create([
                 'name'=> $request->input('nama'),
                 'email'=> $request->input('email'),
-                'password'=> bcrypt($request->nput('password')),
+                'password'=> bcrypt($request->input('password')),
             ]);
             $user->assignRole('siswa');
 
@@ -85,14 +85,7 @@ class AdminController extends Controller
                 'ttl'=> $request->input('ttl'),
                 'jenis_kelamin'=> $request->input('jenis_kelamin'),
                 'kelas_id'=> $request->input('kelas_id'),
-                'password'=> bcrypt($request->nput('password')),
             ]);
-    
-        }
-        catch (Exception $e) {
-            DB::rollback();
-            // Tangani kesalahan jika terjadi, misalnya log error atau memberikan pesan kesalahan ke pengguna
-        }
        
 
         return redirect('index-siswa')->with('success', 'Siswa berhasil Ditambahkan ');
