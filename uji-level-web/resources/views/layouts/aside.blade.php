@@ -40,7 +40,7 @@
         </ul>
      </nav>
 
-    @elseif(Auth::user()->hasRoles('wali_kelas'))
+    @elseif(Auth::user()->hasRole('wali_kelas'))
      
     <nav class="side-nav">
         <ul>
@@ -60,6 +60,12 @@
                         </a>
                     </li>
                 </ul>
+            </li>
+            <li>
+                <a href="{{route('indux')}}" class="side-menu">
+                    <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
+                    <div class="side-menu__title">Peta Kerawanan</div>
+                </a>
             </li>
         </ul>
     </nav>

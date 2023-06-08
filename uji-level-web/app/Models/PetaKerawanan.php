@@ -5,27 +5,24 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Kelas extends Model
+class PetaKerawanan extends Model
 {
-    protected $table = 'kelas';
-
     use HasFactory;
 
+    protected $table = 'peta_kerawanans';
     protected $fillable = [
-         'nama', 'guru_id', 'walas_id'  
+        'walas_id','siswa_id','jenis_kerawanan' , 
     ];
-    public function guru()
+
+
+
+    public function siswa()
     {
-        return $this->belongsTo(Guru::class, 'guru_id');
+        return $this->belongsTo(Siswa::class, 'siswa_id');
     }
 
     public function walas()
     {
         return $this->belongsTo(Walas::class, 'walas_id');
-    }
-
-    public function siswa()
-    {
-        return $this->belongsTo(Siswa::class, 'siswa_id');
     }
 }

@@ -35,5 +35,23 @@ class GuruSeeder extends Seeder
             'created_at' => Carbon::now(), 
             'updated_at' => Carbon::now(), 
         ]);
+        $user = User::create([
+            'name' => 'Guru PJOK',
+            'email' => 'guru2@gmail.com',
+            'password' => Hash::make('password'),
+        ]);
+
+        $user->assignRole('guru_bk');
+
+
+        Guru::create([
+            'user_id' => $user->id, 
+            'nipd' => '10000', 
+            'nama' => 'Guru PJOK',  
+            'ttl' => Carbon::now(),  
+            'jenis_kelamin' => 'pria',  
+            'created_at' => Carbon::now(), 
+            'updated_at' => Carbon::now(), 
+        ]);
     }
 }

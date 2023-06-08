@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\WalasController;
+use App\Http\Controllers\PetaKerawananController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,7 @@ use App\Http\Controllers\WalasController;
 Route::get('/', function () {
     return view('pages.index');
 })->name('index');
+
 
 
 Route::get('admin-page', function() {
@@ -82,4 +84,12 @@ Route::name('kelas.')->group(function () {
 });
 Route::get('/nipd/{id}', 'WalasController@Nipd');
 
+
+
+
+
+Route::middleware(['role:wali_kelas'])->group(function () {
+    Route::get('/peta-kerawanan/create', [PetaKerawananController::class, 'create'])->name('peta-kerawanan.create');
+    Route::post('/peta-kerawanan', [PetaKerawananController::class, 'store'])->name('peta-kerawanan.store');
+});
 

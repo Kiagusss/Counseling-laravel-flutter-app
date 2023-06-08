@@ -11,9 +11,15 @@ class Walas extends Model
 
     protected $table = 'walas';
 
+
     public function kelas()
     {
-        return $this->hasOne(Kelas::class, 'walas_id');
+        return $this->belongsTo(Kelas::class, 'kelas_id');
+    }
+
+    public function petaKerawanan()
+    {
+        return $this->hasMany(PetaKerawanan::class);
     }
 
 
@@ -21,5 +27,10 @@ class Walas extends Model
 {
     return $this->belongsTo(User::class);
 }
+public function guru()
+{
+    return $this->belongsTo(Guru::class, 'guru_id');
+}
+
 
 }

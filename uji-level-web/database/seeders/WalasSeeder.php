@@ -29,7 +29,7 @@ class WalasSeeder extends Seeder
 
         Walas::create([
             'user_id' => $user->id, 
-            'nipd' => '200', 
+            'nipd' => '500', 
             'nama' => 'Walas',  
             'ttl' => Carbon::now(),  
             'jenis_kelamin' => 'pria',  
@@ -37,8 +37,9 @@ class WalasSeeder extends Seeder
             'updated_at' => Carbon::now(), 
         ]);
 
+
         $user = User::create([
-            'name' => 'Wali Kelas',
+            'name' => 'Udin',
             'email' => 'wali2@gmail.com',
             'password' => Hash::make('password'),
         ]);
