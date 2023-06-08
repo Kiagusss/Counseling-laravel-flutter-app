@@ -29,6 +29,12 @@
                             <div class="side-menu__title">Data Walas</div>
                         </a>
                     </li>
+                    <li>
+                        <a href="{{route('kelas.index')}}" class="side-menu">
+                            <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
+                            <div class="side-menu__title">Data Kelas</div>
+                        </a>
+                    </li>
                 </ul>
             </li>
         </ul>

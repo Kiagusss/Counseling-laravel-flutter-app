@@ -9,9 +9,11 @@ class Walas extends Model
 {
     use HasFactory;
 
+    protected $table = 'walas';
+
     public function kelas()
     {
-        return $this->belongsTo(Kelas::class);
+        return $this->hasOne(Kelas::class, 'walas_id');
     }
 
 }

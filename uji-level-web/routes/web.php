@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\AdminController;
-use Illuminate\Support\Facades\Route;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\KelasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,6 +59,12 @@ Route::name('walas.')->group(function () {
     Route::get('/index-walas', [AdminController::class, 'indexWalas'])->name('index');
     Route::get('/create-walas', [AdminController::class, 'createWalas'])->name('create');
     Route::post('/create-walas', [AdminController::class, 'grades'])->name('store');
+});
+Route::name('kelas.')->group(function () {
+    // Rute-rute untuk siswadst
+    Route::get('/index-kelas', [KelasController::class, 'indexKelas'])->name('index');
+    Route::get('/create-kelas', [KelasController::class, 'createKelas'])->name('create');
+    Route::post('/create-kelas', [KelasController::class, 'storeKelas'])->name('store');
 });
 });
 

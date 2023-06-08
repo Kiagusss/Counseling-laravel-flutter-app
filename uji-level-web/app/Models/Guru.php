@@ -10,8 +10,9 @@ class Guru extends Model
     use HasFactory;
 
     protected $table = 'guru';
+
     public function kelas()
     {
-        return $this->hasMany(Kelas::class);
+        return $this->hasOne(Kelas::class, 'guru_id');
     }
 }
