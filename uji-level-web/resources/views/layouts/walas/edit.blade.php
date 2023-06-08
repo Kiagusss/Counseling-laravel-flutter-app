@@ -29,38 +29,39 @@
                 </div>
                 <div id="input" class="p-5">
                     <div class="preview">
-                        <form action="/create-walas" method="POST">
+                        <form action="{{ url('walas/update/'.$walas->id)}}" method="POST">
                             @csrf
+                            @method('PATCH')
                             <div class="mt-3">
                                 <label for="regular-form-1" class="form-label">NIPD</label>
                                 <input id="regular-form-1" type="text" name="nipd" class="form-control"
-                                    placeholder="Input text" value="">
+                                    placeholder="Input text" value="{{$walas->nipd}}">
                             </div>
                             <div class="mt-3">
                                 <label for="regular-form-1" class="form-label">Nama</label>
                                 <input id="regular-form-1" type="text" name="nama" class="form-control"
-                                    placeholder="Input text" value="">
+                                    placeholder="Input text" value="{{$walas->nama}}">
                             </div>
                             <div class="mt-3">
                                 <label for="regular-form-1" class="form-label">Email</label>
                                 <input id="regular-form-1" type="text" name="email" class="form-control"
-                                    placeholder="Input text" value="">
+                                    placeholder="Input text" value="{{$walas->user->email}}">
                             </div>
                             <div class="mt-3">
                                 <label for="regular-form-1" class="form-label">Password</label>
                                 <input id="regular-form-1" type="text" name="password" class="form-control"
-                                    placeholder="Input text" value="">
+                                    placeholder="Input text" value="{{$walas->user->password}}">
                             </div>
                             <div class="relative w-56 mt-3">
                                 <label for="regular-form-1" class="form-label">TTL</label>
-                              <input type="date" name="ttl" id="" value="">
+                              <input type="date" name="ttl" id="" value="{{$walas->ttl}}">
                             </div>
                             <div class="mt-3">
                                 <label for="regular-form-1" class="form-label">Jenis Kelamin</label>
                                 <select name="jenis_kelamin" class="tom-select mb-3">
 
-                                    <option value="pria" >Pria</option>
-                                    <option value="perempuan" >Perempuan</option>
+                                    <option value="pria" {{ $walas->jenis_kelamin === 'pria' ? 'selected' : '' }}>Pria</option>
+                                    <option value="perempuan" {{ $walas->jenis_kelamin === 'perempuan' ? 'selected' : '' }}>Perempuan</option>
                                 </select>
                             </div>
                             
