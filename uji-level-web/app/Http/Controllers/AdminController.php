@@ -29,6 +29,7 @@ class AdminController extends Controller
         return view('layouts.guru.index', ['guru' => $guru]);
     }
 
+    
     public function indexWalas()
     {
         $walas = Walas::with('kelas')->get();
