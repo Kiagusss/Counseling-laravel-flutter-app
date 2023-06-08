@@ -87,8 +87,11 @@ Route::name('kelas.')->group(function () {
 Route::middleware(['role:wali_kelas'])->group(function () {
     Route::name('peta.')->group(function () {
     Route::get('peta_kerawanan.create', [PetaKerawananController::class, 'creates'])->name('create');
+    Route::get('peta-kerawanan', [PetaKerawananController::class, 'index'])->name('peta-kerawanan.index');
     Route::post('peta-kerawanan', [PetaKerawananController::class, 'store'])->name('peta-kerawanan.store');
-
+    Route::get('peta-kerawanan/{id}/edit', [PetaKerawananController::class, 'edit'])->name('peta-kerawanan.edit');
+    Route::put('peta-kerawanan/{id}', [PetaKerawananController::class, 'update'])->name('peta-kerawanan.update');
+    Route::delete('peta-kerawanan/{id}', [PetaKerawananController::class, 'destroy'])->name('peta-kerawanan.destroy');
     });
 });
 });

@@ -62,7 +62,7 @@
                 </ul>
             </li>
             <li>
-                <a href="{{route('peta.create')}}" class="side-menu">
+                <a href="{{route('peta.peta-kerawanan.index')}}" class="side-menu">
                     <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
                     <div class="side-menu__title">Peta Kerawanan</div>
                 </a>
