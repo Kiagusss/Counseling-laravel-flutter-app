@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Guru;
 use Exception;
 use App\Models\User;
 use App\Models\Kelas;
@@ -24,7 +25,8 @@ class AdminController extends Controller
 
     public function indexGuru()
     {   
-        return view('layouts.guru.index');
+        $guru = Guru::all();
+        return view('layouts.guru.index', ['guru' => $guru]);
     }
 
     public function indexWalas()
@@ -140,4 +142,78 @@ class AdminController extends Controller
 
         return redirect('index-siswa')->with('success','Seller Data Deleted Successfully');
     }
+
+    //Guru
+
+    public function storeGuru(Request $request)
+    {
+        $request->validate([
+            'nama' => 'required',
+            'nipd' => 'required',
+            'jenis_kelamin' => 'required',
+            'ttl' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:8',
+        ]);
+
+        $user = User::create([
+            'name' => $request->input('nama'),
+            'email' => $request->input('email'),
+            'password' => bcrypt($request->input('password')),
+        ]);
+        $user->assignRole('guru_bk');
+
+        $userId = $user->id;
+
+        $siswa = Guru::create([
+            'user_id' => $userId,
+            'nipd' => $request->input('nipd'),
+            'nama' => $request->input('nama'),
+            'ttl' => $request->input('ttl'),
+            'jenis_kelamin' => $request->input('jenis_kelamin'),
+        ]);
+
+
+        return redirect('index-guru')->with('success', 'Siswa berhasil Ditambahkan ');
+    }
+
+    public function updateGuru(Request $request, string $id)
+    {
+        $guru = Guru::findOrFail($id);
+        $user = $guru->user;
+
+        $guru->nama = $request->input('nama');
+        $guru->nipd = $request->input('nipd');
+        $guru->ttl = $request->input('ttl');
+        $guru->jenis_kelamin = $request->input('jenis_kelamin');
+        $guru->save();
+    
+        $user->email = $request->input('email');
+        $user->name = $request->input('nama');
+        $user->password = $request->input('password');
+        $user->save();
+        
+        return redirect('index-guru');
+    }
+
+    public function destroyGuru($id)
+    {
+        $guru = Guru::findOrFail($id); // Mengambil data user berdasarkan ID
+        $user = $guru->user; // Mengambil data profile yang terkait dengan user
+    
+        // Hapus data profile terlebih dahulu
+        $guru->delete();
+    
+        // Hapus data user
+        $user->delete();
+
+        return redirect('index-guru')->with('success', 'Seller Data Deleted Successfully');
+    }
+
+    public function editGuru($id)
+    {
+        $guru = Guru::with(['user'])->findOrFail($id);
+        return view('layouts.guru.edit', compact('guru'));
+    }
 }
+
