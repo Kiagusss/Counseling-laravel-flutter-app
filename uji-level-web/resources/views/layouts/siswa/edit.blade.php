@@ -33,6 +33,20 @@
                                 <input id="regular-form-1" type="text" name="nama" class="form-control"
                                     placeholder="Input text" value="{{$siswa->nama}}">
                             </div>
+                            
+                            <div class="mt-3">
+                                <label for="regular-form-1" class="form-label">Email</label>
+                                <input id="regular-form-1" type="text" name="email" class="form-control"
+                                    placeholder="Input text" value="{{$siswa->user->email}}">
+                            </div>
+                            
+                            
+                            <div class="mt-3">
+                                <label for="regular-form-1" class="form-label">Password</label>
+                                <input id="regular-form-1" type="text" name="password" class="form-control"
+                                    placeholder="Input text" value="{{$siswa->user->password}}">
+                            </div>
+                            
                             <div class="relative w-56 mt-3">
                                 <label for="regular-form-1" class="form-label">TTL</label>
                               <input type="date" name="ttl" id="" value="{{$siswa->ttl}}">

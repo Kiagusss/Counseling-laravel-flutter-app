@@ -78,7 +78,7 @@
                 </a>
                 <ul class="">
                     <li>
-                        <a href="side-menu-light-dashboard-overview-1.html" class="side-menu">
+                        <a href="{{route('siswa.index')}}" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
                             <div class="side-menu__title"> Data Siswa </div>
                         </a>

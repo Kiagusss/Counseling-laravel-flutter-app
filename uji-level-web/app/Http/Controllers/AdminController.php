@@ -29,7 +29,8 @@ class AdminController extends Controller
 
     public function indexWalas()
     {
-        return view('layouts.walas.index');
+        $walas = Walas::all();
+        return view('layouts.walas.index', ['data' => $walas]);
     }
 
     
@@ -52,42 +53,41 @@ class AdminController extends Controller
 
     public function createWalas()
     {
-        $walas = Walas::all();
-        return view('layouts.walas.create', ['data' => $walas]);
+        return view('layouts.walas.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function storeSiswa(Request $request)
-    {
-            $request->validate([
-                'nama'=> 'required',
-                'nisn'=> 'required',
-                'jenis_kelamin'=> 'required',
-                'ttl' => 'required',
-                'kelas_id' => 'required',
-                'email' => 'required|email|unique:users',
-                'password' => 'required|min:8',
-            ]);
-    
-            $user = User::create([
-                'name'=> $request->input('nama'),
-                'email'=> $request->input('email'),
-                'password'=> bcrypt($request->input('password')),
-            ]);
-            $user->assignRole('siswa');
+        public function storeSiswa(Request $request)
+        {
+                $request->validate([
+                    'nama'=> 'required',
+                    'nisn'=> 'required',
+                    'jenis_kelamin'=> 'required',
+                    'ttl' => 'required',
+                    'kelas_id' => 'required',
+                    'email' => 'required|email|unique:users',
+                    'password' => 'required|min:8',
+                ]);
+        
+                $user = User::create([
+                    'name'=> $request->input('nama'),
+                    'email'=> $request->input('email'),
+                    'password'=> bcrypt($request->input('password')),
+                ]);
+                $user->assignRole('siswa');
 
-            $userId = $user->id;
-    
-            $siswa = Siswa::create([
-                'user_id'=> $userId,
-                'nisn'=> $request->input('nisn'),
-                'nama'=> $request->input('nama'),
-                'ttl'=> $request->input('ttl'),
-                'jenis_kelamin'=> $request->input('jenis_kelamin'),
-                'kelas_id'=> $request->input('kelas_id'),
-            ]);
+                $userId = $user->id;
+        
+                $siswa = Siswa::create([
+                    'user_id'=> $userId,
+                    'nisn'=> $request->input('nisn'),
+                    'nama'=> $request->input('nama'),
+                    'ttl'=> $request->input('ttl'),
+                    'jenis_kelamin'=> $request->input('jenis_kelamin'),
+                    'kelas_id'=> $request->input('kelas_id'),
+                ]);
        
 
         return redirect('index-siswa')->with('success', 'Siswa berhasil Ditambahkan ');
@@ -99,8 +99,7 @@ class AdminController extends Controller
 
      public function editsiswa($id)
       {
-          $siswa = Siswa::with('kelasid')->findOrFail($id);
-          
+          $siswa = Siswa::with(['kelasid', 'user'])->findOrFail($id);
           $kelasid = Kelas::where('id', '!=', $siswa->kelas_id)->get(['id','nama']);
           return view('layouts.siswa.edit',['siswa' => $siswa, 'kelasid' => $kelasid]);
     }
@@ -111,7 +110,7 @@ class AdminController extends Controller
     public function updateSiswa(Request $request, string $id)
     {
         $siswa = Siswa::find($id);
-        $user = User::find($id);
+        $user = User::Where('id', $siswa->user_id);
         $siswa->update([
             'nisn' => $request->nisn,
             'nama' => $request->nama,

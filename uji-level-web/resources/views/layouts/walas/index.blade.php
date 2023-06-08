@@ -43,35 +43,24 @@
                 <thead>
                     <tr>
                         <th class="whitespace-nowrap">No.</th>
-                        <th class="whitespace-nowrap">Nisn</th>
                         <th class="whitespace-nowrap">Nama</th>
-                        <th class="whitespace-nowrap">Kelas</th>
-                        <th class="whitespace-nowrap">TTL</th>
-                        <th class="whitespace-nowrap">Jenis Kelamin</th>
+                        <th class="whitespace-nowrap">User ID</th>
                         <th class="whitespace-nowrap">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr class="intro-x">
-                        @foreach ($siswa as $item)
+                        @foreach ($data as $item)
                         <td>
                             <a href="" class="font-medium whitespace-nowrap">{{$loop->iteration}}</a> 
-                        </td>
-                        <td>
-                            <a href="" class="font-medium whitespace-nowrap">{{$item->nisn}}</a> 
                         </td>
                         <td>
                             <a href="" class="font-medium whitespace-nowrap">{{$item->nama}}</a> 
                         </td>
                         <td>
-                            <a href="" class="font-medium whitespace-nowrap">{{$item->kelasid->nama}}</a> 
+                            <a href="" class="font-medium whitespace-nowrap">{{$item->user_id}}</a> 
                         </td>
-                        <td>
-                            <a href="" class="font-medium whitespace-nowrap">{{$item->ttl}}</a> 
-                        </td>
-                        <td>
-                            <a href="" class="font-medium whitespace-nowrap">{{$item->jenis_kelamin}}</a> 
-                        </td>
+
                         <td class="table-report__action w-56">
                             <div class="flex justify-center items-center">
                                 <a class="flex items-center mr-3" href="siswa/update/{{$item->id}}"> <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit </a>
