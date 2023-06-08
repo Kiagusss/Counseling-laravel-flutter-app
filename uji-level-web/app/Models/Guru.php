@@ -13,9 +13,10 @@ class Guru extends Model
     protected $fillable = [
         'user_id', 'nama', 'nipd', 'ttl', 'jenis_kelamin'  
     ];
+
     public function kelas()
     {
-        return $this->hasMany(Kelas::class);
+        return $this->hasOne(Kelas::class, 'guru_id');
     }
 
     public function user()

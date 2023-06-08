@@ -16,6 +16,15 @@
                     <h2 class="font-medium text-base mr-auto">
                         Input
                     </h2>
+                    @if($errors->any())
+                <div class="mt-2 alert alert-danger">
+                    <ul class="mb-0">
+                        @foreach($errors->all() as $error)
+                        <li>{{$error}}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
                 </div>
                 <div id="input" class="p-5">
                     <div class="preview">
@@ -37,6 +46,16 @@
                                 <label for="regular-form-1" class="form-label">Nama</label>
                                 <input id="regular-form-1" type="text" name="nama" class="form-control" placeholder="Nama" value="">
                             </div>
+                            <div class="mt-3">
+                                <label for="regular-form-1" class="form-label">Email</label>
+                                <input id="regular-form-1" type="text" name="email" class="form-control"
+                                    placeholder="Input text" value="">
+                            </div>
+                            <div class="mt-3">
+                                <label for="regular-form-1" class="form-label">Password</label>
+                                <input id="regular-form-1" type="text" name="password" class="form-control"
+                                    placeholder="Input text" value="">
+                            </div>
                             <div class="relative w-56 mt-3">
                                 <label for="regular-form-1" class="form-label">TTL</label>
                                 <input type="date" name="ttl" id="" value="">
@@ -56,6 +75,14 @@
                                     <option value="Kelas">Pilih Kelas</option>
                                     @foreach($kelas as $item)
                                     <option value="{{ $item->id }}">{{ $item->nama }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="mt-3">
+                                <label for="regular-form-1" class="form-label">Kelas</label>
+                                <select name="kelas_id" class="tom-select mb-3">
+                                    @foreach ($data as $item)
+                                    <option value="{{$item->id}}">{{$item->nama}}</option>
                                     @endforeach
                                 </select>
                             </div>
