@@ -29,8 +29,9 @@
                 </div>
                 <div id="input" class="p-5">
                     <div class="preview">
-                        <form action="/create-walas" method="POST">
+                        <form action="{{ url('walas/update/'.$walas->id)}}" method="POST">
                             @csrf
+                            @method('PATCH')
                             <div class="mt-3">
                                 <label for="regular-form-1" class="form-label">NIPD</label>
                                 <input id="regular-form-1" type="text" name="nipd" class="form-control"

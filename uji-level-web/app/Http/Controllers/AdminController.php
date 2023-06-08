@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Guru;
 use Exception;
 use App\Models\User;
 use App\Models\Kelas;
@@ -24,7 +25,8 @@ class AdminController extends Controller
 
     public function indexGuru()
     {   
-        return view('layouts.guru.index');
+        $guru = Guru::all();
+        return view('layouts.guru.index', ['guru' => $guru]);
     }
 
     public function indexWalas()
@@ -109,9 +111,9 @@ class AdminController extends Controller
      */
     public function updateSiswa(Request $request, string $id)
     {
-        $siswa = Siswa::find($id);
-        $user = User::Where('id', $siswa->user_id);
-        $siswa->update([
+        $datasiswa = Siswa::find($id);
+        $user = User::Where('id', $datasiswa->user_id);
+        $datasiswa->update([
             'nisn' => $request->nisn,
             'nama' => $request->nama,
             'umur' => $request->umur,
@@ -125,7 +127,7 @@ class AdminController extends Controller
             'password' => $request->password,
         ]);
 
-        $siswa->update();
+        $datasiswa->update();
         return redirect('index-siswa');
     }
 
@@ -137,21 +139,22 @@ class AdminController extends Controller
     }
     public function updateWalas(Request $request, string $id)
     {
-        $walas = Walas::find($id);
-        $user = User::Where('id', $walas->user_id);
-        $walas->update([
-            'nipd' => $request->nisn,
+
+        $datawalas = Walas::find($id);
+        $user = User::Where('id', $datawalas->user_id);
+        $datawalas->update([
+            'nipd' => $request->nipd,
             'nama' => $request->nama,
-            'ttl' => $request->umur,
+            'ttl' => $request->ttl,
             'jenis_kelamin' => $request->jenis_kelamin,
         ]);
         $user->update([
             'name' => $request->nama,
+            'email' => $request->email,
+            'password' => $request->password,
         ]);
 
-        
-        $walas->update();
-        return redirect('index-siswa');
+        return redirect('index-walas');
     }
 
 
@@ -212,3 +215,4 @@ class AdminController extends Controller
 
     
 }
+
