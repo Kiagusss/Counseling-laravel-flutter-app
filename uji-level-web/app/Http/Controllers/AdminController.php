@@ -25,7 +25,8 @@ class AdminController extends Controller
 
     public function indexGuru()
     {   
-        return view('layouts.guru.index');
+        $guru = Guru::all();
+        return view('layouts.guru.index', ['guru' => $guru]);
     }
 
     public function indexWalas()
