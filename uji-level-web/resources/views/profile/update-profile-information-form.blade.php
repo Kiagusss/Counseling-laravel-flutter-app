@@ -58,7 +58,12 @@
             <x-input id="name" type="text" class="mt-1 block w-full" wire:model.defer="state.name" autocomplete="name" />
             <x-input-error for="name" class="mt-2" />
         </div>
-
+        @if (Auth::user()->hasRole('wali_kelas'))
+        <div>
+            <x-label for="wali_kelas" :value="__('NIPD')" />
+            <x-input id="wali_kelas" class="block mt-1 w-full" type="text" name="wali_kelas" :value="Auth::user()->walas->nipd ?? ''" disabled />
+        </div>
+        @endif
         <!-- Email -->
         <div class="col-span-6 sm:col-span-4">
             <x-label for="email" value="{{ __('Email') }}" />

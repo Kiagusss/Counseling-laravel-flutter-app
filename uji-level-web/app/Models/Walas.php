@@ -16,4 +16,10 @@ class Walas extends Model
         return $this->hasOne(Kelas::class, 'walas_id');
     }
 
+
+    public function user()
+{
+    return $this->belongsTo(User::class);
+}
+
 }

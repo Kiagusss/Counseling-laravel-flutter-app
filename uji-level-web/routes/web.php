@@ -4,6 +4,7 @@ use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\KelasController;
+use App\Http\Controllers\WalasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -76,3 +77,6 @@ Route::name('kelas.')->group(function () {
 });
 
 });
+Route::get('/nipd/{id}', 'WalasController@Nipd');
+
+
