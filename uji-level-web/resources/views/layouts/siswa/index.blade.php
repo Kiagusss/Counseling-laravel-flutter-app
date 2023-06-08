@@ -64,14 +64,7 @@
                                 </div>
                             </div>
                         </td>
-                        <td>
-                            <a href="" class="font-medium whitespace-nowrap">Sony A7 III</a> 
-                            <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">Photography</div>
-                        </td>
-                        <td class="text-center">179</td>
-                        <td class="w-40">
-                            <div class="flex items-center justify-center text-danger"> <i data-lucide="check-square" class="w-4 h-4 mr-2"></i> Inactive </div>
-                        </td>
+                        z
                         <td class="table-report__action w-56">
                             <div class="flex justify-center items-center">
                                 <a class="flex items-center mr-3" href="javascript:;"> <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit </a>
