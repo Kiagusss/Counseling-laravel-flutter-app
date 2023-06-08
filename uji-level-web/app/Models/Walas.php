@@ -17,7 +17,7 @@ class Walas extends Model
 
     public function kelas()
     {
-        return $this->hasOne(Kelas::class);
+        return $this->hasOne(Kelas::class, 'walas_id');
     }
     public function kelass()
     {

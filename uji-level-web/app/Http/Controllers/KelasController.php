@@ -17,13 +17,13 @@ class KelasController extends Controller
         return view('layouts.kelas.index', compact('kelas'));
     }
     public function createKelas()
-{
-    $gurus = Guru::all();
-    $walas = Walas::all();
-
-    return view('layouts.kelas.create', compact('gurus', 'walas'));
-}
-    
+    {
+        // Mengambil semua data walas yang belum memiliki kelas
+        $walas = Walas::whereDoesntHave('kelas')->get();
+        $gurus = Guru::all();
+        // Mengirim data walas dan guru ke view
+        return view('layouts.kelas.create', compact('walas', 'gurus'));
+    }
 
 public function storeKelas(Request $request)
 {
