@@ -35,26 +35,16 @@
                                 <input id="regular-form-1" type="number" name="nisn" class="form-control" placeholder="Nisn" value="">
                             </div>
                             <div class="mt-3">
+                                <label for="regular-form-1" class="form-label">Nama</label>
+                                <input id="regular-form-1" type="text" name="nama" class="form-control" placeholder="Nama" value="">
+                            </div>
+                            <div class="mt-3">
                                 <label for="regular-form-1" class="form-label">Email</label>
                                 <input id="regular-form-1" type="email" name="email" class="form-control" placeholder="Email" value="">
                             </div>
                             <div class="mt-3">
                                 <label for="regular-form-1" class="form-label">Password</label>
                                 <input id="regular-form-1" type="password" name="password" class="form-control" placeholder="Password" value="">
-                            </div>
-                            <div class="mt-3">
-                                <label for="regular-form-1" class="form-label">Nama</label>
-                                <input id="regular-form-1" type="text" name="nama" class="form-control" placeholder="Nama" value="">
-                            </div>
-                            <div class="mt-3">
-                                <label for="regular-form-1" class="form-label">Email</label>
-                                <input id="regular-form-1" type="text" name="email" class="form-control"
-                                    placeholder="Input text" value="">
-                            </div>
-                            <div class="mt-3">
-                                <label for="regular-form-1" class="form-label">Password</label>
-                                <input id="regular-form-1" type="text" name="password" class="form-control"
-                                    placeholder="Input text" value="">
                             </div>
                             <div class="relative w-56 mt-3">
                                 <label for="regular-form-1" class="form-label">TTL</label>
@@ -73,16 +63,8 @@
 
                                 <select name="kelas_id" class="tom-select mb-3">
                                     <option value="Kelas">Pilih Kelas</option>
-                                    @foreach($kelas as $item)
+                                    @foreach($data as $item)
                                     <option value="{{ $item->id }}">{{ $item->nama }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="mt-3">
-                                <label for="regular-form-1" class="form-label">Kelas</label>
-                                <select name="kelas_id" class="tom-select mb-3">
-                                    @foreach ($data as $item)
-                                    <option value="{{$item->id}}">{{$item->nama}}</option>
                                     @endforeach
                                 </select>
                             </div>

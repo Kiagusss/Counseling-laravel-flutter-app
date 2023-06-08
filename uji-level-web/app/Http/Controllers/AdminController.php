@@ -111,9 +111,9 @@ class AdminController extends Controller
      */
     public function updateSiswa(Request $request, string $id)
     {
-        $siswa = Siswa::find($id);
-        $user = User::Where('id', $siswa->user_id);
-        $siswa->update([
+        $datasiswa = Siswa::find($id);
+        $user = User::Where('id', $datasiswa->user_id);
+        $datasiswa->update([
             'nisn' => $request->nisn,
             'nama' => $request->nama,
             'umur' => $request->umur,
@@ -123,11 +123,71 @@ class AdminController extends Controller
         ]);
         $user->update([
             'name' => $request->nama,
+            'email' => $request->email,
+            'password' => $request->password,
         ]);
 
-        
-        $siswa->update();
+        $datasiswa->update();
         return redirect('index-siswa');
+    }
+
+    public function editWalas($id)
+      {
+          $walas = Walas::with(['user'])->findOrFail($id);
+
+          return view('layouts.walas.edit',['walas' => $walas]);
+    }
+    public function updateWalas(Request $request, string $id)
+    {
+
+        $datawalas = Walas::find($id);
+        $user = User::Where('id', $datawalas->user_id);
+        $datawalas->update([
+            'nipd' => $request->nipd,
+            'nama' => $request->nama,
+            'ttl' => $request->ttl,
+            'jenis_kelamin' => $request->jenis_kelamin,
+        ]);
+        $user->update([
+            'name' => $request->nama,
+            'email' => $request->email,
+            'password' => $request->password,
+        ]);
+
+        return redirect('index-walas');
+    }
+
+
+    public function storeWalas(Request $request){
+        
+        $request->validate([
+            'nipd'=> 'required',
+            'nama'=> 'required',
+            'email'=> 'required|email|unique:users',
+            'password' => 'required',
+            'ttl' => 'required',
+            'jenis_kelamin' => 'required',
+        ]);
+
+        $user = User::create([
+            'name'=> $request->input('nama'),
+            'email'=> $request->input('email'),
+            'password'=> bcrypt($request->input('password')),
+        ]);
+        $user->assignRole('wali_kelas');
+
+        $userId = $user->id;
+
+        $walas = Walas::create([
+            'nipd'=> $request->input('nipd'),
+            'user_id'=> $userId,
+            'nama'=> $request->input('nama'),
+            'ttl'=> $request->input('ttl'),
+            'jenis_kelamin'=> $request->input('jenis_kelamin'),
+        ]);
+
+
+        return redirect('index-walas')->with('success', 'Siswa berhasil Ditambahkan ');
     }
 
     /**
@@ -136,84 +196,23 @@ class AdminController extends Controller
     public function destroySiswa($id)
     {
         $siswa = Siswa::findOrFail($id);
-        $user = $siswa->user;
+        $user = User::Where('id', $siswa->user_id);        
         $siswa->delete();   
         $user->delete();
 
         return redirect('index-siswa')->with('success','Seller Data Deleted Successfully');
     }
 
-    //Guru
-
-    public function storeGuru(Request $request)
+    public function destroyWalas($id)
     {
-        $request->validate([
-            'nama' => 'required',
-            'nipd' => 'required',
-            'jenis_kelamin' => 'required',
-            'ttl' => 'required',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:8',
-        ]);
-
-        $user = User::create([
-            'name' => $request->input('nama'),
-            'email' => $request->input('email'),
-            'password' => bcrypt($request->input('password')),
-        ]);
-        $user->assignRole('guru_bk');
-
-        $userId = $user->id;
-
-        $siswa = Guru::create([
-            'user_id' => $userId,
-            'nipd' => $request->input('nipd'),
-            'nama' => $request->input('nama'),
-            'ttl' => $request->input('ttl'),
-            'jenis_kelamin' => $request->input('jenis_kelamin'),
-        ]);
-
-
-        return redirect('index-guru')->with('success', 'Siswa berhasil Ditambahkan ');
-    }
-
-    public function updateGuru(Request $request, string $id)
-    {
-        $guru = Guru::findOrFail($id);
-        $user = $guru->user;
-
-        $guru->nama = $request->input('nama');
-        $guru->nipd = $request->input('nipd');
-        $guru->ttl = $request->input('ttl');
-        $guru->jenis_kelamin = $request->input('jenis_kelamin');
-        $guru->save();
-    
-        $user->email = $request->input('email');
-        $user->name = $request->input('nama');
-        $user->password = $request->input('password');
-        $user->save();
-        
-        return redirect('index-guru');
-    }
-
-    public function destroyGuru($id)
-    {
-        $guru = Guru::findOrFail($id); // Mengambil data user berdasarkan ID
-        $user = $guru->user; // Mengambil data profile yang terkait dengan user
-    
-        // Hapus data profile terlebih dahulu
-        $guru->delete();
-    
-        // Hapus data user
+        $walas = Walas::findOrFail($id);
+        $user = User::Where('id', $walas->user_id);        
+        $walas->delete();   
         $user->delete();
 
-        return redirect('index-guru')->with('success', 'Seller Data Deleted Successfully');
+        return redirect('index-walas')->with('success','Seller Data Deleted Successfully');
     }
 
-    public function editGuru($id)
-    {
-        $guru = Guru::with(['user'])->findOrFail($id);
-        return view('layouts.guru.edit', compact('guru'));
-    }
+    
 }
 

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Siswa;
 use App\Models\Walas;
 use Illuminate\Http\Request;
 

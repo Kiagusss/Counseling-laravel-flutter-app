@@ -11,6 +11,9 @@ class Walas extends Model
 
     protected $table = 'walas';
 
+    protected $fillable = [
+        'nipd', 'user_id', 'nama', 'ttl', 'jenis_kelamin',  
+    ];
 
     public function kelas()
     {
