@@ -20,6 +20,10 @@ Route::get('/', function () {
 })->name('index');
 
 
+Route::get('admin-page', function() {
+    return 'Halaman untuk Admin';
+})->middleware('role:admin')->name('admin.page');
+
 
 
 
@@ -42,7 +46,7 @@ Route::middleware(['role:admin'])->group(function () {
         // Rute-rute untuk siswa
         Route::get('/index-siswa', [AdminController::class, 'indexSiswa'])->name('index');
         Route::get('/create-siswa', [AdminController::class, 'createSiswa'])->name('create');
-        Route::post('/create-siswa', [AdminController::class, 'storeSiswa']);
+        Route::post('/create-siswa', [AdminController::class, 'storeSiswa'])->name('store');
         Route::get('/siswa/update/{id}', [AdminController::class, 'editSiswa']);
         Route::patch('/siswa/update/{id}', [AdminController::class, 'updateSiswa']);
         Route::delete('/siswa/destroy/{id}', [AdminController::class, 'destroySiswa']);
