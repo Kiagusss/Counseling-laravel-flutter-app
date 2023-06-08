@@ -29,8 +29,8 @@ class WalasSeeder extends Seeder
 
         Walas::create([
             'user_id' => $user->id, 
-            'nipd' => '500', 
-            'nama' => 'Walas',  
+            'nipd' => '900', 
+            'nama' => 'Wali Kelas',  
             'ttl' => Carbon::now(),  
             'jenis_kelamin' => 'pria',  
             'created_at' => Carbon::now(), 
@@ -50,7 +50,7 @@ class WalasSeeder extends Seeder
         Walas::create([
             'user_id' => $user->id, 
             'nipd' => '500', 
-            'nama' => 'Walas',  
+            'nama' => 'Udin',  
             'ttl' => Carbon::now(),  
             'jenis_kelamin' => 'pria',  
             'created_at' => Carbon::now(), 

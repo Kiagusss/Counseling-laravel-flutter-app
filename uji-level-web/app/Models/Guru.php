@@ -14,9 +14,15 @@ class Guru extends Model
         'user_id', 'nama', 'nipd', 'ttl', 'jenis_kelamin'  
     ];
 
+   
     public function kelas()
     {
-        return $this->hasOne(Kelas::class, 'guru_id');
+        return $this->hasOne(Kelas::class);
+    }
+
+    public function walas()
+    {
+        return $this->hasOne(Kelas::class, 'walas_id');
     }
 
     public function user()

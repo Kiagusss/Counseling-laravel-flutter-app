@@ -18,11 +18,11 @@ class PetaKerawanan extends Model
 
     public function siswa()
     {
-        return $this->belongsTo(Siswa::class, 'siswa_id');
+        return $this->belongsTo(Siswa::class);
     }
 
     public function walas()
     {
-        return $this->belongsTo(Walas::class, 'walas_id');
+        return $this->belongsTo(Walas::class);
     }
 }

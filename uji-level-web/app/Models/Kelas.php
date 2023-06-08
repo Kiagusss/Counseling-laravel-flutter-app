@@ -16,16 +16,17 @@ class Kelas extends Model
     ];
     public function guru()
     {
-        return $this->belongsTo(Guru::class, 'guru_id');
+        return $this->belongsTo(Guru::class);
     }
 
     public function walas()
     {
-        return $this->belongsTo(Walas::class, 'walas_id');
+        return $this->belongsTo(Walas::class);
     }
 
     public function siswa()
     {
-        return $this->belongsTo(Siswa::class, 'siswa_id');
+        return $this->hasMany(Siswa::class);
     }
+
 }

@@ -1,21 +1,16 @@
 @extends('layouts.main')
 
 @section('content')
-<<div class="container">
-    <h1>Tambah Peta Kerawanan</h1>
+<div class="container">
+    <h1>Create Peta Kerawanan</h1>
 
-    <form action="{{ route('peta-kerawanan.store') }}" method="POST">
+    <form action="peta-kerawanan" method="POST">
         @csrf
-
         <div class="form-group">
-            <label for="walas_id">Walas ID</label>
-            <input type="text" id="walas_id" name="walas_id" class="form-control" value="{{ $guru->walas_id }}" readonly>
-        </div>
-
-        <div class="form-group">
+            <input type="hidden" name="walas_id" value="{{ $walas->id }}">
             <label for="siswa_id">Siswa</label>
-            <select id="siswa_id" name="siswa_id" class="form-control">
-                @foreach ($siswaList as $siswa)
+            <select name="siswa_id" id="siswa_id" class="form-control">
+                @foreach ($siswa as $siswa)
                     <option value="{{ $siswa->id }}">{{ $siswa->nama }}</option>
                 @endforeach
             </select>
@@ -23,15 +18,16 @@
 
         <div class="form-group">
             <label for="jenis_kerawanan">Jenis Kerawanan</label>
-            <select id="jenis_kerawanan" name="jenis_kerawanan[]" class="form-control" multiple>
-                <option value="Bully">Bully</option>
+            <select name="jenis_kerawanan[]" id="jenis_kerawanan" class="tom-select" multiple>
+                <option value="Bullying">Bullying</option>
+                <option value="Kekerasan">Kekerasan</option>
                 <option value="Perundungan">Perundungan</option>
-                <option value="Kekerasan Fisik">Kekerasan Fisik</option>
-                <!-- Tambahkan opsi lainnya sesuai kebutuhan -->
+                <!-- Tambahkan pilihan jenis kerawanan lainnya di sini -->
             </select>
         </div>
 
-        <button type="submit" class="btn btn-primary">Simpan</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
+
 @endsection

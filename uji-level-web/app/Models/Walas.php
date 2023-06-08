@@ -17,7 +17,7 @@ class Walas extends Model
 
     public function kelas()
     {
-        return $this->belongsTo(Kelas::class, 'kelas_id');
+        return $this->hasOne(Kelas::class);
     }
 
     public function petaKerawanan()

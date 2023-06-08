@@ -82,6 +82,13 @@ Route::name('kelas.')->group(function () {
 });
 });
 
+Route::middleware(['role:wali_kelas'])->group(function () {
+    Route::name('peta.')->group(function () {
+    Route::get('peta_kerawanan.create', [PetaKerawananController::class, 'creates'])->name('create');
+    Route::post('peta-kerawanan', [PetaKerawananController::class, 'store'])->name('peta-kerawanan.store');
+
+    });
+});
 });
 Route::get('/nipd/{id}', 'WalasController@Nipd');
 
@@ -89,8 +96,4 @@ Route::get('/nipd/{id}', 'WalasController@Nipd');
 
 
 
-Route::middleware(['role:wali_kelas'])->group(function () {
-    Route::get('/peta-kerawanan/create', [PetaKerawananController::class, 'create'])->name('peta-kerawanan.creates');
-    Route::post('/peta-kerawanan', [PetaKerawananController::class, 'store'])->name('peta-kerawanan.store');
-});
 

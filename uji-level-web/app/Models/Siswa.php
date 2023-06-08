@@ -24,7 +24,7 @@ class Siswa extends Model
 
     public function kelas()
     {
-        return $this->hasOne(Kelas::class);
+        return $this->belongsTo(Kelas::class);
     }
 
     public function petaKerawanan()

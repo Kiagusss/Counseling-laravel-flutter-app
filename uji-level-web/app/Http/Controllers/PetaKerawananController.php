@@ -12,15 +12,29 @@ use Illuminate\Support\Facades\Auth;
 
 class PetaKerawananController extends Controller
 {
-    public function create()
+    public function creates()
     {
-        $guru = Guru::findOrFail(auth()->user()->guru_id);
-        $kelas = Kelas::where('guru_id', $guru->id)->first();
+        $user = Auth::user();
+        $walas = $user->walas;
 
-        $siswaList = $kelas->siswa;
+        $siswa = $walas->kelas->siswa;
 
-        return view('peta_kerawanan.create', compact('guru', 'siswaList'));
+        return view('peta_kerawanan.create', compact('walas', 'siswa'));
     }
 
+    public function store(Request $request)
+    {
+        // Validasi inputan jika diperlukan
+        $jenisKerawanan = implode(',', $request->jenis_kerawanan);
+        $petaKerawanan = PetaKerawanan::create([
+            'siswa_id' => $request->siswa_id,
+            'walas_id' => $request->walas_id,
+            'jenis_kerawanan' => $jenisKerawanan,
+        ]);
+
+        // Proses penyimpanan data peta kerawanan
+
+        return redirect()->route('peta-kerawanan.create')->with('success', 'Data peta kerawanan berhasil disimpan.');
+    }
 
 }
