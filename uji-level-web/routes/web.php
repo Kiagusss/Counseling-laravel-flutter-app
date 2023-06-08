@@ -28,6 +28,8 @@ Route::name('siswa.')->group(function () {
     Route::patch('/siswa/update/{id}',[AdminController::class,'updateSiswa']);
     Route::delete('/siswa/destroy/{id}',[AdminController::class,'destroySiswa']);
 });
+
+
 Route::name('guru.')->group(function () {
     // Rute-rute untuk siswadst
     Route::get('/index-guru', [AdminController::class, 'indexGuru'])->name('index');
@@ -40,6 +42,11 @@ Route::name('walas.')->group(function () {
     Route::get('/create-walas', [AdminController::class, 'createWalas'])->name('create');
     Route::post('/create-walas', [AdminController::class, 'grades'])->name('store');
 });
+
+
+Route::get('admin-page', function() {
+    return 'Halaman untuk Admin';
+})->middleware('role:admin')->name('admin.page');
 
 
 

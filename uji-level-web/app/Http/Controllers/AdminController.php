@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
+use App\Models\User;
 use App\Models\Kelas;
 use App\Models\Siswa;
-use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
@@ -54,34 +56,43 @@ class AdminController extends Controller
      */
     public function storeSiswa(Request $request)
     {
-        $request->validate([
-            'nama'=> 'required',
-            'nisn'=> 'required',
-            'jenis_kelamin'=> 'required',
-            'ttl' => 'required',
-            'kelas_id' => 'required',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:8',
-        ]);
+        DB::beginTransaction();
+        
+        try{
+            $request->validate([
+                'nama'=> 'required',
+                'nisn'=> 'required',
+                'jenis_kelamin'=> 'required',
+                'ttl' => 'required',
+                'kelas_id' => 'required',
+                'email' => 'required|email|unique:users',
+                'password' => 'required|min:8',
+            ]);
+    
+            $user = User::create([
+                'name'=> $request->input('nama'),
+                'email'=> $request->input('email'),
+                'password'=> bcrypt($request->nput('password')),
+            ]);
+            $user->assignRole('siswa');
 
-        $user = User::create([
-            'name'=> $request->input('nama'),
-            'email'=> $request->input('email'),
-            'password'=> bcrypt($request->nput('password')),
-        ]);
-
-        $user->assignRole('siswa');
-
-        $siswa = Siswa::create([
-            'nama'=> $request->input('nama'),
-            'nisn'=> $request->input('nisn'),
-            'ttl'=> $request->input('ttl'),
-            'jenis_kelamin'=> $request->input('jenis_kelamin'),
-            'kelas_id'=> $request->input('kelas_id'),
-            'user_id'=> $request->input('user_id'),
-            'password'=> bcrypt($request->nput('password')),
-        ]);
-
+            $userId = $user->id;
+    
+            $siswa = Siswa::create([
+                'user_id'=> $userId,
+                'nisn'=> $request->input('nisn'),
+                'nama'=> $request->input('nama'),
+                'ttl'=> $request->input('ttl'),
+                'jenis_kelamin'=> $request->input('jenis_kelamin'),
+                'kelas_id'=> $request->input('kelas_id'),
+                'password'=> bcrypt($request->nput('password')),
+            ]);
+    
+        }
+        catch (Exception $e) {
+            DB::rollback();
+            // Tangani kesalahan jika terjadi, misalnya log error atau memberikan pesan kesalahan ke pengguna
+        }
        
 
         return redirect('index-siswa')->with('success', 'Siswa berhasil Ditambahkan ');
