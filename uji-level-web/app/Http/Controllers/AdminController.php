@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
+use App\Models\User;
 use App\Models\Kelas;
 use App\Models\Siswa;
-use App\Models\User;
+use App\Models\Walas;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
@@ -20,7 +23,7 @@ class AdminController extends Controller
     }
 
     public function indexGuru()
-    {
+    {   
         return view('layouts.guru.index');
     }
 
@@ -36,7 +39,10 @@ class AdminController extends Controller
      */
     public function createSiswa()
     {
-        return view('layouts.siswa.create');
+        $dataKelas = Kelas::all();
+
+        return view('layouts.siswa.create', ['data' => $dataKelas]);
+
     }
 
     public function createGuru()
@@ -46,7 +52,8 @@ class AdminController extends Controller
 
     public function createWalas()
     {
-        return view('layouts.walas.create');
+        $walas = Walas::all();
+        return view('layouts.walas.create', ['data' => $walas]);
     }
 
     /**
@@ -54,34 +61,33 @@ class AdminController extends Controller
      */
     public function storeSiswa(Request $request)
     {
-        $request->validate([
-            'nama'=> 'required',
-            'nisn'=> 'required',
-            'jenis_kelamin'=> 'required',
-            'ttl' => 'required',
-            'kelas_id' => 'required',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:8',
-        ]);
+            $request->validate([
+                'nama'=> 'required',
+                'nisn'=> 'required',
+                'jenis_kelamin'=> 'required',
+                'ttl' => 'required',
+                'kelas_id' => 'required',
+                'email' => 'required|email|unique:users',
+                'password' => 'required|min:8',
+            ]);
+    
+            $user = User::create([
+                'name'=> $request->input('nama'),
+                'email'=> $request->input('email'),
+                'password'=> bcrypt($request->input('password')),
+            ]);
+            $user->assignRole('siswa');
 
-        $user = User::create([
-            'name'=> $request->input('nama'),
-            'email'=> $request->input('email'),
-            'password'=> bcrypt($request->nput('password')),
-        ]);
-
-        $user->assignRole('siswa');
-
-        $siswa = Siswa::create([
-            'nama'=> $request->input('nama'),
-            'nisn'=> $request->input('nisn'),
-            'ttl'=> $request->input('ttl'),
-            'jenis_kelamin'=> $request->input('jenis_kelamin'),
-            'kelas_id'=> $request->input('kelas_id'),
-            'user_id'=> $request->input('user_id'),
-            'password'=> bcrypt($request->nput('password')),
-        ]);
-
+            $userId = $user->id;
+    
+            $siswa = Siswa::create([
+                'user_id'=> $userId,
+                'nisn'=> $request->input('nisn'),
+                'nama'=> $request->input('nama'),
+                'ttl'=> $request->input('ttl'),
+                'jenis_kelamin'=> $request->input('jenis_kelamin'),
+                'kelas_id'=> $request->input('kelas_id'),
+            ]);
        
 
         return redirect('index-siswa')->with('success', 'Siswa berhasil Ditambahkan ');
