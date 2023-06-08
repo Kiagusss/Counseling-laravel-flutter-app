@@ -69,6 +69,9 @@ Route::name('kelas.')->group(function () {
     Route::get('/index-kelas', [KelasController::class, 'indexKelas'])->name('index');
     Route::get('/create-kelas', [KelasController::class, 'createKelas'])->name('create');
     Route::post('/create-kelas', [KelasController::class, 'storeKelas'])->name('store');
+    Route::get('/kelas/update/{id}', [KelasController::class, 'edit'])->name('kelas.edit');
+    Route::put('/kelas/{id}', [KelasController::class, 'update'])->name('kelas.update');
+    Route::delete('/kelas/destroy/{id}', [KelasController::class, 'destroy'])->name('kelas.destroy');
 });
 });
 
