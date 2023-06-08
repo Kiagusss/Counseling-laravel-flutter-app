@@ -2,6 +2,7 @@
 
 
 @section('content')
+
 <div class="content">
     <div class="intro-y flex items-center mt-8">
         <h2 class="text-lg font-medium mr-auto">
@@ -19,39 +20,40 @@
                 </div>
                 <div id="input" class="p-5">
                     <div class="preview">
-                        <form action="/create-guru" method="POST">
+                        <form action="{{ url('guru/update/'.$guru->id)}}" method="POST">
+                            @method('PATCH')
                             @csrf
                             <div class="mt-3">
                                 <label for="regular-form-1" class="form-label">Nipd</label>
-                                <input id="regular-form-1" type="number" name="nipd" class="form-control" placeholder="Nipd" value="">
+                                <input id="regular-form-1" type="text" name="nipd" class="form-control" readonly placeholder="Input text" value="{{$guru->nipd}}">
                             </div>
                             <div class="mt-3">
                                 <label for="regular-form-1" class="form-label">Email</label>
-                                <input id="regular-form-1" type="email" name="email" class="form-control" placeholder="Email" value="">
+                                <input id="regular-form-1" type="email" name="email" class="form-control"  value="{{$guru->user->email}}">
                             </div>
                             <div class="mt-3">
                                 <label for="regular-form-1" class="form-label">Password</label>
-                                <input id="regular-form-1" type="password" name="password" class="form-control" placeholder="Password" value="">
+                                <input id="regular-form-1" type="password" name="password" class="form-control"  value="{{$guru->user->password}}">
                             </div>
                             <div class="mt-3">
                                 <label for="regular-form-1" class="form-label">Nama</label>
-                                <input id="regular-form-1" type="text" name="nama" class="form-control" placeholder="Nama" value="">
+                                <input id="regular-form-1" type="text" name="nama" class="form-control" placeholder="Input text" value="{{$guru->nama
+                                    }}">
                             </div>
                             <div class="relative w-56 mt-3">
                                 <label for="regular-form-1" class="form-label">TTL</label>
-                                <input type="date" name="ttl" id="" value="">
+                                <input type="date" name="ttl" id="" value="{{$guru->ttl}}">
                             </div>
                             <div class="mt-3">
                                 <label for="regular-form-1" class="form-label">Jenis Kelamin</label>
                                 <select name="jenis_kelamin" class="tom-select mb-3">
 
-                                    <option value="pria">Pria</option>
-                                    <option value="perempuan">Perempuan</option>
+                                    <option value="pria" {{ $guru->jenis_kelamin === 'pria' ? 'selected' : '' }}>Pria</option>
+                                    <option value="perempuan" {{ $guru->jenis_kelamin === 'perempuan' ? 'selected' : '' }}>Perempuan</option>
                                 </select>
                             </div>
-        
-                            <button type="submit" class="btn btn-primary">Submit</button>
 
+                            <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
                     </div>
                 </div>
@@ -62,4 +64,4 @@
     <!-- END: Content -->
 
 
-@endsection
+    @endsection
