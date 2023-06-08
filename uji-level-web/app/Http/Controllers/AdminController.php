@@ -6,6 +6,7 @@ use Exception;
 use App\Models\User;
 use App\Models\Kelas;
 use App\Models\Siswa;
+use App\Models\Walas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -22,7 +23,7 @@ class AdminController extends Controller
     }
 
     public function indexGuru()
-    {
+    {   
         return view('layouts.guru.index');
     }
 
@@ -51,7 +52,8 @@ class AdminController extends Controller
 
     public function createWalas()
     {
-        return view('layouts.walas.create');
+        $walas = Walas::all();
+        return view('layouts.walas.create', ['data' => $walas]);
     }
 
     /**
