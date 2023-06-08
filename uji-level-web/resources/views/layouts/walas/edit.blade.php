@@ -49,7 +49,7 @@
                             </div>
                             <div class="mt-3">
                                 <label for="regular-form-1" class="form-label">Password</label>
-                                <input id="regular-form-1" type="text" name="password" class="form-control"
+                                <input id="regular-form-1" type="password" name="password" class="form-control"
                                     placeholder="Input text" value="{{$walas->user->password}}">
                             </div>
                             <div class="relative w-56 mt-3">
