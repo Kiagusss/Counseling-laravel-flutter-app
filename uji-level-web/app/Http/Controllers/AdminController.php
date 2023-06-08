@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kelas;
+use App\Models\Siswa;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -11,7 +14,9 @@ class AdminController extends Controller
      */
     public function indexSiswa()
     {
-        return view('layouts.siswa.index');
+
+        $siswa = Siswa::with('kelasid')->get();
+        return view('layouts.siswa.index' , compact('siswa'));
     }
 
     public function indexGuru()
@@ -47,40 +52,87 @@ class AdminController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function storeSiswa(Request $request)
     {
-        //
-    }
+        $request->validate([
+            'nama'=> 'required',
+            'nisn'=> 'required',
+            'jenis_kelamin'=> 'required',
+            'ttl' => 'required',
+            'kelas_id' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:8',
+        ]);
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
+        $user = User::create([
+            'name'=> $request->input('nama'),
+            'email'=> $request->input('email'),
+            'password'=> bcrypt($request->nput('password')),
+        ]);
 
+        $user->assignRole('siswa');
+
+        $siswa = Siswa::create([
+            'nama'=> $request->input('nama'),
+            'nisn'=> $request->input('nisn'),
+            'ttl'=> $request->input('ttl'),
+            'jenis_kelamin'=> $request->input('jenis_kelamin'),
+            'kelas_id'=> $request->input('kelas_id'),
+            'user_id'=> $request->input('user_id'),
+            'password'=> bcrypt($request->nput('password')),
+        ]);
+
+       
+
+        return redirect('index-siswa')->with('success', 'Siswa berhasil Ditambahkan ');
+    }
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
-    {
-        //
+  
+
+     public function editsiswa($id)
+      {
+          $siswa = Siswa::with('kelasid')->findOrFail($id);
+          
+          $kelasid = Kelas::where('id', '!=', $siswa->kelas_id)->get(['id','nama']);
+          return view('layouts.siswa.edit',['siswa' => $siswa, 'kelasid' => $kelasid]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function updateSiswa(Request $request, string $id)
     {
-        //
+        $siswa = Siswa::find($id);
+        $user = User::find($id);
+        $siswa->update([
+            'nisn' => $request->nisn,
+            'nama' => $request->nama,
+            'umur' => $request->umur,
+            'kelas' => $request->kelas_id,
+            'ttl' => $request->ttl,
+            'jenis_kelamin' => $request->jenis_kelamin,
+        ]);
+        $user->update([
+            'name' => $request->nama,
+        ]);
+
+        
+        $siswa->update();
+        return redirect('index-siswa');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroySiswa($id)
     {
-        //
+        $siswa = Siswa::findOrFail($id);
+        $user = $siswa->user;
+        $siswa->delete();   
+        $user->delete();
+
+        return redirect('index-siswa')->with('success','Seller Data Deleted Successfully');
     }
 }
