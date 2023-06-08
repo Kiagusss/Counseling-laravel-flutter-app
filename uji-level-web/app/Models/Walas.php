@@ -19,6 +19,10 @@ class Walas extends Model
     {
         return $this->hasOne(Kelas::class);
     }
+    public function kelass()
+    {
+        return $this->hasMany(Kelas::class);
+    }
 
     public function petaKerawanan()
     {

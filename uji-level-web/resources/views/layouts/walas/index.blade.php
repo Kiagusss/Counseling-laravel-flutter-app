@@ -63,7 +63,7 @@
                             <a href="" class="font-medium whitespace-nowrap">{{$item->ttl}}</a> 
                         </td>
                         <td>
-                            @foreach($item->kelas as $kelass)
+                            @foreach($item->kelass as $kelass)
                             {{$kelass->nama}}
                             @endforeach
                         </td>
