@@ -19,19 +19,20 @@ class AdminController extends Controller
     public function indexSiswa()
     {
 
-        $siswa = Siswa::with('kelasid')->get();
+        $siswa = Siswa::with('kelasid')->paginate(10);
         return view('layouts.siswa.index', compact('siswa'));
     }
 
     public function indexGuru()
     {
-        $guru = Guru::with('kelas')->get();
+        $guru = Guru::with('kelas')->paginate(10);
         return view('layouts.guru.index', ['guru' => $guru]);
     }
 
+    
     public function indexWalas()
     {
-        $walas = Walas::with('kelas')->get();
+        $walas = Walas::with('kelas')->paginate(10);
         return view('layouts.walas.index', ['data' => $walas]);
     }
 

@@ -78,7 +78,6 @@
                         {{ __('Click here to re-send the verification email.') }}
                     </button>
                 </p>
-
                 @if ($this->verificationLinkSent)
                     <p class="mt-2 font-medium text-sm text-green-600">
                         {{ __('A new verification link has been sent to your email address.') }}

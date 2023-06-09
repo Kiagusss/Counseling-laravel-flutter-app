@@ -19,11 +19,25 @@ class Walas extends Model
     {
         return $this->hasOne(Kelas::class, 'walas_id');
     }
+    public function kelass()
+    {
+        return $this->hasMany(Kelas::class);
+    }
+
+    public function petaKerawanan()
+    {
+        return $this->hasMany(PetaKerawanan::class);
+    }
 
 
     public function user()
 {
     return $this->belongsTo(User::class);
 }
+public function guru()
+{
+    return $this->belongsTo(Guru::class, 'guru_id');
+}
+
 
 }

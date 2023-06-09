@@ -41,9 +41,9 @@
                             <div class="mt-3">
                                 <label for="regular-form-1" class="form-label">Wali Kelas</label>
                                 <select name="walas_id" class="tom-select mb-3">
-                                    @foreach($walas as $walas)
-                                    <option value="{{ $walas->id }}">{{ $walas->nama }}</option>
-                                @endforeach
+                                    @foreach($walas as $wala)
+                                        <option value="{{ $wala->id }}">{{ $wala->nama }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="mt-3">

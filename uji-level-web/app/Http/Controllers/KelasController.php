@@ -12,18 +12,18 @@ class KelasController extends Controller
 {
     public function indexKelas()
     {
-        $kelas = Kelas::with('guru', 'walas', 'siswa')->get();
+        $kelas = Kelas::with('guru', 'walas', 'siswa')->paginate(10);
     
         return view('layouts.kelas.index', compact('kelas'));
     }
     public function createKelas()
-{
-    $gurus = Guru::all();
-    $walas = Walas::all();
-
-    return view('layouts.kelas.create', compact('gurus', 'walas'));
-}
-    
+    {
+        // Mengambil semua data walas yang belum memiliki kelas
+        $walas = Walas::whereDoesntHave('kelas')->get();
+        $gurus = Guru::all();
+        // Mengirim data walas dan guru ke view
+        return view('layouts.kelas.create', compact('walas', 'gurus'));
+    }
 
 public function storeKelas(Request $request)
 {
