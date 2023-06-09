@@ -22,6 +22,15 @@ class Siswa extends Model
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
+    public function kelas()
+    {
+        return $this->belongsTo(Kelas::class);
+    }
+
+    public function petaKerawanan()
+    {
+        return $this->hasMany(PetaKerawanan::class);
+    }
 
     
 }

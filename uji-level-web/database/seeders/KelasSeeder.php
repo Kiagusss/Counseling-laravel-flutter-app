@@ -22,6 +22,13 @@ class KelasSeeder extends Seeder
             'created_at' => Carbon::now(), 
             'updated_at' => Carbon::now(), 
         ]);
+        Kelas::create([
+            'nama' => 'XI PPLG 3', 
+            'walas_id' => '2', 
+            'guru_id' => '2', 
+            'created_at' => Carbon::now(), 
+            'updated_at' => Carbon::now(), 
+        ]);
         
     }
 }

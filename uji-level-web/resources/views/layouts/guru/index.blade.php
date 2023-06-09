@@ -46,6 +46,7 @@
                         <th class="whitespace-nowrap">Nisn</th>
                         <th class="whitespace-nowrap">Nama</th>
                         <th class="whitespace-nowrap">TTL</th>
+                        <th class="whitespace-nowrap">Guru</th>
                         <th class="whitespace-nowrap">Jenis Kelamin</th>
                         <th class="whitespace-nowrap">Action</th>
                     </tr>
@@ -65,6 +66,12 @@
                         <td>
                             <a href="" class="font-medium whitespace-nowrap">{{$item->ttl}}</a> 
                         </td>
+                        <td>
+                            @foreach($item->kelass as $kelass)
+                            {{$kelass->nama}}
+                            @endforeach
+                        </td>
+
                         <td>
                             <a href="" class="font-medium whitespace-nowrap">{{$item->jenis_kelamin}}</a> 
                         </td>

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\WalasController;
+use App\Http\Controllers\PetaKerawananController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,7 @@ use App\Http\Controllers\WalasController;
 Route::get('/', function () {
     return view('pages.index');
 })->name('index');
+
 
 
 Route::get('admin-page', function() {
@@ -58,7 +60,9 @@ Route::middleware(['role:admin'])->group(function () {
     Route::get('/index-guru', [AdminController::class, 'indexGuru'])->name('index');
     Route::get('/create-guru', [AdminController::class, 'createGuru'])->name('create');
     Route::post('/create-guru', [AdminController::class, 'storeGuru'])->name('store');
-    
+    Route::get('/guru/update/{id}', [AdminController::class, 'editGuru']);
+    Route::patch('/guru/update/{id}', [AdminController::class, 'updateGuru']);
+    Route::delete('/guru/destroy/{id}', [AdminController::class, 'destroyGuru']);
 });
 Route::name('walas.')->group(function () {
     // Rute-rute untuk siswadst
@@ -80,7 +84,21 @@ Route::name('kelas.')->group(function () {
 });
 });
 
+Route::middleware(['role:wali_kelas'])->group(function () {
+    Route::name('peta.')->group(function () {
+    Route::get('peta_kerawanan.create', [PetaKerawananController::class, 'creates'])->name('create');
+    Route::get('peta-kerawanan', [PetaKerawananController::class, 'index'])->name('peta-kerawanan.index');
+    Route::post('peta-kerawanan', [PetaKerawananController::class, 'store'])->name('peta-kerawanan.store');
+    Route::get('peta-kerawanan/{id}/edit', [PetaKerawananController::class, 'edit'])->name('peta-kerawanan.edit');
+    Route::put('peta-kerawanan/{id}', [PetaKerawananController::class, 'update'])->name('peta-kerawanan.update');
+    Route::delete('peta-kerawanan/{id}', [PetaKerawananController::class, 'destroy'])->name('peta-kerawanan.destroy');
+    });
+});
 });
 Route::get('/nipd/{id}', 'WalasController@Nipd');
+
+
+
+
 
 

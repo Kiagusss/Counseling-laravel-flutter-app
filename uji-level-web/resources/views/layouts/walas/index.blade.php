@@ -44,7 +44,9 @@
                     <tr>
                         <th class="whitespace-nowrap">No.</th>
                         <th class="whitespace-nowrap">Nama</th>
-                        <th class="whitespace-nowrap">User ID</th>
+                        <th class="whitespace-nowrap">TTL</th>
+                        <th class="whitespace-nowrap">Guru</th>
+                        <th class="whitespace-nowrap">Jenis Kelamin</th>
                         <th class="whitespace-nowrap">Action</th>
                     </tr>
                 </thead>
@@ -58,8 +60,18 @@
                             <a href="" class="font-medium whitespace-nowrap">{{$item->nama}}</a> 
                         </td>
                         <td>
-                            <a href="" class="font-medium whitespace-nowrap">{{$item->user_id}}</a> 
+                            <a href="" class="font-medium whitespace-nowrap">{{$item->ttl}}</a> 
                         </td>
+                        <td>
+                            @foreach($item->kelass as $kelass)
+                            {{$kelass->nama}}
+                            @endforeach
+                        </td>
+
+                        <td>
+                            <a href="" class="font-medium whitespace-nowrap">{{$item->jenis_kelamin}}</a> 
+                        </td>
+                        
 
                         <td class="table-report__action w-56">
                             <div class="flex justify-center items-center">
