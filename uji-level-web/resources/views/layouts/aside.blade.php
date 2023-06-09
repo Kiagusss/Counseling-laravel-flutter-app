@@ -1,5 +1,7 @@
 @if (Auth::check())
     @if (Auth::user()->hasRole('admin'))
+
+    
      <nav class="side-nav">
         <ul>
             <li>

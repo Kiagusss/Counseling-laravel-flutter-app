@@ -26,6 +26,8 @@
             </select>
         </div>
 
+        <textarea name="kesimpulan" id="" cols="30" rows="10"></textarea>
+
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
