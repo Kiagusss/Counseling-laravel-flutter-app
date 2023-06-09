@@ -64,6 +64,18 @@
             <x-input id="wali_kelas" class="block mt-1 w-full" type="text" name="wali_kelas" :value="Auth::user()->walas->nipd ?? ''" disabled />
         </div>
         @endif
+        @if (Auth::user()->hasRole('guru_bk'))
+        <div>
+            <x-label for="wali_kelas" :value="__('NIPD')" />
+            <x-input id="wali_kelas" class="block mt-1 w-full" type="text" name="wali_kelas" :value="Auth::user()->guru->nipd ?? ''" disabled />
+        </div>
+        @endif
+        @if (Auth::user()->hasRole('siswa'))
+        <div>
+            <x-label for="wali_kelas" :value="__('NISN')" />
+            <x-input id="wali_kelas" class="block mt-1 w-full" type="text" name="wali_kelas" :value="Auth::user()->siswa->nipd ?? ''" disabled />
+        </div>
+        @endif
         <!-- Email -->
         <div class="col-span-6 sm:col-span-4">
             <x-label for="email" value="{{ __('Email') }}" />
