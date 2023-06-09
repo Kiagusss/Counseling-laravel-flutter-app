@@ -18,7 +18,6 @@ class PetaKerawananController extends Controller
     $user = Auth::user();
     $walas = $user->walas;
     $petaKerawanans = PetaKerawanan::where('walas_id', $walas->id)->get();
-
     return view('peta_kerawanan.index', compact('walas', 'petaKerawanans'));
 }
 
@@ -26,7 +25,7 @@ class PetaKerawananController extends Controller
     {
         $user = Auth::user();
         $walas = $user->walas;
-
+        $peta = PetaKerawanan::all();
         $siswa = $walas->kelas->siswa;
 
         return view('peta_kerawanan.create', compact('walas', 'siswa'));
@@ -39,6 +38,7 @@ class PetaKerawananController extends Controller
         $petaKerawanan = PetaKerawanan::create([
             'siswa_id' => $request->siswa_id,
             'walas_id' => $request->walas_id,
+            'kesimpulan' => $request->kesimpulan,
             'jenis_kerawanan' => $jenisKerawanan,
         ]);
 
@@ -51,7 +51,7 @@ class PetaKerawananController extends Controller
 {
     $user = Auth::user();
     $walas = $user->walas;
-
+    $peta = PetaKerawanan::all();
     $petaKerawanan = PetaKerawanan::findOrFail($id);
     $siswa = $walas->kelas->siswa;
 
@@ -76,7 +76,6 @@ public function destroy($id)
 {
     $petaKerawanan = PetaKerawanan::findOrFail($id);
     $petaKerawanan->delete();
-
     // Proses penghapusan data peta kerawanan
 
     return redirect()->route('peta-kerawanan.index')->with('success', 'Data peta kerawanan berhasil dihapus.');

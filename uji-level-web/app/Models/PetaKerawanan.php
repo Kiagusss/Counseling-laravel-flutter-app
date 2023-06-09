@@ -11,7 +11,7 @@ class PetaKerawanan extends Model
 
     protected $table = 'peta_kerawanans';
     protected $fillable = [
-        'walas_id','siswa_id','jenis_kerawanan' , 
+        'walas_id','siswa_id','jenis_kerawanan' , 'kesimpulan'
     ];
 
 
