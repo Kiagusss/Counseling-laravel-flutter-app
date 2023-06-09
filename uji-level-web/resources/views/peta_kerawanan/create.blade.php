@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-<div class="container">
+<div class="content">
     <h1>Create Peta Kerawanan</h1>
 
     <form action="peta-kerawanan" method="POST">
@@ -25,7 +25,7 @@
                 <!-- Tambahkan pilihan jenis kerawanan lainnya di sini -->
             </select>
         </div>
-
+        <h1>Label</h1>
         <textarea name="kesimpulan" id="" cols="30" rows="10"></textarea>
 
         <button type="submit" class="btn btn-primary">Submit</button>
