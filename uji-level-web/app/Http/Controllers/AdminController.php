@@ -20,11 +20,11 @@ class AdminController extends Controller
     {
 
         $siswa = Siswa::with('kelasid')->get();
-        return view('layouts.siswa.index' , compact('siswa'));
+        return view('layouts.siswa.index', compact('siswa'));
     }
 
     public function indexGuru()
-    {   
+    {
         $guru = Guru::with('kelas')->get();
         return view('layouts.guru.index', ['guru' => $guru]);
     }
@@ -35,20 +35,19 @@ class AdminController extends Controller
         return view('layouts.walas.index', ['data' => $walas]);
     }
 
-    
+
 
     /**
      * Show the form for creating a new resource.
      */
 
-     //CREATE\\
+    //CREATE\\
 
     public function createSiswa()
     {
         $dataKelas = Kelas::all();
 
         return view('layouts.siswa.create', ['data' => $dataKelas]);
-
     }
 
     public function createGuru()
@@ -63,32 +62,33 @@ class AdminController extends Controller
 
     //STORE\\
 
-    public function storeWalas(Request $request){
-        
+    public function storeWalas(Request $request)
+    {
+
         $request->validate([
-            'nipd'=> 'required',
-            'nama'=> 'required',
-            'email'=> 'required|email|unique:users',
+            'nipd' => 'required',
+            'nama' => 'required',
+            'email' => 'required|email|unique:users',
             'password' => 'required',
             'ttl' => 'required',
             'jenis_kelamin' => 'required',
         ]);
 
         $user = User::create([
-            'name'=> $request->input('nama'),
-            'email'=> $request->input('email'),
-            'password'=> bcrypt($request->input('password')),
+            'name' => $request->input('nama'),
+            'email' => $request->input('email'),
+            'password' => bcrypt($request->input('password')),
         ]);
         $user->assignRole('wali_kelas');
 
         $userId = $user->id;
 
         $walas = Walas::create([
-            'nipd'=> $request->input('nipd'),
-            'user_id'=> $userId,
-            'nama'=> $request->input('nama'),
-            'ttl'=> $request->input('ttl'),
-            'jenis_kelamin'=> $request->input('jenis_kelamin'),
+            'nipd' => $request->input('nipd'),
+            'user_id' => $userId,
+            'nama' => $request->input('nama'),
+            'ttl' => $request->input('ttl'),
+            'jenis_kelamin' => $request->input('jenis_kelamin'),
         ]);
 
 
@@ -97,106 +97,106 @@ class AdminController extends Controller
 
     public function storeSiswa(Request $request)
     {
-            $request->validate([
-                'nama'=> 'required',
-                'nisn'=> 'required',
-                'jenis_kelamin'=> 'required',
-                'ttl' => 'required',
-                'kelas_id' => 'required',
-                'email' => 'required|email|unique:users',
-                'password' => 'required|min:8',
-            ]);
-    
-            $user = User::create([
-                'name'=> $request->input('nama'),
-                'email'=> $request->input('email'),
-                'password'=> bcrypt($request->input('password')),
-            ]);
-            $user->assignRole('siswa');
+        $request->validate([
+            'nama' => 'required',
+            'nisn' => 'required',
+            'jenis_kelamin' => 'required',
+            'ttl' => 'required',
+            'kelas_id' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:8',
+        ]);
 
-            $userId = $user->id;
-    
-            $siswa = Siswa::create([
-                'user_id'=> $userId,
-                'nisn'=> $request->input('nisn'),
-                'nama'=> $request->input('nama'),
-                'ttl'=> $request->input('ttl'),
-                'jenis_kelamin'=> $request->input('jenis_kelamin'),
-                'kelas_id'=> $request->input('kelas_id'),
-            ]);
-   
+        $user = User::create([
+            'name' => $request->input('nama'),
+            'email' => $request->input('email'),
+            'password' => bcrypt($request->input('password')),
+        ]);
+        $user->assignRole('siswa');
 
-    return redirect('index-siswa')->with('success', 'Siswa berhasil Ditambahkan ');
-}
+        $userId = $user->id;
 
-public function storeGuru(Request $request)
-{
-    $request->validate([
-        'nama' => 'required',
-        'nipd' => 'required',
-        'jenis_kelamin' => 'required',
-        'ttl' => 'required',
-        'email' => 'required|email|unique:users',
-        'password' => 'required|min:8',
-    ]);
-
-    $user = User::create([
-        'name' => $request->input('nama'),
-        'email' => $request->input('email'),
-        'password' => bcrypt($request->input('password')),
-    ]);
-    $user->assignRole('guru_bk');
-
-    $userId = $user->id;
-
-    $siswa = Guru::create([
-        'user_id' => $userId,
-        'nipd' => $request->input('nipd'),
-        'nama' => $request->input('nama'),
-        'ttl' => $request->input('ttl'),
-        'jenis_kelamin' => $request->input('jenis_kelamin'),
-    ]);
+        $siswa = Siswa::create([
+            'user_id' => $userId,
+            'nisn' => $request->input('nisn'),
+            'nama' => $request->input('nama'),
+            'ttl' => $request->input('ttl'),
+            'jenis_kelamin' => $request->input('jenis_kelamin'),
+            'kelas_id' => $request->input('kelas_id'),
+        ]);
 
 
-    return redirect('index-guru')->with('success', 'Guru berhasil Ditambahkan ');
-}
+        return redirect('index-siswa')->with('success', 'Siswa berhasil Ditambahkan ');
+    }
+
+    public function storeGuru(Request $request)
+    {
+        $request->validate([
+            'nama' => 'required',
+            'nipd' => 'required',
+            'jenis_kelamin' => 'required',
+            'ttl' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:8',
+        ]);
+
+        $user = User::create([
+            'name' => $request->input('nama'),
+            'email' => $request->input('email'),
+            'password' => bcrypt($request->input('password')),
+        ]);
+        $user->assignRole('guru_bk');
+
+        $userId = $user->id;
+
+        $siswa = Guru::create([
+            'user_id' => $userId,
+            'nipd' => $request->input('nipd'),
+            'nama' => $request->input('nama'),
+            'ttl' => $request->input('ttl'),
+            'jenis_kelamin' => $request->input('jenis_kelamin'),
+        ]);
+
+
+        return redirect('index-guru')->with('success', 'Guru berhasil Ditambahkan ');
+    }
 
 
     /**
      * Store a newly created resource in storage.
      */
-       
+
     /**
      * Show the form for editing the specified resource.
      */
-  
-     //EDIT\\
 
-     public function editsiswa($id)
-      {
-          $siswa = Siswa::with(['kelasid', 'user'])->findOrFail($id);
-          $kelasid = Kelas::where('id', '!=', $siswa->kelas_id)->get(['id','nama']);
-          return view('layouts.siswa.edit',['siswa' => $siswa, 'kelasid' => $kelasid]);
+    //EDIT\\
+
+    public function editsiswa($id)
+    {
+        $siswa = Siswa::with(['kelasid', 'user'])->findOrFail($id);
+        $kelasid = Kelas::where('id', '!=', $siswa->kelas_id)->get(['id', 'nama']);
+        return view('layouts.siswa.edit', ['siswa' => $siswa, 'kelasid' => $kelasid]);
     }
 
     public function editWalas($id)
     {
         $walas = Walas::with(['user'])->findOrFail($id);
 
-        return view('layouts.walas.edit',['walas' => $walas]);
-  }
+        return view('layouts.walas.edit', ['walas' => $walas]);
+    }
 
-  public function editGuru($id)
-  {
-      $guru = Guru::with(['user'])->findOrFail($id);
-      return view('layouts.guru.edit', compact('guru'));
-  }
+    public function editGuru($id)
+    {
+        $guru = Guru::with(['user'])->findOrFail($id);
+        return view('layouts.guru.edit', compact('guru'));
+    }
 
     /**
      * Update the specified resource in storage.
      */
 
-     //UPDATE\\
+    //UPDATE\\
     public function updateSiswa(Request $request, string $id)
     {
         $datasiswa = Siswa::find($id);
@@ -229,12 +229,12 @@ public function storeGuru(Request $request)
         $guru->ttl = $request->input('ttl');
         $guru->jenis_kelamin = $request->input('jenis_kelamin');
         $guru->save();
-    
+
         $user->email = $request->input('email');
         $user->name = $request->input('nama');
         $user->password = $request->input('password');
         $user->save();
-        
+
         return redirect('index-guru');
     }
 
@@ -263,56 +263,38 @@ public function storeGuru(Request $request)
      * Remove the specified resource from storage.
      */
 
-     //DESTROY\\
+    //DESTROY\\
     public function destroySiswa($id)
     {
         $siswa = Siswa::findOrFail($id);
-        $user = User::Where('id', $siswa->user_id);        
-        $siswa->delete();   
+        $user = User::Where('id', $siswa->user_id);
+        $siswa->delete();
         $user->delete();
 
-        return redirect('index-siswa')->with('success','Seller Data Deleted Successfully');
+        return redirect('index-siswa')->with('success', 'Seller Data Deleted Successfully');
     }
 
     public function destroyWalas($id)
     {
         $walas = Walas::findOrFail($id);
-        $user = User::Where('id', $walas->user_id);        
-        $walas->delete();   
+        $user = User::Where('id', $walas->user_id);
+        $walas->delete();
         $user->delete();
 
-        return redirect('index-walas')->with('success','Seller Data Deleted Successfully');
+        return redirect('index-walas')->with('success', 'Seller Data Deleted Successfully');
     }
 
     public function destroyGuru($id)
     {
         $guru = Guru::findOrFail($id); // Mengambil data user berdasarkan ID
         $user = $guru->user; // Mengambil data profile yang terkait dengan user
-    
+
         // Hapus data profile terlebih dahulu
         $guru->delete();
-    
+
         // Hapus data user
         $user->delete();
 
         return redirect('index-guru')->with('success', 'Seller Data Deleted Successfully');
     }
-
-    
 }
-
-
-
-
-
-
-
-
-    
-
-   
-
-   
-
-
-
