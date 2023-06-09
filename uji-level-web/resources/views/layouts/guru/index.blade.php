@@ -75,16 +75,14 @@
                         <td>
                             <a href="" class="font-medium whitespace-nowrap">{{$item->jenis_kelamin}}</a> 
                         </td>
-                        <td class="table-report__action w-56">
-                            <div class="flex justify-center items-center">
+                        <td class="table-report__action w-56" style="display: flex; height: 50px;">
+                            <div class="btn btn-go" style="background-color: blue; height: 40px; margin-top: 5px;">
                                 <a class="flex items-center mr-3" href="guru/update/{{$item->id}}"> <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit </a>
-                               
-
                             </div>
                             <form action="/guru/destroy/{{$item->id}}" method="POST"  onsubmit="return confirm('mau hapus?')">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger " >Delete All</button>
+                                <button type="submit" class="btn btn-danger "  style="margin-left: 10px; margin-top: 5px;"  >Delete All</button>
                             </td>
                             </form>
                         </td>
@@ -94,6 +92,7 @@
                     </tr>
                 </tbody>
             </table>
+            {{ $guru->links() }}
         </div>
 
 
