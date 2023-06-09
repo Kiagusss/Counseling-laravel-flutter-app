@@ -54,6 +54,7 @@ Route::middleware(['role:admin'])->group(function () {
         Route::get('/siswa/update/{id}', [AdminController::class, 'editSiswa']);
         Route::patch('/siswa/update/{id}', [AdminController::class, 'updateSiswa']);
         Route::delete('/siswa/destroy/{id}', [AdminController::class, 'destroySiswa']);
+        Route::get('/siswa/search', [AdminController::class, 'searchSiswa']);
     });
     Route::name('guru.')->group(function () {
     // Rute-rute untuk siswadst
@@ -63,6 +64,7 @@ Route::middleware(['role:admin'])->group(function () {
     Route::get('/guru/update/{id}', [AdminController::class, 'editGuru']);
     Route::patch('/guru/update/{id}', [AdminController::class, 'updateGuru']);
     Route::delete('/guru/destroy/{id}', [AdminController::class, 'destroyGuru']);
+    Route::get('/guru/search', [AdminController::class, 'searchGuru']);
 });
 Route::name('walas.')->group(function () {
     // Rute-rute untuk siswadst
@@ -72,6 +74,7 @@ Route::name('walas.')->group(function () {
     Route::get('/walas/update/{id}', [AdminController::class, 'editWalas']);
     Route::patch('/walas/update/{id}', [AdminController::class, 'updateWalas']);
     Route::delete('/walas/destroy/{id}', [AdminController::class, 'destroyWalas']);
+    Route::get('/walas/search', [AdminController::class, 'searchWalas']);
 });
 Route::name('kelas.')->group(function () {
     // Rute-rute untuk siswadst
@@ -81,6 +84,7 @@ Route::name('kelas.')->group(function () {
     Route::get('/kelas/update/{id}', [KelasController::class, 'edit'])->name('kelas.edit');
     Route::put('/kelas/{id}', [KelasController::class, 'update'])->name('kelas.update');
     Route::delete('/kelas/destroy/{id}', [KelasController::class, 'destroy'])->name('kelas.destroy');
+    Route::get('/kelas/search', [AdminController::class, 'searchKelas']);
 });
 });
 

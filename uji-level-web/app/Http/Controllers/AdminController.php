@@ -130,6 +130,7 @@ class AdminController extends Controller
         return redirect('index-siswa')->with('success', 'Siswa berhasil Ditambahkan ');
     }
 
+
     public function storeGuru(Request $request)
     {
         $request->validate([
@@ -298,4 +299,71 @@ class AdminController extends Controller
 
         return redirect('index-guru')->with('success', 'Seller Data Deleted Successfully');
     }
+
+    //SEARCH
+
+    public function searchGuru(Request $request)
+{
+    $keyword = $request->input('keyword');
+
+    $guru = Guru::where('nama', 'LIKE', "%$keyword%")
+        ->orWhere('nipd', 'LIKE', "%$keyword%")
+        ->orWhere('jenis_kelamin', 'LIKE', "%$keyword%")
+        ->orWhere('ttl', 'LIKE', "%$keyword%")
+        ->orWhereHas('kelas', function ($query) use ($keyword) {
+            $query->where('nama', 'LIKE', "%$keyword%");
+        })
+        ->paginate(10);
+
+    return view('layouts.guru.index', compact('guru'));
+}
+
+
+public function searchWalas(Request $request)
+{
+    $keyword = $request->input('keyword');
+
+    $data = Walas::where('nama', 'LIKE', "%$keyword%")
+        ->orWhere('nipd', 'LIKE', "%$keyword%")
+        ->orWhere('jenis_kelamin', 'LIKE', "%$keyword%")
+        ->orWhere('ttl', 'LIKE', "%$keyword%")
+        ->orWhereHas('kelas', function ($query) use ($keyword) {
+            $query->where('nama', 'LIKE', "%$keyword%");
+        })
+        ->paginate(10);
+
+    return view('layouts.walas.index', compact('data'));
+}
+
+public function searchSiswa(Request $request)
+{
+    $keyword = $request->input('keyword');
+
+    $siswa = Siswa::where('nama', 'LIKE', "%$keyword%")
+        ->orWhere('nisn', 'LIKE', "%$keyword%")
+        ->orWhere('jenis_kelamin', 'LIKE', "%$keyword%")
+        ->orWhere('ttl', 'LIKE', "%$keyword%")
+        ->orWhereHas('kelas', function ($query) use ($keyword) {
+            $query->where('nama', 'LIKE', "%$keyword%");
+        })
+        ->paginate(10);
+
+    return view('layouts.siswa.index', compact('siswa'));
+}
+
+public function searchKelas(Request $request)
+{
+    $keyword = $request->input('keyword');
+
+    $kelas = Kelas::where('nama', 'LIKE', "%$keyword%")
+        ->orWhereHas('guru', function ($query) use ($keyword) {
+            $query->where('nama', 'LIKE', "%$keyword%");
+        })
+        ->orWhereHas('walas', function ($query) use ($keyword) {
+            $query->where('nama', 'LIKE', "%$keyword%");
+        })
+        ->paginate(10);
+
+    return view('layouts.kelas.index', compact('kelas'));
+}
 }
