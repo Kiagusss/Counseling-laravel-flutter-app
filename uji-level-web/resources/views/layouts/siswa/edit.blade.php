@@ -43,7 +43,7 @@
                             
                             <div class="mt-3">
                                 <label for="regular-form-1" class="form-label">Password</label>
-                                <input id="regular-form-1" type="text" name="password" class="form-control"
+                                <input id="regular-form-1" type="password" name="password" class="form-control"
                                     placeholder="Input text" value="{{$siswa->user->password}}">
                             </div>
                             

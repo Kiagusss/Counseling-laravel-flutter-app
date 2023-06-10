@@ -2,14 +2,14 @@
 
 
 @section('content')
-    
+
 <div class="content">
     <h2 class="intro-y text-lg font-medium mt-10">
         Data Walas
     </h2>
     <div class="grid grid-cols-12 gap-6 mt-5">
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
-            <a href="{{route('walas.create')}}"><button class="btn btn-primary shadow-md mr-2" >Add New Product</button>
+            <a href="{{route('walas.create')}}"><button class="btn btn-primary shadow-md mr-2">Add New Product</button>
             </a>
             <div class="dropdown">
                 <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
@@ -30,10 +30,13 @@
                 </div>
             </div>
             <div class="hidden md:block mx-auto text-slate-500">Showing 1 to 10 of 150 entries</div>
-            <div class="w-full sm:w-auto mt-3 sm:mt-0 sm:ml-auto md:ml-0">
+            <a href="{{route('walas.index')}}"><button class="dropdown-toggle btn px-2 box" style="margin-right: 7px;">Show All data</button></a>
+            <div class="w-full sm:w-auto mt-3 sm:mt-5 sm:ml-auto md:ml-0">
                 <div class="w-56 relative text-slate-500">
-                    <input type="text" class="form-control w-56 box pr-10" placeholder="Search...">
-                    <i class="w-4 h-4 absolute my-auto inset-y-0 mr-3 right-0" data-lucide="search"></i> 
+                    <form action="{{ url('walas/search')}}" method="GET">
+                        <input type="text" class="form-control w-56 box pr-10" placeholder="Search..." name="keyword">
+                        <button type="submit"> <i class="w-4 h-4 absolute my-auto inset-y-0 mr-3 right-0" data-lucide="search" style="position: absolute; top: -15px;"></i> </button>
+                        </form>
                 </div>
             </div>
         </div>
@@ -54,13 +57,13 @@
                     <tr class="intro-x">
                         @foreach ($data as $item)
                         <td>
-                            <a href="" class="font-medium whitespace-nowrap">{{$loop->iteration}}</a> 
+                            <a href="" class="font-medium whitespace-nowrap">{{$loop->iteration}}</a>
                         </td>
                         <td>
-                            <a href="" class="font-medium whitespace-nowrap">{{$item->nama}}</a> 
+                            <a href="" class="font-medium whitespace-nowrap">{{$item->nama}}</a>
                         </td>
                         <td>
-                            <a href="" class="font-medium whitespace-nowrap">{{$item->ttl}}</a> 
+                            <a href="" class="font-medium whitespace-nowrap">{{$item->ttl}}</a>
                         </td>
                         <td>
                             @foreach($item->kelass as $kelass)
@@ -69,27 +72,28 @@
                         </td>
 
                         <td>
-                            <a href="" class="font-medium whitespace-nowrap">{{$item->jenis_kelamin}}</a> 
+                            <a href="" class="font-medium whitespace-nowrap">{{$item->jenis_kelamin}}</a>
                         </td>
-                        
 
-                        <td class="table-report__action w-56">
-                            <div class="flex justify-center items-center">
-                                <a class="flex items-center mr-3" href="walas/update/{{$item->id}}"> <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit </a>
+
+                        <td style="display: flex; height: 50px;">
+                            <div>
+                                <a href="walas/update/{{$item->id}}"> <i data-lucide="check-square" class="w-4 h-4 mr-1" style="margin-top: 7px;"></i></a>
                             </div>
-                            <form action="/walas/destroy/{{$item->id}}" method="POST"  onsubmit="return confirm('mau hapus?')">
+                            <form action="/walas/destroy/{{$item->id}}" method="POST" onsubmit="return confirm('mau hapus?')">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger " >Delete All</button>
-                            </td>
-                            </form>
+                                <button type="submit"><i data-lucide="trash" class="w-4 h-4 mr-2" style="margin-top: 7px; margin-left: 5px;"></i></button>
+                        </td>
+                        </form>
                         </td>
                     </tr>
-                        @endforeach
-                        
+                    @endforeach
+
                     </tr>
                 </tbody>
             </table>
+            {{ $data->links() }}
         </div>
 
-@endsection
+        @endsection
