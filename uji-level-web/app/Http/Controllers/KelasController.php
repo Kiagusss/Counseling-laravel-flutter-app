@@ -12,7 +12,7 @@ class KelasController extends Controller
 {
     public function indexKelas()
     {
-        $kelas = Kelas::with('guru', 'walas', 'siswa')->get();
+        $kelas = Kelas::with('guru', 'walas', 'siswa')->paginate(10);
     
         return view('layouts.kelas.index', compact('kelas'));
     }

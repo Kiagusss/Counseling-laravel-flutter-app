@@ -42,7 +42,7 @@
                                 <!-- Tambahkan opsi lainnya jika diperlukan -->
                             </select>
                         </div>
-
+                        <textarea name="kesimpulan" id="" cols="30" rows="10" value="{{$peta->kesimpulan}}"></textarea>
                         <button type="submit" class="btn btn-primary">Update</button>
                     </form>
                 </div>
