@@ -3,7 +3,9 @@
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\GuruController;
 use App\Http\Controllers\KelasController;
+use App\Http\Controllers\LayananController;
 use App\Http\Controllers\WalasController;
 use App\Http\Controllers\PetaKerawananController;
 
@@ -45,6 +47,7 @@ Route::middleware([
         return view('pages.dashboard');
     })->name('dashboard');
     
+
 Route::middleware(['role:admin'])->group(function () {
     Route::name('siswa.')->group(function () {
         // Rute-rute untuk siswa
@@ -95,6 +98,23 @@ Route::middleware(['role:wali_kelas'])->group(function () {
     });
 });
 });
+
+Route::middleware(['role:guru_bk'])->group(function (){
+    Route::name('siswa-bk.')->group(function (){
+        Route::get('siswa-bk-{id}', [GuruController::class, 'index'])->name('index');
+    });
+});
+
+
+Route::middleware(['role:siswa'])->group(function () {
+    Route::name('layanan.')->group(function () {
+    Route::get('layanan-create', [LayananController::class, 'create'])->name('create');
+    Route::post('layanan-store', [LayananController::class, 'store'])->name('store');
+    });
+});
+
+
+
 Route::get('/nipd/{id}', 'WalasController@Nipd');
 
 

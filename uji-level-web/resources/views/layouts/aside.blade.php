@@ -84,7 +84,7 @@
                 </a>
                 <ul class="">
                     <li>
-                        <a href="{{route('siswa.index')}}" class="side-menu">
+                        <a href="/siswa-bk-{{Auth::user()->id}}" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
                             <div class="side-menu__title"> Data Siswa </div>
                         </a>

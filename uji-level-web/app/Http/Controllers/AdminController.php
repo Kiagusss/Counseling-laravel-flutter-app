@@ -93,7 +93,7 @@ class AdminController extends Controller
         ]);
 
 
-        return redirect('index-walas')->with('success', 'Siswa berhasil Ditambahkan ');
+        return redirect('index-walas')->with('success', 'Data berhasil Ditambahkan ');
     }
 
     public function storeSiswa(Request $request)
@@ -127,7 +127,7 @@ class AdminController extends Controller
             ]);
    
 
-    return redirect('index-siswa')->with('success', 'Siswa berhasil Ditambahkan ');
+    return redirect('index-siswa')->with('success', 'Data berhasil Ditambahkan ');
 }
 
 public function storeGuru(Request $request)
@@ -159,7 +159,7 @@ public function storeGuru(Request $request)
     ]);
 
 
-    return redirect('index-guru')->with('success', 'Guru berhasil Ditambahkan ');
+    return redirect('index-guru')->with('success', 'Data berhasil Ditambahkan ');
 }
 
 
@@ -236,7 +236,7 @@ public function storeGuru(Request $request)
         $user->password = $request->input('password');
         $user->save();
         
-        return redirect('index-guru');
+        return redirect('index-guru')->with('success', 'Data berhasil diubah');
     }
 
     public function updateWalas(Request $request, string $id)
@@ -256,7 +256,7 @@ public function storeGuru(Request $request)
             'password' => $request->password,
         ]);
 
-        return redirect('index-walas');
+        return redirect('index-walas')->with('sucess', 'Data berhasil diubah');
     }
 
 
@@ -272,7 +272,7 @@ public function storeGuru(Request $request)
         $siswa->delete();   
         $user->delete();
 
-        return redirect('index-siswa')->with('success','Seller Data Deleted Successfully');
+        return redirect('index-siswa')->with('success','Data berhasil dihapus');
     }
 
     public function destroyWalas($id)
@@ -282,7 +282,7 @@ public function storeGuru(Request $request)
         $walas->delete();   
         $user->delete();
 
-        return redirect('index-walas')->with('success','Seller Data Deleted Successfully');
+        return redirect('index-walas')->with('success','Data berhasil dihapus');
     }
 
     public function destroyGuru($id)
@@ -296,7 +296,7 @@ public function storeGuru(Request $request)
         // Hapus data user
         $user->delete();
 
-        return redirect('index-guru')->with('success', 'Seller Data Deleted Successfully');
+        return redirect('index-guru')->with('success','Data berhasil dihapus');
     }
 
     
