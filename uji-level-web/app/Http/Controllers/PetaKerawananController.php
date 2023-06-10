@@ -55,7 +55,7 @@ class PetaKerawananController extends Controller
     $petaKerawanan = PetaKerawanan::findOrFail($id);
     $siswa = $walas->kelas->siswa;
 
-    return view('peta_kerawanan.edit', compact('walas', 'siswa', 'petaKerawanan'));
+    return view('peta_kerawanan.edit', compact('walas', 'siswa', 'petaKerawanan','peta'));
 }
 
 

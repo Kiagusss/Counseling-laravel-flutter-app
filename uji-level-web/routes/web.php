@@ -93,7 +93,7 @@ Route::name('kelas.')->group(function () {
 });
 });
 
-Route::middleware(['role:guru_bk'])->group(function () {
+Route::middleware(['role:wali_kelas'])->group(function () {
     Route::name('peta.')->group(function () {
     Route::get('peta_kerawanan.create', [PetaKerawananController::class, 'creates'])->name('create');
     Route::get('peta-kerawanan', [PetaKerawananController::class, 'index'])->name('peta-kerawanan.index');
