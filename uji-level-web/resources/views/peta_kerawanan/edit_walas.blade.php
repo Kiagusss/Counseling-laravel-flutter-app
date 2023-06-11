@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    <form action="{{ route('peta.peta-kerawanan.update', $petaKerawanan->id) }}" method="POST">
+                    <form action="{{ route('peta-kerawanan.update', $petaKerawanan->id) }}" method="POST">
                         @csrf
                         @method('PUT')
 
@@ -26,25 +26,33 @@
 
                         <div class="form-group">
                             <label for="siswa_id">Siswa</label>
-                            <select name="siswa_id" id="siswa_id" class="form-control">
+                            <select name="siswa_id" id="siswa_id" class="tom-select form-control">
                                 @foreach ($siswa as $item)
-                                    <option value="{{ $item->id }}" @if ($item->id === $petaKerawanan->siswa_id) selected @endif>{{ $item->nama }}</option>
+                                    <option value="{{ $item->id }}" @if ($item->id == $petaKerawanan->siswa_id) selected @endif>{{ $item->nama }}</option>
                                 @endforeach
                             </select>
                         </div>
 
                         <div class="form-group">
                             <label for="jenis_kerawanan">Jenis Kerawanan</label>
-                            <select name="jenis_kerawanan[]" id="jenis_kerawanan" class="form-control" multiple>
-                                <option value="Kerawanan 1" @if (in_array('Kerawanan 1', explode(',', $petaKerawanan->jenis_kerawanan))) selected @endif>Kerawanan 1</option>
-                                <option value="Kerawanan 2" @if (in_array('Kerawanan 2', explode(',', $petaKerawanan->jenis_kerawanan))) selected @endif>Kerawanan 2</option>
-                                <option value="Kerawanan 3" @if (in_array('Kerawanan 3', explode(',', $petaKerawanan->jenis_kerawanan))) selected @endif>Kerawanan 3</option>
-                                <!-- Tambahkan opsi lainnya jika diperlukan -->
+                            <select class="tom-select" name="jenis_kerawanan[]" {{ in_array($jenisKerawanan, explode(',', $petaKerawanan->jenis_kerawanan)) ? 'selected' : '' }} data-toggle="select2" multiple>
+                                @foreach ($jenisKerawanan as $jenis)
+                                    <option value="{{ $jenis }}" {{ in_array($jenis, explode(',', $petaKerawanan->jenis_kerawanan)) ? 'selected' : '' }}>
+                                        {{ $jenis }}
+                                    </option>
+                                @endforeach
                             </select>
                         </div>
-                        <textarea name="kesimpulan" id="" cols="30" rows="10" value="{{$peta->kesimpulan}}"></textarea>
+
+                        <div class="mt-2">
+                            <label class="form-label" for="validationCustom02">Kesimpulan</label>  
+                            <textarea name="kesimpulan" required  class="form-control" id="man" rows="5">{{$petaKerawanan->kesimpulan}}</textarea>
+                        </div>
+
                         <button type="submit" class="btn btn-primary">Update</button>
                     </form>
+
+                    
                 </div>
             </div>
         </div>

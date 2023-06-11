@@ -88,5 +88,9 @@
             </table>
             {{ $kelas->links() }}
         </div>
+
+        @if (Session::has('success'))
+        toastr.success('Have fun storming the castle!', 'Miracle Max Says')
+      @endif
 @endsection
 
