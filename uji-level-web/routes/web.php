@@ -4,6 +4,7 @@ use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\KelasController;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\WalasController;
 use App\Http\Controllers\PetaKerawananController;
 
@@ -55,6 +56,7 @@ Route::middleware(['role:admin'])->group(function () {
         Route::patch('/siswa/update/{id}', [AdminController::class, 'updateSiswa']);
         Route::delete('/siswa/destroy/{id}', [AdminController::class, 'destroySiswa']);
         Route::get('/siswa/search', [AdminController::class, 'searchSiswa']);
+        Route::get('/siswa/export', [AdminController::class, 'exportSiswa']);
     });
     Route::name('guru.')->group(function () {
     // Rute-rute untuk siswadst
@@ -65,6 +67,7 @@ Route::middleware(['role:admin'])->group(function () {
     Route::patch('/guru/update/{id}', [AdminController::class, 'updateGuru']);
     Route::delete('/guru/destroy/{id}', [AdminController::class, 'destroyGuru']);
     Route::get('/guru/search', [AdminController::class, 'searchGuru']);
+    Route::get('/guru/export', [AdminController::class, 'exportGuru']);
 });
 Route::name('walas.')->group(function () {
     // Rute-rute untuk siswadst
@@ -75,6 +78,7 @@ Route::name('walas.')->group(function () {
     Route::patch('/walas/update/{id}', [AdminController::class, 'updateWalas']);
     Route::delete('/walas/destroy/{id}', [AdminController::class, 'destroyWalas']);
     Route::get('/walas/search', [AdminController::class, 'searchWalas']);
+    Route::get('/walas/export', [AdminController::class, 'exportWalas']);
 });
 Route::name('kelas.')->group(function () {
     // Rute-rute untuk siswadst
@@ -85,6 +89,7 @@ Route::name('kelas.')->group(function () {
     Route::put('/kelas/{id}', [KelasController::class, 'update'])->name('kelas.update');
     Route::delete('/kelas/destroy/{id}', [KelasController::class, 'destroy'])->name('kelas.destroy');
     Route::get('/kelas/search', [AdminController::class, 'searchKelas']);
+    Route::get('/kelas/export', [AdminController::class, 'exportKelas']);
 });
 });
 
@@ -109,6 +114,7 @@ Route::middleware(['role:guru_bk'])->group(function () {
     Route::put('/guru/kerawanan/update/{id}', [PetaKerawananController::class,'kerawanan_guru_update']);
     Route::delete('/guru/kerawanan/delete/{id}', [PetaKerawananController::class, 'kerawanan_delete_guru']);
 });
+
 
 
 
