@@ -4,7 +4,9 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
+
     "content-hash": "ed38e42555a14e8234222856bef92607",
+
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -2348,6 +2350,7 @@
             "time": "2023-03-03T20:12:38+00:00"
         },
         {
+
             "name": "maatwebsite/excel",
             "version": "3.1.48",
             "source": {
@@ -2372,21 +2375,26 @@
             "require-dev": {
                 "orchestra/testbench": "^6.0|^7.0|^8.0",
                 "predis/predis": "^1.1"
+
             },
             "type": "library",
             "extra": {
                 "laravel": {
                     "providers": [
+
                         "Maatwebsite\\Excel\\ExcelServiceProvider"
                     ],
                     "aliases": {
                         "Excel": "Maatwebsite\\Excel\\Facades\\Excel"
+
                     }
                 }
             },
             "autoload": {
+
                 "psr-4": {
                     "Maatwebsite\\Excel\\": "src/"
+
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -2395,6 +2403,7 @@
             ],
             "authors": [
                 {
+
                     "name": "Patrick Brouwers",
                     "email": "patrick@spartner.nl"
                 }
@@ -2611,6 +2620,29 @@
                 "source": "https://github.com/MarkBaker/PHPMatrix/tree/3.0.1"
             },
             "time": "2022-12-02T22:17:43+00:00"
+=======
+                    "name": "Arthur Monney",
+                    "email": "monneylobe@gmail.com"
+                }
+            ],
+            "description": "Flexible flash notifications for Laravel",
+            "keywords": [
+                "laravel",
+                "laravel-notify",
+                "notification"
+            ],
+            "support": {
+                "issues": "https://github.com/mckenziearts/laravel-notify/issues",
+                "source": "https://github.com/mckenziearts/laravel-notify"
+            },
+            "funding": [
+                {
+                    "url": "https://paypal.me/jvquilichini?locale.x=fr_FR",
+                    "type": "custom"
+                }
+            ],
+            "time": "2023-03-28T05:01:47+00:00"
+
         },
         {
             "name": "mobiledetect/mobiledetectlib",

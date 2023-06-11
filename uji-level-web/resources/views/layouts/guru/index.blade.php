@@ -102,5 +102,7 @@
             {{ $guru->links() }}
         </div>
 
-
+        @if (Session::has('success'))
+        toastr.success('Data Has Been Succesfully Created')
+      @endif
 @endsection

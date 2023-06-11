@@ -94,18 +94,27 @@ Route::name('kelas.')->group(function () {
 });
 
 Route::middleware(['role:wali_kelas'])->group(function () {
-    Route::name('peta.')->group(function () {
-    Route::get('peta_kerawanan.create', [PetaKerawananController::class, 'creates'])->name('create');
-    Route::get('peta-kerawanan', [PetaKerawananController::class, 'index'])->name('peta-kerawanan.index');
-    Route::post('peta-kerawanan', [PetaKerawananController::class, 'store'])->name('peta-kerawanan.store');
-    Route::get('peta-kerawanan/{id}/edit', [PetaKerawananController::class, 'edit'])->name('peta-kerawanan.edit');
-    Route::put('peta-kerawanan/{id}', [PetaKerawananController::class, 'update'])->name('peta-kerawanan.update');
-    Route::delete('peta-kerawanan/{id}', [PetaKerawananController::class, 'destroy'])->name('peta-kerawanan.destroy');
+    
+    Route::get('/walas/kerawanan/edit/{id}', [PetaKerawananController::class,'kerawanan_walas_edit']);
+    Route::post('/walas/kerawanan/store', [PetaKerawananController::class,'kerawanan_walas_store'])->name('peta-kerawanan.store');
+    Route::get('/walas/kerawanan/create/', [PetaKerawananController::class,'kerawanan_walas_create'])->name('peta-kerawanan.add');
+    Route::get('/walas/kerawanan/index', [PetaKerawananController::class,'kerawanan_walas_index'])->name('peta-kerawanan.index');
+    Route::put('/walas/kerawanan/update/{id}', [PetaKerawananController::class,'kerawanan_walas_update'])->name('peta-kerawanan.update');
+    Route::delete('/walas/kerawanan/delete/{id}', [PetaKerawananController::class, 'kerawanan_delete_walas']);
     });
 });
+
+
+Route::middleware(['role:guru_bk'])->group(function () {
+    Route::get('/guru/kerawanan/edit/{id}', [PetaKerawananController::class,'kerawanan_guru_edit']);
+    Route::post('/guru/kerawanan/store', [PetaKerawananController::class,'kerawanan_guru_store'])->name('peta-kerawanans.store');
+    Route::get('/guru/kerawanan/create/{id}', [PetaKerawananController::class,'kerawanan_guru_create'])->name('peta-kerawanans.add');
+    Route::get('/guru/kerawanan/index', [PetaKerawananController::class,'kerawanan_guru_index'])->name('peta-kerawanans.index');
+    Route::get('/guru/kerawanan/indexs', [PetaKerawananController::class,'kerawanan_guru_index_kelas'])->name('peta-kerawanans.kelas');
+    Route::put('/guru/kerawanan/update/{id}', [PetaKerawananController::class,'kerawanan_guru_update']);
+    Route::delete('/guru/kerawanan/delete/{id}', [PetaKerawananController::class, 'kerawanan_delete_guru']);
 });
 
-Route::get('/nipd/{id}', 'WalasController@Nipd');
 
 
 
