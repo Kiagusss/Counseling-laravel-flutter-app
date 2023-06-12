@@ -95,5 +95,7 @@
             </table>
             {{ $data->links() }}
         </div>
-
+        @if (Session::has('success'))
+      toastr()->success('Data has been saved successfully!');
+      @endif
         @endsection

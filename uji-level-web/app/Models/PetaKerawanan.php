@@ -25,4 +25,6 @@ class PetaKerawanan extends Model
     {
         return $this->belongsTo(Walas::class);
     }
+
+
 }
