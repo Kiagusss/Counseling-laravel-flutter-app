@@ -106,7 +106,7 @@ public function kerawanan_guru_create($id)
 }
 
 public function kerawanan_guru_edit($id){
-    $guru = Auth::user()->guru;
+    $wakel = Auth::user()->guru;
     $petaKerawanan = PetaKerawanan::findOrFail($id);
     $siswa = Siswa::where('kelas_id', $petaKerawanan->siswa->kelas_id)->get();
     $jenisKerawanan = [

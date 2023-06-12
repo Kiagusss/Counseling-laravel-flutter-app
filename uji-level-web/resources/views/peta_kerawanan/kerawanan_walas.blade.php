@@ -2,8 +2,13 @@
 
 @section('content')
 
-<div class="container-fluid">
-                        
+<div class="content">
+    @if ($message = Session::get('success'))
+
+<div class="alert alert-success">
+    <p>{{$message}}</p>
+</div>
+@endif
     <!-- start page title -->
     <div class="row">
         <div class="col-12">
