@@ -61,8 +61,8 @@
                             </div>
 
                             <div class="form-group col-md-12">
-                                <label>kelas id</label>
-                                <select name="user_id" class="form-control default-select" id="maapel">
+                                <label>kelas</label>
+                                <select name="user_id" class="tom-select" id="maapel">
                                     <option value="{{ $siswa->kelasid->id }}" selected>{{ $siswa->kelasid->nama }}
                                         @foreach ($kelasid as $item)
                                     <option value="{{ $item->id }}">{{ $item->nama }}</option>

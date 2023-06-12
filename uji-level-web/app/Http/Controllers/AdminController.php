@@ -226,7 +226,7 @@ class AdminController extends Controller
         ]);
 
         $datasiswa->update();
-        return redirect('index-siswa');
+        return redirect('index-siswa')->with('success', 'Update Siswa Berhasil ');
     }
 
     public function updateGuru(Request $request, string $id)
@@ -245,7 +245,7 @@ class AdminController extends Controller
         $user->password = $request->input('password');
         $user->save();
 
-        return redirect('index-guru');
+        return redirect('index-guru')->with('success', 'Update Guru Berhasil ');
     }
 
     public function updateWalas(Request $request, string $id)
@@ -265,7 +265,7 @@ class AdminController extends Controller
             'password' => $request->password,
         ]);
 
-        return redirect('index-walas');
+        return redirect('index-walas')->with('success', 'Update Wali Kelas Berhasil ');
     }
 
 
