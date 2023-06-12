@@ -10,6 +10,13 @@ use App\Models\Siswa;
 use App\Models\Walas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\SiswaExport;
+use App\Exports\GuruExport;
+use App\Exports\WalasExport;
+use App\Exports\KelasExport;
+
+
 
 class AdminController extends Controller
 {
@@ -29,7 +36,7 @@ class AdminController extends Controller
         return view('layouts.guru.index', ['guru' => $guru]);
     }
 
-    
+
     public function indexWalas()
     {
         $walas = Walas::with('kelas')->paginate(10);
@@ -303,67 +310,89 @@ class AdminController extends Controller
     //SEARCH
 
     public function searchGuru(Request $request)
-{
-    $keyword = $request->input('keyword');
+    {
+        $keyword = $request->input('keyword');
 
-    $guru = Guru::where('nama', 'LIKE', "%$keyword%")
-        ->orWhere('nipd', 'LIKE', "%$keyword%")
-        ->orWhere('jenis_kelamin', 'LIKE', "%$keyword%")
-        ->orWhere('ttl', 'LIKE', "%$keyword%")
-        ->orWhereHas('kelas', function ($query) use ($keyword) {
-            $query->where('nama', 'LIKE', "%$keyword%");
-        })
-        ->paginate(10);
+        $guru = Guru::where('nama', 'LIKE', "%$keyword%")
+            ->orWhere('nipd', 'LIKE', "%$keyword%")
+            ->orWhere('jenis_kelamin', 'LIKE', "%$keyword%")
+            ->orWhere('ttl', 'LIKE', "%$keyword%")
+            ->orWhereHas('kelas', function ($query) use ($keyword) {
+                $query->where('nama', 'LIKE', "%$keyword%");
+            })
+            ->paginate(10);
 
-    return view('layouts.guru.index', compact('guru'));
-}
+        return view('layouts.guru.index', compact('guru'));
+    }
 
 
-public function searchWalas(Request $request)
-{
-    $keyword = $request->input('keyword');
+    public function searchWalas(Request $request)
+    {
+        $keyword = $request->input('keyword');
 
-    $data = Walas::where('nama', 'LIKE', "%$keyword%")
-        ->orWhere('nipd', 'LIKE', "%$keyword%")
-        ->orWhere('jenis_kelamin', 'LIKE', "%$keyword%")
-        ->orWhere('ttl', 'LIKE', "%$keyword%")
-        ->orWhereHas('kelas', function ($query) use ($keyword) {
-            $query->where('nama', 'LIKE', "%$keyword%");
-        })
-        ->paginate(10);
+        $data = Walas::where('nama', 'LIKE', "%$keyword%")
+            ->orWhere('nipd', 'LIKE', "%$keyword%")
+            ->orWhere('jenis_kelamin', 'LIKE', "%$keyword%")
+            ->orWhere('ttl', 'LIKE', "%$keyword%")
+            ->orWhereHas('kelas', function ($query) use ($keyword) {
+                $query->where('nama', 'LIKE', "%$keyword%");
+            })
+            ->paginate(10);
 
-    return view('layouts.walas.index', compact('data'));
-}
+        return view('layouts.walas.index', compact('data'));
+    }
 
-public function searchSiswa(Request $request)
-{
-    $keyword = $request->input('keyword');
+    public function searchSiswa(Request $request)
+    {
+        $keyword = $request->input('keyword');
 
-    $siswa = Siswa::where('nama', 'LIKE', "%$keyword%")
-        ->orWhere('nisn', 'LIKE', "%$keyword%")
-        ->orWhere('jenis_kelamin', 'LIKE', "%$keyword%")
-        ->orWhere('ttl', 'LIKE', "%$keyword%")
-        ->orWhereHas('kelas', function ($query) use ($keyword) {
-            $query->where('nama', 'LIKE', "%$keyword%");
-        })
-        ->paginate(10);
+        $siswa = Siswa::where('nama', 'LIKE', "%$keyword%")
+            ->orWhere('nisn', 'LIKE', "%$keyword%")
+            ->orWhere('jenis_kelamin', 'LIKE', "%$keyword%")
+            ->orWhere('ttl', 'LIKE', "%$keyword%")
+            ->orWhereHas('kelas', function ($query) use ($keyword) {
+                $query->where('nama', 'LIKE', "%$keyword%");
+            })
+            ->paginate(10);
 
-    return view('layouts.siswa.index', compact('siswa'));
-}
+        return view('layouts.siswa.index', compact('siswa'));
+    }
 
-public function searchKelas(Request $request)
-{
-    $keyword = $request->input('keyword');
+    public function searchKelas(Request $request)
+    {
+        $keyword = $request->input('keyword');
 
-    $kelas = Kelas::where('nama', 'LIKE', "%$keyword%")
-        ->orWhereHas('guru', function ($query) use ($keyword) {
-            $query->where('nama', 'LIKE', "%$keyword%");
-        })
-        ->orWhereHas('walas', function ($query) use ($keyword) {
-            $query->where('nama', 'LIKE', "%$keyword%");
-        })
-        ->paginate(10);
+        $kelas = Kelas::where('nama', 'LIKE', "%$keyword%")
+            ->orWhereHas('guru', function ($query) use ($keyword) {
+                $query->where('nama', 'LIKE', "%$keyword%");
+            })
+            ->orWhereHas('walas', function ($query) use ($keyword) {
+                $query->where('nama', 'LIKE', "%$keyword%");
+            })
+            ->paginate(10);
 
-    return view('layouts.kelas.index', compact('kelas'));
-}
+        return view('layouts.kelas.index', compact('kelas'));
+    }
+
+    //Export Excel
+
+    public function exportSiswa()
+    {
+        return Excel::download(new SiswaExport, 'siswa.xlsx');
+    }
+
+    public function exportGuru()
+    {
+        return Excel::download(new GuruExport, 'guru.xlsx');
+    }
+
+    public function exportWalas()
+    {
+        return Excel::download(new WalasExport, 'walas.xlsx');
+    }
+
+    public function exportKelas()
+    {
+        return Excel::download(new KelasExport, 'kelas.xlsx');
+    }
 }
