@@ -3,6 +3,7 @@
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\KelasController;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\WalasController;
