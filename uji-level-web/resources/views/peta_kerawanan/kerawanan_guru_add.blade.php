@@ -53,7 +53,7 @@
                             </div>
 
                             <div class="mt-3">
-                                <label for="regular-form-1" class="form-label">Siswa</label>
+                                <label for="regular-form-1" class="form-label">Jenis Kerawanan</label>
                                 <select class="tom-select mb-3" name="jenis_kerawanan[]" data-toggle="select2" multiple="multiple" required data-placeholder="Choose ...">
                                     @foreach ($jenisKerawanan as $jenis)
                                     <option value="{{$jenis}}">{{$jenis}}</option>

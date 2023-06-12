@@ -5,7 +5,7 @@
 <div class="content">
                         
     <!-- start page title -->
-    <div class="row">
+    <!-- <div class="row">
         <div class="col-12">
             <div class="page-title-box">
                 <div class="page-title-right">
@@ -17,7 +17,7 @@
                 </div>
             </div>
         </div>
-    </div>     
+    </div>      -->
     <!-- end page title --> 
     <div class="card">
         <div class="card-body">

@@ -32,20 +32,20 @@
             <table class="table table-hover table-centered mb-0">
                 <thead>
                     <tr>
-                        <th>No</th>
-                        <th>Siswa</th>
-                        <th>Kerawanan</th>
-                        <th>Kesimpulan</th>
-                        <th>Action</th>
+                        <th style="text-align: center;">No</th>
+                        <th style="text-align: center;">Siswa</th>
+                        <th style="text-align: center;">Kerawanan</th>
+                        <th style="text-align: center;">Kesimpulan</th>
+                        <th style="text-align: center;">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($peta as $item)
                     <tr>
-                        <td>{{$loop->iteration}}</td>
-                        <td>{{$item->siswa->nama}}</td>
-                        <td style="width: 20rem;">{{$item->jenis_kerawanan}}</td>
-                        <td style="width: 25rem;">{{$item->kesimpulan}}</td>
+                        <td style="text-align: center;">{{$loop->iteration}}</td>
+                        <td style="text-align: center;">{{$item->siswa->nama}}</td>
+                        <td style="width: 20rem;text-align: center;">{{$item->jenis_kerawanan}}</td>
+                        <td style="width: 25rem;text-align: center;">{{$item->kesimpulan}}</td>
                         <td>
                             <div style="display: flex;">
                             <a href="/walas/kerawanan/edit/{{$item->id}}" ><i data-lucide="check-square" class="w-4 h-4 mr-1" ></i></a>
