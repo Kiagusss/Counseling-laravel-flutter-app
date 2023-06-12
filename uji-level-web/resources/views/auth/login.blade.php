@@ -96,6 +96,15 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    @if($errors->any())
+                    <div class="mt-2 alert alert-danger">
+                        <ul class="mb-0">
+                            @foreach($errors->all() as $error)
+                            <li>{{$error}}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                         <form method="POST" action="{{ route('login') }}" >
                             @csrf
                             <div class="intro-x mt-2 text-slate-400 xl:hidden text-center">A few more clicks to sign in to your account. Manage all your e-commerce accounts in one place</div>

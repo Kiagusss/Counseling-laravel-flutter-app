@@ -9,6 +9,15 @@
             Regular Form
         </h2>
     </div>
+    @if($errors->any())
+    <div class="mt-2 alert alert-danger">
+        <ul class="mb-0">
+            @foreach($errors->all() as $error)
+            <li>{{$error}}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
     <div class="grid  gap-6 mt-5">
         <div class="intro-y col-span-12 lg:col-span-6">
             <!-- BEGIN: Input -->

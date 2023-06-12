@@ -13,7 +13,15 @@
                             {{ session('success') }}
                         </div>
                     @endif
-
+                    @if($errors->any())
+                    <div class="mt-2 alert alert-danger">
+                        <ul class="mb-0">
+                            @foreach($errors->all() as $error)
+                            <li>{{$error}}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                     <form action="{{ route('peta-kerawanan.update', $petaKerawanan->id) }}" method="POST">
                         @csrf
                         @method('PUT')
@@ -26,7 +34,7 @@
 
                         <div class="form-group">
                             <label for="siswa_id">Siswa</label>
-                            <select name="siswa_id" id="siswa_id" class="tom-select form-control">
+                            <select name="siswa_id" id="siswa_id" class="tom-select form-control" required>
                                 @foreach ($siswa as $item)
                                     <option value="{{ $item->id }}" @if ($item->id == $petaKerawanan->siswa_id) selected @endif>{{ $item->nama }}</option>
                                 @endforeach
@@ -35,7 +43,7 @@
 
                         <div class="form-group">
                             <label for="jenis_kerawanan">Jenis Kerawanan</label>
-                            <select class="tom-select" name="jenis_kerawanan[]" {{ in_array($jenisKerawanan, explode(',', $petaKerawanan->jenis_kerawanan)) ? 'selected' : '' }} data-toggle="select2" multiple>
+                            <select class="tom-select" name="jenis_kerawanan[]" {{ in_array($jenisKerawanan, explode(',', $petaKerawanan->jenis_kerawanan)) ? 'selected' : '' }} data-toggle="select2" multiple required>
                                 @foreach ($jenisKerawanan as $jenis)
                                     <option value="{{ $jenis }}" {{ in_array($jenis, explode(',', $petaKerawanan->jenis_kerawanan)) ? 'selected' : '' }}>
                                         {{ $jenis }}

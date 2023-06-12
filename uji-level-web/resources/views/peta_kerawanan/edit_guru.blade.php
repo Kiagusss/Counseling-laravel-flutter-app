@@ -38,7 +38,7 @@
 
             <div class="form-group">
                 <label for="jenis_kerawanan">Jenis Kerawanan</label>
-                <select class="tom-select mt-3" name="jenis_kerawanan[]" {{ in_array($jenisKerawanan, explode(',', $petaKerawanan->jenis_kerawanan)) ? 'selected' : '' }} data-toggle="select2" multiple>
+                <select class="tom-select mt-3" name="jenis_kerawanan[]" {{ in_array($jenisKerawanan, explode(',', $petaKerawanan->jenis_kerawanan)) ? 'selected' : '' }} data-toggle="select2" multiple required>
                     @foreach ($jenisKerawanan as $jenis)
                         <option value="{{ $jenis }}" {{ in_array($jenis, explode(',', $petaKerawanan->jenis_kerawanan)) ? 'selected' : '' }}>
                             {{ $jenis }}

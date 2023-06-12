@@ -62,11 +62,20 @@
                         <td>
                             <a href="" class="font-medium whitespace-nowrap">{{$item->nama}}</a> 
                         </td>
+                       <td>
+                        @if($item->walas)
+                        <a href="" class="font-medium whitespace-nowrap">{{$item->walas->nama}}</a>
+                        @else
+                        Tidak ada Walas di Kelas ini
+                        @endif
+                       </td>
                         <td>
-                            <a href="" class="font-medium whitespace-nowrap">{{$item->walas->nama}}</a> 
-                        </td>
-                        <td>
+                            @if($item->guru)
                             <a href="" class="font-medium whitespace-nowrap">{{$item->guru->nama}}</a> 
+                            @else
+                            Tidak ada Guru di Kelas ini
+                            @endif
+                 
                         </td>
                         </td>   
                         <td  style="display: flex; height: 50px;">
