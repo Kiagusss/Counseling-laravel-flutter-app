@@ -15,7 +15,7 @@ class GuruController extends Controller
         $guru = Auth::user()->id;
         $kelas = Kelas::where('guru_id', $guru)->first();
         $kelasid = $kelas->id;
-        $siswa = Siswa::where('kelas_id', $kelasid)->get();
+        $siswa = Siswa::where('kelas_id', $kelasid)->with('kelasid')->paginate(10);
 
         // return dd($siswa);
         return view('layouts.siswa.index', compact('siswa'));

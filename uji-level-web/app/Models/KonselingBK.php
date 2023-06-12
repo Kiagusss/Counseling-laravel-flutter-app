@@ -14,6 +14,7 @@ class KonselingBK extends Model
         'guru_id',
         'siswa_id',
         'walas_id',
+        'judul',
         'alasan',
         'status',
         'jadwal_konseling',

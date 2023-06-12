@@ -28,6 +28,8 @@
                     <option value="{{$item->id}}">{{$item->jenis_layanan}}</option>
                 @endforeach
             </select>
+            <label for="judul">Judul</label>
+            <input type="text" name="judul">
             <label for="alasan">Alasan</label>
             <input name="alasan" type="text" style="height: 300px">
 

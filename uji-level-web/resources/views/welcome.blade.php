@@ -27,8 +27,7 @@
                         
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
-                        </form>
-                        
+                        </form>              
                     </li>                   
                      @else
                         <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log in</a>
@@ -38,8 +37,12 @@
                         @endif
                     @endauth
                     @endif
+                    <div>
+                        <a href="{{route('layanan.create')}}"><button>Appointment</button></a>
+                        <a href="{{route('layanan.archive')}}"><button>Archive</button></a>
+                        <a href="#">Jadwal</a>
+                    </div>
 
-                    <a href="{{route('layanan.create')}}"><button>Appointment</button></a>
                 </div>
 
                 

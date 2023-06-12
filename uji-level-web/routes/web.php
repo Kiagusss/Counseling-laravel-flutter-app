@@ -106,6 +106,16 @@ Route::middleware(['role:wali_kelas'])->group(function () {
 Route::middleware(['role:guru_bk'])->group(function (){
     Route::name('siswa-bk.')->group(function (){
         Route::get('siswa-bk-{id}', [GuruController::class, 'index'])->name('index');
+        Route::get('layanan-bk-pending-{id}', [LayananController::class, 'indexpending'])->name('layanan.pending');
+        Route::get('layanan-bk-approved-{id}', [LayananController::class, 'indexapproved'])->name('layanan.Approved');
+        Route::get('layanan-bk-rescheduled-{id}', [LayananController::class, 'indexrescheduled'])->name('layanan.Rescheduled');
+        Route::get('layanan-bk-canceled-{id}', [LayananController::class, 'indexrescheduled'])->name('layanan.canceled');
+        Route::get('layanan-bk-show-{id}', [LayananController::class, 'show'])->name('show');
+        Route::get('layanan-bk-reschedule-{id}', [LayananController::class, 'reschedulepage'])->name('reschedule');
+        Route::patch('layanan-bk-reschedule-{id}', [LayananController::class, 'reschedule'])->name('reschedule');
+        Route::patch('layanan-bk-cancel-{id}', [LayananController::class, 'cancel'])->name('cancel');
+
+
     });
 });
 
@@ -114,6 +124,7 @@ Route::middleware(['role:siswa'])->group(function () {
     Route::name('layanan.')->group(function () {
     Route::get('layanan-create', [LayananController::class, 'create'])->name('create');
     Route::post('layanan-store', [LayananController::class, 'store'])->name('store');
+    Route::get('layanan-archive', [LayananController::class, 'archive'])->name('archive');
     });
 });
 
