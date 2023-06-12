@@ -10,6 +10,13 @@ use App\Models\Siswa;
 use App\Models\Walas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\SiswaExport;
+use App\Exports\GuruExport;
+use App\Exports\WalasExport;
+use App\Exports\KelasExport;
+
+
 
 class AdminController extends Controller
 {
@@ -29,7 +36,7 @@ class AdminController extends Controller
         return view('layouts.guru.index', ['guru' => $guru]);
     }
 
-    
+
     public function indexWalas()
     {
         $walas = Walas::with('kelas')->paginate(10);
@@ -273,17 +280,17 @@ class AdminController extends Controller
     //SEARCH
 
     public function searchGuru(Request $request)
-{
-    $keyword = $request->input('keyword');
+    {
+        $keyword = $request->input('keyword');
 
-    $guru = Guru::where('nama', 'LIKE', "%$keyword%")
-        ->orWhere('nipd', 'LIKE', "%$keyword%")
-        ->orWhere('jenis_kelamin', 'LIKE', "%$keyword%")
-        ->orWhere('ttl', 'LIKE', "%$keyword%")
-        ->orWhereHas('kelas', function ($query) use ($keyword) {
-            $query->where('nama', 'LIKE', "%$keyword%");
-        })
-        ->paginate(10);
+        $guru = Guru::where('nama', 'LIKE', "%$keyword%")
+            ->orWhere('nipd', 'LIKE', "%$keyword%")
+            ->orWhere('jenis_kelamin', 'LIKE', "%$keyword%")
+            ->orWhere('ttl', 'LIKE', "%$keyword%")
+            ->orWhereHas('kelas', function ($query) use ($keyword) {
+                $query->where('nama', 'LIKE', "%$keyword%");
+            })
+            ->paginate(10);
 
     return view('layouts.guru.index', compact('guru'));
 }

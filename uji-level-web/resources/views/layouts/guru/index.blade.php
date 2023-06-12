@@ -21,7 +21,7 @@
                             <a href="" class="dropdown-item"> <i data-lucide="printer" class="w-4 h-4 mr-2"></i> Print </a>
                         </li>
                         <li>
-                            <a href="" class="dropdown-item"> <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Export to Excel </a>
+                            <a href="/guru/export" class="dropdown-item"> <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Export to Excel </a>
                         </li>
                         <li>
                             <a href="" class="dropdown-item"> <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Export to PDF </a>
@@ -102,5 +102,7 @@
             {{ $guru->links() }}
         </div>
 
-
+        @if (Session::has('success'))
+        toastr.success('Data Has Been Succesfully Created')
+      @endif
 @endsection

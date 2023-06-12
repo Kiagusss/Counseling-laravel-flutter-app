@@ -38,6 +38,7 @@ public function storeKelas(Request $request)
         'guru_id' => $request->guru_id,
         'walas_id' => $request->walas_id,
     ]);
+   
     return redirect('index-kelas')->with('success', 'Kelas berhasil ditambahkan.');
 }
 
