@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="container-fluid">
+<div class="content">
                         
     <!-- start page title -->
     <div class="row">
@@ -10,12 +10,11 @@
             <div class="page-title-box">
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
-                        <li class="breadcrumb-item"><a href="javascript: void(0);">Hyper</a></li>
                         <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
-                        <li class="breadcrumb-item active">Siswa</li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Kerawanan</a></li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Kelas</a></li>
                     </ol>
                 </div>
-                <h4 class="page-title">Data Kelas </h4>
             </div>
         </div>
     </div>     

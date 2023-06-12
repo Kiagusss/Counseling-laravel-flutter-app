@@ -170,4 +170,3 @@
       toastr()->success('Data has been saved successfully!');
       @endif
 @endsection
-

@@ -86,7 +86,7 @@
                          <div>
                                 <a href="guru/update/{{$item->id}}"> <i data-lucide="check-square" class="w-4 h-4 mr-1" style="margin-top: 7px;"></i></a>
                             </div>
-                            <form action="/guru/destroy/{{$item->id}}" method="POST"  onsubmit="return confirm('mau hapus?')">
+                            <form action="/guru/destroy/{{$item->id}}" method="POST"  onsubmit="return confirm('mau hapus?')" id="deleteForm" class="d-inline">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" ><i data-lucide="trash" class="w-4 h-4 mr-2" style="margin-top: 7px; margin-left: 5px;"></i></button>
