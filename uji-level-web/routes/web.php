@@ -102,6 +102,8 @@ Route::middleware(['role:wali_kelas'])->group(function () {
     Route::get('/walas/kerawanan/index', [PetaKerawananController::class,'kerawanan_walas_index'])->name('peta-kerawanan.index');
     Route::put('/walas/kerawanan/update/{id}', [PetaKerawananController::class,'kerawanan_walas_update'])->name('peta-kerawanan.update');
     Route::delete('/walas/kerawanan/delete/{id}', [PetaKerawananController::class, 'kerawanan_delete_walas']);
+    Route::get('/walas/siswa/kerawanan', [PetaKerawananController::class, 'kerawananSiswa']);
+    Route::get('/walas/pdf/{id}', [PetaKerawananController::class, 'pdfWalas']);
     });
 });
 
@@ -114,6 +116,9 @@ Route::middleware(['role:guru_bk'])->group(function () {
     Route::get('/guru/kerawanan/indexs', [PetaKerawananController::class,'kerawanan_guru_index_kelas'])->name('peta-kerawanans.kelas');
     Route::put('/guru/kerawanan/update/{id}', [PetaKerawananController::class,'kerawanan_guru_update']);
     Route::delete('/guru/kerawanan/delete/{id}', [PetaKerawananController::class, 'kerawanan_delete_guru']);
+    Route::get('/guru/kelas', [PetaKerawananController::class, 'guruKelas']);
+    Route::get('/guru/siswa/{id}', [PetaKerawananController::class, 'gurusiswaIndex']);
+    Route::get('/guru/pdf/{id}', [PetaKerawananController::class, 'pdfGuru']);
 });
 
 
