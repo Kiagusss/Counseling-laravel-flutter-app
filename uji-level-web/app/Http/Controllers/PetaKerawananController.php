@@ -47,7 +47,7 @@ class PetaKerawananController extends Controller
 
 public function kerawanan_guru_create($id)
     {
-        $siswa = Siswa::where("kelas_id",$id)->get();
+        
         $kelas = Kelas::findOrFail($id);
         $wakel = $kelas->walas;
         $jenisKerawanan = [
@@ -56,6 +56,10 @@ public function kerawanan_guru_create($id)
             'Kemampuan kurang', 'Berkelahi', 'Menentang guru','Mengganggu teman', 'Pacaran','Broken home','Kondisi ekonomi kurang ',
             'Pergaulan di luar sekolah', 'Pengguna narkoba','Merokok','Membiayai sekolah sendiri / bekerja',
         ];
+
+        
+        $siswa = $wakel->kelas->siswa()->whereDoesntHave('petaKerawanan')->get();
+
         return view('peta_kerawanan.kerawanan_guru_add', compact('siswa','jenisKerawanan','wakel'));
     }
     public function kerawanan_walas_create()
