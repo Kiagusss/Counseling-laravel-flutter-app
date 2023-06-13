@@ -28,11 +28,11 @@
                 </div>
                 <div id="input" class="p-5">
                     <div class="preview">
-                        <form action="/layanan-create-group" method="POST">
+                        <form action="{{ Auth::user()->hasRole('guru_bk') ? 'layanan-createguru-group' : 'layanan-create-group' }}" method="POST">
                             @csrf
                             <select multiple name="siswa[]" class="tom-select mb-3">
                                 @foreach ($datasiswaAll as $item)
-                                <option value="{{ $item->id }}" @if ($item->id == $datasiswa->id) selected @endif>
+                                <option value="{{ $item->id }}">
                                     {{ $item->nama }}
                                   </option>                                
                                 @endforeach
@@ -49,6 +49,12 @@
                                 <label for="regular-form-1" class="form-label">tujuan</label>
                                 <input id="regular-form-1" type="text" name="tujuan" class="form-control" placeholder="Tujuan" value="" style="height: 300px">
                             </div>
+                            @if (Auth::user()->hasRole('guru_bk'))
+                            <div class="relative w-56 mt-3">
+                                <label for="regular-form-1" class="form-label">Atur Jadwal</label>
+                              <input type="datetime-local" name="jadwal" id="" value="">
+                            </div>
+                            @endif
                             <div class="mt-3">
                                 <label for="regular-form-1" class="form-label">Jenis Layanan</label>
                                 <select name="layanan" class="tom-select mb-3">

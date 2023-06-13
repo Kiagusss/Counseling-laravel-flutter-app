@@ -125,8 +125,10 @@ Route::middleware(['role:guru_bk'])->group(function (){
         Route::get('layanan-bk-schedule-{id}', [LayananController::class, 'schedule'])->name('reschedule');
         Route::get('/layanan-bk-archive-{id}', [LayananController::class, 'archive'])->name('archive');
         Route::patch('layanan-bk-schedule-{id}', [LayananController::class, 'scheduleset'])->name('reschedule');
-
-
+        Route::get('layanan-createguru-pribadi', [LayananController::class, 'createprivateguru'])->name('create');
+        Route::post('layanan-createguru-pribadi', [LayananController::class, 'storeprivateguru'])->name('store');
+        Route::get('layanan-createguru-group', [LayananController::class, 'creategroupguru'])->name('create');
+        Route::post('layanan-createguru-group', [LayananController::class, 'storegroupguru'])->name('store');
     });
 });
 
@@ -135,6 +137,7 @@ Route::get('/layanan-bk-cancel-{id}', [LayananController::class, 'cancelpage'])-
 Route::patch('layanan-bk-cancel-{id}', [LayananController::class, 'cancel'])->name('cancel');
 Route::get('/layanan-bk-done-{id}', [LayananController::class, 'donepage'])->name('cancelpage');
 Route::patch('layanan-bk-done-{id}', [LayananController::class, 'done'])->name('cancel');
+
 
 
 
