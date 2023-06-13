@@ -64,7 +64,7 @@ public function edit($id)
 {
     $kelas = Kelas::findOrFail($id);
     $gurus = Guru::all();
-    $walas = Walas::all();
+    $walas = Walas::whereDoesntHave('kelas')->get();
 
     return view('layouts.kelas.update', compact('kelas', 'gurus', 'walas'));
 }

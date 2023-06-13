@@ -1,47 +1,46 @@
-
 @if (Auth::check())
-    @if (Auth::user()->hasRole('admin'))
+@if (Auth::user()->hasRole('admin'))
 
-    
-     <nav class="side-nav">
-        <ul>
-            <li>
-                <a href="javascript:;" class="side-menu">
-                    <div class="side-menu__icon"> <i data-lucide="home"></i> </div>
-                    <div class="side-menu__title">
-                        Data Dashboard  
-                        <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
-                    </div>
-                </a>
-                <ul class="">
-                    <li>
-                        <a href="{{route('siswa.index')}}" class="side-menu">
-                            <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
-                            <div class="side-menu__title">Data Siswa</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{route('guru.index')}}" class="side-menu">
-                            <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
-                            <div class="side-menu__title">Data Guru BK</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{route('walas.index')}}" class="side-menu">
-                            <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
-                            <div class="side-menu__title">Data Walas</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{route('kelas.index')}}" class="side-menu">
-                            <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
-                            <div class="side-menu__title">Data Kelas</div>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-     </nav>
+
+<nav class="side-nav">
+    <ul>
+        <li>
+            <a href="javascript:;" class="side-menu">
+                <div class="side-menu__icon"> <i data-lucide="home"></i> </div>
+                <div class="side-menu__title">
+                    Data Dashboard
+                    <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
+                </div>
+            </a>
+            <ul class="">
+                <li>
+                    <a href="{{route('siswa.index')}}" class="side-menu">
+                        <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
+                        <div class="side-menu__title">Data Siswa</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('guru.index')}}" class="side-menu">
+                        <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
+                        <div class="side-menu__title">Data Guru BK</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('walas.index')}}" class="side-menu">
+                        <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
+                        <div class="side-menu__title">Data Walas</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('kelas.index')}}" class="side-menu">
+                        <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
+                        <div class="side-menu__title">Data Kelas</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</nav>
 
     @elseif(Auth::user()->hasRole('wali_kelas'))
 
@@ -57,7 +56,7 @@
                 </a>
                 <ul class="">
                     <li>
-                        <a href="side-menu-light-dashboard-overview-1.html" class="side-menu">
+                        <a href="/walas/siswa/kerawanan" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
                             <div class="side-menu__title"> Data Siswa</div>
                         </a>
@@ -87,7 +86,11 @@
                 </a>
                 <ul class="">
                     <li>
+<<<<<<< HEAD
                         <a href="siswa-bk-{{Auth::user()->id}}" class="side-menu">
+=======
+                        <a href="/guru/kelas" class="side-menu">
+>>>>>>> b24a9b5393647295b40f251ff8c99ce3c763390f
                             <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
                             <div class="side-menu__title"> Data Siswa</div>
                         </a>
@@ -132,7 +135,7 @@
         </ul>
     </nav>
 
-    @else
+@elseif(Auth::user()->hasRole('guru_bk'))
 
     <nav class="side-nav">
         <ul>
@@ -193,5 +196,29 @@
         </ul>
     </nav>
 
-    @endif
+@else
+
+<nav class="side-nav">
+    <ul>
+        <li>
+            <a href="javascript:;" class="side-menu">
+                <div class="side-menu__icon"> <i data-lucide="home"></i> </div>
+                <div class="side-menu__title">
+                    Data guru bk
+                    <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
+                </div>
+            </a>
+            <ul class="">
+                <li>
+                    <a href="{{route('siswa.index')}}" class="side-menu">
+                        <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
+                        <div class="side-menu__title"> Data Siswa </div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+
+@endif
 @endif

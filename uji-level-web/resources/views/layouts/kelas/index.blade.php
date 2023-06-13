@@ -8,9 +8,15 @@
     <h2 class="intro-y text-lg font-medium mt-10">
         Data Kelas
     </h2>
+    @if ($message = Session::get('success'))
+
+<div class="alert alert-success">
+    <p>{{$message}}</p>
+</div>
+@endif
     <div class="grid grid-cols-12 gap-6 mt-5">
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
-            <a href="{{route('kelas.create')}}"><button class="btn btn-primary shadow-md mr-2" >Tambah Kelas</button>
+            <a href="{{route('kelas.create')}}"><button class="btn btn-primary shadow-md mr-2" >Tambah Data Kelas</button>
             </a>
             <div class="dropdown">
                 <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
@@ -62,11 +68,20 @@
                         <td>
                             <a href="" class="font-medium whitespace-nowrap">{{$item->nama}}</a> 
                         </td>
+                       <td>
+                        @if($item->walas)
+                        <a href="" class="font-medium whitespace-nowrap">{{$item->walas->nama}}</a>
+                        @else
+                        Tidak ada Walas di Kelas ini
+                        @endif
+                       </td>
                         <td>
-                            <a href="" class="font-medium whitespace-nowrap">{{$item->walas->nama}}</a> 
-                        </td>
-                        <td>
+                            @if($item->guru)
                             <a href="" class="font-medium whitespace-nowrap">{{$item->guru->nama}}</a> 
+                            @else
+                            Tidak ada Guru di Kelas ini
+                            @endif
+                 
                         </td>
                         </td>   
                         <td  style="display: flex; height: 50px;">
@@ -89,8 +104,5 @@
             {{ $kelas->links() }}
         </div>
 
-        @if (Session::has('success'))
-        toastr.success('Have fun storming the castle!', 'Miracle Max Says')
-      @endif
 @endsection
 

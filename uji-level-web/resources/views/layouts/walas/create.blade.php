@@ -34,26 +34,26 @@
                             <div class="mt-3">
                                 <label for="regular-form-1" class="form-label">NIPD</label>
                                 <input id="regular-form-1" type="text" name="nipd" class="form-control"
-                                    placeholder="Input text" value="">
+                                    placeholder="Nipd" value="">
                             </div>
                             <div class="mt-3">
                                 <label for="regular-form-1" class="form-label">Nama</label>
                                 <input id="regular-form-1" type="text" name="nama" class="form-control"
-                                    placeholder="Input text" value="">
+                                    placeholder="Nama" value="">
                             </div>
                             <div class="mt-3">
                                 <label for="regular-form-1" class="form-label">Email</label>
                                 <input id="regular-form-1" type="text" name="email" class="form-control"
-                                    placeholder="Input text" value="">
+                                    placeholder="Email" value="">
                             </div>
                             <div class="mt-3">
                                 <label for="regular-form-1" class="form-label">Password</label>
                                 <input id="regular-form-1" type="text" name="password" class="form-control"
-                                    placeholder="Input text" value="">
+                                    placeholder="Password" value="">
                             </div>
                             <div class="relative w-56 mt-3">
                                 <label for="regular-form-1" class="form-label">TTL</label>
-                              <input type="date" name="ttl" id="" value="">
+                              <input type="date" name="ttl" id="" value="" placeholder="TTL">
                             </div>
                             <div class="mt-3">
                                 <label for="regular-form-1" class="form-label">Jenis Kelamin</label>

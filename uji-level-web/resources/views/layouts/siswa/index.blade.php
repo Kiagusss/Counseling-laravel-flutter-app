@@ -7,6 +7,12 @@
     <h2 class="intro-y text-lg font-medium mt-10">
         Data Siswa/Siswi
     </h2>
+    @if ($message = Session::get('success'))
+
+<div class="alert alert-success">
+    <p>{{$message}}</p>
+</div>
+@endif
     <div class="grid grid-cols-12 gap-6 mt-5">
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
             @if (Auth::user()->hasRole('admin'))
@@ -96,7 +102,5 @@
             </table>
             {{ $siswa->links() }}
         </div>
-        @if (Session::has('success'))
-      toastr()->success('Data has been saved successfully!');
-      @endif
+       
 @endsection
