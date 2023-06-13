@@ -123,15 +123,16 @@ class LayananController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function createprivateguru()
     {
         $user = Auth::user();
         $iduser = $user->id;
-        $datasiswa = Siswa::where('user_id', $iduser)->first();
-        $datakelas = Kelas::where('id', $datasiswa->kelas_id)->first();
-        $dataguru = Guru::where('id', $datakelas->guru_id)->first();
-        $datalayanan = LayananBK::all();
-        return view('layouts.layanan.create', compact('dataguru', 'datasiswa', 'datalayanan'));
+        $dataguru = Guru::where('user_id', $iduser)->first();
+        $datakelas = Kelas::where('guru_id', $dataguru->id)->first();
+        $datasiswa = Siswa::all();
+        $datalayanan = LayananBK::where('id', '<>', [2, 5])->get();
+        // return dd($datalayanan);
+        return view('layouts.layanan.create-private', compact('dataguru', 'datasiswa', 'datalayanan'));
     }
 
     public function createprivate(){
@@ -140,26 +141,70 @@ class LayananController extends Controller
         $datasiswa = Siswa::where('user_id', $iduser)->first();
         $datakelas = Kelas::where('id', $datasiswa->kelas_id)->first();
         $dataguru = Guru::where('id', $datakelas->guru_id)->first();
-        $datalayanan = LayananBK::where('id', '<>', 2)->get();
+        $datalayanan = LayananBK::where('id', '<>', [2, 5]);
 
         return view('layouts.layanan.create-private', compact('dataguru', 'datasiswa', 'datalayanan'));
     }
+
 
     public function creategroup(){
         $user = Auth::user();
         $iduser = $user->id;
         $datasiswaAll = Siswa::all();
-        $datasiswa = Siswa::where('user_id', $iduser)->first();
-        $datakelas = Kelas::where('id', $datasiswa->kelas_id)->first();
+        $dataguru = Guru::where('user_id', $iduser)->first();
+        $datakelas = Kelas::where('guru_id', $dataguru->id)->get();
         $dataguru = Guru::where('id', $datakelas->guru_id)->first();
         $datalayanan = LayananBK::where('id', '<>', 1)->get();
 
         return view('layouts.layanan.create-group', compact('dataguru', 'datasiswa', 'datalayanan', 'datasiswaAll'));
     }   
 
+    public function creategroupguru(){
+        $user = Auth::user();
+        $iduser = $user->id;
+        $dataguru = Guru::where('user_id', $iduser)->first();
+        $datakelas = Kelas::where('guru_id', $dataguru->id)->first();
+        $datasiswaAll = Siswa::all();
+        $datalayanan = LayananBK::where('id', '<>', 1)->get();
+        // return dd($datalayanan);
+        return view('layouts.layanan.create-group', compact('dataguru', 'datasiswaAll', 'datalayanan'));    }   
     /**
      * Store a newly created resource in storage.
      */
+
+    public function storeprivateguru(Request $request){
+        $user = Auth::user();
+        $datakelas = Kelas::where('guru_id', $user->id)->first();
+        $gurudata = Guru::where('user_id', $user->id)->first();
+        $walasdata = Walas::where('id', $datakelas->walas_id)->first();
+
+        $request->validate([
+            'tujuan' => 'required',
+            'judul' => 'required',
+        ]);
+        
+        $konseling = KonselingBK::create([
+            'layanan_id' => $request->input('layanan'),
+            'guru_id' => $gurudata->id,
+            'walas_id' => $walasdata->id,
+            'judul' => $request->input('judul'),
+            'tujuan' => $request->input('tujuan'),
+            'jadwal_konseling' => $request->input('jadwal'),
+            'status' => 'Approved',
+        ]);
+
+        PivotBK::create([
+            'siswa_id' => $request->input('siswa'),
+            'konseling_id' => $konseling->id,
+        ]);
+
+        LogActivity::create([
+            'activity' => auth()->user()->name. 'telah telah mengatur jadwal pada'.$request->input('jadwal')
+        ]);
+
+        return redirect('/dashboard');
+    }
+
 
      public function storeprivate(Request $request)
      {
@@ -180,7 +225,7 @@ class LayananController extends Controller
              'walas_id' => $datawalas->id,
              'judul' => $request->input('judul'),
              'tujuan' => $request->input('tujuan'),
-             ]);
+            ]);
              
              $konselingId = $konseling->id;
              
@@ -191,6 +236,42 @@ class LayananController extends Controller
              
          
          return redirect('dashboard')->with('success', 'Guru berhasil Ditambahkan ');
+     }
+
+     public function storegroupguru(Request $request){
+        $validate = $request->validate([
+            'siswa' => 'required'
+        ]);
+
+        $user = Auth::user();
+        $gurudata = Guru::where('user_id', $user->id)->first();
+        $datakelas = Kelas::where('guru_id', $gurudata->id)->first();
+        $walasdata = Walas::where('id', $datakelas->walas_id)->first();
+
+        $request->validate([
+            'siswa' => 'required',
+            'tujuan' => 'required',
+            'judul' => 'required',
+        ]);
+
+        $konseling = KonselingBK::create([
+            'layanan_id' => $request->input('layanan'),
+            'guru_id' => $gurudata->id,
+            'walas_id' => $walasdata->id,
+            'judul' => $request->input('judul'),
+            'tujuan' => $request->input('tujuan'),
+            'jadwal_konseling' => $request->input('jadwal')
+        ]);
+
+        foreach ($validate['siswa'] as $item) {
+            PivotBK::create([
+                'siswa_id' => $item,
+                'konseling_id' => $konseling->id,
+            ]);
+        }
+
+        return redirect('dashboard')->with('success', 'Guru berhasil Ditambahkan ');
+
      }
 
 

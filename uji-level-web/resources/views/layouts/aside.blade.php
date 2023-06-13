@@ -98,6 +98,29 @@
                 <a href="javascript:;" class="side-menu">
                     <div class="side-menu__icon"> <i data-lucide="home"></i> </div>
                     <div class="side-menu__title">
+                        Buat Jadwal Layanan
+                        <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
+                    </div>
+                </a>
+                <ul class="">
+                    <li>
+                        <a href="/layanan-createguru-pribadi" class="side-menu">
+                            <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
+                            <div class="side-menu__title">Buat Jadwal Pribadi</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/layanan-createguru-group" class="side-menu">
+                            <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
+                            <div class="side-menu__title">Buat Jadwal Kelompok</div>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;" class="side-menu">
+                    <div class="side-menu__icon"> <i data-lucide="home"></i> </div>
+                    <div class="side-menu__title">
                         Layanan
                         <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
                     </div>
