@@ -57,7 +57,7 @@
                 </a>
                 <ul class="">
                     <li>
-                        <a href="side-menu-light-dashboard-overview-1.html" class="side-menu">
+                        <a href="/walas/siswa/kerawanan" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
                             <div class="side-menu__title"> Data Siswa</div>
                         </a>
@@ -87,7 +87,7 @@
                 </a>
                 <ul class="">
                     <li>
-                        <a href="siswa-bk-{{Auth::user()->id}}" class="side-menu">
+                        <a href="/guru/kelas" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
                             <div class="side-menu__title"> Data Siswa</div>
                         </a>

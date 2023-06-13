@@ -82,4 +82,6 @@
             deleteModal.show();
         }
     </script>
+
+    <!-- ///guru/siswa/{{Auth::user()->id}} -->
 @endsection

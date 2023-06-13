@@ -16,6 +16,9 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Response;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
+use App\Http\Controllers\Dompdf;
+use Dompdf\Dompdf as DompdfDompdf;
+use PhpOffice\PhpSpreadsheet\Writer\Pdf\Dompdf as PdfDompdf;
 
 class PetaKerawananController extends Controller
 {
@@ -194,11 +197,13 @@ class PetaKerawananController extends Controller
     {
         $walasId = Auth::user()->walas->id;
 
-        $siswa = Kelas::with('siswa')
+        $kelas = Kelas::with('siswa')
             ->where('walas_id', $walasId)
             ->first();
 
-        return view('peta_kerawanan.datasiswa', compact('siswa'));
+        $siswa = $kelas->siswa;
+
+        return view('peta_kerawanan.datasiswa', compact('siswa', 'walasId'));
     }
 
     public function gurusiswaIndex($id)
@@ -223,7 +228,7 @@ class PetaKerawananController extends Controller
 
         $html = View::make('peta_kerawanan.surat_walas', compact('siswa'))->render();
 
-        $dompdf = new Dompdf();
+        $dompdf = new DompdfDompdf();
         $dompdf->loadHtml($html);
         $dompdf->setPaper('A4', 'portrait');
         $dompdf->render();
@@ -248,7 +253,7 @@ class PetaKerawananController extends Controller
 
         $html = View::make('peta_kerawanan.surat_guru', compact('siswa'))->render();
 
-        $dompdf = new Dompdf();
+        $dompdf = new DompdfDompdf();
         $dompdf->loadHtml($html);
         $dompdf->setPaper('A4', 'portrait');
         $dompdf->render();
@@ -261,5 +266,84 @@ class PetaKerawananController extends Controller
         ]);
 
         return redirect()->route('/walas/siswa/kerawanan')->with('success', 'Surat pemanggilan telah diunduh.');
+    }
+
+    //SEARCH
+
+    public function searchSiswa(Request $request)
+    {
+        $keyword = $request->input('keyword');
+
+        $siswa = Siswa::where('nama', 'LIKE', "%$keyword%")
+            ->orWhere('nisn', 'LIKE', "%$keyword%")
+            ->orWhere('jenis_kelamin', 'LIKE', "%$keyword%")
+            ->orWhere('ttl', 'LIKE', "%$keyword%")
+            ->orWhereHas('kelas', function ($query) use ($keyword) {
+                $query->where('nama', 'LIKE', "%$keyword%");
+            })
+            ->paginate(10);
+
+        return view('peta_kerawanan.datasiswa_guru', compact('siswa'));
+    }
+
+    public function searchKerawanan(Request $request)
+    {
+        $keyword = $request->input('keyword');
+
+        $petaKerawanan = PetaKerawanan::WhereHas('siswa', function ($query) use ($keyword) {
+                $query->where('nama', 'LIKE', "%$keyword%");
+            })
+            ->orWhereHas('walas', function ($query) use ($keyword) {
+                $query->where('nama', 'LIKE', "%$keyword%");
+            })
+            ->paginate(10);
+
+        return view('peta_kerawanan.kerawanan_guru', compact('petaKerawanan'));
+    }
+
+    public function searchSiswaGuru(Request $request)
+    {
+        $keyword = $request->input('query');
+
+        $walas = Auth::user()->walas;
+        $kelas = $walas->kelas;
+
+        $siswa = Siswa::where('kelas_id', $kelas->id)
+            ->where(function ($query) use ($keyword) {
+                $query->where('nama', 'like', '%' . $keyword . '%')
+                    ->orWhere('nisn', 'like', '%' . $keyword . '%')
+                    ->orWhere('jenis_kelamin', 'like', '%' . $keyword . '%')
+                    ->orWhere('ttl', 'like', '%' . $keyword . '%');
+            })
+            ->get();
+
+
+        return view('peta_kerawanan.datasiswa', compact('siswa'));
+    }
+
+    public function searchSiswaKerawanan(Request $request)
+    {
+        $keyword = $request->input('query');
+
+        $walas = Auth::user()->walas;
+
+        $siswaIds = [];
+        foreach ($walas->kelass as $kelas) {
+            foreach ($kelas->siswa as $siswa) {
+                $siswaIds[] = $siswa->id;
+            }
+        }
+
+        $peta = PetaKerawanan::whereIn('siswa_id', $siswaIds)
+                    ->whereHas('siswa', function ($query) use ($keyword) {
+                        $query->where('nama', 'like', '%' . $keyword . '%');
+                    })
+                    ->orwhere('jenis_kerawanan', 'like', '%' . $keyword . '%')
+                    ->with('siswa')
+                    ->get();
+
+
+
+        return view('peta_kerawanan.kerawanan_walas', compact('peta'));
     }
 }
