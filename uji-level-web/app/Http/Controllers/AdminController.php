@@ -39,10 +39,17 @@ class AdminController extends Controller
     }
 
 
-    public function indexActivity(){
+    public function indexActivity()
+    {
+        $jumlahkelas = Kelas::count();
+        $jumlahsiswa = Siswa::count();
+        $jumlahguru = Guru::count();
+        $jumlahwalas = Walas::count();
         $activity = LogActivity::latest()->take(10)->get();
-        return view('pages.dashboard', ['activity' => $activity]);
+        return view('pages.dashboard', ['activity' => $activity, 'jumlahkelas' => $jumlahkelas, 'jumlahsiswa' => $jumlahsiswa, 'jumlahguru' => $jumlahguru, 'jumlahwalas' => $jumlahwalas,]);
     }
+
+    
 
     public function indexWalas()
     {
@@ -107,7 +114,7 @@ class AdminController extends Controller
         ]);
 
         LogActivity::create([
-            'activity' => auth()->user()->name. ' telah menambahkan walas baru dengan nama '.$walas->nama
+            'activity' => auth()->user()->name . ' telah menambahkan guru baru dengan nama ' . $walas->nama
         ]);
 
 
@@ -146,47 +153,47 @@ class AdminController extends Controller
         ]);
 
         LogActivity::create([
-            'activity' => auth()->user()->name. ' telah menambahkan siswa baru dengan nama '.$siswa->nama
+            'activity' => auth()->user()->name . ' telah menambahkan siswa baru dengan nama ' . $siswa->nama
         ]);
 
 
-    return redirect('index-siswa')->with('success', 'Data berhasil Ditambahkan ');
-}
+        return redirect('index-siswa')->with('success', 'Data berhasil Ditambahkan ');
+    }
 
-public function storeGuru(Request $request)
-{
-    $request->validate([
-        'nama' => 'required',
-        'nipd' => 'required',
-        'jenis_kelamin' => 'required',
-        'ttl' => 'required',
-        'email' => 'required|email|unique:users',
-        'password' => 'required|min:8',
-    ]);
+    public function storeGuru(Request $request)
+    {
+        $request->validate([
+            'nama' => 'required',
+            'nipd' => 'required',
+            'jenis_kelamin' => 'required',
+            'ttl' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:8',
+        ]);
 
-    $user = User::create([
-        'name' => $request->input('nama'),
-        'email' => $request->input('email'),
-        'password' => bcrypt($request->input('password')),
-    ]);
-    $user->assignRole('guru_bk');
+        $user = User::create([
+            'name' => $request->input('nama'),
+            'email' => $request->input('email'),
+            'password' => bcrypt($request->input('password')),
+        ]);
+        $user->assignRole('guru_bk');
 
-    $userId = $user->id;
+        $userId = $user->id;
 
-    $guru = Guru::create([
-        'user_id' => $userId,
-        'nipd' => $request->input('nipd'),
-        'nama' => $request->input('nama'),
-        'ttl' => $request->input('ttl'),
-        'jenis_kelamin' => $request->input('jenis_kelamin'),
-    ]);
+        $guru = Guru::create([
+            'user_id' => $userId,
+            'nipd' => $request->input('nipd'),
+            'nama' => $request->input('nama'),
+            'ttl' => $request->input('ttl'),
+            'jenis_kelamin' => $request->input('jenis_kelamin'),
+        ]);
 
-    LogActivity::create([
-        'activity' => auth()->user()->name. ' telah menambahkan guru baru dengan nama '.$guru->nama
-    ]);
+        LogActivity::create([
+            'activity' => auth()->user()->name . ' telah menambahkan guru baru dengan nama ' . $guru->nama
+        ]);
 
-    return redirect('index-guru')->with('success', 'Guru berhasil Ditambahkan ');
-}
+        return redirect('index-guru')->with('success', 'Guru berhasil Ditambahkan ');
+    }
 
 
 
@@ -246,7 +253,7 @@ public function storeGuru(Request $request)
         ]);
 
         LogActivity::create([
-            'activity' => auth()->user()->name. ' telah merubah data siswa '.$datasiswa->nama
+            'activity' => auth()->user()->name . ' telah merubah data siswa ' . $datasiswa->nama
         ]);
 
 
@@ -269,9 +276,9 @@ public function storeGuru(Request $request)
         $user->name = $request->input('nama');
         $user->password = $request->input('password');
         $user->save();
-        
+
         LogActivity::create([
-            'activity' => auth()->user()->name. ' telah merubah data guru'.$guru->nama
+            'activity' => auth()->user()->name . ' telah merubah data guru' . $guru->nama
         ]);
 
         return redirect('index-guru')->with('success', 'Data berhasil diubah');
@@ -295,7 +302,7 @@ public function storeGuru(Request $request)
         ]);
 
         LogActivity::create([
-            'activity' => auth()->user()->name. ' telah merubah data walas'.$datawalas->nama
+            'activity' => auth()->user()->name . ' telah merubah data walas' . $datawalas->nama
         ]);
 
 
@@ -318,11 +325,11 @@ public function storeGuru(Request $request)
         Schema::enableForeignKeyConstraints();
 
         LogActivity::create([
-            'activity' => auth()->user()->name. ' telah mengapus data siswa'.$siswa->nama
+            'activity' => auth()->user()->name . ' telah mengapus data siswa' . $siswa->nama
         ]);
 
 
-        return redirect('index-siswa')->with('success','Data berhasil dihapus');
+        return redirect('index-siswa')->with('success', 'Data berhasil dihapus');
     }
 
     public function destroyWalas($id)
@@ -334,11 +341,11 @@ public function storeGuru(Request $request)
         $user->delete();
 
         LogActivity::create([
-            'activity' => auth()->user()->name. ' telah merubah data walas'.$walas->nama
+            'activity' => auth()->user()->name . ' telah merubah data walas' . $walas->nama
         ]);
 
 
-        return redirect('index-walas')->with('success','Data berhasil dihapus');
+        return redirect('index-walas')->with('success', 'Data berhasil dihapus');
     }
 
     public function destroyGuru($id)
@@ -354,11 +361,11 @@ public function storeGuru(Request $request)
         $user->delete();
 
         LogActivity::create([
-            'activity' => auth()->user()->name. ' telah menghapus data guru'.$guru->nama
+            'activity' => auth()->user()->name . ' telah menghapus data guru' . $guru->nama
         ]);
 
 
-        return redirect('index-guru')->with('success','Data berhasil dihapus');
+        return redirect('index-guru')->with('success', 'Data berhasil dihapus');
     }
 
     //SEARCH
@@ -376,55 +383,57 @@ public function storeGuru(Request $request)
             })
             ->paginate(10);
 
-    return view('layouts.guru.index', compact('guru'));
-}
+        return view('layouts.guru.index', compact('guru'));
+    }
 
 
-public function searchWalas(Request $request)
-{
-    $keyword = $request->input('keyword');
+    public function searchWalas(Request $request)
+    {
+        $keyword = $request->input('keyword');
 
-    $data = Walas::where('nama', 'LIKE', "%$keyword%")
-        ->orWhere('nipd', 'LIKE', "%$keyword%")
-        ->orWhere('jenis_kelamin', 'LIKE', "%$keyword%")
-        ->orWhere('ttl', 'LIKE', "%$keyword%")
-        ->orWhereHas('kelas', function ($query) use ($keyword) {
-            $query->where('nama', 'LIKE', "%$keyword%");
-        })
-        ->paginate(10);
+        $data = Walas::where('nama', 'LIKE', "%$keyword%")
+            ->orWhere('nipd', 'LIKE', "%$keyword%")
+            ->orWhere('jenis_kelamin', 'LIKE', "%$keyword%")
+            ->orWhere('ttl', 'LIKE', "%$keyword%")
+            ->orWhereHas('kelas', function ($query) use ($keyword) {
+                $query->where('nama', 'LIKE', "%$keyword%");
+            })
+            ->paginate(10);
 
-    return view('layouts.walas.index', compact('data'));
-}
+        return view('layouts.walas.index', compact('data'));
+    }
 
-public function searchSiswa(Request $request)
-{
-    $keyword = $request->input('keyword');
+    public function searchSiswa(Request $request)
+    {
+        $keyword = $request->input('keyword');
 
-    $siswa = Siswa::where('nama', 'LIKE', "%$keyword%")
-        ->orWhere('nisn', 'LIKE', "%$keyword%")
-        ->orWhere('jenis_kelamin', 'LIKE', "%$keyword%")
-        ->orWhere('ttl', 'LIKE', "%$keyword%")
-        ->orWhereHas('kelas', function ($query) use ($keyword) {
-            $query->where('nama', 'LIKE', "%$keyword%");
-        })
-        ->paginate(10);
+        $siswa = Siswa::where('nama', 'LIKE', "%$keyword%")
+            ->orWhere('nisn', 'LIKE', "%$keyword%")
+            ->orWhere('jenis_kelamin', 'LIKE', "%$keyword%")
+            ->orWhere('ttl', 'LIKE', "%$keyword%")
+            ->orWhereHas('kelas', function ($query) use ($keyword) {
+                $query->where('nama', 'LIKE', "%$keyword%");
+            })
+            ->paginate(10);
 
-    return view('layouts.siswa.index', compact('siswa'));
-}
+        return view('layouts.siswa.index', compact('siswa'));
+    }
 
-public function searchKelas(Request $request)
-{
-    $keyword = $request->input('keyword');
+    public function searchKelas(Request $request)
+    {
+        $keyword = $request->input('keyword');
 
-    $kelas = Kelas::where('nama', 'LIKE', "%$keyword%")
-        ->orWhereHas('guru', function ($query) use ($keyword) {
-            $query->where('nama', 'LIKE', "%$keyword%");
-        })
-        ->orWhereHas('walas', function ($query) use ($keyword) {
-            $query->where('nama', 'LIKE', "%$keyword%");
-        })
-        ->paginate(10);
+        $kelas = Kelas::where('nama', 'LIKE', "%$keyword%")
+            ->orWhereHas('guru', function ($query) use ($keyword) {
+                $query->where('nama', 'LIKE', "%$keyword%");
+            })
+            ->orWhereHas('walas', function ($query) use ($keyword) {
+                $query->where('nama', 'LIKE', "%$keyword%");
+            })
+            ->paginate(10);
 
-    return view('layouts.kelas.index', compact('kelas'));
-}
+        return view('layouts.kelas.index', compact('kelas'));
+    }
+
+    
 }
