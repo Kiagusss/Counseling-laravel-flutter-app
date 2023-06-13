@@ -39,6 +39,11 @@ class AdminController extends Controller
     }
 
 
+    public function indexActivity(){
+        $activity = LogActivity::latest()->take(10)->get();
+        return view('pages.dashboard', ['activity' => $activity]);
+    }
+
     public function indexWalas()
     {
         $walas = Walas::with('kelas')->paginate(10);
