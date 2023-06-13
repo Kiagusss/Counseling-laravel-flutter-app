@@ -13,6 +13,8 @@ class LayananBK extends Model
 
     protected $fillable = ['jenis_layan'];
     
+  
+
     public function konseling(){
         return $this->hasOne(KonselingBK::class, 'layanan_id', 'id');
     }

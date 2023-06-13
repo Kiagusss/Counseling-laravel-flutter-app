@@ -55,6 +55,7 @@
                         <th class="whitespace-nowrap">Tujuan</th>
                         <th class="whitespace-nowrap">Status</th>
                         <th class="whitespace-nowrap">Action</th>
+
                     </tr>
                 </thead>
                 <tbody>

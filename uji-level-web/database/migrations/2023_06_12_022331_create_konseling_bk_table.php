@@ -17,12 +17,13 @@ return new class extends Migration
             $table->foreign('layanan_id')->references('id')->on('layanan_bk');
             $table->unsignedBigInteger('guru_id');
             $table->foreign('guru_id')->references('id')->on('guru');
-            $table->unsignedBigInteger('siswa_id');
-            $table->foreign('siswa_id')->references('id')->on('siswas');
             $table->unsignedBigInteger('walas_id');
             $table->foreign('walas_id')->references('id')->on('walas');
+            $table->string('judul', 60);
+            $table->string('tujuan');
             $table->datetime('jadwal_konseling')->nullable();
-            $table->string('hasil_konseling')->nullable();
+            $table->string('alasan_kesimpulan')->nullable();
+            $table->enum('status', ['Waiting', 'Approved', 'Cancelled', 'Rejected', 'Done'])->default('Waiting');
             $table->timestamps();
         });
     }

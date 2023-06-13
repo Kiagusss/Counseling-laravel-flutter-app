@@ -116,7 +116,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/layanan-bk-Archive-{{Auth::user()->id}}" class="side-menu">
+                        <a href="/layanan-bk-archive-{{Auth::user()->id}}" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
                             <div class="side-menu__title">Archive</div>
                         </a>
@@ -124,7 +124,7 @@
                 </ul>
             </li>
             <li>
-                <a href="{{route('peta.peta-kerawanan.index')}}" class="side-menu">
+                <a href="{{route('peta-kerawanans.index')}}" class="side-menu">
                     <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
                     <div class="side-menu__title">Peta Kerawanan</div>
                 </a>
@@ -140,15 +140,52 @@
                 <a href="javascript:;" class="side-menu">
                     <div class="side-menu__icon"> <i data-lucide="home"></i> </div>
                     <div class="side-menu__title">
-                        Data guru bk 
+                        Data Layanan
                         <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
                     </div>
                 </a>
                 <ul class="">
                     <li>
-                        <a href="/siswa-bk-{{Auth::user()->id}}" class="side-menu">
+                        <a href="/siswa-layanan-waiting" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
-                            <div class="side-menu__title"> Data Siswa </div>
+                            <div class="side-menu__title">Waiting</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/siswa-layanan-approved" class="side-menu">
+                            <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
+                            <div class="side-menu__title">Approved</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/siswa-layanan-archive" class="side-menu">
+                            <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
+                            <div class="side-menu__title">Approved</div>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                <a href="javascript:;" class="side-menu">
+                    <div class="side-menu__icon"> <i data-lucide="home"></i> </div>
+                    <div class="side-menu__title">
+                        Buat Layanan
+                        <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
+                    </div>
+                </a>
+                <ul class="">
+                    <li>
+                        <a href="/layanan-create-private" class="side-menu">
+                            <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
+                            <div class="side-menu__title">Layanan Pribadi</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/layanan-create-group" class="side-menu">
+                            <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
+                            <div class="side-menu__title">Layanan Kelompok</div>
                         </a>
                     </li>
                 </ul>

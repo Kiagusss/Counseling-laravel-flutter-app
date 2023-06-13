@@ -29,7 +29,8 @@
                 </div>
                 <div id="input" class="p-5">
                     <div class="preview">
-                        <form action="/layanan-bk-done-{{$data->id}}" method="POST">
+                        <form action="/layanan-bk-cancel-{{$data->id}}" method="POST">
+                        
                         <div class="mt-3">
                             <label for="regular-form-1" class="form-label">Dari</label>
                             @foreach ($pivots as $pivot)
@@ -59,19 +60,19 @@
                                     placeholder="Input text" value="{{$data->tujuan}}">
                             </div>
                             <div class="mt-3">
-                                <label for="regular-form-1" class="form-label">Kesimpulan</label>
+                                <label for="regular-form-1" class="form-label">Alasan Pembatalan</label>
                                 <input id="regular-form-1" type="text" name="alasan_kesimpulan" class="form-control h-40"
                                     placeholder="Input text" value="">
                             </div>
                             
                             <div class="flex">
+                                
                                     @method('PATCH')
                                     @csrf
-                                    <a href=""><button type="submit" class="btn btn-success mt-3">done</button></a>
+                                    <a href=""><button type="submit" class="btn btn-danger mt-3">Cancel</button></a>
                             </div>
                         </form>
-
-                          
+                        
                     </div>
                 </div>
                 <!-- END: Input -->

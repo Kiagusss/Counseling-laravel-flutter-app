@@ -25,5 +25,8 @@ class LayananSeeder extends Seeder
         LayananBK::create([
             'jenis_layanan' => 'Belajar'
         ]);
+        LayananBK::create([
+            'jenis_layanan' => 'Sosialisasi Karir'
+        ]);
     }
 }

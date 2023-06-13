@@ -50,10 +50,9 @@
                         <th class="whitespace-nowrap">No.</th>
                         <th class="whitespace-nowrap">Jenis Layanan</th>
                         <th class="whitespace-nowrap">Guru</th>
-                        <th class="whitespace-nowrap">Siswa</th>
                         <th class="whitespace-nowrap">Walas</th>
                         <th class="whitespace-nowrap">Judul</th>
-                        <th class="whitespace-nowrap">Alasan</th>
+                        <th class="whitespace-nowrap">Tujuan</th>
                         <th class="whitespace-nowrap">Status</th>
                         <th class="whitespace-nowrap">Action</th>
                     </tr>
@@ -71,16 +70,13 @@
                             <a href="" class="font-medium whitespace-nowrap">{{$item->guru->nama}}</a> 
                         </td>
                         <td>
-                            <a href="" class="font-medium whitespace-nowrap">{{$item->siswa->nama}}</a> 
-                        </td>
-                        <td>
                             <a href="" class="font-medium whitespace-nowrap">{{$item->walas->nama}}</a> 
                         </td>
                         <td>
                             <a href="" class="font-medium whitespace-nowrap">{{$item->judul}}</a> 
                         </td>
                         <td>
-                            <a href="" class="font-medium whitespace-nowrap">{{$item->alasan}}</a> 
+                            <a href="" class="font-medium whitespace-nowrap">{{$item->tujuan}}</a> 
                         </td>
                         <td>
                             <a href="" class="font-medium whitespace-nowrap">{{$item->status}}</a> 

@@ -15,7 +15,7 @@ class KonselingBK extends Model
         'siswa_id',
         'walas_id',
         'judul',
-        'alasan',
+        'tujuan',
         'status',
         'jadwal_konseling',
         'hasil_konseling'
@@ -31,11 +31,12 @@ class KonselingBK extends Model
         return $this->belongsTo(Guru::class, 'guru_id', 'id');
     }
 
-    public function siswa(){
-        return $this->belongsTo(Siswa::class, 'siswa_id', 'id');
-    }
-
     public function walas(){
         return $this->belongsTo(Walas::class, 'walas_id', 'id');
+    }
+
+    public function siswa()
+    {
+        return $this->belongsToMany(Siswa::class, 'pivot_bk', 'konseling_id', 'siswa_id');
     }
 }

@@ -32,8 +32,10 @@ class Siswa extends Model
         return $this->hasMany(PetaKerawanan::class);
     }
 
-    public function konseling(){
-        return $this->hasOne(KonselingBK::class, 'siswa_id', 'id');
+
+    public function konseling()
+    {
+        return $this->belongsToMany(KonselingBK::class, 'pivot_bk', 'siswa_id', 'konseling_id');
     }
     
 }

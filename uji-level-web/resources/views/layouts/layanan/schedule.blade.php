@@ -29,13 +29,15 @@
                 </div>
                 <div id="input" class="p-5">
                     <div class="preview">
-                        <form action="layanan-bk-reschedule-{{$data->id}}" method="POST">
+                        <form action="layanan-bk-schedule-{{$data->id}}" method="POST">
                             @csrf
                             @method('PATCH')
                             <div class="mt-3">
                                 <label for="regular-form-1" class="form-label">Dari</label>
-                                <input disabled id="regular-form-1" type="text" name="nipd" class="form-control"
-                                    placeholder="Input text" value="{{$data->siswa->nama}}">
+                                @foreach ($pivots as $pivot)
+                                <input disabled id="regular-form-1" type="text" name="siswa" class="form-control mt-2"
+                                    placeholder="Input text" value="{{$pivot->siswas->nama}}">
+                                @endforeach
                             </div>
                             <div class="mt-3">
                                 <label for="regular-form-1" class="form-label">Kepada</label>
@@ -55,7 +57,7 @@
                             <div class="mt-3">
                                 <label for="regular-form-1" class="form-label">Alasan</label>
                                 <input disabled id="regular-form-1" type="text" name="email" class="form-control h-40"
-                                    placeholder="Input text" value="{{$data->alasan}}">
+                                    placeholder="Input text" value="{{$data->tujuan}}">
                             </div>
                             <div class="relative w-56 mt-3">
                                 <label for="regular-form-1" class="form-label">Atur Jadwal</label>

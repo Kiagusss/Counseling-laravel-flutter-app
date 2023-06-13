@@ -4,9 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-
     "content-hash": "ed38e42555a14e8234222856bef92607",
-
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -2350,7 +2348,6 @@
             "time": "2023-03-03T20:12:38+00:00"
         },
         {
-
             "name": "maatwebsite/excel",
             "version": "3.1.48",
             "source": {
@@ -2375,26 +2372,21 @@
             "require-dev": {
                 "orchestra/testbench": "^6.0|^7.0|^8.0",
                 "predis/predis": "^1.1"
-
             },
             "type": "library",
             "extra": {
                 "laravel": {
                     "providers": [
-
                         "Maatwebsite\\Excel\\ExcelServiceProvider"
                     ],
                     "aliases": {
                         "Excel": "Maatwebsite\\Excel\\Facades\\Excel"
-
                     }
                 }
             },
             "autoload": {
-
                 "psr-4": {
                     "Maatwebsite\\Excel\\": "src/"
-
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -2403,7 +2395,6 @@
             ],
             "authors": [
                 {
-
                     "name": "Patrick Brouwers",
                     "email": "patrick@spartner.nl"
                 }
@@ -2620,29 +2611,6 @@
                 "source": "https://github.com/MarkBaker/PHPMatrix/tree/3.0.1"
             },
             "time": "2022-12-02T22:17:43+00:00"
-=======
-                    "name": "Arthur Monney",
-                    "email": "monneylobe@gmail.com"
-                }
-            ],
-            "description": "Flexible flash notifications for Laravel",
-            "keywords": [
-                "laravel",
-                "laravel-notify",
-                "notification"
-            ],
-            "support": {
-                "issues": "https://github.com/mckenziearts/laravel-notify/issues",
-                "source": "https://github.com/mckenziearts/laravel-notify"
-            },
-            "funding": [
-                {
-                    "url": "https://paypal.me/jvquilichini?locale.x=fr_FR",
-                    "type": "custom"
-                }
-            ],
-            "time": "2023-03-28T05:01:47+00:00"
-
         },
         {
             "name": "mobiledetect/mobiledetectlib",
@@ -7804,16 +7772,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "10.2.1",
+            "version": "10.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "599b33294350e8f51163119d5670512f98b0490d"
+                "reference": "1ab521b24b88b88310c40c26c0cc4a94ba40ff95"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/599b33294350e8f51163119d5670512f98b0490d",
-                "reference": "599b33294350e8f51163119d5670512f98b0490d",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/1ab521b24b88b88310c40c26c0cc4a94ba40ff95",
+                "reference": "1ab521b24b88b88310c40c26c0cc4a94ba40ff95",
                 "shasum": ""
             },
             "require": {
@@ -7885,7 +7853,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/10.2.1"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/10.2.2"
             },
             "funding": [
                 {
@@ -7901,7 +7869,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-06-05T05:15:51+00:00"
+            "time": "2023-06-11T06:15:20+00:00"
         },
         {
             "name": "sebastian/cli-parser",
