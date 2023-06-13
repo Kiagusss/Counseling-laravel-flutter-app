@@ -56,5 +56,24 @@ class WalasSeeder extends Seeder
             'created_at' => Carbon::now(), 
             'updated_at' => Carbon::now(), 
         ]);
+
+        $user = User::create([
+            'name' => 'Riki',
+            'email' => 'wali5@gmail.com',
+            'password' => Hash::make('password'),
+        ]);
+
+        $user->assignRole('wali_kelas');
+
+
+        Walas::create([
+            'user_id' => $user->id, 
+            'nipd' => '8100', 
+            'nama' => 'Riki',  
+            'ttl' => Carbon::now(),  
+            'jenis_kelamin' => 'pria',  
+            'created_at' => Carbon::now(), 
+            'updated_at' => Carbon::now(), 
+        ]);
     }
 }

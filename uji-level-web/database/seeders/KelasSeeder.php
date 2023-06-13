@@ -29,6 +29,12 @@ class KelasSeeder extends Seeder
             'created_at' => Carbon::now(), 
             'updated_at' => Carbon::now(), 
         ]);
-        
+        Kelas::create([
+            'nama' => 'XI Animasi 1 ', 
+            'walas_id' => '3', 
+            'guru_id' => '2', 
+            'created_at' => Carbon::now(), 
+            'updated_at' => Carbon::now(), 
+        ]);
     }
 }

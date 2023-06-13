@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="content">
+<div class="content" style="padding-top: 2rem;">
                         
     <!-- start page title -->
     <!-- <div class="row">
@@ -19,7 +19,7 @@
         </div>
     </div>      -->
     <!-- end page title --> 
-    <div class="card">
+    <div class="card mt-3">
         <div class="card-body">
             <table class="table table-hover table-centered mb-0">
                 <thead>
@@ -82,4 +82,6 @@
             deleteModal.show();
         }
     </script>
+
+    <!-- ///guru/siswa/{{Auth::user()->id}} -->
 @endsection
