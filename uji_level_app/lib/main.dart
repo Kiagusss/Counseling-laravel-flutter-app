@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:uji_level_app/login.dart';
 // import 'package:tugas_splash_screen/home.dart';
-import 'package:uji_level_app/splash.dart';
+import 'package:uji_level_app/screens/auth/login.dart';
 // import 'package:tugas_splash_screen/db/nav.dart';
 
 void main() {
@@ -9,7 +8,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp ({super.key});
+  const MyApp({Key? key}) : super(key: key);
  
   @override
   Widget build(BuildContext context) {
@@ -20,7 +19,7 @@ class MyApp extends StatelessWidget {
         // fontFamily: ,
       ),
       debugShowCheckedModeBanner: false,
-      home: splash(),
+      home: Login(),
     );
   }
 }

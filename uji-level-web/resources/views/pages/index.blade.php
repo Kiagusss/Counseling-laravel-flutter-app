@@ -279,7 +279,56 @@
                 </div>
             </div>
         </div>
-        
+        <div class="faq">
+            <div class="faq-title">
+                <h1>FAQ</h1>
+            </div>
+            <div class="faq-drawer">
+                <input class="faq-drawer__trigger" id="faq-drawer" type="checkbox" /><label class="faq-drawer__title1" for="faq-drawer"> Apa itu aplikasi sarpras di sekolah?</label>
+                <div class="faq-drawer__content-wrapper">
+                  <div class="faq-drawer__content">
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                    </p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="faq-drawer">
+                <input class="faq-drawer__trigger" id="faq-drawer-2" type="checkbox" /><label class="faq-drawer__title" for="faq-drawer-2">Apa saja fitur yang tersedia dalam aplikasi sarpras di sekolah?</label>
+                <div class="faq-drawer__content-wrapper">
+                  <div class="faq-drawer__content">
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                    </p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="faq-drawer">
+                <input class="faq-drawer__trigger" id="faq-drawer-3" type="checkbox" /><label class="faq-drawer__title" for="faq-drawer-3">Apa manfaat menggunakan aplikasi sarpras di sekolah?</label>
+                <div class="faq-drawer__content-wrapper">
+                  <div class="faq-drawer__content">
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.            
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="faq-drawer">
+                <input class="faq-drawer__trigger" id="faq-drawer-4" type="checkbox" /><label class="faq-drawer__title" for="faq-drawer-4"> Apa kendala yang dapat dihadapi dalam penggunaan aplikasi sarpras di sekolah?</label>
+                <div class="faq-drawer__content-wrapper">
+                  <div class="faq-drawer__content">
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.            
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <li><div class="more-button" style="width: 200px; align-items: center; justify-content: center; margin-top: 50px">
+                <a class="btn-more" href="">Lihat lebih banyak<div class="bx bx-chevron-down"></div></a>
+            </div></li>
+        </div>
     </div>
     <script src="{{ asset('js/script.js') }}"></script>
 </body>

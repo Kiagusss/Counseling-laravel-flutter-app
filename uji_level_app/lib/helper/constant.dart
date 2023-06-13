@@ -1,4 +1,4 @@
 import 'package:flutter/cupertino.dart';
 
-String apiUrl='http://many-medium.at.ply.gg:38383/api';
+String apiUrl ='http://127.0.0.1:8000/api';
 

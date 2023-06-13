@@ -8,7 +8,7 @@ class API {
     required String route,
     required Map<String, String> data,
   }) async {
-    String url = apiUrl + route;
+    String url = 'http://127.0.0.1:8000/api/login';
     try {
       return await http.post(
         Uri.parse(url),
@@ -17,6 +17,7 @@ class API {
       );
     } catch (e) {
       print(e.toString());
+
       return jsonEncode(e);
     }
   }
@@ -26,3 +27,4 @@ class API {
         'Accept': 'application/json',
       };
 }
+

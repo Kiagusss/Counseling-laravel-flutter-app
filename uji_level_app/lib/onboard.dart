@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:uji_level_app/login.dart';
+import 'package:uji_level_app/screens/auth/login.dart';
 
 class onboard extends StatefulWidget {
-  const onboard({super.key});
+  const onboard({Key? key}) : super(key: key);
 
   @override
   State<onboard> createState() => _onboardState();
