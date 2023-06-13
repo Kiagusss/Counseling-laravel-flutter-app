@@ -39,9 +39,7 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('pages.dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', [AdminController::class, 'indexActivity'])->name('dashboard');
     
 
 Route::middleware(['role:admin'])->group(function () {
