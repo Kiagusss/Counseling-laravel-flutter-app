@@ -39,10 +39,12 @@ class AdminController extends Controller
     }
 
 
+
     public function indexActivity()
     {
         $jumlahkelas = Kelas::count();
-        $jumlahsiswa = Siswa::count();
+        $result = DB::select('CALL GetTotalSiswa()');
+        $jumlahsiswa = $result[0]->total_siswa;
         $jumlahguru = Guru::count();
         $jumlahwalas = Walas::count();
         $activity = LogActivity::latest()->take(10)->get();

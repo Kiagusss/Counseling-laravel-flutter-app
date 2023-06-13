@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="content" style="padding-top: 10rem;">
+<div class="content" style="padding-top: 2rem;">
                         
     <!-- start page title -->
     <!-- <div class="row">

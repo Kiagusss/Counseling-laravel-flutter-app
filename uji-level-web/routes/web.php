@@ -108,7 +108,7 @@ Route::middleware(['role:guru_bk'])->group(function () {
     Route::post('/guru/kerawanan/store', [PetaKerawananController::class, 'kerawanan_guru_store'])->name('peta-kerawanans.store');
     Route::get('/guru/kerawanan/create/{id}', [PetaKerawananController::class, 'kerawanan_guru_create'])->name('peta-kerawanans.add');
     Route::get('/guru/kerawanan/index', [PetaKerawananController::class, 'kerawanan_guru_index'])->name('peta-kerawanans.index');
-    Route::get('/guru/kerawanan/indexs', [PetaKerawananController::class, 'kerawanan_guru_index_kelas'])->name('peta-kerawanans.kelas');
+    Route::get('/kerawanan-indexs', [PetaKerawananController::class, 'kerawanan_guru_index_kelas'])->name('peta-kerawanans.kelas');
     Route::put('/guru/kerawanan/update/{id}', [PetaKerawananController::class, 'kerawanan_guru_update']);
     Route::delete('/guru/kerawanan/delete/{id}', [PetaKerawananController::class, 'kerawanan_delete_guru']);
     Route::get('/guru/kelas', [PetaKerawananController::class, 'guruKelas'])->name('guru.kelas');
