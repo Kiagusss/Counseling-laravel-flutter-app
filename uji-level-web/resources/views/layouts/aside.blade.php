@@ -1,10 +1,14 @@
 
 @if (Auth::check())
     @if (Auth::user()->hasRole('admin'))
-
-    
      <nav class="side-nav">
         <ul>
+            <li>
+                <a href="{{route('dashboard')}}" class="side-menu">
+                    <div class="side-menu__icon"> <i data-lucide="home"></i> </div>
+                    <div class="side-menu__title">Dashboard</div>
+                </a>
+            </li>
             <li>
                 <a href="javascript:;" class="side-menu">
                     <div class="side-menu__icon"> <i data-lucide="home"></i> </div>

@@ -3,12 +3,7 @@
 @section('content')
 
 <div class="content">
-    @if ($message = Session::get('success'))
-
-<div class="alert alert-success">
-    <p>{{$message}}</p>
-</div>
-@endif
+    
     <!-- start page title -->
     <div class="row">
         <div class="col-12">
@@ -24,7 +19,12 @@
     <!-- end page title --> 
     <div class="mb-3">
     <a href="{{route('peta-kerawanan.add')}}" type="button" class="btn btn-primary" style="margin-top: 20px;">Add New</a>
+    @if ($message = Session::get('success'))
 
+    <div class="alert alert-success mt-3 mb-3">
+        <p>{{$message}}</p>
+    </div>
+    @endif
     </div>
 
     <div class="card">

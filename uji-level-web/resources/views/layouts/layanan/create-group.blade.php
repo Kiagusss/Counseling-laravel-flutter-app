@@ -30,6 +30,7 @@
                     <div class="preview">
                         <form action="{{ Auth::user()->hasRole('guru_bk') ? 'layanan-createguru-group' : 'layanan-create-group' }}" method="POST">
                             @csrf
+                                                            <label for="regular-form-1" class="form-label">Pilih Siswa</label>
                             <select multiple name="siswa[]" class="tom-select mb-3">
                                 @foreach ($datasiswaAll as $item)
                                 <option value="{{ $item->id }}">

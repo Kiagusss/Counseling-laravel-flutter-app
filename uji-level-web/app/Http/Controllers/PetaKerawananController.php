@@ -3,17 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Guru;
-use App\Models\Kelas;
 use App\Models\User;
+use App\Models\Kelas;
 use App\Models\Siswa;
 use App\Models\Walas;
+use App\Models\LogActivity;
 use Illuminate\Http\Request;
 use App\Models\PetaKerawanan;
 use App\Models\JenisKerawanan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Response;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
@@ -95,6 +96,9 @@ class PetaKerawananController extends Controller
             'jenis_kerawanan' => $jenisKerawanan,
             'kesimpulan' => $request->kesimpulan
         ]);
+        LogActivity::create([
+            'activity' => auth()->user()->name. ' telah menambah data kerawanan'
+        ]);
         return redirect('/walas/kerawanan/index')->with('success', 'Data peta kerawanan berhasil disimpan.');
     }
     public function kerawanan_guru_index_kelas()
@@ -120,7 +124,10 @@ class PetaKerawananController extends Controller
             'jenis_kerawanan' => $jenisKerawanan,
             'kesimpulan' => $request->kesimpulan
         ]);
-        return redirect('/guru/kerawanan/index')->with('success', 'Data peta kerawanan berhasil disimpan.');
+        LogActivity::create([
+            'activity' => auth()->user()->name. ' telah menambahkan data kerawanan'.$petaKerawanan->activity
+        ]);
+        return redirect('kerawanan-indexs')->with('success', 'Data peta kerawanan berhasil disimpan.');
     }
 
     public function kerawanan_guru_edit($id)
@@ -148,6 +155,7 @@ class PetaKerawananController extends Controller
             'Kemampuan kurang', 'Berkelahi', 'Menentang guru', 'Mengganggu teman', 'Pacaran', 'Broken home', 'Kondisi ekonomi kurang ',
             'Pergaulan di luar sekolah', 'Pengguna narkoba', 'Merokok', 'Membiayai sekolah sendiri / bekerja',
         ];
+       
         return view('peta_kerawanan.edit_walas', compact('petaKerawanan', 'siswa', 'walas', 'jenisKerawanan'));
     }
 
@@ -159,6 +167,9 @@ class PetaKerawananController extends Controller
         $petaKerawanan->kesimpulan = $request->kesimpulan;
         $petaKerawanan->jenis_kerawanan = $jenisKerawanan;
         $petaKerawanan->save();
+        LogActivity::create([
+            'activity' => auth()->user()->name. ' telah merubah data kerawanan'
+        ]);
         return redirect('/guru/kerawanan/index')->with('success', 'Data peta kerawanan berhasil diperbarui.');
     }
     public function kerawanan_walas_update(Request $request, $id)
@@ -169,6 +180,9 @@ class PetaKerawananController extends Controller
         $petaKerawanan->kesimpulan = $request->kesimpulan;
         $petaKerawanan->jenis_kerawanan = $jenisKerawanan;
         $petaKerawanan->save();
+        LogActivity::create([
+            'activity' => auth()->user()->name. ' telah merubah data kerawanan'
+        ]);
         return redirect('/walas/kerawanan/index')->with('success', 'Data peta kerawanan berhasil diperbarui.');
     }
 
@@ -179,6 +193,9 @@ class PetaKerawananController extends Controller
         Schema::disableForeignKeyConstraints();
         $petaKerawanan->delete();
         Schema::enableForeignKeyConstraints();
+        LogActivity::create([
+            'activity' => auth()->user()->name. ' telah mengapus data kerawanan'.$petaKerawanan->nama
+        ]);
         return redirect('/guru/kerawanan/index')->with('success', 'Data peta kerawanan berhasil dihapus.');
     }
     public function kerawanan_delete_walas($id)
@@ -187,6 +204,9 @@ class PetaKerawananController extends Controller
         Schema::disableForeignKeyConstraints();
         $petaKerawanan->delete();
         Schema::enableForeignKeyConstraints();
+        LogActivity::create([
+            'activity' => auth()->user()->name. ' telah mengapus data kerawanan'.$petaKerawanan->nama
+        ]);
         return redirect('/walas/kerawanan/index')->with('success', 'Data peta kerawanan berhasil dihapus.');
     }
 

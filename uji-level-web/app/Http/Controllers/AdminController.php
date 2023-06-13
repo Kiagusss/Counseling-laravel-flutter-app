@@ -107,7 +107,7 @@ class AdminController extends Controller
         ]);
 
         LogActivity::create([
-            'activity' => auth()->user()->name. ' telah menambahkan guru baru dengan nama '.$walas->nama
+            'activity' => auth()->user()->name. ' telah menambahkan walas baru dengan nama '.$walas->nama
         ]);
 
 
