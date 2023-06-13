@@ -5,14 +5,14 @@
 
 <div class="content">
     <h2 class="intro-y text-lg font-medium mt-10">
-        Data Siswa/Siswi Dari {{ $kelas->nama }}
+        Data Siswa/Siswi 
     </h2>
     <div class="grid grid-cols-12 gap-6 mt-5">
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
             <div class="dropdown">
             </div>
             <div class="hidden md:block mx-auto text-slate-500">Showing 1 to 10 of 150 entries</div>
-            <a href="{{route('siswa.index')}}"><button class="dropdown-toggle btn px-2 box" style="margin-right: 7px;">Show All data</button></a>
+            <a href="{{ route('guru.kelas') }}"><button class="dropdown-toggle btn px-2 box" style="margin-right: 7px;">Back</button></a>
             <div class="w-full sm:w-auto mt-3 sm:mt-5 sm:ml-auto md:ml-0">
                 <div class="w-56 relative text-slate-500">
                     <form action="{{ url('siswa/search')}}" method="GET">

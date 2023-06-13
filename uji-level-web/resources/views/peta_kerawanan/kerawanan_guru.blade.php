@@ -46,10 +46,10 @@
                 </div>
             </div>
             <div class="hidden md:block mx-auto text-slate-500">Showing 1 to 10 of 150 entries</div>
-            <a href="{{route('siswa.index')}}"><button class="dropdown-toggle btn px-2 box" style="margin-right: 7px;">Show All data</button></a>
+            <a href="{{route('peta-kerawanans.index')}}"><button class="dropdown-toggle btn px-2 box" style="margin-right: 7px;">Show All data</button></a>
             <div class="w-full sm:w-auto mt-3 sm:mt-5 sm:ml-auto md:ml-0">
                 <div class="w-56 relative text-slate-500">
-                    <form action="{{ url('siswa/search')}}" method="GET">
+                    <form action="{{ url('kerawanan/search')}}" method="GET">
                         <input type="text" class="form-control w-56 box pr-10" placeholder="Search..." name="keyword">
                         <button type="submit"><i class="w-4 h-4 absolute my-auto inset-y-0 mr-3 right-0" data-lucide="search" style="position: absolute; top: -15px;"></i> </button>
                 </div>
