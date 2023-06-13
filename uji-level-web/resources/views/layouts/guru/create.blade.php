@@ -17,6 +17,15 @@
                         Input
                     </h2>
                 </div>
+                @if($errors->any())
+                <div class="mt-2 alert alert-danger">
+                    <ul class="mb-0">
+                        @foreach($errors->all() as $error)
+                        <li>{{$error}}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
                 <div id="input" class="p-5">
                     <div class="preview">
                         <form action="/create-guru" method="POST">

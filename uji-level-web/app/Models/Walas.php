@@ -32,7 +32,7 @@ class Walas extends Model
 
     public function user()
 {
-    return $this->belongsTo(User::class);
+    return $this->belongsTo(User::class, 'walas_id');
 }
 public function guru()
 {

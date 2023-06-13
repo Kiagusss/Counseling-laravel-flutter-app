@@ -2,19 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Guru;
 use Exception;
+use App\Models\Guru;
 use App\Models\User;
 use App\Models\Kelas;
 use App\Models\Siswa;
 use App\Models\Walas;
+use App\Exports\GuruExport;
+use App\Exports\KelasExport;
+use App\Exports\SiswaExport;
+use App\Exports\WalasExport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
-use App\Exports\SiswaExport;
-use App\Exports\GuruExport;
-use App\Exports\WalasExport;
-use App\Exports\KelasExport;
+use Illuminate\Support\Facades\Schema;
 
 
 
@@ -225,7 +226,7 @@ class AdminController extends Controller
         ]);
 
         $datasiswa->update();
-        return redirect('index-siswa');
+        return redirect('index-siswa')->with('success', 'Update Siswa Berhasil ');
     }
 
     public function updateGuru(Request $request, string $id)
@@ -244,7 +245,7 @@ class AdminController extends Controller
         $user->password = $request->input('password');
         $user->save();
 
-        return redirect('index-guru');
+        return redirect('index-guru')->with('success', 'Update Guru Berhasil ');
     }
 
     public function updateWalas(Request $request, string $id)
@@ -264,7 +265,7 @@ class AdminController extends Controller
             'password' => $request->password,
         ]);
 
-        return redirect('index-walas');
+        return redirect('index-walas')->with('success', 'Update Wali Kelas Berhasil ');
     }
 
 
@@ -277,8 +278,10 @@ class AdminController extends Controller
     {
         $siswa = Siswa::findOrFail($id);
         $user = User::Where('id', $siswa->user_id);
+        Schema::disableForeignKeyConstraints();
         $siswa->delete();
         $user->delete();
+        Schema::enableForeignKeyConstraints();
 
         return redirect('index-siswa')->with('success', 'Seller Data Deleted Successfully');
     }
@@ -287,9 +290,10 @@ class AdminController extends Controller
     {
         $walas = Walas::findOrFail($id);
         $user = User::Where('id', $walas->user_id);
+        Schema::disableForeignKeyConstraints();
         $walas->delete();
         $user->delete();
-
+        Schema::enableForeignKeyConstraints();
         return redirect('index-walas')->with('success', 'Seller Data Deleted Successfully');
     }
 
@@ -299,11 +303,12 @@ class AdminController extends Controller
         $user = $guru->user; // Mengambil data profile yang terkait dengan user
 
         // Hapus data profile terlebih dahulu
+        Schema::disableForeignKeyConstraints();
         $guru->delete();
 
         // Hapus data user
         $user->delete();
-
+        Schema::enableForeignKeyConstraints();
         return redirect('index-guru')->with('success', 'Seller Data Deleted Successfully');
     }
 

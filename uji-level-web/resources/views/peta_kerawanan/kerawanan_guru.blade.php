@@ -1,104 +1,115 @@
 @extends('layouts.main')
 
-@section('content')
-@if ($message = Session::get('success'))
 
-<div class="alert alert-success">
-    <p>{{$message}}</p>
-</div>
-@endif
-<div class="container-fluid">
-    <!-- start page title -->
-    <div class="row">
-        <div class="col-12">
-            <div class="page-title-box">
-                <div class="page-title-right">
-                    <ol class="breadcrumb m-0">
-                        <li class="breadcrumb-item"><a href="javascript: void(0);">Hyper</a></li>
-                        <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
-                        <li class="breadcrumb-item active">Siswa</li>
-                    </ol>
+@section('content')
+
+<div class="content">
+    <h2 class="intro-y text-lg font-medium mt-10">
+        Data Siswa/Siswi
+    </h2>
+    @if($errors->any())
+    <div class="mt-2 alert alert-danger">
+        <ul class="mb-0">
+            @foreach($errors->all() as $error)
+            <li>{{$error}}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+
+    @if ($message = Session::get('success'))
+
+    <div class="alert alert-success">
+        <p>{{$message}}</p>
+    </div>
+    @endif
+    <div cla <div class="grid grid-cols-12 gap-6 mt-5">
+        <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
+            <a href="{{route('peta-kerawanans.kelas')}}"><button class="btn btn-primary shadow-md mr-2">Tambah Data Siswa</button>
+            </a>
+            <div class="dropdown">
+                <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
+                    <span class="w-5 h-5 flex items-center justify-center"> <i class="w-4 h-4" data-lucide="plus"></i> </span>
+                </button>
+                <div class="dropdown-menu w-40">
+                    <ul class="dropdown-content">
+                        <li>
+                            <a href="" class="dropdown-item"> <i data-lucide="printer" class="w-4 h-4 mr-2"></i> Print </a>
+                        </li>
+                        <li>
+                            <a href="/siswa/export" class="dropdown-item"> <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Export to Excel </a>
+                        </li>
+                        <li>
+                            <a href="" class="dropdown-item"> <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Export to PDF </a>
+                        </li>
+                    </ul>
                 </div>
-                <h4 class="page-title">Data Kerawanan</h4>
+            </div>
+            <div class="hidden md:block mx-auto text-slate-500">Showing 1 to 10 of 150 entries</div>
+            <a href="{{route('siswa.index')}}"><button class="dropdown-toggle btn px-2 box" style="margin-right: 7px;">Show All data</button></a>
+            <div class="w-full sm:w-auto mt-3 sm:mt-5 sm:ml-auto md:ml-0">
+                <div class="w-56 relative text-slate-500">
+                    <form action="{{ url('siswa/search')}}" method="GET">
+                        <input type="text" class="form-control w-56 box pr-10" placeholder="Search..." name="keyword">
+                        <button type="submit"><i class="w-4 h-4 absolute my-auto inset-y-0 mr-3 right-0" data-lucide="search" style="position: absolute; top: -15px;"></i> </button>
+                </div>
             </div>
         </div>
-    </div>     
-    <!-- end page title --> 
-    <div class="mb-3">
-    <a href="{{route('peta-kerawanans.kelas')}}" type="button" class="btn btn-primary">Add New</a>
-
-    </div>
-
-    <div class="card">
-        <div class="card-body">
-            <table class="table table-hover table-centered mb-0">
+        <!-- BEGIN: Data List -->
+        <div class="intro-y col-span-12 overflow-auto lg:overflow-visible">
+            <table class="table table-report -mt-2">
                 <thead>
                     <tr>
-                        <th>No</th>
-                        <th>Siswa</th>
-                        <th>Kelas</th>
-                        <th>Kerawanan</th>
-                        <th>Wali Kelas</th>
-                        <th>Kesimpulan</th>
-                        <th>Action</th>
+                        <th class="whitespace-nowrap" style="text-align: center;">No</th>
+                        <th class="whitespace-nowrap" style="text-align: center;">Siswa</th>
+                        <th class="whitespace-nowrap" style="text-align: center;">Kelas</th>
+                        <th class="whitespace-nowrap" style="text-align: center;">Kerawanan</th>
+                        <th class="whitespace-nowrap" style="text-align: center;">Wali Kelas</th>
+                        <th class="whitespace-nowrap" style="text-align: center;">Kesimpulan</th>
+                        <th class="whitespace-nowrap" style="text-align: center;">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($petaKerawanan as $item)
-                    <tr>
-                        <td>{{$loop->iteration}}</td>
-                        <td>{{$item->siswa->nama}}</td>
-                        <td>{{$item->siswa->kelas->nama}}</td>
-                        <td>{{$item->jenis_kerawanan}}</td>
-                        <td>{{$item->siswa->kelas->walas->nama}}</td>
-                        <td>{{$item->kesimpulan}}</td>
-                        <td>
-                            <a href="/guru/kerawanan/edit/{{$item->id}}" class="btn btn-primary">Edit</a>
-                            <form id="deleteForm" action="/guru/kerawanan/delete/{{$item->id}}" method="POST" class="d-inline">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Hapus</button>
-                            </form>
-        
+                    <tr class="intro-x">
+                        @foreach ($petaKerawanan as $item)
+                        <td style="text-align: center;">
+                            {{$loop->iteration}}
                         </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                        <td style="text-align: center;">
+                            {{$item->siswa->nama}}
+                        </td>
+                        <td style="text-align: center;">
+                            {{$item->siswa->kelas->nama}}
+                        </td>
+                        <td style="width: 20rem;text-align: center;">
+                            {{$item->jenis_kerawanan}}
+                        </td>
+                        <td style="text-align: center;">
+                            {{$item->siswa->kelas->walas->nama}}
+                        </td>
+                        <td style="width: 25rem; text-align: center;">
+                            {{$item->kesimpulan}}
+                        </td>
+                        <td>
+                            <div style="display: flex;">
+                                <div>
+                                    <a href="/guru/kerawanan/edit/{{$item->id}}"> <i data-lucide="check-square" class="w-4 h-4 mr-1" style="margin-top: 7px;"></i></a>
+                                </div>
+                                <form action="/guru/kerawanan/delete/{{$item->id}}" method="POST" onsubmit="return confirm('mau hapus?')">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit"><i data-lucide="trash" class="w-4 h-4 mr-2" style="margin-top: 7px; margin-left: 5px;"></i></button>
+                        </td>
+                        </form>
         </div>
-    </div>
-                                                    
-  </div>
+        </td>
+        </tr>
+        @endforeach
 
-      <!-- Delete Modal -->
-      <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="deleteModalLabel">Konfirmasi Hapus Siswa</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Apakah Anda yakin ingin menghapus data ini?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                    <form id="deleteForm" method="POST" class="d-inline">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Hapus</button>
-                    </form>
-                </div>
-            </div>
-        </div>
+        </tr>
+        </tbody>
+        </table>
+        {{-- {{ $petaKerawanan->links() }} --}}
     </div>
 
-    <script>
-        function showDeleteModal(guruId) {
-            var deleteForm = document.getElementById('deleteForm');
-            deleteForm.action = '/guru/kerawanan/delete/' + guruId;
-            var deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
-            deleteModal.show();
-        }
-    </script>
-@endsection
+    @endsection
