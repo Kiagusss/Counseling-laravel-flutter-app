@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class GuruController extends Controller
 {
+
    public function index(){
 
         $guru = Auth::user()->id;
@@ -21,4 +22,12 @@ class GuruController extends Controller
         return view('layouts.siswa.index', compact('siswa'));
 
    }
+
+    public function getGuruData()
+    {
+        $siswa = Siswa::where('user_id', Auth::id())->first();
+        $guru = Guru::where('kelas_id', $siswa->kelas_id)->first();
+        return response()->json(['data' => $guru], 200);
+    }
+
 }

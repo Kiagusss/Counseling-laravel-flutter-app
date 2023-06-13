@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Models\Role;
 use Laravel\Jetstream\HasProfilePhoto;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
@@ -36,6 +37,10 @@ class User extends Authenticatable
     public function walas()
     {
         return $this->hasOne(Walas::class);
+    }
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
     }
 
     /**

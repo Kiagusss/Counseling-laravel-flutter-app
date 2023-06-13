@@ -13,7 +13,6 @@ use App\Models\JenisKerawanan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Schema;
-use Dompdf\Dompdf;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Response;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
