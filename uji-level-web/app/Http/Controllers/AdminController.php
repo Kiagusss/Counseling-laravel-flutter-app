@@ -12,6 +12,7 @@ use App\Exports\GuruExport;
 use App\Exports\KelasExport;
 use App\Exports\SiswaExport;
 use App\Exports\WalasExport;
+use App\Models\LogActivity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
@@ -100,6 +101,10 @@ class AdminController extends Controller
             'jenis_kelamin' => $request->input('jenis_kelamin'),
         ]);
 
+        LogActivity::create([
+            'activity' => auth()->user()->name. ' telah menambahkan guru baru dengan nama '.$walas->nama
+        ]);
+
 
         return redirect('index-walas')->with('success', 'Data berhasil Ditambahkan ');
     }
@@ -135,11 +140,51 @@ class AdminController extends Controller
             'kelas_id' => $request->input('kelas_id'),
         ]);
 
+        LogActivity::create([
+            'activity' => auth()->user()->name. ' telah menambahkan siswa baru dengan nama '.$siswa->nama
+        ]);
+
 
     return redirect('index-siswa')->with('success', 'Data berhasil Ditambahkan ');
 }
 
-        
+public function storeGuru(Request $request)
+{
+    $request->validate([
+        'nama' => 'required',
+        'nipd' => 'required',
+        'jenis_kelamin' => 'required',
+        'ttl' => 'required',
+        'email' => 'required|email|unique:users',
+        'password' => 'required|min:8',
+    ]);
+
+    $user = User::create([
+        'name' => $request->input('nama'),
+        'email' => $request->input('email'),
+        'password' => bcrypt($request->input('password')),
+    ]);
+    $user->assignRole('guru_bk');
+
+    $userId = $user->id;
+
+    $guru = Guru::create([
+        'user_id' => $userId,
+        'nipd' => $request->input('nipd'),
+        'nama' => $request->input('nama'),
+        'ttl' => $request->input('ttl'),
+        'jenis_kelamin' => $request->input('jenis_kelamin'),
+    ]);
+
+    LogActivity::create([
+        'activity' => auth()->user()->name. ' telah menambahkan guru baru dengan nama '.$guru->nama
+    ]);
+
+    return redirect('index-guru')->with('success', 'Guru berhasil Ditambahkan ');
+}
+
+
+
 
 
     /**
@@ -195,6 +240,11 @@ class AdminController extends Controller
             'password' => $request->password,
         ]);
 
+        LogActivity::create([
+            'activity' => auth()->user()->name. ' telah merubah data siswa '.$datasiswa->nama
+        ]);
+
+
         $datasiswa->update();
         return redirect('index-siswa')->with('success', 'Update Siswa Berhasil ');
     }
@@ -215,6 +265,10 @@ class AdminController extends Controller
         $user->password = $request->input('password');
         $user->save();
         
+        LogActivity::create([
+            'activity' => auth()->user()->name. ' telah merubah data guru'.$guru->nama
+        ]);
+
         return redirect('index-guru')->with('success', 'Data berhasil diubah');
     }
 
@@ -235,6 +289,11 @@ class AdminController extends Controller
             'password' => $request->password,
         ]);
 
+        LogActivity::create([
+            'activity' => auth()->user()->name. ' telah merubah data walas'.$datawalas->nama
+        ]);
+
+
         return redirect('index-walas')->with('sucess', 'Data berhasil diubah');
     }
 
@@ -253,6 +312,11 @@ class AdminController extends Controller
         $user->delete();
         Schema::enableForeignKeyConstraints();
 
+        LogActivity::create([
+            'activity' => auth()->user()->name. ' telah mengapus data siswa'.$siswa->nama
+        ]);
+
+
         return redirect('index-siswa')->with('success','Data berhasil dihapus');
     }
 
@@ -263,6 +327,11 @@ class AdminController extends Controller
         Schema::disableForeignKeyConstraints();
         $walas->delete();
         $user->delete();
+
+        LogActivity::create([
+            'activity' => auth()->user()->name. ' telah merubah data walas'.$walas->nama
+        ]);
+
 
         return redirect('index-walas')->with('success','Data berhasil dihapus');
     }
@@ -278,6 +347,11 @@ class AdminController extends Controller
 
         // Hapus data user
         $user->delete();
+
+        LogActivity::create([
+            'activity' => auth()->user()->name. ' telah menghapus data guru'.$guru->nama
+        ]);
+
 
         return redirect('index-guru')->with('success','Data berhasil dihapus');
     }
