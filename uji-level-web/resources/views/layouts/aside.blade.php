@@ -1,10 +1,14 @@
 
 @if (Auth::check())
     @if (Auth::user()->hasRole('admin'))
-
-    
      <nav class="side-nav">
         <ul>
+            <li>
+                <a href="{{route('dashboard')}}" class="side-menu">
+                    <div class="side-menu__icon"> <i data-lucide="home"></i> </div>
+                    <div class="side-menu__title">Dashboard</div>
+                </a>
+            </li>
             <li>
                 <a href="javascript:;" class="side-menu">
                     <div class="side-menu__icon"> <i data-lucide="home"></i> </div>
@@ -57,7 +61,7 @@
                 </a>
                 <ul class="">
                     <li>
-                        <a href="side-menu-light-dashboard-overview-1.html" class="side-menu">
+                        <a href="/walas/siswa/kerawanan" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
                             <div class="side-menu__title"> Data Siswa</div>
                         </a>
@@ -93,7 +97,7 @@
                 </a>
                 <ul class="">
                     <li>
-                        <a href="siswa-bk-{{Auth::user()->id}}" class="side-menu">
+                        <a href="/guru/kelas" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
                             <div class="side-menu__title"> Data Siswa</div>
                         </a>

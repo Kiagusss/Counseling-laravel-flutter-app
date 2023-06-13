@@ -71,5 +71,45 @@ class SiswaSeeder extends Seeder
             'created_at' => Carbon::now(), 
             'updated_at' => Carbon::now(), 
         ]);
+
+
+        $user = User::create([
+            'name' => 'Aryo',
+            'email' => 'aryo@gmail.com',
+            'password' => Hash::make('password'),
+        ]);
+
+        $user->assignRole('siswa');
+
+        Siswa::create([
+            'user_id' => $user->id, 
+            'nisn' => '23213', 
+            'nama' => 'Aryo', 
+            'kelas_id' => '2', 
+            'ttl' => Carbon::now(),  
+            'jenis_kelamin' => 'pria',  
+            'created_at' => Carbon::now(), 
+            'updated_at' => Carbon::now(), 
+        ]);
+
+        
+        $user = User::create([
+            'name' => 'Aryo',
+            'email' => 'aryo@gmail.com',
+            'password' => Hash::make('password'),
+        ]);
+
+        $user->assignRole('siswa');
+
+        Siswa::create([
+            'user_id' => $user->id, 
+            'nisn' => '23213', 
+            'nama' => 'Aryo', 
+            'kelas_id' => '2', 
+            'ttl' => Carbon::now(),  
+            'jenis_kelamin' => 'pria',  
+            'created_at' => Carbon::now(), 
+            'updated_at' => Carbon::now(), 
+        ]);
     }
 }
