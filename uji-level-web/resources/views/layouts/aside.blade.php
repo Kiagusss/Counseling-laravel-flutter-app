@@ -70,6 +70,12 @@
                     <div class="side-menu__title">Peta Kerawanan</div>
                 </a>
             </li>
+            <li>
+                <a href="/walas-layanan-archive" class="side-menu">
+                    <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
+                    <div class="side-menu__title">Archived</div>
+                </a>
+            </li>
         </ul>
     </nav>
 

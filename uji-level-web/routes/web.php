@@ -99,6 +99,7 @@ Route::middleware(['role:wali_kelas'])->group(function () {
     Route::delete('/walas/kerawanan/delete/{id}', [PetaKerawananController::class, 'kerawanan_delete_walas']);
     Route::get('/walas/siswa/kerawanan', [PetaKerawananController::class, 'kerawananSiswa']);
     Route::get('/walas/pdf/{id}', [PetaKerawananController::class, 'pdfWalas']);
+    Route::get('/walas-layanan-archive', [LayananController::class, 'archivewalas'])->name('archive');
     });
 });
 

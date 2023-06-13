@@ -260,6 +260,7 @@ class LayananController extends Controller
             'walas_id' => $walasdata->id,
             'judul' => $request->input('judul'),
             'tujuan' => $request->input('tujuan'),
+            'status' => 'Approved',
             'jadwal_konseling' => $request->input('jadwal')
         ]);
 
@@ -336,6 +337,23 @@ class LayananController extends Controller
         return view('layouts.layanan.archive', compact('konselingbk'));
 
 
+    }
+
+    public function archivewalas(){
+        $user = Auth::user();
+        $userId = $user->id;
+        $datawalas = Walas::where('user_id', $userId)->first();
+        $datakelas = Kelas::where('walas_id', $datawalas->id)->first();
+        $datasiswa = Siswa::where('kelas_id', $datakelas->id)->get();
+        $siswaIds = $datasiswa->pluck('id')->toArray();
+        $pivotdata = PivotBk::whereIn('siswa_id', $siswaIds)->get();
+        $konselingIds = $pivotdata->pluck('konseling_id')->toArray();
+        $konselingbk = KonselingBK::with(['layanan', 'guru', 'siswa', 'walas'])
+        ->whereIn('id', $konselingIds)
+        ->whereIn('status', ['Cancelled', 'Done'])
+        ->get();
+
+        return view('layouts.layanan.archive', compact('konselingbk'));
     }
 
     public function cancelpage(string $id){
