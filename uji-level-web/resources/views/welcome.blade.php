@@ -27,18 +27,25 @@
                         
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
-                        </form>
-                        
-                    </li>                    @else
+                        </form>              
+                    </li>                   
+                     @else
                         <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log in</a>
 
                         @if (Route::has('register'))
                             <a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
                         @endif
                     @endauth
-                </div>
-            @endif
+                    @endif
+                    <div>
+                        <a href="{{route('layanan.create')}}"><button>Appointment</button></a>
+                        <a href="{{route('layanan.archive')}}"><button>Archive</button></a>
+                        <a href="#">Jadwal</a>
+                    </div>
 
+                </div>
+
+                
             <div class="max-w-7xl mx-auto p-6 lg:p-8">
                 <div class="flex justify-center">
                     <svg viewBox="0 0 62 65" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-16 w-auto bg-gray-100">
