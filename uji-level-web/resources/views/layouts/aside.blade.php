@@ -86,11 +86,7 @@
                 </a>
                 <ul class="">
                     <li>
-<<<<<<< HEAD
                         <a href="siswa-bk-{{Auth::user()->id}}" class="side-menu">
-=======
-                        <a href="/guru/kelas" class="side-menu">
->>>>>>> b24a9b5393647295b40f251ff8c99ce3c763390f
                             <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
                             <div class="side-menu__title"> Data Siswa</div>
                         </a>

@@ -5,14 +5,15 @@ namespace App\Http\Controllers;
 use App\Models\Guru;
 use App\Models\User;
 use App\Models\Kelas;
-use App\Models\KonselingBK;
 use App\Models\Siswa;
 use App\Models\Walas;
-use App\Models\LayananBK;
 use App\Models\PivotBK;
-use Illuminate\Database\Eloquent\Relations\Pivot;
+use App\Models\LayananBK;
+use App\Models\KonselingBK;
+use App\Models\LogActivity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
 class LayananController extends Controller
 {
@@ -32,7 +33,7 @@ class LayananController extends Controller
         ->where('status', 'Waiting')
         ->with(['layanan', 'guru', 'siswa', 'walas'])
         ->paginate(10);
-     
+        
          return view('layouts.layanan.index-siswa', compact('konselingbk'));
      }
     public function siswaapproved(){
@@ -106,14 +107,15 @@ class LayananController extends Controller
     public function scheduleset(string $id, Request $request){
         
         $data = KonselingBK::find($id);
-
         $data->update([
             'status' => 'Approved',
             'jadwal_konseling' => $request->input('jadwal'),
         ]);
 
         $iduser = Auth::user()->id;
-
+        LogActivity::create([
+            'activity' => auth()->user()->name. ' telah menetapkan jadwal pertemuan pada'.$request->input('jadwal')
+        ]);
 
         return redirect('dashboard');
     }
