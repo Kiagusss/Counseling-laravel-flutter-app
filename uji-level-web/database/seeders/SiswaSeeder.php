@@ -46,7 +46,7 @@ class SiswaSeeder extends Seeder
         Siswa::create([
             'user_id' => $user->id, 
             'nisn' => '600', 
-            'nama' => 'Siswa', 
+            'nama' => 'Yanto', 
             'kelas_id' => '2', 
             'ttl' => Carbon::now(),  
             'jenis_kelamin' => 'pria',  

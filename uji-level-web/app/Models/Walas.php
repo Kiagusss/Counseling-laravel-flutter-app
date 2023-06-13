@@ -39,5 +39,9 @@ public function guru()
     return $this->belongsTo(Guru::class, 'guru_id');
 }
 
+public function konseling(){
+    return $this->hasOne(KonselingBK::class, 'walas_id', 'id');
+}
+
 
 }

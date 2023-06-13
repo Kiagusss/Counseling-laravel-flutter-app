@@ -3,11 +3,12 @@
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\GuruController;
 use App\Http\Controllers\KelasController;
-use Maatwebsite\Excel\Facades\Excel;
+use App\Http\Controllers\LayananController;
 use App\Http\Controllers\WalasController;
 use App\Http\Controllers\PetaKerawananController;
+use App\Models\LayananBK;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,14 +40,10 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/dashboard', function () {
-        if (auth()->user()->hasRole('siswa')){
-            return view('welcome');
-        }else{
-            return view('pages.dashboard');
-        }
         return view('pages.dashboard');
     })->name('dashboard');
     
+
 Route::middleware(['role:admin'])->group(function () {
     Route::name('siswa.')->group(function () {
         // Rute-rute untuk siswa
@@ -121,6 +118,46 @@ Route::middleware(['role:guru_bk'])->group(function () {
     Route::get('/guru/pdf/{id}', [PetaKerawananController::class, 'pdfGuru']);
 });
 
+Route::middleware(['role:guru_bk'])->group(function (){
+    Route::name('siswa-bk.')->group(function (){
+        Route::get('siswa-bk-{id}', [GuruController::class, 'index'])->name('index');
+        Route::get('layanan-bk-pending-{id}', [LayananController::class, 'indexwaiting'])->name('layanan.pending');
+        Route::get('layanan-bk-approved-{id}', [LayananController::class, 'indexapproved'])->name('layanan.Approved');
+        Route::get('layanan-bk-canceled-{id}', [LayananController::class, 'indexrescheduled'])->name('layanan.canceled');
+        Route::get('layanan-bk-schedule-{id}', [LayananController::class, 'schedule'])->name('reschedule');
+        Route::get('/layanan-bk-archive-{id}', [LayananController::class, 'archive'])->name('archive');
+        Route::patch('layanan-bk-schedule-{id}', [LayananController::class, 'scheduleset'])->name('reschedule');
+
+
+    });
+});
+
+Route::get('layanan-bk-show-{id}', [LayananController::class, 'show'])->name('show');
+Route::get('/layanan-bk-cancel-{id}', [LayananController::class, 'cancelpage'])->name('cancelpage');
+Route::patch('layanan-bk-cancel-{id}', [LayananController::class, 'cancel'])->name('cancel');
+Route::get('/layanan-bk-done-{id}', [LayananController::class, 'donepage'])->name('cancelpage');
+Route::patch('layanan-bk-done-{id}', [LayananController::class, 'done'])->name('cancel');
+
+
+
+
+
+Route::middleware(['role:siswa'])->group(function () {
+    Route::name('layanan.')->group(function () {
+    Route::get('layanan-create-private', [LayananController::class, 'createprivate'])->name('create');
+    Route::post('layanan-create-private', [LayananController::class, 'storeprivate'])->name('store');
+    Route::get('layanan-create-group', [LayananController::class, 'creategroup'])->name('create');
+    Route::post('layanan-create-group', [LayananController::class, 'storegroup'])->name('store');
+    Route::get('/siswa-layanan-archive', [LayananController::class, 'archivemurid'])->name('archive');
+    Route::get('siswa-layanan-waiting', [LayananController::class, 'siswawaiting']);
+    Route::get('siswa-layanan-approved', [LayananController::class, 'siswaapproved']);
+    Route::get('layanan-archive', [LayananController::class, 'archive'])->name('archive');
+    });
+});
+
+
+
+Route::get('/nipd/{id}', 'WalasController@Nipd');
 
 
 

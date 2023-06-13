@@ -7,12 +7,6 @@
     <h2 class="intro-y text-lg font-medium mt-10">
         Data Siswa/Siswi
     </h2>
-    @if ($message = Session::get('success'))
-
-<div class="alert alert-success">
-    <p>{{$message}}</p>
-</div>
-@endif
     <div class="grid grid-cols-12 gap-6 mt-5">
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
             @if (Auth::user()->hasRole('admin'))
@@ -28,7 +22,7 @@
                             <a href="" class="dropdown-item"> <i data-lucide="printer" class="w-4 h-4 mr-2"></i> Print </a>
                         </li>
                         <li>
-                            <a href="/siswa/export" class="dropdown-item"> <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Export to Excel </a>
+                            <a href="" class="dropdown-item"> <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Export to Excel </a>
                         </li>
                         <li>
                             <a href="" class="dropdown-item"> <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Export to PDF </a>
@@ -54,53 +48,52 @@
                 <thead>
                     <tr>
                         <th class="whitespace-nowrap">No.</th>
-                        <th class="whitespace-nowrap">Nisn</th>
-                        <th class="whitespace-nowrap">Nama</th>
-                        <th class="whitespace-nowrap">Kelas</th>
-                        <th class="whitespace-nowrap">TTL</th>
-                        <th class="whitespace-nowrap">Jenis Kelamin</th>
+                        <th class="whitespace-nowrap">Jenis Layanan</th>
+                        <th class="whitespace-nowrap">Guru</th>
+                        <th class="whitespace-nowrap">Walas</th>
+                        <th class="whitespace-nowrap">Judul</th>
+                        <th class="whitespace-nowrap">Tujuan</th>
+                        <th class="whitespace-nowrap">Status</th>
                         <th class="whitespace-nowrap">Action</th>
+
                     </tr>
                 </thead>
                 <tbody>
                     <tr class="intro-x">
-                        @foreach ($siswa as $item)
+                        @foreach ($konselingbk as $item)
                         <td>
                             <a href="" class="font-medium whitespace-nowrap">{{$loop->iteration}}</a> 
                         </td>
                         <td>
-                            <a href="" class="font-medium whitespace-nowrap">{{$item->nisn}}</a> 
+                            <a href="" class="font-medium whitespace-nowrap">{{$item->layanan->jenis_layanan}}</a> 
                         </td>
                         <td>
-                            <a href="" class="font-medium whitespace-nowrap">{{$item->nama}}</a> 
+                            <a href="" class="font-medium whitespace-nowrap">{{$item->guru->nama}}</a> 
                         </td>
                         <td>
-                            <a href="" class="font-medium whitespace-nowrap">{{$item->kelasid->nama}}</a> 
+                            <a href="" class="font-medium whitespace-nowrap">{{$item->walas->nama}}</a> 
                         </td>
                         <td>
-                            <a href="" class="font-medium whitespace-nowrap">{{$item->ttl}}</a> 
+                            <a href="" class="font-medium whitespace-nowrap">{{$item->judul}}</a> 
                         </td>
                         <td>
-                            <a href="" class="font-medium whitespace-nowrap">{{$item->jenis_kelamin}}</a> 
+                            <a href="" class="font-medium whitespace-nowrap">{{$item->tujuan}}</a> 
+                        </td>
+                        <td>
+                            <a href="" class="font-medium whitespace-nowrap">{{$item->status}}</a> 
                         </td>
                         <td style="display: flex; height: 50px;">
                             <div>
-                                <a href="siswa/update/{{$item->id}}"> <i data-lucide="check-square" class="w-4 h-4 mr-1" style="margin-top: 7px;"></i></a>
+                                <a href="/layanan-bk-show-{{$item->id}}"> <i data-lucide="eye" class="w-4 h-4 mr-1" style="margin-top: 7px;"></i></a>
                             </div>
-                            <form action="/siswa/destroy/{{$item->id}}" method="POST"  onsubmit="return confirm('mau hapus?')">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit"><i data-lucide="trash" class="w-4 h-4 mr-2" style="margin-top: 7px; margin-left: 5px;"></i></button>
-                            </td>
-                            </form>
                         </td>
-                    </tr>
-                        @endforeach
-                        
-                    </tr>
+                    </tr> 
+                    @endforeach
+                </tr>
+                    
                 </tbody>
             </table>
-            {{ $siswa->links() }}
+            {{-- {{ $siswa->links() }} --}}
         </div>
-       
+
 @endsection
