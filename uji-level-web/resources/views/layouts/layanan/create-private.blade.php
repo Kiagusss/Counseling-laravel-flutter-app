@@ -28,12 +28,25 @@
                 </div>
                 <div id="input" class="p-5">
                     <div class="preview">
-                        <form action="/layanan-create-private" method="POST">
+                        <form action="{{ Auth::user()->hasRole('guru_bk') ? 'layanan-createguru-pribadi' : 'layanan-create-private' }}" method="POST">
                             @csrf
+                            @if (Auth::user()->hasRole('guru_bk'))
+                            <div class="mt-3">
+                                <label for="regular-form-1" class="form-label">Pilih Siswa</label>
+                                <select name="siswa" class="tom-select mb-3">
+                                    @foreach ($datasiswa as $item)
+                                    <option value="{{$item->id}}">{{$item->nama}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            @else
                             <div class="mt-3">
                                 <label for="regular-form-1" class="form-label">Siswa</label>
+                                
                                 <input disabled id="regular-form-1" type="text" name="siswa" class="form-control" placeholder="Nama" value="{{$datasiswa->nama}}">
                             </div>
+                            @endif
+                            
                             <div class="mt-3">
                                 <label for="regular-form-1" class="form-label">Guru</label>
                                 <input disabled id="regular-form-1" type="text" name="guru" class="form-control" placeholder="Nama" value="{{$dataguru->nama}}">
@@ -46,6 +59,12 @@
                                 <label for="regular-form-1" class="form-label">tujuan</label>
                                 <input id="regular-form-1" type="text" name="tujuan" class="form-control" placeholder="Tujuan" value="" style="height: 300px">
                             </div>
+                            @if (Auth::user()->hasRole('guru_bk'))
+                            <div class="relative w-56 mt-3">
+                                <label for="regular-form-1" class="form-label">Atur Jadwal</label>
+                              <input type="datetime-local" name="jadwal" id="" value="">
+                            </div>
+                            @endif
                             <div class="mt-3">
                                 <label for="regular-form-1" class="form-label">Jenis Layanan</label>
                                 <select name="layanan" class="tom-select mb-3">
