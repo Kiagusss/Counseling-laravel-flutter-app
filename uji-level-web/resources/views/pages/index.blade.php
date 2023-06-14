@@ -208,7 +208,7 @@
             </div>
         </div>
 
-        <div class="teach w-full h-[1150px]" style="background-color: white">
+        <div class="teach w-full h-[750px]" style="background-color: white">
             <div class="text-center pt-[30px]" style="">
                 <h5 class="">Our Teacher</h5>
                 <h1 class="ml-[380px] font-bold text-[50px] w-[800px] h-[60px]">Meet Our Amazing Counselor Teacher</h1>
@@ -284,7 +284,7 @@
                 <h1>FAQ</h1>
             </div>
             <div class="faq-drawer">
-                <input class="faq-drawer__trigger" id="faq-drawer" type="checkbox" /><label class="faq-drawer__title1" for="faq-drawer"> Apa itu aplikasi sarpras di sekolah?</label>
+                <input class="faq-drawer__trigger" id="faq-drawer" type="checkbox" /><label class="faq-drawer__title1" for="faq-drawer"> Apa itu aplikasi bimbingan konseling di sekolah?</label>
                 <div class="faq-drawer__content-wrapper">
                   <div class="faq-drawer__content">
                     <p>
@@ -295,7 +295,7 @@
               </div>
               
               <div class="faq-drawer">
-                <input class="faq-drawer__trigger" id="faq-drawer-2" type="checkbox" /><label class="faq-drawer__title" for="faq-drawer-2">Apa saja fitur yang tersedia dalam aplikasi sarpras di sekolah?</label>
+                <input class="faq-drawer__trigger" id="faq-drawer-2" type="checkbox" /><label class="faq-drawer__title" for="faq-drawer-2">Apa saja fitur yang tersedia dalam aplikasi bimbingan konseling di sekolah?</label>
                 <div class="faq-drawer__content-wrapper">
                   <div class="faq-drawer__content">
                     <p>
@@ -306,7 +306,7 @@
               </div>
               
               <div class="faq-drawer">
-                <input class="faq-drawer__trigger" id="faq-drawer-3" type="checkbox" /><label class="faq-drawer__title" for="faq-drawer-3">Apa manfaat menggunakan aplikasi sarpras di sekolah?</label>
+                <input class="faq-drawer__trigger" id="faq-drawer-3" type="checkbox" /><label class="faq-drawer__title" for="faq-drawer-3">Apa manfaat menggunakan aplikasi bimbingan konseling di sekolah?</label>
                 <div class="faq-drawer__content-wrapper">
                   <div class="faq-drawer__content">
                     <p>
@@ -316,7 +316,7 @@
                 </div>
               </div>
               <div class="faq-drawer">
-                <input class="faq-drawer__trigger" id="faq-drawer-4" type="checkbox" /><label class="faq-drawer__title" for="faq-drawer-4"> Apa kendala yang dapat dihadapi dalam penggunaan aplikasi sarpras di sekolah?</label>
+                <input class="faq-drawer__trigger" id="faq-drawer-4" type="checkbox" /><label class="faq-drawer__title" for="faq-drawer-4"> Apa kendala yang dapat dihadapi dalam penggunaan aplikasi bimbingan konseling di sekolah?</label>
                 <div class="faq-drawer__content-wrapper">
                   <div class="faq-drawer__content">
                     <p>
@@ -327,28 +327,26 @@
               </div>
               
         </div>
-        <!--
-  Heads up! 👋
+    
 
-  Plugins:
-    - @tailwindcss/forms
--->
-
-<footer class="bg-white">
+<footer class="bg-white dark:bg-gray-900">
     <div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
-      <div class="lg:flex lg:items-start">
-        <a class="logo rotate-12 text-[2rem] font-bold" href="#" id="navi5">t</a>
-        <a class="logo rotate-[-17deg] text-[2rem] font-bold" href="#" id="navi5">b</a>
-        <a class="logo rotate-[17deg] ml-[-2px] text-[2rem] font-bold" href="#" id="navi5">h</a>
-      </div> 
+      <div class="lg:flex lg:items-start lg:gap-8">
+        <div class="lg:flex lg:items-start">
+            <a class="logo rotate-12 text-[2rem] font-bold text-white" href="#" id="navi5">t</a>
+            <a class="logo rotate-[-17deg] text-[2rem] font-bold text-white" href="#" id="navi5">b</a>
+            <a class="logo rotate-[17deg] ml-[-2px] text-[2rem] font-bold text-white" href="#" id="navi5">h</a>
+          </div> 
         <div
           class="mt-8 grid grid-cols-2 gap-8 lg:mt-0 lg:grid-cols-5 lg:gap-y-16"
         >
           <div class="col-span-2">
             <div>
-            
+              <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
+                Get the latest news!
+              </h2>
   
-              <p class="mt-4 text-gray-500">
+              <p class="mt-4 text-gray-500 dark:text-gray-400">
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse non
                 cupiditate quae nam molestias.
               </p>
@@ -360,13 +358,13 @@
               <label for="UserEmail" class="sr-only"> Email </label>
   
               <div
-                class="border border-gray-100 p-2 focus-within:ring sm:flex sm:items-center sm:gap-4"
+                class="border border-gray-100 p-2 focus-within:ring dark:border-gray-800 sm:flex sm:items-center sm:gap-4"
               >
                 <input
                   type="email"
                   id="UserEmail"
                   placeholder="john@rhcp.com"
-                  class="w-full border-none focus:border-transparent focus:ring-transparent sm:text-sm"
+                  class="w-full border-none focus:border-transparent focus:ring-transparent dark:bg-gray-900 dark:text-white sm:text-sm"
                 />
   
                 <button
@@ -379,35 +377,50 @@
           </div>
   
           <div class="col-span-2 sm:col-span-1">
-            <p class="font-medium text-gray-900">Services</p>
+            <p class="font-medium text-gray-900 dark:text-white">Services</p>
   
             <ul class="mt-6 space-y-4 text-sm">
               <li>
-                <a href="#" class="text-gray-700 transition hover:opacity-75">
+                <a
+                  href="#"
+                  class="text-gray-700 transition hover:opacity-75 dark:text-gray-200"
+                >
                   1on1 Coaching
                 </a>
               </li>
   
               <li>
-                <a href="#" class="text-gray-700 transition hover:opacity-75">
+                <a
+                  href="#"
+                  class="text-gray-700 transition hover:opacity-75 dark:text-gray-200"
+                >
                   Company Review
                 </a>
               </li>
   
               <li>
-                <a href="#" class="text-gray-700 transition hover:opacity-75">
+                <a
+                  href="#"
+                  class="text-gray-700 transition hover:opacity-75 dark:text-gray-200"
+                >
                   Accounts Review
                 </a>
               </li>
   
               <li>
-                <a href="#" class="text-gray-700 transition hover:opacity-75">
+                <a
+                  href="#"
+                  class="text-gray-700 transition hover:opacity-75 dark:text-gray-200"
+                >
                   HR Consulting
                 </a>
               </li>
   
               <li>
-                <a href="#" class="text-gray-700 transition hover:opacity-75">
+                <a
+                  href="#"
+                  class="text-gray-700 transition hover:opacity-75 dark:text-gray-200"
+                >
                   SEO Optimisation
                 </a>
               </li>
@@ -415,23 +428,32 @@
           </div>
   
           <div class="col-span-2 sm:col-span-1">
-            <p class="font-medium text-gray-900">Company</p>
+            <p class="font-medium text-gray-900 dark:text-white">Company</p>
   
             <ul class="mt-6 space-y-4 text-sm">
               <li>
-                <a href="#" class="text-gray-700 transition hover:opacity-75">
+                <a
+                  href="#"
+                  class="text-gray-700 transition hover:opacity-75 dark:text-gray-200"
+                >
                   About
                 </a>
               </li>
   
               <li>
-                <a href="#" class="text-gray-700 transition hover:opacity-75">
+                <a
+                  href="#"
+                  class="text-gray-700 transition hover:opacity-75 dark:text-gray-200"
+                >
                   Meet the Team
                 </a>
               </li>
   
               <li>
-                <a href="#" class="text-gray-700 transition hover:opacity-75">
+                <a
+                  href="#"
+                  class="text-gray-700 transition hover:opacity-75 dark:text-gray-200"
+                >
                   Accounts Review
                 </a>
               </li>
@@ -439,23 +461,32 @@
           </div>
   
           <div class="col-span-2 sm:col-span-1">
-            <p class="font-medium text-gray-900">Helpful Links</p>
+            <p class="font-medium text-gray-900 dark:text-white">Helpful Links</p>
   
             <ul class="mt-6 space-y-4 text-sm">
               <li>
-                <a href="#" class="text-gray-700 transition hover:opacity-75">
+                <a
+                  href="#"
+                  class="text-gray-700 transition hover:opacity-75 dark:text-gray-200"
+                >
                   Contact
                 </a>
               </li>
   
               <li>
-                <a href="#" class="text-gray-700 transition hover:opacity-75">
+                <a
+                  href="#"
+                  class="text-gray-700 transition hover:opacity-75 dark:text-gray-200"
+                >
                   FAQs
                 </a>
               </li>
   
               <li>
-                <a href="#" class="text-gray-700 transition hover:opacity-75">
+                <a
+                  href="#"
+                  class="text-gray-700 transition hover:opacity-75 dark:text-gray-200"
+                >
                   Live Chat
                 </a>
               </li>
@@ -463,29 +494,41 @@
           </div>
   
           <div class="col-span-2 sm:col-span-1">
-            <p class="font-medium text-gray-900">Legal</p>
+            <p class="font-medium text-gray-900 dark:text-white">Legal</p>
   
             <ul class="mt-6 space-y-4 text-sm">
               <li>
-                <a href="#" class="text-gray-700 transition hover:opacity-75">
+                <a
+                  href="#"
+                  class="text-gray-700 transition hover:opacity-75 dark:text-gray-200"
+                >
                   Accessibility
                 </a>
               </li>
   
               <li>
-                <a href="#" class="text-gray-700 transition hover:opacity-75">
+                <a
+                  href="#"
+                  class="text-gray-700 transition hover:opacity-75 dark:text-gray-200"
+                >
                   Returns Policy
                 </a>
               </li>
   
               <li>
-                <a href="#" class="text-gray-700 transition hover:opacity-75">
+                <a
+                  href="#"
+                  class="text-gray-700 transition hover:opacity-75 dark:text-gray-200"
+                >
                   Refund Policy
                 </a>
               </li>
   
               <li>
-                <a href="#" class="text-gray-700 transition hover:opacity-75">
+                <a
+                  href="#"
+                  class="text-gray-700 transition hover:opacity-75 dark:text-gray-200"
+                >
                   Hiring Statistics
                 </a>
               </li>
@@ -493,17 +536,23 @@
           </div>
   
           <div class="col-span-2 sm:col-span-1">
-            <p class="font-medium text-gray-900">Downloads</p>
+            <p class="font-medium text-gray-900 dark:text-white">Downloads</p>
   
             <ul class="mt-6 space-y-4 text-sm">
               <li>
-                <a href="#" class="text-gray-700 transition hover:opacity-75">
+                <a
+                  href="#"
+                  class="text-gray-700 transition hover:opacity-75 dark:text-gray-200"
+                >
                   Marketing Calendar
                 </a>
               </li>
   
               <li>
-                <a href="#" class="text-gray-700 transition hover:opacity-75">
+                <a
+                  href="#"
+                  class="text-gray-700 transition hover:opacity-75 dark:text-gray-200"
+                >
                   SEO Infographics
                 </a>
               </li>
@@ -518,7 +567,7 @@
                 href="/"
                 rel="noreferrer"
                 target="_blank"
-                class="text-gray-700 transition hover:opacity-75"
+                class="text-gray-700 transition hover:opacity-75 dark:text-gray-200"
               >
                 <span class="sr-only">Facebook</span>
   
@@ -542,7 +591,7 @@
                 href="/"
                 rel="noreferrer"
                 target="_blank"
-                class="text-gray-700 transition hover:opacity-75"
+                class="text-gray-700 transition hover:opacity-75 dark:text-gray-200"
               >
                 <span class="sr-only">Instagram</span>
   
@@ -566,7 +615,7 @@
                 href="/"
                 rel="noreferrer"
                 target="_blank"
-                class="text-gray-700 transition hover:opacity-75"
+                class="text-gray-700 transition hover:opacity-75 dark:text-gray-200"
               >
                 <span class="sr-only">Twitter</span>
   
@@ -588,7 +637,7 @@
                 href="/"
                 rel="noreferrer"
                 target="_blank"
-                class="text-gray-700 transition hover:opacity-75"
+                class="text-gray-700 transition hover:opacity-75 dark:text-gray-200"
               >
                 <span class="sr-only">GitHub</span>
   
@@ -612,7 +661,7 @@
                 href="/"
                 rel="noreferrer"
                 target="_blank"
-                class="text-gray-700 transition hover:opacity-75"
+                class="text-gray-700 transition hover:opacity-75 dark:text-gray-200"
               >
                 <span class="sr-only">Dribbble</span>
   
@@ -634,9 +683,9 @@
         </div>
       </div>
   
-      <div class="mt-8 border-t border-gray-100 pt-8">
+      <div class="mt-8 border-t border-gray-100 pt-8 dark:border-gray-800">
         <div class="sm:flex sm:justify-between">
-          <p class="text-xs text-gray-500">
+          <p class="text-xs text-gray-500 dark:text-gray-400">
             &copy; 2022. Company Name. All rights reserved.
           </p>
   
@@ -644,19 +693,28 @@
             class="mt-8 flex flex-wrap justify-start gap-4 text-xs sm:mt-0 lg:justify-end"
           >
             <li>
-              <a href="#" class="text-gray-500 transition hover:opacity-75">
+              <a
+                href="#"
+                class="text-gray-500 transition hover:opacity-75 dark:text-gray-400"
+              >
                 Terms & Conditions
               </a>
             </li>
   
             <li>
-              <a href="#" class="text-gray-500 transition hover:opacity-75">
+              <a
+                href="#"
+                class="text-gray-500 transition hover:opacity-75 dark:text-gray-400"
+              >
                 Privacy Policy
               </a>
             </li>
   
             <li>
-              <a href="#" class="text-gray-500 transition hover:opacity-75">
+              <a
+                href="#"
+                class="text-gray-500 transition hover:opacity-75 dark:text-gray-400"
+              >
                 Cookies
               </a>
             </li>
@@ -665,6 +723,8 @@
       </div>
     </div>
   </footer>
+
+   
     </div>
     <script src="{{ asset('js/script.js') }}"></script>
 </body>

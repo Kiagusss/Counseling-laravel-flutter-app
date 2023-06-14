@@ -92,10 +92,10 @@ class SiswaSeeder extends Seeder
             'updated_at' => Carbon::now(), 
         ]);
 
-        
+
         $user = User::create([
-            'name' => 'Aryo',
-            'email' => 'aryo@gmail.com',
+            'name' => 'Kidit',
+            'email' => 'kidit@gmail.com',
             'password' => Hash::make('password'),
         ]);
 
@@ -103,8 +103,8 @@ class SiswaSeeder extends Seeder
 
         Siswa::create([
             'user_id' => $user->id, 
-            'nisn' => '23213', 
-            'nama' => 'Aryo', 
+            'nisn' => '23213232132', 
+            'nama' => 'Kidit', 
             'kelas_id' => '2', 
             'ttl' => Carbon::now(),  
             'jenis_kelamin' => 'pria',  
