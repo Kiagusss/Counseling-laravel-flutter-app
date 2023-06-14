@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 // import 'package:sliding_up_panel/sliding_up_panel.dart';
-import 'package:uji_level_app/prof.dart';
+import 'package:uji_level_app/profs.dart';
 
 class homepage extends StatefulWidget {
   const homepage({Key? key});
@@ -353,7 +353,7 @@ class _homepageState extends State<homepage> {
 
                       Container(
                         width: 450,
-                        height: 550,
+                        height: 450,
                         // color: Colors.white,
                         decoration: BoxDecoration(
                           

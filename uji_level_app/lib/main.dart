@@ -1,4 +1,7 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:uji_level_app/screens/auth/log.dart';
 // import 'package:tugas_splash_screen/home.dart';
 import 'package:uji_level_app/screens/auth/login.dart';
 // import 'package:tugas_splash_screen/db/nav.dart';
