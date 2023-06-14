@@ -318,7 +318,7 @@ class LayananController extends Controller
     public function archive(){
         $user = Auth::user()->id;
         $gurudata = Guru::where('user_id', $user)->first();
-        $konselingbk = KonselingBK::with(['layanan', 'guru', 'siswa', 'walas'])->where('guru_id', $gurudata->id)->where('status', ['Cancelled', 'Done'])->get();
+        $konselingbk = KonselingBK::with(['layanan', 'guru', 'siswa', 'walas'])->where('guru_id', $gurudata->id)->whereIn('status', ['Cancelled', 'Done'])->get();
         // return dd($konselingbk);    
         return view('layouts.layanan.archive', compact('konselingbk'));
     }
