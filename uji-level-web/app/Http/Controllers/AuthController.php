@@ -23,4 +23,28 @@ class AuthController extends Controller
             return response()->json($response); 
         }
     }
+
+    public function index(string $id)
+{    
+    $user = User::find($id);
+    $siswa = $user->siswa;
+    $konselingbk = $siswa->konseling;
+
+    $array = [];
+
+    foreach($konselingbk as $item){
+        array_push($array, [
+            'nama_guru' => $item->guru->nama,
+            'status' => $item->status,
+            'jadwal_konseling' => $item->jadwal_konseling
+        ]);
+    }
+
+    return response()->json([
+        'data' => $array,
+    ]);
+}
+
+
+
 }

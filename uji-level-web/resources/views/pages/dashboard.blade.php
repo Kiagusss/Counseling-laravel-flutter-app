@@ -21,7 +21,7 @@
                             <div class="report-box zoom-in">
                                 <div class="box p-5">
                                     <i data-lucide="user" class="report-box__icon text-success"></i>
-                                    <div class="text-3xl font-medium leading-8 mt-6">{{ $jumlahsiswa }}</div>
+                                    <div class="text-3xl font-medium leading-8 mt-6">3</div>
                                     <div class="text-base text-slate-500 mt-1">Jumlah Siswa</div>
                                 </div>
                             </div>
@@ -32,7 +32,7 @@
                                     <div class="flex">
                                         <i data-lucide="credit-card" class="report-box__icon text-pending"></i>
                                     </div>
-                                    <div class="text-3xl font-medium leading-8 mt-6">{{ $jumlahkelas }}</div>
+                                    <div class="text-3xl font-medium leading-8 mt-6">{{$jumlahsiswa}}</div>
                                     <div class="text-base text-slate-500 mt-1">Jumlah Kelas</div>
                                 </div>
                             </div>

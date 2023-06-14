@@ -199,7 +199,7 @@ class LayananController extends Controller
         ]);
 
         LogActivity::create([
-            'activity' => auth()->user()->name. 'telah telah mengatur jadwal pada'.$request->input('jadwal')
+            'activity' => auth()->user()->name. 'telah telah mengatur jadwal pada' .$request->input('jadwal')
         ]);
 
         return redirect('/dashboard');

@@ -26,7 +26,7 @@ class User extends Authenticatable
 
     public function siswa()
     {
-        return $this->hasOne(Siswa::class);
+        return $this->hasOne(Siswa::class, 'user_id', 'id');
     }
 
     public function guru()
@@ -89,4 +89,6 @@ class User extends Authenticatable
     {
         return $this->role == $role;
     }
+
+
 }
