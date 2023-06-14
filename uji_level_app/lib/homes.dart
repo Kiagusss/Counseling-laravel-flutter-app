@@ -9,8 +9,6 @@ class homepage extends StatefulWidget {
   State<homepage> createState() => _homepageState();
 }
 
-String url = 'http://many-medium.at.ply.gg:38383/api/konseling';
-
 class _homepageState extends State<homepage> {
 
   
@@ -161,7 +159,7 @@ class _homepageState extends State<homepage> {
                                       Container(
                                         width: 190,
                                         height: 140,
-                                        // color: Colors.blue,
+                                        color: Colors.blue,
                                         child: Column(
                                           crossAxisAlignment: CrossAxisAlignment.start, // Menentukan penataan horizontal teks
                                           children: <Widget>[
@@ -171,6 +169,7 @@ class _homepageState extends State<homepage> {
                                                 textAlign: TextAlign.start,
                                                 style: TextStyle(
                                                   fontFamily: 'poppins',
+                                                  fontSize: 11
                                                 ),
                                               ),
                                             ),
@@ -355,7 +354,7 @@ class _homepageState extends State<homepage> {
 
                       Container(
                         width: 450,
-                        height: 450,
+                        height: 360,
                         // color: Colors.white,
                         decoration: BoxDecoration(
                           
@@ -481,7 +480,7 @@ class _homepageState extends State<homepage> {
                                                             textAlign: TextAlign.start,
                                                             style: TextStyle(
                                                               fontFamily: 'poppins',
-                                                              fontSize: 17,
+                                                              fontSize: 15,
                                                               fontWeight: FontWeight.w700
                                                             ),
                                                           ),
@@ -543,7 +542,8 @@ class _homepageState extends State<homepage> {
                                                                     // textAlign: TextAlign.center,
                                                                     style: TextStyle(
                                                                       fontFamily: 'poppins',
-                                                                      fontWeight: FontWeight.w700
+                                                                      fontWeight: FontWeight.w700,
+                                                                      fontSize: 13
                                                                     ),
                                                                   ),
                                                                 ),
@@ -583,7 +583,8 @@ class _homepageState extends State<homepage> {
                                                                     // textAlign: TextAlign.center,
                                                                     style: TextStyle(
                                                                       fontFamily: 'poppins',
-                                                                      fontWeight: FontWeight.w700
+                                                                      fontWeight: FontWeight.w700,
+                                                                      fontSize: 13
                                                                     ),
                                                                   ),
                                                                 ),
@@ -786,7 +787,8 @@ class _homepageState extends State<homepage> {
                                                                     // textAlign: TextAlign.center,
                                                                     style: TextStyle(
                                                                       fontFamily: 'poppins',
-                                                                      fontWeight: FontWeight.w700
+                                                                      fontWeight: FontWeight.w700,
+                                                                      fontSize: 13
                                                                     ),
                                                                   ),
                                                                 ),
@@ -826,7 +828,8 @@ class _homepageState extends State<homepage> {
                                                                     // textAlign: TextAlign.center,
                                                                     style: TextStyle(
                                                                       fontFamily: 'poppins',
-                                                                      fontWeight: FontWeight.w700
+                                                                      fontWeight: FontWeight.w700,
+                                                                      fontSize: 13
                                                                     ),
                                                                   ),
                                                                 ),
@@ -1045,7 +1048,8 @@ class _homepageState extends State<homepage> {
                                                                     // textAlign: TextAlign.center,
                                                                     style: TextStyle(
                                                                       fontFamily: 'poppins',
-                                                                      fontWeight: FontWeight.w700
+                                                                      fontWeight: FontWeight.w700,
+                                                                      fontSize: 13
                                                                     ),
                                                                   ),
                                                                 ),
@@ -1085,7 +1089,8 @@ class _homepageState extends State<homepage> {
                                                                     // textAlign: TextAlign.center,
                                                                     style: TextStyle(
                                                                       fontFamily: 'poppins',
-                                                                      fontWeight: FontWeight.w700
+                                                                      fontWeight: FontWeight.w700,
+                                                                      fontSize: 13
                                                                     ),
                                                                   ),
                                                                 ),
@@ -1288,7 +1293,8 @@ class _homepageState extends State<homepage> {
                                                                     // textAlign: TextAlign.center,
                                                                     style: TextStyle(
                                                                       fontFamily: 'poppins',
-                                                                      fontWeight: FontWeight.w700
+                                                                      fontWeight: FontWeight.w700,
+                                                                      fontSize: 13
                                                                     ),
                                                                   ),
                                                                 ),
@@ -1328,7 +1334,8 @@ class _homepageState extends State<homepage> {
                                                                     // textAlign: TextAlign.center,
                                                                     style: TextStyle(
                                                                       fontFamily: 'poppins',
-                                                                      fontWeight: FontWeight.w700
+                                                                      fontWeight: FontWeight.w700,
+                                                                      fontSize: 13
                                                                     ),
                                                                   ),
                                                                 ),
@@ -1547,7 +1554,8 @@ class _homepageState extends State<homepage> {
                                                                     // textAlign: TextAlign.center,
                                                                     style: TextStyle(
                                                                       fontFamily: 'poppins',
-                                                                      fontWeight: FontWeight.w700
+                                                                      fontWeight: FontWeight.w700,
+                                                                      fontSize: 13
                                                                     ),
                                                                   ),
                                                                 ),
@@ -1587,7 +1595,8 @@ class _homepageState extends State<homepage> {
                                                                     // textAlign: TextAlign.center,
                                                                     style: TextStyle(
                                                                       fontFamily: 'poppins',
-                                                                      fontWeight: FontWeight.w700
+                                                                      fontWeight: FontWeight.w700,
+                                                                      fontSize: 13
                                                                     ),
                                                                   ),
                                                                 ),
@@ -1790,7 +1799,8 @@ class _homepageState extends State<homepage> {
                                                                     // textAlign: TextAlign.center,
                                                                     style: TextStyle(
                                                                       fontFamily: 'poppins',
-                                                                      fontWeight: FontWeight.w700
+                                                                      fontWeight: FontWeight.w700,
+                                                                      fontSize: 13
                                                                     ),
                                                                   ),
                                                                 ),
@@ -1830,7 +1840,8 @@ class _homepageState extends State<homepage> {
                                                                     // textAlign: TextAlign.center,
                                                                     style: TextStyle(
                                                                       fontFamily: 'poppins',
-                                                                      fontWeight: FontWeight.w700
+                                                                      fontWeight: FontWeight.w700,
+                                                                      fontSize: 13
                                                                     ),
                                                                   ),
                                                                 ),

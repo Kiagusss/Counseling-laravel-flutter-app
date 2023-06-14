@@ -141,23 +141,22 @@ class LayananController extends Controller
         $datasiswa = Siswa::where('user_id', $iduser)->first();
         $datakelas = Kelas::where('id', $datasiswa->kelas_id)->first();
         $dataguru = Guru::where('id', $datakelas->guru_id)->first();
-        $datalayanan = LayananBK::where('id', '<>', [2, 5]);
+        $datalayanan = LayananBK::all();
 
         return view('layouts.layanan.create-private', compact('dataguru', 'datasiswa', 'datalayanan'));
     }
-
 
     public function creategroup(){
         $user = Auth::user();
         $iduser = $user->id;
         $datasiswaAll = Siswa::all();
-        $dataguru = Guru::where('user_id', $iduser)->first();
-        $datakelas = Kelas::where('guru_id', $dataguru->id)->get();
+        $datasiswa = Siswa::where('user_id', $iduser)->first();
+        $datakelas = Kelas::where('id', $datasiswa->kelas_id)->first();
         $dataguru = Guru::where('id', $datakelas->guru_id)->first();
         $datalayanan = LayananBK::where('id', '<>', 1)->get();
 
         return view('layouts.layanan.create-group', compact('dataguru', 'datasiswa', 'datalayanan', 'datasiswaAll'));
-    }   
+    } 
 
     public function creategroupguru(){
         $user = Auth::user();

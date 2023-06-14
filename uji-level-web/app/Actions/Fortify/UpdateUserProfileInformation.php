@@ -38,7 +38,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             ])->save();
         }
         $user = Auth::user();
-        $user->waliKelas()->update(['nama' => $request->wali_kelas]);
+    
     
     }
 

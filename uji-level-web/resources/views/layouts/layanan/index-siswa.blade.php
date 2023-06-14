@@ -10,7 +10,7 @@
     <div class="grid grid-cols-12 gap-6 mt-5">
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
             @if (Auth::user()->hasRole('admin'))
-            <a href="{{route('siswa.create')}}"><button class="btn btn-primary shadow-md mr-2" >Add New Product</button>
+            <a href="{{route('siswa.create')}}"><button class="btn btn-primary shadow-md mr-2" >Tambah Data Siswa</button>
             </a>
             <div class="dropdown">
                 <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
