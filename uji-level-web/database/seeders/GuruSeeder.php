@@ -49,7 +49,7 @@ class GuruSeeder extends Seeder
             'nipd' => '132100', 
             'nama' => 'Cassandra',  
             'ttl' => Carbon::now(),  
-            'jenis_kelamin' => 'wanita',  
+            'jenis_kelamin' => 'perempuan',  
             'created_at' => Carbon::now(), 
             'updated_at' => Carbon::now(), 
         ]);
@@ -69,7 +69,7 @@ class GuruSeeder extends Seeder
             'nipd' => '14290', 
             'nama' => 'Heni',  
             'ttl' => Carbon::now(),  
-            'jenis_kelamin' => 'wanita',  
+            'jenis_kelamin' => 'perempuan',  
             'created_at' => Carbon::now(), 
             'updated_at' => Carbon::now(), 
         ]);
@@ -88,7 +88,7 @@ class GuruSeeder extends Seeder
             'nipd' => '42120', 
             'nama' => 'Gunawan',  
             'ttl' => Carbon::now(),  
-            'jenis_kelamin' => 'wanita',  
+            'jenis_kelamin' => 'perempuan',  
             'created_at' => Carbon::now(), 
             'updated_at' => Carbon::now(), 
         ]);
