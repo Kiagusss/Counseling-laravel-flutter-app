@@ -26,7 +26,7 @@ class _LoginState extends State<Login> {
       'password': password.text.toString(),
     };
     final result = await http.post(
-      Uri.parse('http://many-medium.at.ply.gg:38383/api/login'),
+      Uri.parse('http://look-partnerships.at.ply.gg:41786/api/login'),
       body: {'email': _email, 'password': _password}
     );
     final response = jsonDecode(result.body);

@@ -87,18 +87,17 @@ Route::middleware([
         });
     });
 
-    Route::middleware(['role:wali_kelas'])->group(function () {
-
-        Route::get('/walas/kerawanan/edit/{id}', [PetaKerawananController::class, 'kerawanan_walas_edit']);
-        Route::post('/walas/kerawanan/store', [PetaKerawananController::class, 'kerawanan_walas_store'])->name('peta-kerawanan.store');
-        Route::get('/walas/kerawanan/create/', [PetaKerawananController::class, 'kerawanan_walas_create'])->name('peta-kerawanan.add');
-        Route::get('/walas/kerawanan/index', [PetaKerawananController::class, 'kerawanan_walas_index'])->name('peta-kerawanan.index');
-        Route::put('/walas/kerawanan/update/{id}', [PetaKerawananController::class, 'kerawanan_walas_update'])->name('peta-kerawanan.update');
-        Route::delete('/walas/kerawanan/delete/{id}', [PetaKerawananController::class, 'kerawanan_delete_walas']);
-        Route::get('/walas/siswa/kerawanan', [PetaKerawananController::class, 'kerawananSiswa']);
-        Route::get('/walas/pdf/{id}', [PetaKerawananController::class, 'pdfWalas']);
-        Route::get('/walas/search/', [PetaKerawananController::class, 'searchSiswaGuru'])->name('walas.search');
-        Route::get('/walas/search/peta', [PetaKerawananController::class, 'searchSiswaKerawanan'])->name('walas.peta');
+Route::middleware(['role:wali_kelas'])->group(function () {
+    
+    Route::get('/walas/kerawanan/edit/{id}', [PetaKerawananController::class,'kerawanan_walas_edit']);
+    Route::post('/walas/kerawanan/store', [PetaKerawananController::class,'kerawanan_walas_store'])->name('peta-kerawanan.store');
+    Route::get('/walas/kerawanan/create/', [PetaKerawananController::class,'kerawanan_walas_create'])->name('peta-kerawanan.add');
+    Route::get('/walas/kerawanan/index', [PetaKerawananController::class,'kerawanan_walas_index'])->name('peta-kerawanan.index');
+    Route::put('/walas/kerawanan/update/{id}', [PetaKerawananController::class,'kerawanan_walas_update'])->name('peta-kerawanan.update');
+    Route::delete('/walas/kerawanan/delete/{id}', [PetaKerawananController::class, 'kerawanan_delete_walas']);
+    Route::get('/walas/siswa/kerawanan', [PetaKerawananController::class, 'kerawananSiswa']);
+    Route::get('/walas/pdf/{id}', [PetaKerawananController::class, 'pdfWalas']);
+    Route::get('/walas-layanan-archive', [LayananController::class, 'archivewalas'])->name('archive');
     });
 });
 

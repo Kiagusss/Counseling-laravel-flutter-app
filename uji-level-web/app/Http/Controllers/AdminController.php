@@ -40,16 +40,17 @@ class AdminController extends Controller
 
 
 
-    public function indexActivity()
-    {
-        $jumlahkelas = Kelas::count();
-        $result = DB::select('CALL GetTotalSiswa()');
-        $jumlahsiswa = $result[0]->total_siswa;
-        $jumlahguru = Guru::count();
-        $jumlahwalas = Walas::count();
-        $activity = LogActivity::latest()->take(10)->get();
-        return view('pages.dashboard', ['activity' => $activity, 'jumlahkelas' => $jumlahkelas, 'jumlahsiswa' => $jumlahsiswa, 'jumlahguru' => $jumlahguru, 'jumlahwalas' => $jumlahwalas,]);
-    }
+        public function indexActivity()
+        {
+            $jumlahkelas = Kelas::count();
+            $result = DB::select('CALL GetTotalSiswa()');
+            $jumlahsiswa = $result[0]->total_siswa;
+            $jumlahguru = Guru::count();
+            $jumlahwalas = Walas::count();
+            $activity = LogActivity::latest()->take(10)->get();
+            // dd($jumlahsiswa);
+            return view('pages.dashboard', compact(['activity', 'jumlahkelas', 'jumlahsiswa', 'jumlahguru', 'jumlahwalas']));
+        }
 
     
 
@@ -198,7 +199,18 @@ class AdminController extends Controller
     }
 
 
-
+    public function exportsiswa(){
+        return Excel::download(new SiswaExport(), 'data.xlsx');
+    }
+    public function exportguru(){
+        return Excel::download(new GuruExport(), 'data.xlsx');
+    }
+    public function exportwalas(){
+        return Excel::download(new WalasExport(), 'data.xlsx');
+    }
+    public function exportkelas(){
+        return Excel::download(new KelasExport(), 'data.xlsx');
+    }
 
 
     /**

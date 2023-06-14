@@ -1,0 +1,275 @@
+[33mcommit d52840ffedc28f739ae5db9a3755995134192bc1[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: 3ab02a1 319a71d
+Author: AryoBimo <113073632+AryoSyawal@users.noreply.github.com>
+Date:   Thu Jun 8 11:10:13 2023 +0700
+
+    Merge pull request #8 from Kiagusss/main
+    
+    pull bfr push
+
+[33mcommit 3ab02a1513fc041aeac5c6a741292d0678ccff48[m
+Author: AryoSyawal <aryosyawal.bimo@gmail.com>
+Date:   Thu Jun 8 11:05:27 2023 +0700
+
+    edit&update fixed
+
+[33mcommit 319a71d5716b85c34930bba98bf14291524bd408[m
+Author: [Kiagusss] <[kiagus.muslim78@gmail.com]>
+Date:   Thu Jun 8 10:36:43 2023 +0700
+
+    Munculin NIPD UNTUK WALI KELAS
+
+[33mcommit 5246c1d1276ada9898d7e2e1bdb88f26f0470d21[m
+Author: [Kiagusss] <[kiagus.muslim78@gmail.com]>
+Date:   Thu Jun 8 10:00:09 2023 +0700
+
+    Crud Kelas Done
+
+[33mcommit 51ffac1cbcf813619f3dc735c82aa29ebe3a0b5a[m
+Author: [Kiagusss] <[kiagus.muslim78@gmail.com]>
+Date:   Thu Jun 8 09:21:14 2023 +0700
+
+    Create and Store Kelas done
+
+[33mcommit 1eedd420253bf8e820c19b3fa4b7dc5f2710a35a[m
+Merge: bd36c18 e28c42e
+Author: [Kiagusss] <[kiagus.muslim78@gmail.com]>
+Date:   Thu Jun 8 09:03:59 2023 +0700
+
+    Merge branch 'main' of https://github.com/Kiagusss/Counseling-laravel-flutter-app
+
+[33mcommit bd36c188e10f8031324787f8d92408c94d449e85[m
+Author: [Kiagusss] <[kiagus.muslim78@gmail.com]>
+Date:   Thu Jun 8 09:03:44 2023 +0700
+
+    index kelas
+
+[33mcommit e28c42edb837ea987b5d3b2aa6d4c1e0597e99bc[m
+Merge: 20ae239 0ce1ece
+Author: Kiagusss <109852147+Kiagusss@users.noreply.github.com>
+Date:   Thu Jun 8 09:00:06 2023 +0700
+
+    Merge pull request #6 from AryoSyawal/main
+    
+    fixed student store function
+
+[33mcommit 0ce1ece16d0316f9095adc2e355e7ad2bbcd4670[m
+Author: AryoSyawal <aryosyawal.bimo@gmail.com>
+Date:   Thu Jun 8 08:56:56 2023 +0700
+
+    fixed student store function
+
+[33mcommit 20ae2396b9a9045b180f61058a01c71fe09d05ae[m
+Merge: ba92b92 dbe22da
+Author: Kiagusss <109852147+Kiagusss@users.noreply.github.com>
+Date:   Thu Jun 8 08:50:00 2023 +0700
+
+    Merge pull request #5 from AryoSyawal/main
+    
+    store siswa fixed
+
+[33mcommit dbe22daa98d54d83e982e8ccb598765de3af1cfd[m
+Author: AryoSyawal <aryosyawal.bimo@gmail.com>
+Date:   Thu Jun 8 08:47:10 2023 +0700
+
+    store siswa fixed
+
+[33mcommit 51aad92ad904da0fbd9c0d506dd36f5a0cbe334a[m
+Merge: 01e7aa5 c02a7a5
+Author: AryoSyawal <aryosyawal.bimo@gmail.com>
+Date:   Thu Jun 8 08:16:04 2023 +0700
+
+    before changes
+
+[33mcommit 01e7aa5a620166a0f2f228bf375c01b70f379a3f[m
+Author: AryoSyawal <aryosyawal.bimo@gmail.com>
+Date:   Thu Jun 8 08:13:26 2023 +0700
+
+    before pull
+
+[33mcommit c02a7a5b56722c7c9c3dcece22ea9304e2c9a9f3[m
+Merge: 4686410 ba92b92
+Author: AryoBimo <113073632+AryoSyawal@users.noreply.github.com>
+Date:   Thu Jun 8 08:11:59 2023 +0700
+
+    Merge pull request #7 from Kiagusss/main
+    
+    create middleware in route for permission role
+
+[33mcommit ba92b9253ac992c61853acba95f1a34a90515155[m
+Author: [Kiagusss] <[kiagus.muslim78@gmail.com]>
+Date:   Thu Jun 8 08:10:51 2023 +0700
+
+    create middleware in route for permission role
+
+[33mcommit 012b56ea8c24e4125b95c5140e12452c316232e5[m
+Merge: 838e1a2 4686410
+Author: AryoSyawal <aryosyawal.bimo@gmail.com>
+Date:   Thu Jun 8 07:22:24 2023 +0700
+
+    error
+
+[33mcommit 838e1a24691a4dabdfcbe78cb8b064a8db623565[m
+Author: AryoSyawal <aryosyawal.bimo@gmail.com>
+Date:   Thu Jun 8 07:15:11 2023 +0700
+
+    gitu deh
+
+[33mcommit 4686410b2b0b2d55b213c53075fa5ea7aaa013ba[m
+Merge: f092865 8d93cce
+Author: AryoBimo <113073632+AryoSyawal@users.noreply.github.com>
+Date:   Wed Jun 7 23:55:30 2023 +0700
+
+    Merge pull request #6 from Kiagusss/main
+    
+    minta crud
+
+[33mcommit 8d93cce2807b427904726c1b99908ca853db22be[m
+Author: [Kiagusss] <[kiagus.muslim78@gmail.com]>
+Date:   Wed Jun 7 23:18:37 2023 +0700
+
+    Adedd crud in admin role for siswa
+
+[33mcommit 3d9a4a47e1f741eada22efcc1706a5d93a7cedd6[m
+Merge: 398bff2 f092865
+Author: Kiagusss <109852147+Kiagusss@users.noreply.github.com>
+Date:   Wed Jun 7 18:59:29 2023 +0700
+
+    Merge pull request #4 from AryoSyawal/main
+    
+    login terpisah
+
+[33mcommit f09286562752f1c80f09e7ccf51aef1e2c1b3ee7[m
+Merge: 7562a6f 398bff2
+Author: AryoBimo <113073632+AryoSyawal@users.noreply.github.com>
+Date:   Wed Jun 7 15:31:27 2023 +0700
+
+    Merge pull request #5 from Kiagusss/main
+    
+    mita pull
+
+[33mcommit 7562a6f7895d70a8da6d0ff096c405547c23c49f[m
+Author: AryoSyawal <aryosyawal.bimo@gmail.com>
+Date:   Wed Jun 7 15:30:41 2023 +0700
+
+    login terpisah
+
+[33mcommit 398bff2c6457b03da9e6af8efaa0c1015ea6af6f[m
+Author: [Kiagusss] <[kiagus.muslim78@gmail.com]>
+Date:   Wed Jun 7 14:09:55 2023 +0700
+
+    coba commit kosong
+
+[33mcommit 94686d037795cdb9719e448c2c96c074d180a158[m
+Author: [Kiagusss] <[kiagus.muslim78@gmail.com]>
+Date:   Wed Jun 7 11:15:36 2023 +0700
+
+    fix in landing page
+
+[33mcommit 57dd4f4a809e6831daa07d6e362bc2d3079a47d4[m
+Merge: 1eca189 cb6d765
+Author: AryoBimo <113073632+AryoSyawal@users.noreply.github.com>
+Date:   Wed Jun 7 10:54:48 2023 +0700
+
+    Merge pull request #4 from Kiagusss/main
+    
+    new update
+
+[33mcommit cb6d765b2c3b8cbb3ed6bd00aef7640d66e72bf3[m
+Merge: 9ac8794 1eca189
+Author: Kiagusss <109852147+Kiagusss@users.noreply.github.com>
+Date:   Wed Jun 7 10:52:45 2023 +0700
+
+    Merge pull request #3 from AryoSyawal/main
+    
+    update perimission biar ganteng
+
+[33mcommit 9ac8794aa04c64f0793da6b39340512c240f71ac[m
+Author: [Kiagusss] <[kiagus.muslim78@gmail.com]>
+Date:   Wed Jun 7 10:49:05 2023 +0700
+
+    coba benerin github
+
+[33mcommit 1eca189fd77a8157a047b810bfb08d6f746db7d4[m
+Author: AryoSyawal <aryosyawal.bimo@gmail.com>
+Date:   Wed Jun 7 09:49:06 2023 +0700
+
+    permissions granted
+
+[33mcommit 629816241acaf96c55f065babe6634ecf0777b4c[m
+Merge: 4f87b66 1b8bb31
+Author: AryoBimo <113073632+AryoSyawal@users.noreply.github.com>
+Date:   Wed Jun 7 07:26:12 2023 +0700
+
+    Merge pull request #3 from Kiagusss/main
+    
+    benerin migration
+
+[33mcommit 1b8bb310ece5fc35162a1644f36ea9c6c8cc4d12[m
+Author: [Kiagusss] <[kiagus.muslim78@gmail.com]>
+Date:   Wed Jun 7 07:25:17 2023 +0700
+
+    benerin migration
+
+[33mcommit 4f87b66d13ad4b6cd3db5d3d69f4da9eaf01fc2f[m
+Merge: d0de641 8ee7f23
+Author: AryoBimo <113073632+AryoSyawal@users.noreply.github.com>
+Date:   Wed Jun 7 07:16:55 2023 +0700
+
+    Merge pull request #2 from Kiagusss/main
+    
+    sidebar fixed dropdown
+
+[33mcommit 8ee7f23e8efc5f287b11c1289aa41b2afdbcbdc7[m
+Author: [Kiagusss] <[kiagus.muslim78@gmail.com]>
+Date:   Wed Jun 7 07:15:41 2023 +0700
+
+    bikin tampilan login, sidebar dashboard, change migration
+
+[33mcommit efcb6fd787388d585180c830d9fa9e037daf86ac[m
+Merge: 58fdcfd d0de641
+Author: Kiagusss <109852147+Kiagusss@users.noreply.github.com>
+Date:   Tue Jun 6 21:54:54 2023 +0700
+
+    Merge pull request #1 from AryoSyawal/main
+    
+    Relasi antar users
+
+[33mcommit d0de641497b8e8f1de18f1fffe3ef03c11298186[m
+Author: AryoSyawal <aryosyawal.bimo@gmail.com>
+Date:   Tue Jun 6 21:49:12 2023 +0700
+
+    relation between users
+
+[33mcommit 78ca7d0adaef8f9134824fc2900f4dfca3995a0e[m
+Merge: 1bf5c45 58fdcfd
+Author: AryoBimo <113073632+AryoSyawal@users.noreply.github.com>
+Date:   Tue Jun 6 20:21:10 2023 +0700
+
+    Merge pull request #1 from Kiagusss/main
+    
+    added login with nisn/nipd, slicing dashboard, and spatie
+
+[33mcommit 58fdcfd78631d48096a376e49d7f37269b5f8452[m
+Author: [Kiagusss] <[kiagus.muslim78@gmail.com]>
+Date:   Tue Jun 6 18:35:45 2023 +0700
+
+    added login with nisn/nipd, slicing dashboard, and spatie
+
+[33mcommit 1bf5c4539a29e8246d750b570d255b60569322d2[m
+Author: [Kiagusss] <[kiagus.muslim78@gmail.com]>
+Date:   Tue Jun 6 10:52:24 2023 +0700
+
+    added Landing Page and login with jetstream
+
+[33mcommit aa0d97f06c547cf2e1b312e0dc7320c028d42bbf[m
+Author: [Kiagusss] <[kiagus.muslim78@gmail.com]>
+Date:   Tue Jun 6 09:51:14 2023 +0700
+
+    added Landing Page
+
+[33mcommit f336693ce298b2bd20b0f85ee455db0913012a98[m
+Author: [Kiagusss] <[kiagus.muslim78@gmail.com]>
+Date:   Tue Jun 6 09:40:44 2023 +0700
+
+    first commit
