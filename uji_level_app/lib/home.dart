@@ -9,6 +9,8 @@ class homepage extends StatefulWidget {
   State<homepage> createState() => _homepageState();
 }
 
+String url = 'http://192.168.145.16:8000/api/konseling';
+
 class _homepageState extends State<homepage> {
 
   

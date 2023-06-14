@@ -8,7 +8,7 @@ class API {
     required String route,
     required Map<String, String> data,
   }) async {
-    String url = 'http://127.0.0.1:8000/api/login';
+    String url = apiUrl + route;
     try {
       return await http.post(
         Uri.parse(url),
