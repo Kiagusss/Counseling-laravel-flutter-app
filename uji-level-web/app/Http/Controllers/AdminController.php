@@ -199,18 +199,18 @@ class AdminController extends Controller
     }
 
 
-    public function exportsiswa(){
-        return Excel::download(new SiswaExport(), 'data.xlsx');
-    }
-    public function exportguru(){
-        return Excel::download(new GuruExport(), 'data.xlsx');
-    }
-    public function exportwalas(){
-        return Excel::download(new WalasExport(), 'data.xlsx');
-    }
-    public function exportkelas(){
-        return Excel::download(new KelasExport(), 'data.xlsx');
-    }
+    // public function exportsiswa(){
+    //     return Excel::download(new SiswaExport(), 'data.xlsx');
+    // }
+    // public function exportguru(){
+    //     return Excel::download(new GuruExport(), 'data.xlsx');
+    // }
+    // public function exportwalas(){
+    //     return Excel::download(new WalasExport(), 'data.xlsx');
+    // }
+    // public function exportkelas(){
+    //     return Excel::download(new KelasExport(), 'data.xlsx');
+    // }
 
 
     /**
