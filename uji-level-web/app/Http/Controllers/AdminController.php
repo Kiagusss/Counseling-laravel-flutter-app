@@ -52,8 +52,8 @@ class AdminController extends Controller
             return view('pages.dashboard', compact(['activity', 'jumlahkelas', 'jumlahsiswa', 'jumlahguru', 'jumlahwalas']));
         }
 
-    
 
+        
     public function indexWalas()
     {
         $walas = Walas::with('kelas')->paginate(10);
