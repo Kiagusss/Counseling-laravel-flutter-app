@@ -49,7 +49,7 @@ Route::middleware([
             Route::get('/siswa/update/{id}', [AdminController::class, 'editSiswa']);
             Route::patch('/siswa/update/{id}', [AdminController::class, 'updateSiswa']);
             Route::delete('/siswa/destroy/{id}', [AdminController::class, 'destroySiswa']);
-            Route::get('/siswa/search', [AdminController::class, 'searchSiswa']);
+            Route::get('/siswa/search', [AdminController::class, 'searchSiswa'])->name('searchSiswa');
             Route::get('/siswa/export', [AdminController::class, 'exportSiswa']);
         });
         Route::name('guru.')->group(function () {
@@ -113,7 +113,7 @@ Route::middleware(['role:guru_bk'])->group(function () {
     Route::get('/guru/kelas', [PetaKerawananController::class, 'guruKelas'])->name('guru.kelas');
     Route::get('/guru/siswa/{id}', [PetaKerawananController::class, 'gurusiswaIndex']);
     Route::get('/guru/pdf/{id}', [PetaKerawananController::class, 'pdfGuru']);
-    Route::get('/siswa/search', [PetaKerawananController::class, 'searchSiswa']);
+    Route::get('/siswa/searchs', [PetaKerawananController::class, 'searchSiswa']);
     Route::get('/kerawanan/search', [PetaKerawananController::class, 'searchKerawanan']);
 });
 

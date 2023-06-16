@@ -98,7 +98,7 @@ class SiswaSeeder extends Seeder
             'email' => 'kidit@gmail.com',
             'password' => Hash::make('password'),
         ]);
-
+ 
         $user->assignRole('siswa');
 
         Siswa::create([

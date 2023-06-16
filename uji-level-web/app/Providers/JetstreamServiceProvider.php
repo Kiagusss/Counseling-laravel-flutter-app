@@ -35,9 +35,6 @@ class JetstreamServiceProvider extends ServiceProvider
             ->orWhereHas('siswa', function($query) use ($request){
                 $query->where('nisn', $request->login);
             })
-            ->orWhereHas('siswa', function($query) use ($request){
-                $query->where('nisn', $request->login);
-            })
             ->orWhereHas('guru', function($query) use ($request){
                 $query->where('nipd', $request->login);
             })

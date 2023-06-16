@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:uji_level_app/homepage.dart';
 import 'dart:convert';
-import 'package:uji_level_app/home.dart';
+import 'package:uji_level_app/homess.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import '../../methods/api.dart';
@@ -26,7 +27,7 @@ class _LoginState extends State<Login> {
       'password': password.text.toString(),
     };
     final result = await http.post(
-      Uri.parse('http://look-partnerships.at.ply.gg:41786/api/login'),
+      Uri.parse('http://many-medium.at.ply.gg:38383/api/login'),
       body: {'email': _email, 'password': _password}
     );
     final response = jsonDecode(result.body);

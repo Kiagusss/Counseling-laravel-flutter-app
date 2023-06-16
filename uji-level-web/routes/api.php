@@ -1,9 +1,11 @@
 <?php
 
-use App\Http\Controllers\ApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ApiController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\SiswaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,5 +25,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/login', [AuthController::class,'login']);
 Route::get('/index/{id}', [AuthController::class, 'index']);
+Route::get('/user', [UserController::class, 'getUser']);
+Route::get('/siswa', [SiswaController::class, 'getSiswa']);
 
 

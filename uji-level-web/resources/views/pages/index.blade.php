@@ -12,6 +12,11 @@
     <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"> 
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
     <link
         href="https://fonts.googleapis.com/css2?family=Darumadrop+One&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Open+Sans:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
@@ -19,8 +24,8 @@
 </head>
 
 <body>
-    <nav>
-        <header class="header" class="nav" id="nav">
+    <nav class="animate__animated  animate__slow">
+        <header class="header" class="nav" id="nav" >
             <a class="logo rotate-12" href="#" id="navi5">t</a>
             <a class="logo rotate-[-17deg]" href="#" id="navi5">b</a>
             <a class="logo rotate-[17deg] ml-[-5px]" href="#" id="navi5">h</a>
@@ -39,13 +44,13 @@
 
 
     <div class="containers pt-28">
-        <div class="hero flex ml-[150px]">
-            <div class="hero-left w-[600px]">
+        <div class="hero flex ml-[150px]   " >
+            <div class="hero-left w-[600px] animate__fadeIn animate__animated animate__slower">
                 <h1 class="font-['Darumadrop_One'] text-[80px] text-black">MENTAL HEALTH, PROVIDED FOR STUDENTS </h1>
-                <h1 class="font-['Montserrat'] text-[20px] font-semibold text-black mt-6 text-justify">helping Your
+                <h1 class="font-['Montserrat'] text-[20px] font-semibold text-black mt-6 text-justify animate__fadeInUp animate__animated animate__fast">helping Your
                     Students to Control mental health Students, With Our Proffesional Counselor in our School. This
                     Application will make your Appointment Easier.</h1>
-                <a class="group relative inline-block focus:outline-none focus:ring mt-7" href="/download">
+                <a class="group relative inline-block focus:outline-none focus:ring mt-7 animate__fadeInUp animate__animated animate__slow" href="/download">
                     <span
                         class="absolute inset-0 translate-x-1.5 translate-y-1.5 bg-yellow-300 transition-transform group-hover:translate-y-0 group-hover:translate-x-0"></span>
 
@@ -55,7 +60,7 @@
                     </span>
                 </a>
             </div>
-            <div class="hero-right ml-[100px] mt-[50px]">
+            <div class="hero-right ml-[100px] mt-[50px] animate__animated animate__fadeIn animate__slow">
                 <div class="top-hero-right flex">
                     <div class="container-orange">
                         <div class="orange-block w-[252px] rounded-xl h-[130px] bg-[#FF7E3E]"></div>
@@ -90,7 +95,7 @@
         </div>
 
         <div class="quotes w-full h-[360px]  mt-[220px] flex"
-            style="background: linear-gradient(90deg, #E7FAF5 1.06%, rgba(224, 236, 253, 0.546875) 97.83%, rgba(254, 250, 252, 0) 100%);">
+            style="background: linear-gradient(90deg, #E7FAF5 1.06%, rgba(224, 236, 253, 0.546875) 97.83%, rgba(254, 250, 252, 0) 100%);" data-aos="fade-up" data-aos-offset="300" data-aos-once="true">
             <div class="container-kotak mt-[130px] ml-[100px]">
                 <div
                     class="kotak-quotes1 w-[80px] h-[80px] bg-white rounded-xl rotate-[-10deg] justify-center flex items-center">
@@ -163,17 +168,7 @@
                             veritatis numquam molestias eos voluptatum cumque obcaecati magnam recusandae quisquam aut
                             dolor deserunt illo, sit, nostrum temporibus suscipit alias aliquam consequatur debitis
                             dolores earum. Itaque magnam delectus, modi molestias illum quia maiores?</p>
-                        <h5 class="font-bold text-[20px] ml-[250px] mt-[5px]">Layanan</h5>
-                        <div class="kotak flex h-[60px] w-[90%] mt-[5px]" style="">
-                            <div class="w-[60px] h-[60px] ml-[130px] rounded-[100px]"
-                                style="background-color: yellowgreen"></div>
-                            <div class="w-[60px] h-[60px] ml-[30px] rounded-[100px]" style="background-color: skyblue">
-                            </div>
-                            <div class="w-[60px] h-[60px] ml-[30px] rounded-[100px]" style="background-color: salmon">
-                            </div>
-                            <div class="w-[60px] h-[60px] ml-[30px] rounded-[100px]" style="background-color: plum">
-                            </div>
-                        </div>
+                        
                     </div>
 
                     <div class="left w-[550px] h-full " style="">
@@ -726,6 +721,10 @@
 
    
     </div>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
     <script src="{{ asset('js/script.js') }}"></script>
 </body>
 

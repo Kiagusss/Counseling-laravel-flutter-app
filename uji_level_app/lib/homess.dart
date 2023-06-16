@@ -9,8 +9,6 @@ class homepage extends StatefulWidget {
   State<homepage> createState() => _homepageState();
 }
 
-String url = 'http://192.168.145.16:8000/api/konseling';
-
 class _homepageState extends State<homepage> {
 
   
@@ -25,6 +23,7 @@ class _homepageState extends State<homepage> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        
         body: Center(
           child: Container(
             color: Color.fromARGB(255, 219, 224, 246),
@@ -355,7 +354,7 @@ class _homepageState extends State<homepage> {
 
                       Container(
                         width: 450,
-                        height: 450,
+                        height: 550,
                         // color: Colors.white,
                         decoration: BoxDecoration(
                           

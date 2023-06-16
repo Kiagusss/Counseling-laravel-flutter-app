@@ -15,7 +15,7 @@
             <a href="/walas/siswa/kerawanan"><button class="dropdown-toggle btn px-2 box" style="margin-right: 7px;">Show All data</button></a>
             <div class="w-full sm:w-auto mt-3 sm:mt-5 sm:ml-auto md:ml-0">
                 <div class="w-56 relative text-slate-500">
-                    <form action="{{ route('walas.search') }}" method="GET">
+                    <form action="" method="GET">
                         <input type="text" class="form-control w-56 box pr-10" placeholder="Search..." name="query">
                         <button type="submit"><i class="w-4 h-4 absolute my-auto inset-y-0 mr-3 right-0" data-lucide="search" style="position: absolute; top: -15px;"></i> </button>
                 </div>

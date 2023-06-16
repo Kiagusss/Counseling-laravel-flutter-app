@@ -52,8 +52,8 @@ class AdminController extends Controller
             return view('pages.dashboard', compact(['activity', 'jumlahkelas', 'jumlahsiswa', 'jumlahguru', 'jumlahwalas']));
         }
 
-    
 
+        
     public function indexWalas()
     {
         $walas = Walas::with('kelas')->paginate(10);
@@ -449,23 +449,5 @@ class AdminController extends Controller
         return view('layouts.kelas.index', compact('kelas'));
     }
 
-    public function exportSiswa()
-    {
-        return Excel::download(new SiswaExport, 'siswa.xlsx');
-    }
-
-    public function exportGuru()
-    {
-        return Excel::download(new GuruExport, 'guru.xlsx');
-    }
-
-    public function exportWalas()
-    {
-        return Excel::download(new WalasExport, 'walas.xlsx');
-    }
-
-    public function exportKelas()
-    {
-        return Excel::download(new KelasExport, 'kelas.xlsx');
-    }
+    
 }
