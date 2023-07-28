@@ -199,16 +199,16 @@ class AdminController extends Controller
     }
 
 
-    public function exportsiswa(){
+    public function exportSiswa(){
         return Excel::download(new SiswaExport(), 'data.xlsx');
     }
-    public function exportguru(){
+    public function exportGuru(){
         return Excel::download(new GuruExport(), 'data.xlsx');
     }
-    public function exportwalas(){
+    public function exportWalas(){
         return Excel::download(new WalasExport(), 'data.xlsx');
     }
-    public function exportkelas(){
+    public function exportKelas(){
         return Excel::download(new KelasExport(), 'data.xlsx');
     }
 

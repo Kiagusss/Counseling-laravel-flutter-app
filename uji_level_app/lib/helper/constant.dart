@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
 
-String apiUrl = 'http://many-medium.at.ply.gg:38383/api/';
+String apiUrl = 'http://metal-knife.gl.at.ply.gg:7437/api';
 
 

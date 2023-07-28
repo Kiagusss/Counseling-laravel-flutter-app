@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    function Login(Request $R){
+    function login(Request $R){
         $user= User::where('email', $R->email)->first();
 
         if($user!='[]' && Hash::check($R->password,$user->password)){
@@ -24,26 +24,45 @@ class AuthController extends Controller
         }
     }
 
-    public function index(string $id)
-{    
-    $user = User::find($id);
-    $siswa = $user->siswa;
-    $konselingbk = $siswa->konseling;
+    public function index(Request $r)
+    {    
 
-    $array = [];
+        $logedin = $r->user();
+        $userid = $logedin->id;
 
-    foreach($konselingbk as $item){
-        array_push($array, [
-            'nama_guru' => $item->guru->nama,
-            'status' => $item->status,
-            'jadwal_konseling' => $item->jadwal_konseling
+        $user = $userid->siswa;
+    
+        if (!$user) {
+            return response()->json([
+                'message' => 'User not found',
+            ], 404);
+        }
+    
+        $siswa = $user->siswa;
+    
+        if (!$siswa) {
+            return response()->json([
+                'message' => 'Siswa not found for this user',
+            ], 404);
+        }
+    
+        $konselingbk = $siswa->konseling;
+    
+        $array = [];
+    
+        foreach ($konselingbk as $item) {
+            array_push($array, [
+                'nama_guru' => $item->guru->nama,
+                'judul' => $item->judul,
+                'status' => $item->status,
+                'jadwal_konseling' => $item->jadwal_konseling
+            ]);
+        }
+    
+        return response()->json([
+            'data' => $array,
         ]);
     }
-
-    return response()->json([
-        'data' => $array,
-    ]);
-}
 
 
 
