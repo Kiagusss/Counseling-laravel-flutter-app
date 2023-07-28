@@ -25,7 +25,7 @@ Future<List<Archive>> fetchDataKonseling() async{
   for(var item in dataJson){
     Archive archive = Archive();
 
-    archive.judul = item['judul'];
+    // archive.judul = item['judul'];
     archive.nama_guru = item['nama_guru'];
     archive.status = item['status'];
     archive.jadwal_konseling = item['jadwal_konseling'];
