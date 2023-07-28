@@ -1,8 +1,10 @@
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:http/http.dart' as http;
 import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'model/archive.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:http/http.dart' as http;
+
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -41,7 +43,7 @@ class _HomePageState extends State<HomePage> {
     );
 
     if (response.statusCode == 200) {
-      var userData = json.decode(response.body);
+      var userData = jsonDecode(response.body);
 
       // if (mounted) {
       //   setState(() {
