@@ -2,6 +2,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'model/archive.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -12,12 +13,12 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
-    String _nama = '';
-  String _nisn = '';
-  String _kelas = '';
-  String _namaWalas = '';
-  String _namaGuru = '';
-  String? _photoUrl;
+  //   String _nama = '';
+  // String _nisn = '';
+  // String _kelas = '';
+  // String _namaWalas = '';
+  // String _namaGuru = '';
+
 
   @override
    void initState() {
@@ -35,47 +36,48 @@ class _HomePageState extends State<HomePage> {
     String? token = preferences.getString('token');
 
     var response = await http.get(
-      Uri.parse('http://many-medium.at.ply.gg:38383/api/user'),
+      Uri.parse('http://127.0.0.1:8000/api/user'),
       headers: {'Authorization': 'Bearer $token'},
     );
 
     if (response.statusCode == 200) {
       var userData = json.decode(response.body);
 
-      if (mounted) {
-        setState(() {
-          _nama = userData['nama'];
-          _nisn = userData['nisn'];
-          _kelas = userData['kelas'];
-          _namaWalas = userData['nama_walas'];
-          _namaGuru = userData['nama_guru'];
-          _photoUrl = userData['profile_photo_path'];
-        });
-      }
+      // if (mounted) {
+      //   setState(() {
+      //     _nama = userData['nama'];
+      //     _nisn = userData['nisn'];
+      //     _kelas = userData['kelas'];
+      //     _namaWalas = userData['nama_walas'];
+      //     _namaGuru = userData['nama_guru'];
+      //     });
+      // }
     }
   }
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Home'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            if (_photoUrl != null && _photoUrl!.isNotEmpty)
-              CircleAvatar(
-                backgroundImage: NetworkImage(_photoUrl!),
-                radius: 50,
-              ),
-            SizedBox(height: 20),
-            Text('Nama: $_nama'),
-            Text('NISN: $_nisn'),
-            Text('Kelas: $_kelas'),
-            Text('Nama Wali Kelas: $_namaWalas'),
-            Text('Nama Guru: $_namaGuru'),
-          ],
-        ),
+      body: FutureBuilder<List<Archive>>(
+        future: fetchDataKonseling(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(child: CircularProgressIndicator());
+          } else if (snapshot.hasError) {
+            return Center(child: Text('Error: ${snapshot.error}'));
+          } else {
+            List<Archive> archives = snapshot.data ?? [];
+            return ListView.builder(
+              itemCount: archives.length,
+              itemBuilder: (context, index) {
+                Archive archive = archives[index];
+                return ListTile(
+                  title: Text(archive.judul),
+                  subtitle: Text(archive.nama_guru),
+                  // ... add other fields you want to display
+                );
+              },
+            );
+          }
+        },
       ),
     );
   }

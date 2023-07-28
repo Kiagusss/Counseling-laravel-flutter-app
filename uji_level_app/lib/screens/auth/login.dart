@@ -14,37 +14,37 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
- TextEditingController email = TextEditingController();
+ TextEditingController email = TextEditingController(); 
   TextEditingController password = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   String _email = '';
   String _password = '';
   bool _isPasswordVisible = false;
 
-  void loginUser() async {
-    final data = {
-      'email': email.text.toString(),
-      'password': password.text.toString(),
-    };
-    final result = await http.post(
-      Uri.parse('http://many-medium.at.ply.gg:38383/api/login'),
-      body: {'email': _email, 'password': _password}
-    );
-    final response = jsonDecode(result.body);
-    if (response['status'] == 200) {
-      SharedPreferences preferences = await SharedPreferences.getInstance();
-      await preferences.setInt('user_id', response['user']['id']);
-      await preferences.setString('name', response['user']['name']);
-      await preferences.setString('email', response['user']['email']);
-      await preferences.setString('token', response['token']);
-      
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(
-          builder: (context) => homepage(),
-        ),
+    void loginUser() async {
+      final data = {
+        'email': email.text.toString(),
+        'password': password.text.toString(),
+      };
+      final result = await http.post(
+        Uri.parse('http://metal-knife.gl.at.ply.gg:7437/api/login'),
+        body: {'email': _email, 'password': _password}
       );
+      final response = jsonDecode(result.body);
+      if (response['status'] == 200) {
+        SharedPreferences preferences = await SharedPreferences.getInstance();
+        await preferences.setInt('user_id', response['user']['id']);
+        await preferences.setString('name', response['user']['name']);
+        await preferences.setString('email', response['user']['email']);
+        await preferences.setString('token', response['token']);
+        
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(
+            builder: (context) => HomePage(),
+          ),
+        );
+      }
     }
-  }
 
   @override
   Widget build(BuildContext context) {
