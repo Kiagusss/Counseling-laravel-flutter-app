@@ -63,6 +63,9 @@ Route::middleware([
             Route::get('/guru/search', [AdminController::class, 'searchGuru']);
             Route::get('/guru/export', [AdminController::class, 'exportGuru']);
         });
+
+
+        
         Route::name('walas.')->group(function () {
             // Rute-rute untuk siswadst
             Route::get('/index-walas', [AdminController::class, 'indexWalas'])->name('index');
