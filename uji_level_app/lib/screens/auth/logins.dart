@@ -31,7 +31,7 @@ class _LoginssState extends State<Loginss> {
       Uri.parse('http://metal-knife.gl.at.ply.gg:7437/api/login'),
       body: {'email': _email, 'password': _password}
     );
-    final response = jsonDecode(result.body);
+    final response = json.decode(result.body);
     if (response['status'] == 200) {
       SharedPreferences preferences = await SharedPreferences.getInstance();
       await preferences.setInt('user_id', response['user']['id']);
