@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\KonselingBK;
+use App\Models\PivotBK;
 use App\Models\User;
+use App\Models\Siswa;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use PhpParser\Node\Expr\Cast\String_;
 
 class AuthController extends Controller
 {
@@ -24,29 +29,31 @@ class AuthController extends Controller
         }
     }
 
-    public function index(Request $r)
+    public function index(string $id)
     {    
 
-        $logedin = $r->user();
-        $userid = $logedin->id;
+        $userid = $id;
 
-        $user = $userid->siswa;
+        $siswa = Siswa::where('user_id', $userid)->first();
     
-        if (!$user) {
+        if (!$siswa) {
             return response()->json([
                 'message' => 'User not found',
             ], 404);
         }
-    
-        $siswa = $user->siswa;
-    
-        if (!$siswa) {
-            return response()->json([
-                'message' => 'Siswa not found for this user',
-            ], 404);
+
+        try {
+            $pivot = DB::table('pivot_bk')->where('siswa_id', $siswa->id)->get();
+        } catch (\Throwable $th) {
+            throw $th;
         }
-    
-        $konselingbk = $siswa->konseling;
+
+        $konselingbk = [];
+
+
+        foreach($pivot as $item){
+            array_push($konselingbk, KonselingBK::find($item->konseling_id));
+        }
     
         $array = [];
     
