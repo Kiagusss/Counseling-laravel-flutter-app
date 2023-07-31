@@ -68,12 +68,13 @@ class _HomePageState extends State<HomePage> {
             return Center(child: Text('Error: ${snapshot.error}'));
           } else {
             List<Archive> archives = snapshot.data ?? [];
+            print(archives);
             return ListView.builder(
               itemCount: archives.length,
               itemBuilder: (context, index) {
                 Archive archive = archives[index];
                 return ListView(
-          children: [
+            children: [
             Container(
               margin: EdgeInsets.all(25),
               child: Column(

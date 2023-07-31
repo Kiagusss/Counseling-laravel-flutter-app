@@ -17,7 +17,7 @@ class AuthController extends Controller
         $user= User::where('email', $R->email)->first();
 
         if($user!='[]' && Hash::check($R->password,$user->password)){
-            $token = $user->createToken('Personal Access Token')->plainTextToken;
+            $token = $user->createToken('secret')->plainTextToken;
             $response= ['status'=>200,'token'=>$token,'user'=>$user,'message'=>'Successfully Login'];
             return response()->json($response); 
         }else if($user=='[]'){
@@ -28,6 +28,7 @@ class AuthController extends Controller
             return response()->json($response); 
         }
     }
+
 
     public function index(string $id)
     {    
