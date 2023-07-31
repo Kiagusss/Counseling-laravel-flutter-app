@@ -15,14 +15,18 @@ Future<List<Archive>> fetchDataKonseling() async{
 
   int? id = sp.getInt('user_id') ?? 1;
 
-  String apiURL = "http://metal-knife.gl.at.ply.gg:7437/api/index/$id";
+  String apiURL = "http://robert-lycos.gl.at.ply.gg:12448/api/index/$id";
 
   var result = await http.get(Uri.parse(apiURL));
-  var dataJson = json.decode(result.body)['data'];
 
-  print(dataJson);
 
-  for(var item in dataJson){
+  if (result.statusCode == 200) {
+
+    var dataJson = json.decode(result.body)['data'];
+
+    print(dataJson);
+
+    for(var item in dataJson){
     Archive archive = Archive();
 
     // archive.judul = item['judul'];
@@ -32,6 +36,11 @@ Future<List<Archive>> fetchDataKonseling() async{
 
     archives.add(archive);
   }
+  }else{
+    print(result.statusCode);
+  }
+
+  
 
   return archives;
 

@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import 'package:uji_level_app/homepage.dart';
+import 'package:uji_level_app/test/testdatapi.dart';
 
 import '../../homes.dart';
 class Loginss extends StatefulWidget {
@@ -41,7 +42,7 @@ class _LoginssState extends State<Loginss> {
       
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-          builder: (context) => HomePage(),
+          builder: (context) => testapi(),
         ),
       );
     }
