@@ -20,12 +20,13 @@ use App\Http\Controllers\SiswaController;
 
 Route::group(['middleware'=>['auth:sanctum']], function(){
     Route::get('/user', [UserController::class, 'getUser']);
+    Route::post('/logout', [AuthController::class, 'logout']);
+    Route::get('/index/{id}', [AuthController::class, 'index']);
+    Route::get('/siswa', [SiswaController::class, 'getSiswa']);
 });
 
 
 Route::post('/login', [AuthController::class,'login']);
-Route::get('/index/{id}', [AuthController::class, 'index']);
 
-Route::get('/siswa', [SiswaController::class, 'getSiswa']);
 
 
