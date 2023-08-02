@@ -34,7 +34,7 @@ class AuthController extends Controller
     {    
 
         $userid = $id;
-
+        
         $siswa = Siswa::where('user_id', $userid)->first();
     
         if (!$siswa) {
