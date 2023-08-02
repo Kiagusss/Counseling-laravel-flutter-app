@@ -7,6 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:uji_level_app/model/archive.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
+import 'package:uji_level_app/screens/auth/logins.dart';
 
 
 
@@ -35,7 +36,7 @@ class _testapiState extends State<testapi> {
     String? token = preferences.getString('token');
 
     var response = await http.get(
-      Uri.parse('http://metal-knife.gl.at.ply.gg:7437/api/user'),
+      Uri.parse('http://robert-lycos.gl.at.ply.gg:12448/api/user'),
       headers: {'Authorization': 'Bearer $token'},
     );
 
@@ -69,9 +70,16 @@ class _testapiState extends State<testapi> {
               itemCount: archives.length,
               itemBuilder: (context, index) {
                 Archive archive = archives[index];
-                return ListTile(
-                  title: Text(archive.judul),
-                  subtitle: Text(archive.nama_guru),
+                return Container(
+                  child: Column(
+                    children: [
+                      Text('${archive.judul}'),
+                      Text(archive.nama_guru),
+                      Text(archive.status),
+                      Text(archive.jadwal_konseling),
+                    ],
+                  ),
+                  
                   // ... add other fields you want to display
                 );
               },
