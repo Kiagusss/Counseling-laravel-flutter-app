@@ -34,7 +34,7 @@ class AuthController extends Controller
     {    
 
         $userid = $id;
-
+        
         $siswa = Siswa::where('user_id', $userid)->first();
     
         if (!$siswa) {
@@ -72,6 +72,14 @@ class AuthController extends Controller
         ]);
     }
 
+
+    public function logout(){
+      
+        auth()->user()->tokens()->delete();   
+        return response([
+            'message' => 'Logout Success'
+        ],200);
+    }
 
 
 }

@@ -11,7 +11,7 @@ class LayananBK extends Model
 
     protected $table = 'layanan_bk';
 
-    protected $fillable = ['jenis_layan'];
+    protected $fillable = ['jenis_layanan'];
     
   
 

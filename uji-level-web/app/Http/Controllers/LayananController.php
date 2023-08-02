@@ -422,4 +422,42 @@ class LayananController extends Controller
     {
         //
     }
+
+
+    public function createprivatemobile()
+{
+    $user = auth()->user();
+
+    if (Auth::user()->hasRole('siswa')) {
+        $siswa = Siswa::with('kelas')->where('user_id', $user->id)->first();
+        $user = Auth::user();
+        $iduser = $user->id;
+        $datasiswa = Siswa::where('user_id', $iduser)->first();
+        $datakelas = Kelas::where('id', $datasiswa->kelas_id)->first();
+        $dataguru = Guru::where('id', $datakelas->guru_id)->first();
+        $datalayanan = LayananBK::all();
+
+        if ($siswa) {
+            // Use the 'jenis_layanan' from specific LayananBK object, not the collection
+            $jenisLayanan = $datalayanan->pluck('jenis_layanan')->toArray();
+            
+            return response()->json([
+                'status' => 200,
+                'layanan' => [
+                    'siswa' => $datasiswa->nama,
+                    'guru' => $dataguru->nama,
+                    'jenis_layanan' => $jenisLayanan,
+                ],
+                'message' => 'Successfully retrieved data',
+            ]);
+        }
+
+        return response()->json([
+            'status' => 404,
+            'message' => 'Data Layanan not found',
+        ], 404);
+    }
+}
+
+    
 }
