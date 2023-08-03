@@ -81,8 +81,6 @@ class LayananController extends Controller
         $user = Auth::user()->id;
         $gurudata = Guru::where('user_id', $user)->first();
         $konselingbk = KonselingBK::where('guru_id', $gurudata->id)->where('status', 'canceled')->with(['layanan', 'guru', 'siswa', 'walas'])->paginate(10);
-        
-
         return view('layouts.layanan.index', compact('konselingbk'));
     }
 
@@ -457,6 +455,88 @@ class LayananController extends Controller
             'message' => 'Data Layanan not found',
         ], 404);
     }
+}
+
+public function storeprivatemobile(Request $request)
+{
+    $user = auth()->user();
+
+    if (Auth::user()->hasRole('siswa')) {
+        $siswa = Siswa::with('kelas')->where('user_id', $user->id)->first();
+
+        $request->validate([
+            'layanan' => 'required',
+            'judul' => 'required',
+            'tujuan' => 'required',
+        ]);
+
+        $datasiswa = Siswa::where('user_id', Auth::user()->id)->first();
+        $datakelas = Kelas::where('id', $datasiswa->kelas_id)->first();
+        $dataguru = Guru::where('id', $datakelas->guru_id)->first();
+        $datawalas = Walas::where('id', $datakelas->walas_id)->first();
+
+        $konseling = KonselingBK::create([
+            'layanan_id' => $request->input('layanan'),
+            'guru_id' => $dataguru->id,
+            'walas_id' => $datawalas->id,
+            'judul' => $request->input('judul'),
+            'tujuan' => $request->input('tujuan'),
+        ]);
+
+        $konselingId = $konseling->id;
+        PivotBK::create([
+            'siswa_id' => $datasiswa->id,
+            'konseling_id' => $konseling->id,
+        ]);
+
+        return response()->json([
+            'status' => 200,
+            'layanan' => [
+                'siswa' => $datasiswa->nama,
+                'guru' => $dataguru->nama,
+                'walas' => $datawalas->nama,
+                'layanan_id' => $konselingId,
+                'judul' => $konseling->judul,
+                'tujuan' => $konseling->tujuan,
+            ],
+            'message' => 'Successfully created data',
+        ]);
+    }
+
+    return response()->json([
+        'status' => 403,
+        'message' => 'Unauthorized',
+    ], 403);
+}
+
+public function showmobile(string $id){
+    $user = auth()->user();
+
+    if (Auth::user()->hasRole('siswa')) {
+        $data = KonselingBK::with('guru', 'siswa', 'walas')->find($id);
+        $pivots = PivotBK::where('konseling_id', $id)->pluck('siswa_id'); // Menggunakan pluck untuk mengambil atribut siswa_id
+
+        // Mengambil data siswa berdasarkan siswa_id yang didapat dari pluck
+        $siswas = Siswa::whereIn('id', $pivots)->get();
+
+        return response()->json([
+            'status' => 200,
+            'layanan' => [
+                'siswa' => $siswas->pluck('nama'), // Mengambil atribut nama dari koleksi siswas
+                'guru' => $data->guru->nama,
+                'walas' => $data->walas->nama,
+                'judul' => $data->judul,
+                'alasan' => $data->alasan,
+                'layanan' => $data->layanan->jenis_layanan,
+            ],
+            'message' => 'Successfully Show Data data',
+        ]);
+    }
+
+    return response()->json([
+        'status' => 403,
+        'message' => 'Unauthorized',
+    ], 403);
 }
 
     

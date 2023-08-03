@@ -25,6 +25,9 @@ Route::group(['middleware'=>['auth:sanctum']], function(){
     Route::get('/index/{id}', [AuthController::class, 'index']);
     Route::get('/siswa', [SiswaController::class, 'getSiswa']);
     Route::get('/form-layanan', [LayananController::class, 'createprivatemobile']);
+    Route::post('/store-layanan', [LayananController::class, 'storeprivatemobile']);
+    Route::get('/show-layanan/{id}', [LayananController::class, 'showmobile']);
+    Route::get('/index-layanan', [AuthController::class, 'indexlayanan']);
     
 });
 

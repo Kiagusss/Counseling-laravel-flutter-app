@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:uji_level_app/homess.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
+import 'package:uji_level_app/layanan/index.dart';
 import '../../methods/api.dart';
 
 class Login extends StatefulWidget {
@@ -40,7 +41,7 @@ class _LoginState extends State<Login> {
         
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(
-            builder: (context) => HomePage(),
+            builder: (context) => IndexLayanan(),
           ),
         );
       }
