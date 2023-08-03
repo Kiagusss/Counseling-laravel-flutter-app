@@ -21,8 +21,7 @@ class _LoginssState extends State<Loginss> {
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
   final _formKey = GlobalKey<FormState>();
-    String _email = '';
-  String _password = '';
+
 
   bool _isPasswordVisible = false;
 
@@ -32,8 +31,8 @@ class _LoginssState extends State<Loginss> {
       'password': password.text.toString(),
     };
     final result = await http.post(
-      Uri.parse('robert-lycos.gl.at.ply.gg:12448/api/login'),
-      body: {'email': _email, 'password': _password}
+      Uri.parse('http://robert-lycos.gl.at.ply.gg:12448/api/login'),
+      body: data,
     );
     final response = json.decode(result.body);
     if (response['status'] == 200) {
