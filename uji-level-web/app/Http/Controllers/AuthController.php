@@ -82,4 +82,46 @@ class AuthController extends Controller
     }
 
 
+    public function indexlayanan()
+    {
+        $user = auth()->user();
+
+        if ($user->hasRole('siswa')) {
+            $siswa = Siswa::where('user_id', $user->id)->first();
+            $dataLayanan = PivotBK::where('siswa_id', $siswa->id)->with('konseling.layanan', 'konseling.guru', 'konseling.walas')->get();
+
+            $layananList = [];
+            foreach ($dataLayanan as $pivot) {
+                $konseling = $pivot->konseling;
+                $layanan = $konseling->layanan;
+                $guru = $konseling->guru;
+                $walas = $konseling->walas;
+                $jadwal = $konseling->jadwal_konseling; // Update this line
+                $status = $konseling->status; // Update this line
+
+                $layananList[] = [
+                    'id' => $konseling->id,
+                    'guru' => $guru->nama,
+                    'walas' => $walas->nama,
+                    'judul' => $konseling->judul,
+                    'alasan' => $konseling->alasan,
+                    'jenis_layanan' => $layanan->jenis_layanan,
+                    'jadwal' => $jadwal,
+                    'status' => $status,
+                ];
+            }
+
+            return response()->json([
+                'status' => 200,
+                'layanan' => $layananList,
+                'message' => 'Successfully retrieved data',
+            ]);
+        }
+
+        return response()->json([
+            'status' => 403,
+            'message' => 'Unauthorized',
+        ], 403);
+    }
+
 }

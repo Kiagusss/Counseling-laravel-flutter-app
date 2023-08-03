@@ -5,6 +5,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import 'package:uji_level_app/homepage.dart';
+import 'package:uji_level_app/layanan/index.dart';
+import 'package:uji_level_app/layanan/show.dart';
 
 import '../../homes.dart';
 import '../../profile.dart';
@@ -42,7 +44,7 @@ class _LoginssState extends State<Loginss> {
 
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-          builder: (context) => Profile(),
+          builder: (context) => IndexLayanan(),
         ),
       );
     }
