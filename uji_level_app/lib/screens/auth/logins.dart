@@ -44,7 +44,7 @@ class _LoginssState extends State<Loginss> {
 
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-          builder: (context) => IndexLayanan(),
+          builder: (context) => HomePage(),
         ),
       );
     }

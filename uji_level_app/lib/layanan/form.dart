@@ -3,20 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Form Layanan',
-      home: FormLayanan(),
-    );
-  }
-}
-
 class FormLayanan extends StatefulWidget {
   @override
   _FormLayananState createState() => _FormLayananState();
@@ -93,8 +79,8 @@ class _FormLayananState extends State<FormLayanan> {
         if (response.statusCode == 200) {
           // Handle successful submission and parsing the API response
           Map<String, dynamic> responseData = json.decode(response.body);
-          if (responseData.containsKey('status') && responseData['status'] == 200) {
-            // Show a success dialog
+          if (responseData.containsKey('status') &&
+              responseData['status'] == 200) {
             showDialog(
               context: context,
               builder: (_) => AlertDialog(
@@ -109,7 +95,6 @@ class _FormLayananState extends State<FormLayanan> {
               ),
             );
           } else {
-            // Handle unsuccessful API response
             showDialog(
               context: context,
               builder: (_) => AlertDialog(
@@ -125,7 +110,6 @@ class _FormLayananState extends State<FormLayanan> {
             );
           }
         } else {
-          // Handle HTTP error
           showDialog(
             context: context,
             builder: (_) => AlertDialog(
@@ -141,7 +125,6 @@ class _FormLayananState extends State<FormLayanan> {
           );
         }
       } catch (e) {
-        // Handle exceptions during the HTTP request
         showDialog(
           context: context,
           builder: (_) => AlertDialog(
@@ -173,7 +156,8 @@ class _FormLayananState extends State<FormLayanan> {
             child: Text('Error: ${snapshot.error}'),
           );
         } else {
-          _jenisLayanan = snapshot.data!; // Assign fetched data to _jenisLayanan
+          _jenisLayanan =
+              snapshot.data!; // Assign fetched data to _jenisLayanan
           return Material(
             child: Scaffold(
               appBar: AppBar(title: Text('Form Layanan')),
@@ -191,13 +175,15 @@ class _FormLayananState extends State<FormLayanan> {
                             _layanan = newValue;
                           });
                         },
-                        items: _jenisLayanan.map<DropdownMenuItem<String>>((String value) {
+                        items: _jenisLayanan
+                            .map<DropdownMenuItem<String>>((String value) {
                           return DropdownMenuItem<String>(
                             value: value,
                             child: Text(value),
                           );
                         }).toList(),
-                        decoration: InputDecoration(labelText: 'Select Bimbingan'),
+                        decoration:
+                            InputDecoration(labelText: 'Select Bimbingan'),
                         validator: (value) {
                           if (value == null) {
                             return 'Please select a value';
