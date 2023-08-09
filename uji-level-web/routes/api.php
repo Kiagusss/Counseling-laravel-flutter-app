@@ -28,6 +28,8 @@ Route::group(['middleware'=>['auth:sanctum']], function(){
     Route::post('/store-layanan', [LayananController::class, 'storeprivatemobile']);
     Route::get('/show-layanan/{id}', [LayananController::class, 'showmobile']);
     Route::get('/index-layanan', [AuthController::class, 'indexlayanan']);
+    Route::put('/user/update/{id}', [UserController::class, 'profileupdate']);
+
     
 });
 

@@ -15,7 +15,7 @@ Future<List<Archive>> fetchDataKonseling() async{
    SharedPreferences prefs = await SharedPreferences.getInstance();
   int userId = prefs.getInt('id') ?? -1; // Mengembalikan -1 jika tidak ditemukan
 
-  String apiURL = "http://robert-lycos.gl.at.ply.gg:12448/api/index/$userId";
+  String apiURL = "http://robert-lycos.gl.at.ply.gg:12448/api/index";
 
   var result = await http.get(Uri.parse(apiURL));
 

@@ -13,7 +13,7 @@ class IndexLayanan extends StatefulWidget {
 class _IndexLayananState extends State<IndexLayanan> {
   List<dynamic> layananList = [];
 
-  final String apiUrl = 'http://metal-knife.gl.at.ply.gg:7437/api/index-layanan';
+  final String apiUrl = 'http://robert-lycos.gl.at.ply.gg:12448/api/index-layanan';
 
   Future<void> fetchData() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
