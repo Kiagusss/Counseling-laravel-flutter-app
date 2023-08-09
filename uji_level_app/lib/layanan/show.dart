@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'dart:async';
 
 class ShowLayanan extends StatefulWidget {
   final String id;
@@ -46,6 +47,81 @@ class _ShowLayananState extends State<ShowLayanan> {
     }
   }
 
+  Future<String?> _showCancellationDialog() async {
+    return showDialog<String>(
+      context: context,
+      builder: (BuildContext context) {
+        String? cancellationReason = '';
+
+        return AlertDialog(
+          title: Text('Cancel Layanan'),
+          content: TextField(
+            onChanged: (value) {
+              cancellationReason = value;
+            },
+            decoration: InputDecoration(hintText: 'Enter cancellation reason'),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: Text('Cancel'),
+              onPressed: () {
+                Navigator.of(context).pop(null);
+              },
+            ),
+            TextButton(
+              child: Text('Submit'),
+              onPressed: () {
+                if (cancellationReason != null) {
+                  Navigator.of(context).pop(cancellationReason);
+                } else {
+                  // Show an error message or handle the empty reason as needed
+                  // For example, you can show a snackbar:
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text('Please enter a cancellation reason.'),
+                    ),
+                  );
+                }
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Future<void> _cancelLayanan(String cancellationReason) async {
+    try {
+      SharedPreferences preferences = await SharedPreferences.getInstance();
+      bearerToken = preferences.getString('token');
+
+      if (bearerToken != null) {
+        final response = await http.post(
+          Uri.parse('$apiUrl/${widget.id}'),
+          headers: {
+            'Authorization': 'Bearer $bearerToken',
+          },
+          body: {
+            'id': widget.id,
+            'alasan_kesimpulan': cancellationReason,
+          },
+        );
+
+        if (response.statusCode == 200) {
+          // Layanan cancelled successfully
+          // Handle the response accordingly
+        } else {
+          // Failed to cancel layanan
+          // Handle the response accordingly
+        }
+      } else {
+        throw Exception('Bearer token is missing');
+      }
+    } catch (e) {
+      print('Error cancelling layanan: $e');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,7 +146,6 @@ class _ShowLayananState extends State<ShowLayanan> {
             final guru = layanan['guru'];
             final walas = layanan['walas'];
             final judul = layanan['judul'];
-            final alasan = layanan['alasan'];
             final jenisLayanan = layanan['layanan'];
 
             return Center(
@@ -80,11 +155,24 @@ class _ShowLayananState extends State<ShowLayanan> {
                   Text('Guru BK: $guru'),
                   Text('Wali Kelas: $walas'),
                   Text('Judul: $judul'),
-                  Text('Alasan: $alasan'),
                   Text('Jenis Layanan: $jenisLayanan'),
                   Text('Siswa:'),
                   Column(
                     children: siswaList.map((siswa) => Text(siswa)).toList(),
+                  ),
+                  ElevatedButton(
+                    onPressed: () async {
+                      // Show the cancellation dialog
+                      String? cancellationReason = await _showCancellationDialog();
+
+                      if (cancellationReason != null && cancellationReason.isNotEmpty) {
+                        // Call the API to cancel the layanan with the provided reason
+                        await _cancelLayanan(cancellationReason);
+                        // Perform any additional actions if needed after cancellation
+                        // For example, show a success message or navigate back to the previous page
+                      }
+                    },
+                    child: Text('Cancel Layanan'),
                   ),
                 ],
               ),

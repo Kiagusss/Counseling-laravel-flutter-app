@@ -12,7 +12,6 @@ class KonselingBK extends Model
     protected $fillable = [
         'layanan_id', 
         'guru_id',
-        'siswa_id',
         'walas_id',
         'judul',
         'tujuan',

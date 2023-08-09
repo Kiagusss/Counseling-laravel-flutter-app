@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:uji_level_app/layanan/form.dart';
 import 'package:uji_level_app/layanan/show.dart';
 // Replace 'your_project_name' with your actual project name
 
@@ -66,7 +67,7 @@ class _IndexLayananState extends State<IndexLayanan> {
           return Card(
             child: ListTile(
               title: Text('Judul: $judul'),
-              subtitle: Text('Guru BK: $guru\nWxali Kelas: $walas\nJadwal Konseling: $jadwal'),
+              subtitle: Text('Guru BK: $guru\nWali Kelas: $walas\nJadwal Konseling: $jadwal'),
               trailing: ElevatedButton(
                 onPressed: () {
                   Navigator.push(
@@ -82,6 +83,9 @@ class _IndexLayananState extends State<IndexLayanan> {
           );
         },
       ),
+      floatingActionButton: FloatingActionButton(onPressed: (){
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => FormLayanan()));
+      }),
     );
   }
 }
