@@ -104,7 +104,7 @@ class AuthController extends Controller
                     'guru' => $guru->nama,
                     'walas' => $walas->nama,
                     'judul' => $konseling->judul,
-                    'alasan' => $konseling->alasan,
+                    'alasan' => $konseling->alasan_kesimpulan,
                     'jenis_layanan' => $layanan->jenis_layanan,
                     'jadwal' => $jadwal,
                     'status' => $status,

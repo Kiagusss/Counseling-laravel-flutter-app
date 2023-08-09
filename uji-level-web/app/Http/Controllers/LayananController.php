@@ -423,45 +423,44 @@ class LayananController extends Controller
 
 
     public function createprivatemobile()
-{
-    $user = auth()->user();
+    {
+        $user = auth()->user();
 
-    if (Auth::user()->hasRole('siswa')) {
-        $siswa = Siswa::with('kelas')->where('user_id', $user->id)->first();
-        $user = Auth::user();
-        $iduser = $user->id;
-        $datasiswa = Siswa::where('user_id', $iduser)->first();
-        $datakelas = Kelas::where('id', $datasiswa->kelas_id)->first();
-        $dataguru = Guru::where('id', $datakelas->guru_id)->first();
-        $datalayanan = LayananBK::all();
+        if (Auth::user()->hasRole('siswa')) {
+            $siswa = Siswa::with('kelas')->where('user_id', $user->id)->first();
+            $user = Auth::user();
+            $iduser = $user->id;
+            $datasiswa = Siswa::where('user_id', $iduser)->first();
+            $datakelas = Kelas::where('id', $datasiswa->kelas_id)->first();
+            $dataguru = Guru::where('id', $datakelas->guru_id)->first();
+            $datalayanan = LayananBK::all();
 
-        if ($siswa) {
-            // Use the 'jenis_layanan' from specific LayananBK object, not the collection
-            $jenisLayanan = $datalayanan->pluck('jenis_layanan')->toArray();
-            
+            if ($siswa) {
+                // Use the 'jenis_layanan' from specific LayananBK object, not the collection
+                $jenisLayanan = $datalayanan->pluck('jenis_layanan')->toArray();
+
+                return response()->json([
+                    'status' => 200,
+                    'layanan' => [
+                        'siswa' => $datasiswa->nama,
+                        'guru' => $dataguru->nama,
+                        'jenis_layanan' => $jenisLayanan,
+                    ],
+                    'message' => 'Successfully retrieved data',
+                ]);
+            }
+
             return response()->json([
-                'status' => 200,
-                'layanan' => [
-                    'siswa' => $datasiswa->nama,
-                    'guru' => $dataguru->nama,
-                    'jenis_layanan' => $jenisLayanan,
-                ],
-                'message' => 'Successfully retrieved data',
-            ]);
+                'status' => 404,
+                'message' => 'Data Layanan not found',
+            ], 404);
         }
-
-        return response()->json([
-            'status' => 404,
-            'message' => 'Data Layanan not found',
-        ], 404);
     }
-}
 
-public function storeprivatemobile(Request $request)
-{
-    $user = auth()->user();
+    public function storeprivatemobile(Request $request)
+    {
+        $user = auth()->user();
 
-    if (Auth::user()->hasRole('siswa')) {
         $siswa = Siswa::with('kelas')->where('user_id', $user->id)->first();
 
         $request->validate([
@@ -496,18 +495,14 @@ public function storeprivatemobile(Request $request)
                 'guru' => $dataguru->nama,
                 'walas' => $datawalas->nama,
                 'layanan_id' => $konselingId,
-                'judul' => $konseling->judul,
-                'tujuan' => $konseling->tujuan,
+                'judul' => $request->input('judul'),
+                'tujuan' => $request->input('tujuan'),
             ],
             'message' => 'Successfully created data',
         ]);
     }
 
-    return response()->json([
-        'status' => 403,
-        'message' => 'Unauthorized',
-    ], 403);
-}
+
 
 public function showmobile(string $id){
     $user = auth()->user();
@@ -526,7 +521,7 @@ public function showmobile(string $id){
                 'guru' => $data->guru->nama,
                 'walas' => $data->walas->nama,
                 'judul' => $data->judul,
-                'alasan' => $data->alasan,
+                'alasan' => $data->alasan_kesimpulan,
                 'layanan' => $data->layanan->jenis_layanan,
             ],
             'message' => 'Successfully Show Data data',
@@ -539,5 +534,26 @@ public function showmobile(string $id){
     ], 403);
 }
 
+
+public function cancelmobile(string $id, Request $request)
+    {
+        $data = KonselingBK::find($id);
+
+        if (!$data) {
+            return response()->json([
+                'status' => 404,
+                'message' => 'Konseling not found',
+            ], 404);
+        }
+
+        $data->status = 'Cancelled';
+        $data->alasan_kesimpulan = $request->input('alasan_kesimpulan');
+        $data->save();
+
+        return response()->json([
+            'status' => 200,
+            'message' => 'Konseling cancelled successfully',
+        ]);
+    }
     
 }

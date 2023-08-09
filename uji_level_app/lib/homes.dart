@@ -10,8 +10,6 @@ class homepage extends StatefulWidget {
 }
 
 class _homepageState extends State<homepage> {
-
-  
   void _navigateToNextPage(BuildContext context) {
     Navigator.push(
       context,
@@ -26,11 +24,11 @@ class _homepageState extends State<homepage> {
         body: Center(
           child: Container(
             color: Color.fromARGB(255, 219, 224, 246),
-
             child: LayoutBuilder(
               builder: (BuildContext context, BoxConstraints constraints) {
                 return SizedBox(
-                  width: constraints.maxWidth, // Menggunakan lebar maksimum dari parent
+                  width: constraints
+                      .maxWidth, // Menggunakan lebar maksimum dari parent
                   // Menggunakan tinggi maksimum dari parent
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -41,10 +39,10 @@ class _homepageState extends State<homepage> {
                         // color: Colors.pink,
                         child: Column(
                           children: <Widget>[
-
                             Container(
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: <Widget>[
                                   Container(
                                     child: Image.asset('assets/logo.png'),
@@ -53,7 +51,8 @@ class _homepageState extends State<homepage> {
                                     onTap: () {
                                       Navigator.push(
                                         context,
-                                        MaterialPageRoute(builder: (context) => Prof()),
+                                        MaterialPageRoute(
+                                            builder: (context) => Prof()),
                                       );
                                     },
                                     child: Container(
@@ -70,41 +69,33 @@ class _homepageState extends State<homepage> {
                                 ],
                               ),
                             ),
-
-
                             Container(
                               child: Column(
                                 children: <Widget>[
                                   Container(
                                     child: Text(
-                                      'Welcome', 
+                                      'Welcome',
                                       style: TextStyle(
-                                        fontSize: 25,
-                                        fontFamily: 'poppins',
-                                        fontWeight: FontWeight.w700
-                                      ),
+                                          fontSize: 25,
+                                          fontFamily: 'poppins',
+                                          fontWeight: FontWeight.w700),
                                     ),
                                   ),
                                   Container(
                                     child: Text(
-                                      'Muhammad Jisung', 
+                                      'Muhammad Jisung',
                                       style: TextStyle(
-                                        fontSize: 25,
-                                        fontFamily: 'poppins',
-                                        fontWeight: FontWeight.w700
-                                      ),
+                                          fontSize: 25,
+                                          fontFamily: 'poppins',
+                                          fontWeight: FontWeight.w700),
                                     ),
                                   )
                                 ],
                               ),
                             ),
-
-                            
-
                             const SizedBox(
                               height: 25,
                             ),
-
                             Container(
                               // color: Colors.pink,
                               width: 360,
@@ -112,27 +103,21 @@ class _homepageState extends State<homepage> {
                                 'latest appointment',
                                 textAlign: TextAlign.start,
                                 style: TextStyle(
-                                  fontFamily: 'poppins',
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: 20
-                                ),
+                                    fontFamily: 'poppins',
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 20),
                               ),
                             ),
-
                             const SizedBox(
                               height: 5,
                             ),
-
-
                             Container(
                               width: 360,
                               height: 160,
-
                               decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.all(Radius.circular(10))
-                              ),
-
+                                  color: Colors.white,
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10))),
                               child: Center(
                                 child: Container(
                                   width: 340,
@@ -144,33 +129,32 @@ class _homepageState extends State<homepage> {
                                         width: 130,
                                         height: 140,
                                         child: ClipRRect(
-                                          borderRadius: BorderRadius.circular(10),
+                                          borderRadius:
+                                              BorderRadius.circular(10),
                                           child: Image.asset(
                                             'assets/pa riki.png',
                                             fit: BoxFit.cover,
                                           ),
                                         ),
                                       ),
-                                      
                                       const SizedBox(
                                         width: 10,
                                       ),
-
                                       Container(
                                         width: 190,
                                         height: 140,
                                         color: Colors.blue,
                                         child: Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start, // Menentukan penataan horizontal teks
+                                          crossAxisAlignment: CrossAxisAlignment
+                                              .start, // Menentukan penataan horizontal teks
                                           children: <Widget>[
                                             Container(
                                               child: Text(
                                                 'counseling with',
                                                 textAlign: TextAlign.start,
                                                 style: TextStyle(
-                                                  fontFamily: 'poppins',
-                                                  fontSize: 11
-                                                ),
+                                                    fontFamily: 'poppins',
+                                                    fontSize: 11),
                                               ),
                                             ),
                                             Container(
@@ -178,19 +162,20 @@ class _homepageState extends State<homepage> {
                                                 'Mr. Ricky Sudrajat',
                                                 textAlign: TextAlign.start,
                                                 style: TextStyle(
-                                                  fontFamily: 'poppins',
-                                                  fontWeight: FontWeight.w700,
-                                                  fontSize: 20
-                                                ),
+                                                    fontFamily: 'poppins',
+                                                    fontWeight: FontWeight.w700,
+                                                    fontSize: 20),
                                               ),
                                             ),
                                             Container(
                                               width: 70,
                                               height: 25,
                                               decoration: BoxDecoration(
-                                                color: Colors.green,
-                                                borderRadius: BorderRadius.all(Radius.circular(100))
-                                              ),
+                                                  color: Colors.green,
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                          Radius.circular(
+                                                              100))),
                                               child: Center(
                                                 child: Text(
                                                   'waiting',
@@ -210,78 +195,79 @@ class _homepageState extends State<homepage> {
 
                                             Container(
                                               child: Row(
-                                                children: <Widget> [
+                                                children: <Widget>[
                                                   Container(
                                                     width: 25,
                                                     height: 25,
                                                     // color: Colors.pink,
-                                                    child: Icon(Icons.calendar_today),
+                                                    child: Icon(
+                                                        Icons.calendar_today),
                                                   ),
-                                                        
                                                   const SizedBox(
                                                     width: 6,
                                                   ),
-                                                  
                                                   Container(
                                                     // width: 150,
                                                     height: 25,
                                                     // color: Colors.green,
                                                     child: Center(
                                                       child: Text(
-                                                        '24th August 2023', 
+                                                        '24th August 2023',
                                                         // textAlign: TextAlign.center,
                                                         style: TextStyle(
-                                                          fontFamily: 'poppins',
-                                                          fontWeight: FontWeight.w700
-                                                        ),
+                                                            fontFamily:
+                                                                'poppins',
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w700),
                                                       ),
                                                     ),
                                                   )
                                                 ],
                                               ),
                                             ),
-                                            
+
                                             const SizedBox(
                                               height: 1,
                                             ),
 
                                             Container(
                                               child: Row(
-                                                children: <Widget> [
+                                                children: <Widget>[
                                                   Container(
                                                     width: 25,
                                                     height: 25,
                                                     // color: Colors.blue,
-                                                    child: Icon(Icons.location_pin),
+                                                    child: Icon(
+                                                        Icons.location_pin),
                                                   ),
-                                                    
                                                   const SizedBox(
                                                     width: 6,
                                                   ),
-                                                  
                                                   Container(
                                                     // width: 100,
                                                     height: 25,
                                                     // color: Colors.purple,
                                                     child: Center(
                                                       child: Text(
-                                                        'smk taruna bhakti', 
+                                                        'smk taruna bhakti',
                                                         // textAlign: TextAlign.center,
                                                         style: TextStyle(
-                                                          fontFamily: 'poppins',
-                                                          fontWeight: FontWeight.w700
-                                                        ),
+                                                            fontFamily:
+                                                                'poppins',
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w700),
                                                       ),
                                                     ),
                                                   )
                                                 ],
                                               ),
                                             ),
-                                            
+
                                             // const SizedBox(
                                             //   height: 1,
                                             // ),
-
 
                                             Container(
                                               // width: 10,
@@ -289,81 +275,67 @@ class _homepageState extends State<homepage> {
                                               // color: Colors.yellow,
 
                                               child: Row(
-                                                children: <Widget> [
+                                                children: <Widget>[
                                                   Container(
                                                     child: Text(
                                                       'socials',
                                                       style: TextStyle(
-                                                        fontFamily: 'poppins',
-                                                        fontWeight: FontWeight.w700
-                                                      ),
+                                                          fontFamily: 'poppins',
+                                                          fontWeight:
+                                                              FontWeight.w700),
                                                     ),
                                                   ),
-
-                                                  
                                                   const SizedBox(
                                                     width: 2,
                                                   ),
-                                                  
                                                   Container(
                                                     child: Text(
                                                       '/',
                                                       style: TextStyle(
-                                                        fontFamily: 'poppins',
-                                                        fontWeight: FontWeight.w700
-                                                      ),
+                                                          fontFamily: 'poppins',
+                                                          fontWeight:
+                                                              FontWeight.w700),
                                                     ),
                                                   ),
-
-                                                  
                                                   const SizedBox(
                                                     width: 2,
                                                   ),
-                                                  
                                                   Container(
                                                     child: Text(
                                                       'social',
                                                       style: TextStyle(
-                                                        fontFamily: 'poppins',
-                                                        color: const Color.fromARGB(255, 79, 78, 78)
-                                                        // fontWeight: FontWeight.w700
-                                                      ),
+                                                          fontFamily: 'poppins',
+                                                          color: const Color
+                                                                  .fromARGB(
+                                                              255, 79, 78, 78)
+                                                          // fontWeight: FontWeight.w700
+                                                          ),
                                                     ),
                                                   ),
                                                 ],
                                               ),
                                             )
-
                                           ],
                                         ),
                                       ),
-
-
-
-
                                     ],
                                   ),
                                 ),
                               ),
                             )
-
-
                           ],
                         ),
                       ),
-
                       Container(
                         width: 450,
                         height: 300,
                         // color: Colors.white,
                         decoration: BoxDecoration(
-                          
                           color: Colors.white,
                           borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(30),
                             topRight: Radius.circular(30),
                           ),
-
                           boxShadow: [
                             BoxShadow(
                               color: Color(0x40000000),
@@ -375,7 +347,7 @@ class _homepageState extends State<homepage> {
                         ),
 
                         child: Column(
-                          children: <Widget> [
+                          children: <Widget>[
                             Container(
                               height: 60,
                               // color: Colors.yellow,
@@ -388,24 +360,23 @@ class _homepageState extends State<homepage> {
                                     child: Text(
                                       'Counseling History',
                                       style: TextStyle(
-                                        fontFamily: 'poppins',
-                                        fontWeight: FontWeight.w700,
-                                        fontSize: 30
-                                      ),
+                                          fontFamily: 'poppins',
+                                          fontWeight: FontWeight.w700,
+                                          fontSize: 30),
                                     ),
                                   )
                                 ],
                               ),
                             ),
-
-
                             Container(
                               height: 450,
                               // color: Colors.blue,
                               child: ListView(
-                                padding: EdgeInsets.only(top: 0, bottom: 0), // Menghilangkan jarak di atas dan di bawah
+                                padding: EdgeInsets.only(
+                                    top: 0,
+                                    bottom:
+                                        0), // Menghilangkan jarak di atas dan di bawah
                                 children: [
-
                                   Container(
                                     height: 350,
                                     width: 350,
@@ -413,7 +384,7 @@ class _homepageState extends State<homepage> {
                                     child: Center(
                                       child: Container(
                                         width: 360,
-                                        height:300,
+                                        height: 300,
                                         // color: Colors.blueGrey,
 
                                         child: Row(
@@ -423,495 +394,521 @@ class _homepageState extends State<homepage> {
                                               // color: Colors.yellow,
                                               decoration: BoxDecoration(
                                                 color: Colors.white,
-                                                borderRadius: BorderRadius.all(Radius.circular(10)),
-
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(10)),
                                                 boxShadow: [
                                                   BoxShadow(
-                                                  color: Color.fromRGBO(0, 0, 0, 0.2),
-                                                  offset: Offset(1, 1),
-                                                  blurRadius: 7,
-                                                  spreadRadius: -1,
-                                                ),
+                                                    color: Color.fromRGBO(
+                                                        0, 0, 0, 0.2),
+                                                    offset: Offset(1, 1),
+                                                    blurRadius: 7,
+                                                    spreadRadius: -1,
+                                                  ),
                                                 ],
                                               ),
 
-                                              child: Column(
-                                                children: <Widget>[
-                                                  Container(
-                                                    height: 150,
-                                                    width: 360,
-                                                    decoration: BoxDecoration(
+                                              child: Column(children: <Widget>[
+                                                Container(
+                                                  height: 150,
+                                                  width: 360,
+                                                  decoration: BoxDecoration(
                                                       // color: Colors.pink,
-                                                      borderRadius: BorderRadius.all(Radius.circular(10))
-                                                    ),
-
-                                                    child: ClipRRect(
-                                                      borderRadius: BorderRadius.circular(10),
-                                                      child: Image.asset(
-                                                        'assets/pa riki.png',
-                                                        fit: BoxFit.cover,
-                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.all(
+                                                              Radius.circular(
+                                                                  10))),
+                                                  child: ClipRRect(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
+                                                    child: Image.asset(
+                                                      'assets/pa riki.png',
+                                                      fit: BoxFit.cover,
                                                     ),
                                                   ),
-
-                                                  Container(
-                                                    height: 150,
-                                                    width: 160,
-                                                    // color: Colors.pink,
-                                                    child: Column(
-                                                      crossAxisAlignment: CrossAxisAlignment.start, // Menentukan penataan horizontal teks
-                                                      children: <Widget>[
-                                                        const SizedBox(
-                                                          height: 5,
+                                                ),
+                                                Container(
+                                                  height: 150,
+                                                  width: 160,
+                                                  // color: Colors.pink,
+                                                  child: Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start, // Menentukan penataan horizontal teks
+                                                    children: <Widget>[
+                                                      const SizedBox(
+                                                        height: 5,
+                                                      ),
+                                                      Container(
+                                                        child: Text(
+                                                          'counseling with',
+                                                          textAlign:
+                                                              TextAlign.start,
+                                                          style: TextStyle(
+                                                              fontFamily:
+                                                                  'poppins',
+                                                              fontSize: 12),
                                                         ),
-                                                        Container(
-                                                          child: Text(
-                                                            'counseling with',
-                                                            textAlign: TextAlign.start,
-                                                            style: TextStyle(
-                                                              fontFamily: 'poppins',
-                                                              fontSize: 12
-                                                            ),
-                                                          ),
-                                                        ),
-                                                        Container(
-                                                          child: Text(
-                                                            'Mr. Ricky Sudrajat',
-                                                            textAlign: TextAlign.start,
-                                                            style: TextStyle(
-                                                              fontFamily: 'poppins',
+                                                      ),
+                                                      Container(
+                                                        child: Text(
+                                                          'Mr. Ricky Sudrajat',
+                                                          textAlign:
+                                                              TextAlign.start,
+                                                          style: TextStyle(
+                                                              fontFamily:
+                                                                  'poppins',
                                                               fontSize: 15,
-                                                              fontWeight: FontWeight.w700
-                                                            ),
-                                                          ),
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w700),
                                                         ),
+                                                      ),
 
-                                                        const SizedBox(
-                                                          height: 3,
-                                                        ),
+                                                      const SizedBox(
+                                                        height: 3,
+                                                      ),
 
-                                                        Container(
-                                                          width: 70,
-                                                          height: 20,
-                                                          decoration: BoxDecoration(
+                                                      Container(
+                                                        width: 70,
+                                                        height: 20,
+                                                        decoration: BoxDecoration(
                                                             color: Colors.blue,
-                                                            borderRadius: BorderRadius.all(Radius.circular(100))
+                                                            borderRadius:
+                                                                BorderRadius.all(
+                                                                    Radius.circular(
+                                                                        100))),
+                                                        child: Center(
+                                                          child: Text(
+                                                            'accept',
+                                                            textAlign: TextAlign
+                                                                .center,
+                                                            style: TextStyle(
+                                                                fontFamily:
+                                                                    'poppins',
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w700,
+                                                                color: Colors
+                                                                    .white,
+                                                                fontSize: 12),
                                                           ),
-                                                          child: Center(
-                                                            child: Text(
-                                                              'accept',
-                                                              textAlign: TextAlign.center,
-                                                              style: TextStyle(
-                                                                fontFamily: 'poppins',
-                                                                fontWeight: FontWeight.w700,
-                                                                color: Colors.white,
-                                                                fontSize: 12
+                                                        ),
+                                                      ),
+
+                                                      const SizedBox(
+                                                        height: 4,
+                                                      ),
+
+                                                      Container(
+                                                        child: Row(
+                                                          children: <Widget>[
+                                                            Container(
+                                                              width: 25,
+                                                              height: 20,
+                                                              // color: Colors.pink,
+                                                              child: Icon(
+                                                                Icons
+                                                                    .calendar_today,
+                                                                size: 20,
                                                               ),
                                                             ),
-                                                          ),
-                                                        ),
-
-                                                        const SizedBox(
-                                                          height: 4,
-                                                        ),
-
-                                                        Container(
-                                                          child: Row(
-                                                            children: <Widget> [
-                                                              Container(
-                                                                width: 25,
-                                                                height: 20,
-                                                                // color: Colors.pink,
-                                                                child:  Icon(
-                                                                  Icons.calendar_today,
-                                                                  size: 20,
-                                                                ),
-                                                              ),
-                                                                    
-                                                              const SizedBox(
-                                                                width: 6,
-                                                              ),
-                                                                          
-                                                              Container(
-                                                                // width: 150,
-                                                                height: 20,
-                                                                // color: Colors.green,
-                                                                child: Center(
-                                                                  child: Text(
-                                                                    '24th August 2023', 
-                                                                    // textAlign: TextAlign.center,
-                                                                    style: TextStyle(
-                                                                      fontFamily: 'poppins',
-                                                                      fontWeight: FontWeight.w700,
-                                                                      fontSize: 13
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                              )
-                                                            ],
-                                                          ),
-                                                        ),
-                                                        
-                                                        // const SizedBox(
-                                                        //   height: 1,
-                                                        // ),
-
-                                                        Container(
-                                                          child: Row(
-                                                            children: <Widget> [
-                                                              Container(
-                                                                width: 25,
-                                                                height: 20,
-                                                                // color: Colors.blue,
-                                                                child: Icon(
-                                                                  Icons.location_pin,
-                                                                  size: 20,
-                                                                ),
-                                                              ),
-                                                                
-                                                              const SizedBox(
-                                                                width: 6,
-                                                              ),
-                                                              
-                                                              Container(
-                                                                // width: 100,
-                                                                height: 20,
-                                                                // color: Colors.purple,
-                                                                child: Center(
-                                                                  child: Text(
-                                                                    'smk taruna bhakti', 
-                                                                    // textAlign: TextAlign.center,
-                                                                    style: TextStyle(
-                                                                      fontFamily: 'poppins',
-                                                                      fontWeight: FontWeight.w700,
-                                                                      fontSize: 13
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                              )
-                                                            ],
-                                                          ),
-                                                        ),
-                                                        
-                                                        const SizedBox(
-                                                          height: 4,
-                                                        ),
-
-
-                                                        Container(
-                                                          // width: 10,
-                                                          height: 15,
-                                                          // color: Colors.yellow,
-
-                                                          child: Row(
-                                                            children: <Widget> [
-                                                              Container(
+                                                            const SizedBox(
+                                                              width: 6,
+                                                            ),
+                                                            Container(
+                                                              // width: 150,
+                                                              height: 20,
+                                                              // color: Colors.green,
+                                                              child: Center(
                                                                 child: Text(
-                                                                  'private',
+                                                                  '24th August 2023',
+                                                                  // textAlign: TextAlign.center,
                                                                   style: TextStyle(
-                                                                    fontFamily: 'poppins',
-                                                                    fontWeight: FontWeight.w700
-                                                                  ),
+                                                                      fontFamily:
+                                                                          'poppins',
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w700,
+                                                                      fontSize:
+                                                                          13),
                                                                 ),
                                                               ),
+                                                            )
+                                                          ],
+                                                        ),
+                                                      ),
 
-                                                              
-                                                              const SizedBox(
-                                                                width: 2,
+                                                      // const SizedBox(
+                                                      //   height: 1,
+                                                      // ),
+
+                                                      Container(
+                                                        child: Row(
+                                                          children: <Widget>[
+                                                            Container(
+                                                              width: 25,
+                                                              height: 20,
+                                                              // color: Colors.blue,
+                                                              child: Icon(
+                                                                Icons
+                                                                    .location_pin,
+                                                                size: 20,
                                                               ),
-                                                              
-                                                              Container(
+                                                            ),
+                                                            const SizedBox(
+                                                              width: 6,
+                                                            ),
+                                                            Container(
+                                                              // width: 100,
+                                                              height: 20,
+                                                              // color: Colors.purple,
+                                                              child: Center(
                                                                 child: Text(
-                                                                  '/',
+                                                                  'smk taruna bhakti',
+                                                                  // textAlign: TextAlign.center,
                                                                   style: TextStyle(
-                                                                    fontFamily: 'poppins',
-                                                                    fontWeight: FontWeight.w700
-                                                                  ),
+                                                                      fontFamily:
+                                                                          'poppins',
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w700,
+                                                                      fontSize:
+                                                                          13),
                                                                 ),
                                                               ),
+                                                            )
+                                                          ],
+                                                        ),
+                                                      ),
 
-                                                              
-                                                              const SizedBox(
-                                                                width: 2,
+                                                      const SizedBox(
+                                                        height: 4,
+                                                      ),
+
+                                                      Container(
+                                                        // width: 10,
+                                                        height: 15,
+                                                        // color: Colors.yellow,
+
+                                                        child: Row(
+                                                          children: <Widget>[
+                                                            Container(
+                                                              child: Text(
+                                                                'private',
+                                                                style: TextStyle(
+                                                                    fontFamily:
+                                                                        'poppins',
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w700),
                                                               ),
-                                                              
-                                                              Container(
-                                                                child: Text(
-                                                                  'career',
-                                                                  style: TextStyle(
-                                                                    fontFamily: 'poppins',
-                                                                    color: const Color.fromARGB(255, 79, 78, 78)
+                                                            ),
+                                                            const SizedBox(
+                                                              width: 2,
+                                                            ),
+                                                            Container(
+                                                              child: Text(
+                                                                '/',
+                                                                style: TextStyle(
+                                                                    fontFamily:
+                                                                        'poppins',
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w700),
+                                                              ),
+                                                            ),
+                                                            const SizedBox(
+                                                              width: 2,
+                                                            ),
+                                                            Container(
+                                                              child: Text(
+                                                                'career',
+                                                                style: TextStyle(
+                                                                    fontFamily:
+                                                                        'poppins',
+                                                                    color: const Color
+                                                                            .fromARGB(
+                                                                        255,
+                                                                        79,
+                                                                        78,
+                                                                        78)
                                                                     // fontWeight: FontWeight.w700
-                                                                  ),
-                                                                ),
+                                                                    ),
                                                               ),
-                                                            ],
-                                                          ),
-                                                        )
-
-
-                                                      ],
-                                                    ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      )
+                                                    ],
                                                   ),
-
-
-                                                ]
-                                              ),
+                                                ),
+                                              ]),
                                             ),
-
                                             const SizedBox(
                                               width: 10,
                                             ),
-
                                             Container(
                                               width: 172,
                                               // color: Colors.yellow,
                                               decoration: BoxDecoration(
                                                 color: Colors.white,
-                                                borderRadius: BorderRadius.all(Radius.circular(10)),
-
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(10)),
                                                 boxShadow: [
                                                   BoxShadow(
-                                                  color: Color.fromRGBO(0, 0, 0, 0.2),
-                                                  offset: Offset(1, 1),
-                                                  blurRadius: 7,
-                                                  spreadRadius: -1,
-                                                ),
+                                                    color: Color.fromRGBO(
+                                                        0, 0, 0, 0.2),
+                                                    offset: Offset(1, 1),
+                                                    blurRadius: 7,
+                                                    spreadRadius: -1,
+                                                  ),
                                                 ],
                                               ),
 
-                                              child: Column(
-                                                children: <Widget>[
-                                                  Container(
-                                                    height: 150,
-                                                    width: 360,
-                                                    decoration: BoxDecoration(
+                                              child: Column(children: <Widget>[
+                                                Container(
+                                                  height: 150,
+                                                  width: 360,
+                                                  decoration: BoxDecoration(
                                                       // color: Colors.pink,
-                                                      borderRadius: BorderRadius.all(Radius.circular(10))
+                                                      borderRadius:
+                                                          BorderRadius.all(
+                                                              Radius.circular(
+                                                                  10))),
+                                                  child: ClipRRect(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
+                                                    child: Image.asset(
+                                                      'assets/pa riki.png',
+                                                      fit: BoxFit.cover,
                                                     ),
-
-                                                    child: ClipRRect(
-                                                      borderRadius: BorderRadius.circular(10),
-                                                      child: Image.asset(
-                                                        'assets/pa riki.png',
-                                                        fit: BoxFit.cover,
+                                                  ),
+                                                ),
+                                                Container(
+                                                  height: 150,
+                                                  width: 160,
+                                                  // color: Colors.pink,
+                                                  child: Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start, // Menentukan penataan horizontal teks
+                                                    children: <Widget>[
+                                                      const SizedBox(
+                                                        height: 5,
                                                       ),
-                                                    ),
-                                                  ),
-
-                                                  Container(
-                                                    height: 150,
-                                                    width: 160,
-                                                    // color: Colors.pink,
-                                                    child: Column(
-                                                      crossAxisAlignment: CrossAxisAlignment.start, // Menentukan penataan horizontal teks
-                                                      children: <Widget>[
-                                                        const SizedBox(
-                                                          height: 5,
+                                                      Container(
+                                                        child: Text(
+                                                          'counseling with',
+                                                          textAlign:
+                                                              TextAlign.start,
+                                                          style: TextStyle(
+                                                              fontFamily:
+                                                                  'poppins',
+                                                              fontSize: 12),
                                                         ),
-                                                        Container(
-                                                          child: Text(
-                                                            'counseling with',
-                                                            textAlign: TextAlign.start,
-                                                            style: TextStyle(
-                                                              fontFamily: 'poppins',
-                                                              fontSize: 12
-                                                            ),
-                                                          ),
-                                                        ),
-                                                        Container(
-                                                          child: Text(
-                                                            'Mr. Ricky Sudrajat',
-                                                            textAlign: TextAlign.start,
-                                                            style: TextStyle(
-                                                              fontFamily: 'poppins',
+                                                      ),
+                                                      Container(
+                                                        child: Text(
+                                                          'Mr. Ricky Sudrajat',
+                                                          textAlign:
+                                                              TextAlign.start,
+                                                          style: TextStyle(
+                                                              fontFamily:
+                                                                  'poppins',
                                                               fontSize: 17,
-                                                              fontWeight: FontWeight.w700
-                                                            ),
-                                                          ),
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w700),
                                                         ),
+                                                      ),
 
-                                                        const SizedBox(
-                                                          height: 3,
-                                                        ),
+                                                      const SizedBox(
+                                                        height: 3,
+                                                      ),
 
-                                                        Container(
-                                                          width: 70,
-                                                          height: 20,
-                                                          decoration: BoxDecoration(
+                                                      Container(
+                                                        width: 70,
+                                                        height: 20,
+                                                        decoration: BoxDecoration(
                                                             color: Colors.green,
-                                                            borderRadius: BorderRadius.all(Radius.circular(100))
+                                                            borderRadius:
+                                                                BorderRadius.all(
+                                                                    Radius.circular(
+                                                                        100))),
+                                                        child: Center(
+                                                          child: Text(
+                                                            'waiting',
+                                                            textAlign: TextAlign
+                                                                .center,
+                                                            style: TextStyle(
+                                                                fontFamily:
+                                                                    'poppins',
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w700,
+                                                                color: Colors
+                                                                    .white,
+                                                                fontSize: 12),
                                                           ),
-                                                          child: Center(
-                                                            child: Text(
-                                                              'waiting',
-                                                              textAlign: TextAlign.center,
-                                                              style: TextStyle(
-                                                                fontFamily: 'poppins',
-                                                                fontWeight: FontWeight.w700,
-                                                                color: Colors.white,
-                                                                fontSize: 12
+                                                        ),
+                                                      ),
+
+                                                      const SizedBox(
+                                                        height: 4,
+                                                      ),
+
+                                                      Container(
+                                                        child: Row(
+                                                          children: <Widget>[
+                                                            Container(
+                                                              width: 25,
+                                                              height: 20,
+                                                              // color: Colors.pink,
+                                                              child: Icon(
+                                                                Icons
+                                                                    .calendar_today,
+                                                                size: 20,
                                                               ),
                                                             ),
-                                                          ),
-                                                        ),
-
-                                                        const SizedBox(
-                                                          height: 4,
-                                                        ),
-
-                                                        Container(
-                                                          child: Row(
-                                                            children: <Widget> [
-                                                              Container(
-                                                                width: 25,
-                                                                height: 20,
-                                                                // color: Colors.pink,
-                                                                child:  Icon(
-                                                                  Icons.calendar_today,
-                                                                  size: 20,
-                                                                ),
-                                                              ),
-                                                                    
-                                                              const SizedBox(
-                                                                width: 6,
-                                                              ),
-                                                                          
-                                                              Container(
-                                                                // width: 150,
-                                                                height: 20,
-                                                                // color: Colors.green,
-                                                                child: Center(
-                                                                  child: Text(
-                                                                    '24th August 2023', 
-                                                                    // textAlign: TextAlign.center,
-                                                                    style: TextStyle(
-                                                                      fontFamily: 'poppins',
-                                                                      fontWeight: FontWeight.w700,
-                                                                      fontSize: 13
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                              )
-                                                            ],
-                                                          ),
-                                                        ),
-                                                        
-                                                        // const SizedBox(
-                                                        //   height: 1,
-                                                        // ),
-
-                                                        Container(
-                                                          child: Row(
-                                                            children: <Widget> [
-                                                              Container(
-                                                                width: 25,
-                                                                height: 20,
-                                                                // color: Colors.blue,
-                                                                child: Icon(
-                                                                  Icons.location_pin,
-                                                                  size: 20,
-                                                                ),
-                                                              ),
-                                                                
-                                                              const SizedBox(
-                                                                width: 6,
-                                                              ),
-                                                              
-                                                              Container(
-                                                                // width: 100,
-                                                                height: 20,
-                                                                // color: Colors.purple,
-                                                                child: Center(
-                                                                  child: Text(
-                                                                    'smk taruna bhakti', 
-                                                                    // textAlign: TextAlign.center,
-                                                                    style: TextStyle(
-                                                                      fontFamily: 'poppins',
-                                                                      fontWeight: FontWeight.w700,
-                                                                      fontSize: 13
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                              )
-                                                            ],
-                                                          ),
-                                                        ),
-                                                        
-                                                        const SizedBox(
-                                                          height: 4,
-                                                        ),
-
-
-                                                        Container(
-                                                          // width: 10,
-                                                          height: 15,
-                                                          // color: Colors.yellow,
-
-                                                          child: Row(
-                                                            children: <Widget> [
-                                                              Container(
+                                                            const SizedBox(
+                                                              width: 6,
+                                                            ),
+                                                            Container(
+                                                              // width: 150,
+                                                              height: 20,
+                                                              // color: Colors.green,
+                                                              child: Center(
                                                                 child: Text(
-                                                                  'socials',
+                                                                  '24th August 2023',
+                                                                  // textAlign: TextAlign.center,
                                                                   style: TextStyle(
-                                                                    fontFamily: 'poppins',
-                                                                    fontWeight: FontWeight.w700
-                                                                  ),
+                                                                      fontFamily:
+                                                                          'poppins',
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w700,
+                                                                      fontSize:
+                                                                          13),
                                                                 ),
                                                               ),
+                                                            )
+                                                          ],
+                                                        ),
+                                                      ),
 
-                                                              
-                                                              const SizedBox(
-                                                                width: 2,
+                                                      // const SizedBox(
+                                                      //   height: 1,
+                                                      // ),
+
+                                                      Container(
+                                                        child: Row(
+                                                          children: <Widget>[
+                                                            Container(
+                                                              width: 25,
+                                                              height: 20,
+                                                              // color: Colors.blue,
+                                                              child: Icon(
+                                                                Icons
+                                                                    .location_pin,
+                                                                size: 20,
                                                               ),
-                                                              
-                                                              Container(
+                                                            ),
+                                                            const SizedBox(
+                                                              width: 6,
+                                                            ),
+                                                            Container(
+                                                              // width: 100,
+                                                              height: 20,
+                                                              // color: Colors.purple,
+                                                              child: Center(
                                                                 child: Text(
-                                                                  '/',
+                                                                  'smk taruna bhakti',
+                                                                  // textAlign: TextAlign.center,
                                                                   style: TextStyle(
-                                                                    fontFamily: 'poppins',
-                                                                    fontWeight: FontWeight.w700
-                                                                  ),
+                                                                      fontFamily:
+                                                                          'poppins',
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w700,
+                                                                      fontSize:
+                                                                          13),
                                                                 ),
                                                               ),
+                                                            )
+                                                          ],
+                                                        ),
+                                                      ),
 
-                                                              
-                                                              const SizedBox(
-                                                                width: 2,
+                                                      const SizedBox(
+                                                        height: 4,
+                                                      ),
+
+                                                      Container(
+                                                        // width: 10,
+                                                        height: 15,
+                                                        // color: Colors.yellow,
+
+                                                        child: Row(
+                                                          children: <Widget>[
+                                                            Container(
+                                                              child: Text(
+                                                                'socials',
+                                                                style: TextStyle(
+                                                                    fontFamily:
+                                                                        'poppins',
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w700),
                                                               ),
-                                                              
-                                                              Container(
-                                                                child: Text(
-                                                                  'studying',
-                                                                  style: TextStyle(
-                                                                    fontFamily: 'poppins',
-                                                                    color: const Color.fromARGB(255, 79, 78, 78)
+                                                            ),
+                                                            const SizedBox(
+                                                              width: 2,
+                                                            ),
+                                                            Container(
+                                                              child: Text(
+                                                                '/',
+                                                                style: TextStyle(
+                                                                    fontFamily:
+                                                                        'poppins',
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w700),
+                                                              ),
+                                                            ),
+                                                            const SizedBox(
+                                                              width: 2,
+                                                            ),
+                                                            Container(
+                                                              child: Text(
+                                                                'studying',
+                                                                style: TextStyle(
+                                                                    fontFamily:
+                                                                        'poppins',
+                                                                    color: const Color
+                                                                            .fromARGB(
+                                                                        255,
+                                                                        79,
+                                                                        78,
+                                                                        78)
                                                                     // fontWeight: FontWeight.w700
-                                                                  ),
-                                                                ),
+                                                                    ),
                                                               ),
-                                                            ],
-                                                          ),
-                                                        )
-
-
-                                                      ],
-                                                    ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      )
+                                                    ],
                                                   ),
-
-
-                                                ]
-                                              ),
+                                                ),
+                                              ]),
                                             ),
-
-
                                           ],
                                         ),
                                       ),
                                     ),
                                   ),
-
-                               
                                   Container(
                                     height: 350,
                                     width: 350,
@@ -919,7 +916,7 @@ class _homepageState extends State<homepage> {
                                     child: Center(
                                       child: Container(
                                         width: 360,
-                                        height:300,
+                                        height: 300,
                                         // color: Colors.blueGrey,
 
                                         child: Row(
@@ -929,417 +926,428 @@ class _homepageState extends State<homepage> {
                                               // color: Colors.yellow,
                                               decoration: BoxDecoration(
                                                 color: Colors.white,
-                                                borderRadius: BorderRadius.all(Radius.circular(10)),
-
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(10)),
                                                 boxShadow: [
                                                   BoxShadow(
-                                                  color: Color.fromRGBO(0, 0, 0, 0.2),
-                                                  offset: Offset(1, 1),
-                                                  blurRadius: 7,
-                                                  spreadRadius: -1,
-                                                ),
+                                                    color: Color.fromRGBO(
+                                                        0, 0, 0, 0.2),
+                                                    offset: Offset(1, 1),
+                                                    blurRadius: 7,
+                                                    spreadRadius: -1,
+                                                  ),
                                                 ],
                                               ),
 
-                                              child: Column(
-                                                children: <Widget>[
-                                                  Container(
-                                                    height: 150,
-                                                    width: 360,
-                                                    decoration: BoxDecoration(
+                                              child: Column(children: <Widget>[
+                                                Container(
+                                                  height: 150,
+                                                  width: 360,
+                                                  decoration: BoxDecoration(
                                                       // color: Colors.pink,
-                                                      borderRadius: BorderRadius.all(Radius.circular(10))
+                                                      borderRadius:
+                                                          BorderRadius.all(
+                                                              Radius.circular(
+                                                                  10))),
+                                                  child: ClipRRect(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
+                                                    child: Image.asset(
+                                                      'assets/pa riki.png',
+                                                      fit: BoxFit.cover,
                                                     ),
-
-                                                    child: ClipRRect(
-                                                      borderRadius: BorderRadius.circular(10),
-                                                      child: Image.asset(
-                                                        'assets/pa riki.png',
-                                                        fit: BoxFit.cover,
+                                                  ),
+                                                ),
+                                                Container(
+                                                  height: 150,
+                                                  width: 160,
+                                                  // color: Colors.pink,
+                                                  child: Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start, // Menentukan penataan horizontal teks
+                                                    children: <Widget>[
+                                                      const SizedBox(
+                                                        height: 5,
                                                       ),
-                                                    ),
-                                                  ),
-
-                                                  Container(
-                                                    height: 150,
-                                                    width: 160,
-                                                    // color: Colors.pink,
-                                                    child: Column(
-                                                      crossAxisAlignment: CrossAxisAlignment.start, // Menentukan penataan horizontal teks
-                                                      children: <Widget>[
-                                                        const SizedBox(
-                                                          height: 5,
+                                                      Container(
+                                                        child: Text(
+                                                          'counseling with',
+                                                          textAlign:
+                                                              TextAlign.start,
+                                                          style: TextStyle(
+                                                              fontFamily:
+                                                                  'poppins',
+                                                              fontSize: 12),
                                                         ),
-                                                        Container(
-                                                          child: Text(
-                                                            'counseling with',
-                                                            textAlign: TextAlign.start,
-                                                            style: TextStyle(
-                                                              fontFamily: 'poppins',
-                                                              fontSize: 12
-                                                            ),
-                                                          ),
-                                                        ),
-                                                        Container(
-                                                          child: Text(
-                                                            'Mr. Ricky Sudrajat',
-                                                            textAlign: TextAlign.start,
-                                                            style: TextStyle(
-                                                              fontFamily: 'poppins',
+                                                      ),
+                                                      Container(
+                                                        child: Text(
+                                                          'Mr. Ricky Sudrajat',
+                                                          textAlign:
+                                                              TextAlign.start,
+                                                          style: TextStyle(
+                                                              fontFamily:
+                                                                  'poppins',
                                                               fontSize: 17,
-                                                              fontWeight: FontWeight.w700
-                                                            ),
-                                                          ),
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w700),
                                                         ),
+                                                      ),
 
-                                                        const SizedBox(
-                                                          height: 3,
-                                                        ),
+                                                      const SizedBox(
+                                                        height: 3,
+                                                      ),
 
-                                                        Container(
-                                                          width: 70,
-                                                          height: 20,
-                                                          decoration: BoxDecoration(
+                                                      Container(
+                                                        width: 70,
+                                                        height: 20,
+                                                        decoration: BoxDecoration(
                                                             color: Colors.green,
-                                                            borderRadius: BorderRadius.all(Radius.circular(100))
+                                                            borderRadius:
+                                                                BorderRadius.all(
+                                                                    Radius.circular(
+                                                                        100))),
+                                                        child: Center(
+                                                          child: Text(
+                                                            'waiting',
+                                                            textAlign: TextAlign
+                                                                .center,
+                                                            style: TextStyle(
+                                                                fontFamily:
+                                                                    'poppins',
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w700,
+                                                                color: Colors
+                                                                    .white,
+                                                                fontSize: 12),
                                                           ),
-                                                          child: Center(
-                                                            child: Text(
-                                                              'waiting',
-                                                              textAlign: TextAlign.center,
-                                                              style: TextStyle(
-                                                                fontFamily: 'poppins',
-                                                                fontWeight: FontWeight.w700,
-                                                                color: Colors.white,
-                                                                fontSize: 12
+                                                        ),
+                                                      ),
+
+                                                      const SizedBox(
+                                                        height: 4,
+                                                      ),
+
+                                                      Container(
+                                                        child: Row(
+                                                          children: <Widget>[
+                                                            Container(
+                                                              width: 25,
+                                                              height: 20,
+                                                              // color: Colors.pink,
+                                                              child: Icon(
+                                                                Icons
+                                                                    .calendar_today,
+                                                                size: 20,
                                                               ),
                                                             ),
-                                                          ),
-                                                        ),
-
-                                                        const SizedBox(
-                                                          height: 4,
-                                                        ),
-
-                                                        Container(
-                                                          child: Row(
-                                                            children: <Widget> [
-                                                              Container(
-                                                                width: 25,
-                                                                height: 20,
-                                                                // color: Colors.pink,
-                                                                child:  Icon(
-                                                                  Icons.calendar_today,
-                                                                  size: 20,
-                                                                ),
-                                                              ),
-                                                                    
-                                                              const SizedBox(
-                                                                width: 6,
-                                                              ),
-                                                                          
-                                                              Container(
-                                                                // width: 150,
-                                                                height: 20,
-                                                                // color: Colors.green,
-                                                                child: Center(
-                                                                  child: Text(
-                                                                    '24th August 2023', 
-                                                                    // textAlign: TextAlign.center,
-                                                                    style: TextStyle(
-                                                                      fontFamily: 'poppins',
-                                                                      fontWeight: FontWeight.w700,
-                                                                      fontSize: 13
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                              )
-                                                            ],
-                                                          ),
-                                                        ),
-                                                        
-                                                        // const SizedBox(
-                                                        //   height: 1,
-                                                        // ),
-
-                                                        Container(
-                                                          child: Row(
-                                                            children: <Widget> [
-                                                              Container(
-                                                                width: 25,
-                                                                height: 20,
-                                                                // color: Colors.blue,
-                                                                child: Icon(
-                                                                  Icons.location_pin,
-                                                                  size: 20,
-                                                                ),
-                                                              ),
-                                                                
-                                                              const SizedBox(
-                                                                width: 6,
-                                                              ),
-                                                              
-                                                              Container(
-                                                                // width: 100,
-                                                                height: 20,
-                                                                // color: Colors.purple,
-                                                                child: Center(
-                                                                  child: Text(
-                                                                    'smk taruna bhakti', 
-                                                                    // textAlign: TextAlign.center,
-                                                                    style: TextStyle(
-                                                                      fontFamily: 'poppins',
-                                                                      fontWeight: FontWeight.w700,
-                                                                      fontSize: 13
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                              )
-                                                            ],
-                                                          ),
-                                                        ),
-                                                        
-                                                        const SizedBox(
-                                                          height: 4,
-                                                        ),
-
-
-                                                        Container(
-                                                          // width: 10,
-                                                          height: 15,
-                                                          // color: Colors.yellow,
-
-                                                          child: Row(
-                                                            children: <Widget> [
-                                                              Container(
+                                                            const SizedBox(
+                                                              width: 6,
+                                                            ),
+                                                            Container(
+                                                              // width: 150,
+                                                              height: 20,
+                                                              // color: Colors.green,
+                                                              child: Center(
                                                                 child: Text(
-                                                                  'pivate',
+                                                                  '24th August 2023',
+                                                                  // textAlign: TextAlign.center,
                                                                   style: TextStyle(
-                                                                    fontFamily: 'poppins',
-                                                                    fontWeight: FontWeight.w700
-                                                                  ),
+                                                                      fontFamily:
+                                                                          'poppins',
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w700,
+                                                                      fontSize:
+                                                                          13),
                                                                 ),
                                                               ),
+                                                            )
+                                                          ],
+                                                        ),
+                                                      ),
 
-                                                              
-                                                              const SizedBox(
-                                                                width: 2,
+                                                      // const SizedBox(
+                                                      //   height: 1,
+                                                      // ),
+
+                                                      Container(
+                                                        child: Row(
+                                                          children: <Widget>[
+                                                            Container(
+                                                              width: 25,
+                                                              height: 20,
+                                                              // color: Colors.blue,
+                                                              child: Icon(
+                                                                Icons
+                                                                    .location_pin,
+                                                                size: 20,
                                                               ),
-                                                              
-                                                              Container(
+                                                            ),
+                                                            const SizedBox(
+                                                              width: 6,
+                                                            ),
+                                                            Container(
+                                                              // width: 100,
+                                                              height: 20,
+                                                              // color: Colors.purple,
+                                                              child: Center(
                                                                 child: Text(
-                                                                  '/',
+                                                                  'smk taruna bhakti',
+                                                                  // textAlign: TextAlign.center,
                                                                   style: TextStyle(
-                                                                    fontFamily: 'poppins',
-                                                                    fontWeight: FontWeight.w700
-                                                                  ),
+                                                                      fontFamily:
+                                                                          'poppins',
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w700,
+                                                                      fontSize:
+                                                                          13),
                                                                 ),
                                                               ),
+                                                            )
+                                                          ],
+                                                        ),
+                                                      ),
 
-                                                              
-                                                              const SizedBox(
-                                                                width: 2,
+                                                      const SizedBox(
+                                                        height: 4,
+                                                      ),
+
+                                                      Container(
+                                                        // width: 10,
+                                                        height: 15,
+                                                        // color: Colors.yellow,
+
+                                                        child: Row(
+                                                          children: <Widget>[
+                                                            Container(
+                                                              child: Text(
+                                                                'pivate',
+                                                                style: TextStyle(
+                                                                    fontFamily:
+                                                                        'poppins',
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w700),
                                                               ),
-                                                              
-                                                              Container(
-                                                                child: Text(
-                                                                  'private',
-                                                                  style: TextStyle(
-                                                                    fontFamily: 'poppins',
-                                                                    color: const Color.fromARGB(255, 79, 78, 78)
+                                                            ),
+                                                            const SizedBox(
+                                                              width: 2,
+                                                            ),
+                                                            Container(
+                                                              child: Text(
+                                                                '/',
+                                                                style: TextStyle(
+                                                                    fontFamily:
+                                                                        'poppins',
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w700),
+                                                              ),
+                                                            ),
+                                                            const SizedBox(
+                                                              width: 2,
+                                                            ),
+                                                            Container(
+                                                              child: Text(
+                                                                'private',
+                                                                style: TextStyle(
+                                                                    fontFamily:
+                                                                        'poppins',
+                                                                    color: const Color
+                                                                            .fromARGB(
+                                                                        255,
+                                                                        79,
+                                                                        78,
+                                                                        78)
                                                                     // fontWeight: FontWeight.w700
-                                                                  ),
-                                                                ),
+                                                                    ),
                                                               ),
-                                                            ],
-                                                          ),
-                                                        )
-
-
-                                                      ],
-                                                    ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      )
+                                                    ],
                                                   ),
-
-
-                                                ]
-                                              ),
+                                                ),
+                                              ]),
                                             ),
-
                                             const SizedBox(
                                               width: 10,
                                             ),
-
                                             Container(
                                               width: 172,
                                               // color: Colors.yellow,
                                               decoration: BoxDecoration(
                                                 color: Colors.white,
-                                                borderRadius: BorderRadius.all(Radius.circular(10)),
-
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(10)),
                                                 boxShadow: [
                                                   BoxShadow(
-                                                  color: Color.fromRGBO(0, 0, 0, 0.2),
-                                                  offset: Offset(1, 1),
-                                                  blurRadius: 7,
-                                                  spreadRadius: -1,
-                                                ),
+                                                    color: Color.fromRGBO(
+                                                        0, 0, 0, 0.2),
+                                                    offset: Offset(1, 1),
+                                                    blurRadius: 7,
+                                                    spreadRadius: -1,
+                                                  ),
                                                 ],
                                               ),
 
-                                              child: Column(
-                                                children: <Widget>[
-                                                  Container(
-                                                    height: 150,
-                                                    width: 360,
-                                                    decoration: BoxDecoration(
+                                              child: Column(children: <Widget>[
+                                                Container(
+                                                  height: 150,
+                                                  width: 360,
+                                                  decoration: BoxDecoration(
                                                       // color: Colors.pink,
-                                                      borderRadius: BorderRadius.all(Radius.circular(10))
+                                                      borderRadius:
+                                                          BorderRadius.all(
+                                                              Radius.circular(
+                                                                  10))),
+                                                  child: ClipRRect(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
+                                                    child: Image.asset(
+                                                      'assets/pa riki.png',
+                                                      fit: BoxFit.cover,
                                                     ),
-
-                                                    child: ClipRRect(
-                                                      borderRadius: BorderRadius.circular(10),
-                                                      child: Image.asset(
-                                                        'assets/pa riki.png',
-                                                        fit: BoxFit.cover,
+                                                  ),
+                                                ),
+                                                Container(
+                                                  height: 150,
+                                                  width: 160,
+                                                  // color: Colors.pink,
+                                                  child: Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start, // Menentukan penataan horizontal teks
+                                                    children: <Widget>[
+                                                      const SizedBox(
+                                                        height: 5,
                                                       ),
-                                                    ),
-                                                  ),
-
-                                                  Container(
-                                                    height: 150,
-                                                    width: 160,
-                                                    // color: Colors.pink,
-                                                    child: Column(
-                                                      crossAxisAlignment: CrossAxisAlignment.start, // Menentukan penataan horizontal teks
-                                                      children: <Widget>[
-                                                        const SizedBox(
-                                                          height: 5,
+                                                      Container(
+                                                        child: Text(
+                                                          'counseling with',
+                                                          textAlign:
+                                                              TextAlign.start,
+                                                          style: TextStyle(
+                                                              fontFamily:
+                                                                  'poppins',
+                                                              fontSize: 12),
                                                         ),
-                                                        Container(
-                                                          child: Text(
-                                                            'counseling with',
-                                                            textAlign: TextAlign.start,
-                                                            style: TextStyle(
-                                                              fontFamily: 'poppins',
-                                                              fontSize: 12
-                                                            ),
-                                                          ),
-                                                        ),
-                                                        Container(
-                                                          child: Text(
-                                                            'Mr. Ricky Sudrajat',
-                                                            textAlign: TextAlign.start,
-                                                            style: TextStyle(
-                                                              fontFamily: 'poppins',
+                                                      ),
+                                                      Container(
+                                                        child: Text(
+                                                          'Mr. Ricky Sudrajat',
+                                                          textAlign:
+                                                              TextAlign.start,
+                                                          style: TextStyle(
+                                                              fontFamily:
+                                                                  'poppins',
                                                               fontSize: 17,
-                                                              fontWeight: FontWeight.w700
-                                                            ),
-                                                          ),
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w700),
                                                         ),
+                                                      ),
 
-                                                        const SizedBox(
-                                                          height: 3,
-                                                        ),
+                                                      const SizedBox(
+                                                        height: 3,
+                                                      ),
 
-                                                        Container(
-                                                          width: 70,
-                                                          height: 20,
-                                                          decoration: BoxDecoration(
+                                                      Container(
+                                                        width: 70,
+                                                        height: 20,
+                                                        decoration: BoxDecoration(
                                                             color: Colors.blue,
-                                                            borderRadius: BorderRadius.all(Radius.circular(100))
+                                                            borderRadius:
+                                                                BorderRadius.all(
+                                                                    Radius.circular(
+                                                                        100))),
+                                                        child: Center(
+                                                          child: Text(
+                                                            'accept',
+                                                            textAlign: TextAlign
+                                                                .center,
+                                                            style: TextStyle(
+                                                                fontFamily:
+                                                                    'poppins',
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w700,
+                                                                color: Colors
+                                                                    .white,
+                                                                fontSize: 12),
                                                           ),
-                                                          child: Center(
-                                                            child: Text(
-                                                              'accept',
-                                                              textAlign: TextAlign.center,
-                                                              style: TextStyle(
-                                                                fontFamily: 'poppins',
-                                                                fontWeight: FontWeight.w700,
-                                                                color: Colors.white,
-                                                                fontSize: 12
+                                                        ),
+                                                      ),
+
+                                                      const SizedBox(
+                                                        height: 4,
+                                                      ),
+
+                                                      Container(
+                                                        child: Row(
+                                                          children: <Widget>[
+                                                            Container(
+                                                              width: 25,
+                                                              height: 20,
+                                                              // color: Colors.pink,
+                                                              child: Icon(
+                                                                Icons
+                                                                    .calendar_today,
+                                                                size: 20,
                                                               ),
                                                             ),
-                                                          ),
-                                                        ),
-
-                                                        const SizedBox(
-                                                          height: 4,
-                                                        ),
-
-                                                        Container(
-                                                          child: Row(
-                                                            children: <Widget> [
-                                                              Container(
-                                                                width: 25,
-                                                                height: 20,
-                                                                // color: Colors.pink,
-                                                                child:  Icon(
-                                                                  Icons.calendar_today,
-                                                                  size: 20,
+                                                            const SizedBox(
+                                                              width: 6,
+                                                            ),
+                                                            Container(
+                                                              // width: 150,
+                                                              height: 20,
+                                                              // color: Colors.green,
+                                                              child: Center(
+                                                                child: Text(
+                                                                  '24th August 2023',
+                                                                  // textAlign: TextAlign.center,
+                                                                  style: TextStyle(
+                                                                      fontFamily:
+                                                                          'poppins',
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w700,
+                                                                      fontSize:
+                                                                          13),
                                                                 ),
                                                               ),
-                                                                    
-                                                              const SizedBox(
-                                                                width: 6,
-                                                              ),
-                                                                          
-                                                              Container(
-                                                                // width: 150,
-                                                                height: 20,
-                                                                // color: Colors.green,
-                                                                child: Center(
-                                                                  child: Text(
-                                                                    '24th August 2023', 
-                                                                    // textAlign: TextAlign.center,
-                                                                    style: TextStyle(
-                                                                      fontFamily: 'poppins',
-                                                                      fontWeight: FontWeight.w700,
-                                                                      fontSize: 13
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                              )
-                                                            ],
-                                                          ),
+                                                            )
+                                                          ],
                                                         ),
-                                                        
-                                                        // const SizedBox(
-                                                        //   height: 1,
-                                                        // ),
+                                                      ),
 
-                                                       
-
-
-                                                      ],
-                                                    ),
+                                                      // const SizedBox(
+                                                      //   height: 1,
+                                                      // ),
+                                                    ],
                                                   ),
-
-
-                                                ]
-                                              ),
+                                                ),
+                                              ]),
                                             ),
-
-
                                           ],
                                         ),
                                       ),
                                     ),
                                   ),
-
-                                  
-                              
-
-
                                 ],
                               ),
                             )
-
-
                           ],
                         ),
-
-                        
-                    
                       )
                     ],
                   ),
