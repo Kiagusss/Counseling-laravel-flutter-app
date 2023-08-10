@@ -15,7 +15,7 @@ Future<List<Archive>> fetchDataKonseling() async{
 
   int? id = sp.getInt('user_id') ?? 1;
 
-  String apiURL = "http://metal-knife.gl.at.ply.gg:7437/api/index/$id";
+  String apiURL = "http://thank-netherlands.at.ply.gg:44745/api/index/$id";
 
   var result = await http.get(Uri.parse(apiURL));
   var dataJson = json.decode(result.body)['data'];

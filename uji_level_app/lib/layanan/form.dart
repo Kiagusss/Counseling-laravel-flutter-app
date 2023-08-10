@@ -26,7 +26,7 @@ class _FormLayananState extends State<FormLayanan> {
 
     try {
       final response = await http.get(
-        Uri.parse('http://metal-knife.gl.at.ply.gg:7437/api/form-layanan'),
+        Uri.parse('http://thank-netherlands.at.ply.gg:44745/api/form-layanan'),
         headers: {
           'Authorization': 'Bearer $bearerToken',
         },
@@ -71,7 +71,7 @@ class _FormLayananState extends State<FormLayanan> {
 
       try {
         final response = await http.post(
-          Uri.parse('http://metal-knife.gl.at.ply.gg:7437/api/store-layanan'),
+          Uri.parse('http://thank-netherlands.at.ply.gg:44745/api/store-layanan'),
           headers: headers,
           body: body,
         );
