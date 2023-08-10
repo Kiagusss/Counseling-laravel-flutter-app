@@ -13,7 +13,7 @@ class _ProfileState extends State<Profile> {
   String email = '';
   String? bearerToken; // Change the type to String?
 
-  final String apiUrl = 'http://metal-knife.gl.at.ply.gg:7437/api/user';
+  final String apiUrl = 'http://thank-netherlands.at.ply.gg:44745/api/user';
 
   Future<Map<String, dynamic>> fetchData() async {
     // Get the shared preferences instance

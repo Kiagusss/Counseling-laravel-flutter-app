@@ -18,8 +18,8 @@ class _ShowLayananState extends State<ShowLayanan> {
   String email = '';
   String? bearerToken;
 
-  final String apiUrl = 'http://metal-knife.gl.at.ply.gg:7437/api/show-layanan';
-  final String apiUrls = 'http://metal-knife.gl.at.ply.gg:7437/api/cancel';
+  final String apiUrl = 'http://thank-netherlands.at.ply.gg:44745/api/show-layanan';
+  final String apiUrls = 'http://thank-netherlands.at.ply.gg:44745/api/cancel';
 
   Future<Map<String, dynamic>> fetchData() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
