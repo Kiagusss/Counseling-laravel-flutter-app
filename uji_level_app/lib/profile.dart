@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:uji_level_app/profile/updateprofile.dart';
 
 class Profile extends StatefulWidget {
   @override
@@ -9,11 +10,17 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
-  String name = '';
-  String email = '';
   String? bearerToken; // Change the type to String?
 
-  final String apiUrl = 'http://thank-netherlands.at.ply.gg:44745/api/user';
+  final String apiUrl = 'http://robert-lycos.gl.at.ply.gg:12448/api/user';
+
+  void editprofile() {
+    Navigator.of(context).pushReplacement(
+      MaterialPageRoute(
+        builder: (context) => UpdateProfile(),
+      ),
+    );
+  }
 
   Future<Map<String, dynamic>> fetchData() async {
     // Get the shared preferences instance
@@ -21,7 +28,6 @@ class _ProfileState extends State<Profile> {
 
     // Fetch the bearer token, which can be nullable
     bearerToken = preferences.getString('token');
-
     // Check if the bearer token is not null before making the request
     if (bearerToken != null) {
       final response = await http.get(Uri.parse(apiUrl), headers: {
@@ -62,12 +68,108 @@ class _ProfileState extends State<Profile> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('Name: ${data['nama']}'),
-                  Text('Email: ${data['email']}'),
-                  Text('TTL: ${data['ttl']}'),
-                  Text('Jenis Kelamin: ${data['jenis_kelamin']}'),
-                  Text('Kelas: ${data['nama_kelas']}'),
-
+                  Container(
+                    width: 350,
+                    child: TextFormField(
+                      enabled: false,
+                      // controller: _nama,
+                      initialValue: data['nama'],
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: InputDecoration(
+                        focusColor: Color(0xff4894FE),
+                        filled: true,
+                        fillColor: Color(0xffE8ECF4),
+                        hintText: "Enter Your Email",
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide.none,
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 30),
+                  Container(
+                    width: 350,
+                    child: TextFormField(
+                      enabled: false,
+                      // controller: _nama,
+                      initialValue: data['email'],
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: InputDecoration(
+                        focusColor: Color(0xff4894FE),
+                        filled: true,
+                        fillColor: Color(0xffE8ECF4),
+                        hintText: "Enter Your Email",
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide.none,
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 30),
+                  Container(
+                    width: 350,
+                    child: TextFormField(
+                      enabled: false,
+                      // controller: _nama,
+                      initialValue: data['ttl'],
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: InputDecoration(
+                        focusColor: Color(0xff4894FE),
+                        filled: true,
+                        fillColor: Color(0xffE8ECF4),
+                        hintText: "Enter Your Email",
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide.none,
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 30),
+                  Container(
+                    width: 350,
+                    child: TextFormField(
+                      enabled: false,
+                      // controller: _nama,
+                      initialValue: data['jenis_kelamin'],
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: InputDecoration(
+                        focusColor: Color(0xff4894FE),
+                        filled: true,
+                        fillColor: Color(0xffE8ECF4),
+                        hintText: "Enter Your Email",
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide.none,
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 30),
+                  Container(
+                    width: 350,
+                    child: TextFormField(
+                      enabled: false,
+                      // controller: _nama,
+                      initialValue: data['nama_kelas'],
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: InputDecoration(
+                        focusColor: Color(0xff4894FE),
+                        filled: true,
+                        fillColor: Color(0xffE8ECF4),
+                        hintText: "Enter Your Email",
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide.none,
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                      ),
+                    ),
+                  ),
+                  // FloatingActionButton(
+                  //   onPressed: editprofile,
+                  // )
                 ],
               ),
             );

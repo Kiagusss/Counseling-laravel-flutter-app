@@ -14,8 +14,7 @@ class IndexLayanan extends StatefulWidget {
 class _IndexLayananState extends State<IndexLayanan> {
   List<dynamic> layananList = [];
 
-  final String apiUrl =
-      'http://thank-netherlands.at.ply.gg:44745/api/index-layanan';
+  final String apiUrl = 'http://robert-lycos.gl.at.ply.gg:12448/api/index-layanan';
 
   Future<void> fetchData() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
@@ -154,10 +153,7 @@ class _IndexLayananState extends State<IndexLayanan> {
           );
         },
       ),
-      floatingActionButton: FloatingActionButton(onPressed: () {
-        Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => FormLayanan()));
-      }),
+      
     );
   }
 }

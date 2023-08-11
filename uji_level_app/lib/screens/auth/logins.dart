@@ -6,8 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import 'package:uji_level_app/homepage.dart';
 import 'package:uji_level_app/layanan/index.dart';
-import 'package:uji_level_app/layanan/show.dart';
-
+import 'package:uji_level_app/test/testdatapi.dart';
 import '../../homes.dart';
 import '../../profile.dart';
 
@@ -23,6 +22,7 @@ class _LoginssState extends State<Loginss> {
   TextEditingController password = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
+
   bool _isPasswordVisible = false;
 
   void loginUser() async {
@@ -31,7 +31,7 @@ class _LoginssState extends State<Loginss> {
       'password': password.text.toString(),
     };
     final result = await http.post(
-      Uri.parse('http://thank-netherlands.at.ply.gg:44745/api/login'),
+      Uri.parse('http://robert-lycos.gl.at.ply.gg:12448/api/login'),
       body: data,
     );
     final response = json.decode(result.body);
