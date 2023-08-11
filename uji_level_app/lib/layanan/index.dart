@@ -66,18 +66,88 @@ class _IndexLayananState extends State<IndexLayanan> {
 
           return Card(
             child: ListTile(
-              title: Text('Judul: $judul'),
-              subtitle: Text('Guru BK: $guru\nWali Kelas: $walas\nJadwal Konseling: $jadwal'),
-              trailing: ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => ShowLayanan(id: layanan['id'].toString()),
+              title: Text(''),
+              subtitle: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      CircleAvatar(
+                        backgroundImage: AssetImage("assets/pa riki.png"),
+                        radius: 35,
+                      ),
+                      SizedBox(width: 17), // Jarak antara gambar dan teks
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.only(bottom: 5),
+                            child: Text(
+                              '$guru',
+                              style: TextStyle(
+                                fontWeight:
+                                    FontWeight.bold, // Teks tebal (bold)
+                                fontFamily: 'Poppins', // Gunakan font Poppins
+                                fontSize: 18,
+                                color: Colors.black, // Ukuran font 16
+                              ),
+                            ),
+                          ),
+                          Text(
+                            'Dental Specialist',
+                            style: TextStyle(
+                              fontWeight:
+                                  FontWeight.normal, // Teks gaya reguler
+                              fontFamily: 'Poppins', // Gunakan font Poppins
+                              fontSize: 14, // Ukuran font 16
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      vertical:
+                          17, // Memberikan margin atas dan bawah sebesar 15 piksel
                     ),
-                  );
-                },
-                child: Text('View Details'),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment
+                          .center, // Mengatur agar berada di tengah secara horizontal
+                      children: [
+                        Icon(Icons.access_time), // Ikon jam
+                        SizedBox(width: 5), // Jarak antara ikon dan teks
+                        Text('$jadwal'),
+                      ],
+                    ),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              ShowLayanan(id: layanan['id'].toString()),
+                        ),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      primary: Color.fromARGB(255, 240, 248, 255),
+                      onPrimary: Color.fromARGB(255, 0, 102, 255),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(100),
+                      ),
+                      minimumSize: Size(400, 42),
+                    ),
+                    child: Text(
+                      'Detail',
+                      style: TextStyle(
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w500, // Gaya font medium
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
           );
