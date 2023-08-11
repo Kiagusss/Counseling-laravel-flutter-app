@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:uji_level_app/layanan/form.dart';
 import 'package:uji_level_app/layanan/index.dart';
+import 'package:uji_level_app/profile.dart';
 import 'model/archive.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
@@ -273,9 +274,14 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ],
                     ),
-                    CircleAvatar(
-                      backgroundImage: AssetImage("assets/pa riki.png"),
-                      radius: 40,
+                    GestureDetector(
+                      onTap: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => Profile() ));
+                      },
+                      child: CircleAvatar(
+                        backgroundImage: AssetImage("assets/pa riki.png"),
+                        radius: 40,
+                      ),
                     ),
                   ],
                 ),

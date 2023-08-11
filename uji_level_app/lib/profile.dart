@@ -5,7 +5,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uji_level_app/profile/updateprofile.dart';
 
 class Profile extends StatefulWidget {
-
   @override
   _ProfileState createState() => _ProfileState();
 }
@@ -15,13 +14,12 @@ class _ProfileState extends State<Profile> {
 
   final String apiUrl = 'http://robert-lycos.gl.at.ply.gg:12448/api/user';
 
-
-  void editprofile(){
+  void editprofile() {
     Navigator.of(context).pushReplacement(
-        MaterialPageRoute(
-          builder: (context) => UpdateProfile(),
-        ),
-      );
+      MaterialPageRoute(
+        builder: (context) => UpdateProfile(),
+      ),
+    );
   }
 
   Future<Map<String, dynamic>> fetchData() async {
@@ -70,12 +68,108 @@ class _ProfileState extends State<Profile> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('Name: ${data['nama']}'),
-                  Text('Email: ${data['email']}'),
-                  Text('TTL: ${data['ttl']}'),
-                  Text('Jenis Kelamin: ${data['jenis_kelamin']}'),
-                  Text('Kelas: ${data['nama_kelas']}'),
-                  FloatingActionButton(onPressed: editprofile,)
+                  Container(
+                    width: 350,
+                    child: TextFormField(
+                      enabled: false,
+                      // controller: _nama,
+                      initialValue: data['nama'],
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: InputDecoration(
+                        focusColor: Color(0xff4894FE),
+                        filled: true,
+                        fillColor: Color(0xffE8ECF4),
+                        hintText: "Enter Your Email",
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide.none,
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 30),
+                  Container(
+                    width: 350,
+                    child: TextFormField(
+                      enabled: false,
+                      // controller: _nama,
+                      initialValue: data['email'],
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: InputDecoration(
+                        focusColor: Color(0xff4894FE),
+                        filled: true,
+                        fillColor: Color(0xffE8ECF4),
+                        hintText: "Enter Your Email",
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide.none,
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 30),
+                  Container(
+                    width: 350,
+                    child: TextFormField(
+                      enabled: false,
+                      // controller: _nama,
+                      initialValue: data['ttl'],
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: InputDecoration(
+                        focusColor: Color(0xff4894FE),
+                        filled: true,
+                        fillColor: Color(0xffE8ECF4),
+                        hintText: "Enter Your Email",
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide.none,
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 30),
+                  Container(
+                    width: 350,
+                    child: TextFormField(
+                      enabled: false,
+                      // controller: _nama,
+                      initialValue: data['jenis_kelamin'],
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: InputDecoration(
+                        focusColor: Color(0xff4894FE),
+                        filled: true,
+                        fillColor: Color(0xffE8ECF4),
+                        hintText: "Enter Your Email",
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide.none,
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 30),
+                  Container(
+                    width: 350,
+                    child: TextFormField(
+                      enabled: false,
+                      // controller: _nama,
+                      initialValue: data['nama_kelas'],
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: InputDecoration(
+                        focusColor: Color(0xff4894FE),
+                        filled: true,
+                        fillColor: Color(0xffE8ECF4),
+                        hintText: "Enter Your Email",
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide.none,
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                      ),
+                    ),
+                  ),
+                  // FloatingActionButton(
+                  //   onPressed: editprofile,
+                  // )
                 ],
               ),
             );

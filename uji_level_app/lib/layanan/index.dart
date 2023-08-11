@@ -83,9 +83,7 @@ class _IndexLayananState extends State<IndexLayanan> {
           );
         },
       ),
-      floatingActionButton: FloatingActionButton(onPressed: (){
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) => FormLayanan()));
-      }),
+      
     );
   }
 }

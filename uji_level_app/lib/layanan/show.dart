@@ -18,7 +18,8 @@ class _ShowLayananState extends State<ShowLayanan> {
   String email = '';
   String? bearerToken;
 
-  final String apiUrl = 'http://robert-lycos.gl.at.ply.gg:12448/api/show-layanan';
+  final String apiUrl =
+      'http://robert-lycos.gl.at.ply.gg:12448/api/show-layanan';
 
   Future<Map<String, dynamic>> fetchData() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
@@ -148,34 +149,180 @@ class _ShowLayananState extends State<ShowLayanan> {
             final judul = layanan['judul'];
             final jenisLayanan = layanan['layanan'];
 
-            return Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text('Guru BK: $guru'),
-                  Text('Wali Kelas: $walas'),
-                  Text('Judul: $judul'),
-                  Text('Jenis Layanan: $jenisLayanan'),
-                  Text('Siswa:'),
-                  Column(
-                    children: siswaList.map((siswa) => Text(siswa)).toList(),
-                  ),
-                  ElevatedButton(
-                    onPressed: () async {
-                      // Show the cancellation dialog
-                      String? cancellationReason = await _showCancellationDialog();
-
-                      if (cancellationReason != null && cancellationReason.isNotEmpty) {
-                        // Call the API to cancel the layanan with the provided reason
-                        await _cancelLayanan(cancellationReason);
-                        // Perform any additional actions if needed after cancellation
-                        // For example, show a success message or navigate back to the previous page
-                      }
-                    },
-                    child: Text('Cancel Layanan'),
-                  ),
-                ],
+            return Container(
+              decoration: BoxDecoration(
+                color: Colors.blue,
               ),
+              child: Container(
+                  margin: EdgeInsets.fromLTRB(0, 50, 0, 0),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(30),
+                      topRight: Radius.circular(30)
+                    ),
+                    color: Colors.white,
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.all(40),
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text(
+                                'Judul',
+                                style: TextStyle(
+                                  fontSize: 25,
+                                  color: Colors.blue.shade800.withOpacity(0.7),
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Icon(
+                                Icons.keyboard_double_arrow_right,
+                                weight: 10,
+                                size: 30,
+                                color: Colors.blue.shade800.withOpacity(0.5),
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Text(
+                                '$judul',
+                                style: TextStyle(
+                                  fontSize: 25,
+                                  color: Colors.blue.shade800.withOpacity(0.7),
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: 20),
+                          Container(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Status',
+                                  style: TextStyle(
+                                    color:
+                                        Colors.grey.shade400.withOpacity(0.5),
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                ),
+                                SizedBox(height: 10),
+                                Container(
+                                  height: 75,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                      borderRadius: BorderRadius.circular(10),
+                                      border: Border.all(
+                                        color: Colors.white,
+                                      ),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.grey.withOpacity(0.5),
+                                          spreadRadius: 2,
+                                          blurRadius: 4,
+                                          offset: Offset(0, 2)
+                                        )
+                                      ]
+                                  ),
+                                  child: 
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+                                      Text('Not Decided',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: 20,
+                                        color: Colors.grey.shade400.withOpacity(0.9)
+                                      ),
+                                      ),
+                                      SizedBox(width: 10),
+                                    ],
+                                  )
+                                
+                                ),
+                                SizedBox(height: 30),
+                                Container(
+                                  child: Column(
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Icon(Icons.person,
+                                          color: Colors.grey.shade300,
+                                          size: 50,
+                                          ),
+                                          SizedBox(width: 20,),
+                                          Container(
+                                            height: 50,
+                                            width: 255,
+                                            decoration: BoxDecoration(
+                                              color: Colors.grey.shade300,
+                                              borderRadius: BorderRadius.circular(10)
+                                            ),
+                                            child: Padding(padding: EdgeInsets.all(18),
+                                            child: Text(
+                                              '$guru',
+                                              style: TextStyle(
+                                                color: Colors.black.withOpacity(0.6),
+                                                fontWeight: FontWeight.w700,
+                                                fontSize: 15,
+                                              ),
+                                            ),
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                      SizedBox(height: 20),
+                                      Row(
+                                        children: [
+                                          Icon(Icons.align_horizontal_left_rounded,
+                                          color: Colors.grey.shade300,
+                                          size: 50,
+                                          ),
+                                          SizedBox(width: 20,),
+                                          Container(
+                                            height: 50,
+                                            width : 255,
+                                            decoration: BoxDecoration(
+                                              color: Colors.grey.shade300,
+                                              borderRadius: BorderRadius.circular(10)
+                                            ),
+                                            child: Padding(padding: EdgeInsets.all(18),
+                                            child: Text(
+                                              '$jenisLayanan',
+                                              style: TextStyle(
+                                                color: Colors.black.withOpacity(0.6),
+                                                fontWeight: FontWeight.w700,
+                                                fontSize: 15,
+                                              ),
+                                            ),
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                      
+                                    ],
+                                  ),
+                                ),
+                                SizedBox(height: 25,),
+                                Container(
+                                  
+                                ),
+                              ],
+                            ),
+                          )
+                        ]),
+                  )),
             );
           }
         },
